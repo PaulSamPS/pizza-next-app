@@ -1,7 +1,36 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   swcMinify: true,
-}
+  images: {
+    domains: ['localhost:5000'],
+  },
+  webpack(config, options) {
+    config.module.rules.push({
+      loader: '@svgr/webpack',
+      issuer: /\.[jt]sx?$/,
+      options: {
+        prettier: false,
+        svgo: true,
+        svgoConfig: {
+          plugins: [
+            {
+              name: 'preset-default',
+              params: {
+                override: {
+                  removeViewBox: false,
+                },
+              },
+            },
+          ],
+        },
+        titleProp: true,
+      },
+      test: /\.svg$/,
+    });
 
-module.exports = nextConfig
+    return config;
+  },
+};
+
+module.exports = nextConfig;
