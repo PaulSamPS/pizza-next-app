@@ -1,4 +1,4 @@
-import { Button, Count, Paragraph, Text, Title } from '@components';
+import { Button, Count, Paragraph, Text, Title, Tab } from '@components';
 import { PizzaIcon } from 'helpers/icons/category';
 import React from 'react';
 import styles from '../styles/Home.module.scss';
@@ -41,6 +41,7 @@ export default function Home() {
       <Button appearance='icon' />
       <Button appearance='price'>от 500 р</Button>
       <Count count={count} decrease={decrease} increase={increase} />
+      <Tab />
     </div>
   );
 }

@@ -4,3 +4,4 @@ export * from './Paragraph/Paragraph';
 export * from './Spinner/Spinner';
 export * from './Button/Button';
 export * from './Count/Count';
+export * from './Tab/Tab';
