@@ -1,8 +1,20 @@
-import { Button, Paragraph, Text, Title } from '@components';
+import { Button, Count, Paragraph, Text, Title } from '@components';
 import { PizzaIcon } from 'helpers/icons/category';
+import React from 'react';
 import styles from '../styles/Home.module.scss';
 
 export default function Home() {
+  const [count, setCount] = React.useState<number>(0);
+
+  const decrease = () => {
+    if (count > 0) {
+      setCount((prev) => prev - 1);
+    }
+  };
+
+  const increase = () => {
+    setCount((prev) => prev + 1);
+  };
   return (
     <div className={styles.container}>
       <Title level='1'>h1</Title>
@@ -28,6 +40,7 @@ export default function Home() {
       <Button appearance='transparent'>Сбросить</Button>
       <Button appearance='icon' />
       <Button appearance='price'>от 500 р</Button>
+      <Count count={count} decrease={decrease} increase={increase} />
     </div>
   );
 }
