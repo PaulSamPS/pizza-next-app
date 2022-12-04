@@ -1,4 +1,4 @@
-import { Paragraph, Text, Title } from '@components';
+import { Button, Paragraph, Text, Title } from '@components';
 import { PizzaIcon } from 'helpers/icons/category';
 import styles from '../styles/Home.module.scss';
 
@@ -23,6 +23,11 @@ export default function Home() {
         Hello
       </Text>
       <PizzaIcon />
+      <Button appearance='primary'>Применить</Button>
+      <Button appearance='loading'>Загружается</Button>
+      <Button appearance='transparent'>Сбросить</Button>
+      <Button appearance='icon' />
+      <Button appearance='price'>от 500 р</Button>
     </div>
   );
 }
