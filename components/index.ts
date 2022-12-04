@@ -5,3 +5,4 @@ export * from './Spinner/Spinner';
 export * from './Button/Button';
 export * from './Count/Count';
 export * from './Tab/Tab';
+export * from './TabsGrid/TabsGrid';

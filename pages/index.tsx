@@ -3,6 +3,9 @@ import { PizzaIcon } from 'helpers/icons/category';
 import React from 'react';
 import styles from '../styles/Home.module.scss';
 
+const sizes = ['20', '28', '32'];
+const type = ['Традиционное', 'Тонкое'];
+
 export default function Home() {
   const [count, setCount] = React.useState<number>(0);
 
@@ -40,8 +43,11 @@ export default function Home() {
       <Button appearance='transparent'>Сбросить</Button>
       <Button appearance='icon' />
       <Button appearance='price'>от 500 р</Button>
+      <Button appearance='filter'>Фильтры</Button>
+      <Button appearance='secondary'>Новинка</Button>
       <Count count={count} decrease={decrease} increase={increase} />
-      <Tab />
+      <Tab arr={sizes} col='3' />
+      <Tab arr={type} col='2' />
     </div>
   );
 }

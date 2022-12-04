@@ -1,30 +1,24 @@
 import React from 'react';
-import { Text } from '@components';
-import { classNames } from '@lib';
-import styles from './Tab.module.scss';
+import { Button, TabsGrid, Text } from '@components';
+import { TabProps } from './Tab.props';
 
-const sizes = ['20', '28', '32'];
-
-export const Tab = () => {
+export const Tab = ({ col = '2', arr }: TabProps) => {
   const [activeIndex, setActiveIndex] = React.useState<number>(0);
 
   return (
-    <div className={styles.tab}>
-      {sizes.map((s, index) => (
+    <TabsGrid column={col}>
+      {arr.map((s, index) => (
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-        <div
-          role='tab'
+        <Button
+          appearance='tab'
           tabIndex={0}
           key={index}
-          className={classNames(
-            styles.item,
-            activeIndex === index && styles.active
-          )}
+          tabActive={activeIndex === index}
           onClick={() => setActiveIndex(index)}
         >
-          <Text level='3'>{`${s} см`}</Text>
-        </div>
+          <Text level='3'>{s}</Text>
+        </Button>
       ))}
-    </div>
+    </TabsGrid>
   );
 };

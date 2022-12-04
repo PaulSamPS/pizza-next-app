@@ -8,5 +8,9 @@ export interface ButtonProps
     | 'icon'
     | 'loading'
     | 'price'
-    | 'count';
+    | 'count'
+    | 'tab'
+    | 'filter'
+    | 'secondary';
+  tabActive?: boolean;
 }

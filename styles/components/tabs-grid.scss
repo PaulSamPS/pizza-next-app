@@ -1,0 +1,15 @@
+.tabs-grid {
+	display: grid;
+	background-color: var(--white);
+	height: 48px;
+	border-radius: 6px;
+	width: 350px;
+
+	&-column-2 {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	&-column-3 {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
