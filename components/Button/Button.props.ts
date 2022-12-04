@@ -11,6 +11,8 @@ export interface ButtonProps
     | 'count'
     | 'tab'
     | 'filter'
-    | 'secondary';
+    | 'secondary'
+    | 'cart';
   tabActive?: boolean;
+  icon?: React.ReactNode;
 }
