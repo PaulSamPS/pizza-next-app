@@ -1,4 +1,4 @@
-import { Button, Count, Paragraph, Text, Title, Tab } from '@components';
+import { Button, Count, Paragraph, Text, Title, Tab, Radio } from '@components';
 import { PizzaIcon } from 'helpers/icons/category';
 import React from 'react';
 import styles from '../styles/Home.module.scss';
@@ -46,6 +46,8 @@ export default function Home() {
       <Button appearance='filter'>Фильтры</Button>
       <Button appearance='secondary'>Новинка</Button>
       <Count count={count} decrease={decrease} increase={increase} />
+      <Radio id='fast'>Как можно скорее</Radio>
+      <Radio id='onTime'>По времени</Radio>
       <Tab arr={sizes} col='3' />
       <Tab arr={type} col='2' />
     </div>
