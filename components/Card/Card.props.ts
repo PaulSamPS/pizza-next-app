@@ -8,6 +8,6 @@ export interface CardProps
   extends React.AllHTMLAttributes<HTMLElement>,
     HasComponent {
   direction?: 'column' | 'row';
-  appearance?: 'category';
+  appearance?: 'outline' | 'white';
   navHeader?: boolean;
 }

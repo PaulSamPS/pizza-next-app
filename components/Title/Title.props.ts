@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { TypeAttributes } from '@types';
 
 interface HasComponent {
   Component?: React.ElementType;
@@ -7,7 +8,7 @@ interface HasComponent {
 export interface TitleProps
   extends React.AllHTMLAttributes<HTMLElement>,
     HasComponent {
-  weight?: '1' | '2' | '3';
-  level?: '1' | '2' | '3' | '4' | '5';
+  weight?: TypeAttributes.Weight;
+  level?: TypeAttributes.LevelTitle;
   caps?: boolean;
 }

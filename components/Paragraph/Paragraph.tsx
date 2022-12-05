@@ -1,17 +1,19 @@
 import * as React from 'react';
-import { classNames } from 'lib';
+import cx from 'clsx';
 import { ParagraphProps } from './Paragraph.props';
+import styles from './Paragraph.module.scss';
 
 export const Paragraph = ({
   Component = 'p',
   weight,
   children,
   ...restProps
-}: ParagraphProps) => (
-  <Component
-    {...restProps}
-    className={classNames('paragraph', weight && `paragraph-w-${weight}`)}
-  >
-    {children}
-  </Component>
-);
+}: ParagraphProps) => {
+  const classes = cx(styles.paragraph, weight && styles[weight]);
+
+  return (
+    <Component {...restProps} className={classes}>
+      {children}
+    </Component>
+  );
+};

@@ -19,7 +19,9 @@
       "@components": ["components"],
       "@lib": ["lib"],
       "@helpers/*": ["helpers/*"],
-      "@entities": ["entities"]
+      "@entities/*": ["entities/*"],
+      "@templates/*": ["templates/*"],
+      "@types": ["types"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

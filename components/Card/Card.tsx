@@ -4,19 +4,12 @@ import { CardProps } from './Card.props';
 
 export const Card = ({
   children,
-  direction,
   appearance,
-  navHeader,
   Component = 'div',
   ...restProps
 }: CardProps) => (
   <Component
-    className={classNames(
-      !navHeader && 'card',
-      direction && !navHeader && `${direction}`,
-      appearance && !navHeader && `card-${appearance}`,
-      navHeader && 'nav-header'
-    )}
+    className={classNames('card', `card-${appearance}`)}
     {...restProps}
   >
     {children}

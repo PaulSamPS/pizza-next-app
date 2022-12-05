@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 interface HasComponent {
   Component?: React.ElementType;
@@ -7,6 +7,6 @@ interface HasComponent {
 export interface GridProps
   extends React.AllHTMLAttributes<HTMLElement>,
     HasComponent {
-  col?: '8' | '9';
+  col?: '3' | '8' | '9';
   gap?: number;
 }

@@ -1,0 +1,127 @@
+.text {
+	label {
+		display: block;
+		margin-bottom: 8px;
+	}
+}
+
+.btn,
+.icon-button,
+.money,
+.date,
+.time,
+.error {
+	position: relative;
+}
+
+.error {
+	span {
+		position: absolute;
+		bottom: -10px;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: var(--red);
+	}
+
+	input {
+		border: 1px solid var(--red);
+
+		&::placeholder {
+			color: var(--red);
+		}
+	}
+}
+
+.money,
+.date,
+.time {
+	input {
+		padding: 14px 46px 14px 16px;
+	}
+
+	label {
+		position: absolute;
+		right: 40px;
+		top: 36px;
+
+		span {
+			margin-right: 3px;
+		}
+	}
+}
+
+.btn {
+	input {
+		padding: 14px 60px 14px 16px;
+	}
+}
+
+.icon-button {
+	input {
+		padding: 14px 60px 14px 42px;
+	}
+}
+
+.btn,
+.icon-button {
+	button {
+		position: absolute;
+		right: 20px;
+	}
+
+	label {
+		color: var(--primary);
+		position: absolute;
+		left: 34px;
+		top: 33px;
+	}
+}
+
+.code {
+	input {
+		width: 44px;
+		height: 44px;
+		padding: 0;
+		text-align: center;
+
+		@media (min-width: 767px) {
+			width: 48px;
+			height: 48px;
+		}
+	}
+}
+
+.input {
+	padding: 20px;
+
+	input {
+		border-radius: 6px;
+		border: 1px solid var(--line-gray);
+		color: var(--black);
+		background-color: var(--white);
+		padding: 14px 16px;
+		font-size: 14px;
+		width: 100%;
+
+		&::placeholder {
+			color: var(--gray-text);
+		}
+
+		&:focus {
+			outline-color: var(--primary);
+		}
+
+		@media (min-width: 767px) {
+			font-size: 16px;
+		}
+	}
+
+	label {
+		font-size: 12px;
+		color: var(--gray-text);
+
+		@media (min-width: 767px) {
+			font-size: 14px;
+		}
+	}
+}

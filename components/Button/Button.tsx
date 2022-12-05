@@ -1,8 +1,9 @@
 import React from 'react';
-import { classNames } from '@lib';
+import cx from 'clsx';
 import { ButtonProps } from './Button.props';
 import { SpinnerIcon, FilterIcon, CartIcon } from './assets';
 import { Text } from '../Text/Text';
+import styles from './Button.module.scss';
 
 export const Button = ({
   appearance,
@@ -10,24 +11,29 @@ export const Button = ({
   children,
   icon,
   ...restProps
-}: ButtonProps): JSX.Element => (
-  <button
-    type='button'
-    className={classNames(
-      'button',
-      `button-${appearance}`,
-      tabActive && 'button-tab-active'
-    )}
-    {...restProps}
-  >
-    {appearance === 'icon' && icon}
-    {appearance === 'filter' && <FilterIcon />}
-    {appearance === 'cart' && <CartIcon />}
-    {appearance === 'loading' && (
-      <span role='status' aria-label='Загружается...' className='spinner'>
-        <SpinnerIcon aria-hidden='true' className='spinner-self' />
-      </span>
-    )}
-    {children && <Text level='3'>{children}</Text>}
-  </button>
-);
+}: ButtonProps): JSX.Element => {
+  const classes = cx(
+    styles.button,
+    styles[appearance],
+    tabActive && styles.active
+  );
+
+  const i = appearance === 'icon' && icon;
+  const cart = appearance === 'cart' && <CartIcon />;
+  const filter = appearance === 'filter' && <FilterIcon />;
+  const loading = appearance === 'loading' && (
+    <span role='status' aria-label='Загружается...' className='spinner'>
+      <SpinnerIcon aria-hidden='true' className='spinner-self' />
+    </span>
+  );
+
+  return (
+    <button type='button' className={classes} {...restProps}>
+      {i}
+      {cart}
+      {filter}
+      {loading}
+      {children && <Text level='l3'>{children}</Text>}
+    </button>
+  );
+};

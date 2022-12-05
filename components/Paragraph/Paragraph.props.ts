@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { TypeAttributes } from '@types';
 
 interface HasComponent {
   Component?: React.ElementType;
@@ -7,5 +8,5 @@ interface HasComponent {
 export interface ParagraphProps
   extends React.AllHTMLAttributes<HTMLElement>,
     HasComponent {
-  weight?: '1' | '2' | '3';
+  weight?: TypeAttributes.Weight;
 }

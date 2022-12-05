@@ -65,9 +65,8 @@ export const Category = () => {
           onClick={() => setHeader(!header)}
           Component='a'
           direction='column'
-          appearance='category'
+          appearance='outline'
           key={c.id}
-          navHeader={header}
           tabIndex={0}
         >
           {header ? '' : c.icon}

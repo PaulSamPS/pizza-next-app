@@ -10,3 +10,7 @@ export * from './Radio/Radio';
 export * from './Input/Input';
 export * from './Card/Card';
 export * from './Grid/Grid';
+export * from './Divider/Divider';
+export * from './WhiteBlock/WhiteBlock';
+export * from './Container/Container';
+export * from './Flex/Flex';
