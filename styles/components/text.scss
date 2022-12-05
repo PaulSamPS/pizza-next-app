@@ -6,6 +6,16 @@
 	font-weight: 400;
 	color: var(--color-theme);
 
+	&-icon {
+		display: flex;
+		align-items: center;
+		column-gap: 8px;
+
+		svg {
+			margin-top: 2px;
+		}
+	}
+
 	&-w-1 {
 		font-weight: 600;
 	}

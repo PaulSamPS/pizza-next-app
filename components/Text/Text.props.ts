@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 interface HasComponent {
   Component?: React.ElementType;
@@ -10,4 +10,5 @@ export interface TextProps
   weight?: '1' | '2' | '3';
   level?: '1' | '2' | '3';
   center?: boolean;
+  icon?: React.ReactNode;
 }

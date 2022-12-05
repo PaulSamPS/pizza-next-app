@@ -96,6 +96,13 @@
 	&-cart {
 		color: var(--white);
 		background-color: var(--primary);
+		padding: 8px 10px;
+		column-gap: 8px;
+		height: 40px;
+
+		span {
+			margin-top: 2px;
+		}
 	}
 
 	&-tab {

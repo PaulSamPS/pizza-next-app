@@ -1,0 +1,11 @@
+.nav-header {
+  background-color: transparent;
+  color: var(--black);
+  border: none;
+  transition: all ease .2s;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--primary);
+  }
+}

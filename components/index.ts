@@ -8,3 +8,5 @@ export * from './Tab/Tab';
 export * from './TabsGrid/TabsGrid';
 export * from './Radio/Radio';
 export * from './Input/Input';
+export * from './Card/Card';
+export * from './Grid/Grid';

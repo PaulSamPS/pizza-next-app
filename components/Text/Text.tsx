@@ -5,7 +5,8 @@ import { TextProps } from './Text.props';
 export const Text = ({
   children,
   weight,
-                       level,
+  level,
+  icon,
   Component = 'span',
   center,
   ...restProps
@@ -15,9 +16,11 @@ export const Text = ({
     className={classNames(
       'text',
       weight && `text-w-${weight}`,
-        level && `text-l-${level}`
+      level && `text-l-${level}`,
+      icon && 'text-icon'
     )}
   >
     {children}
+    {icon && icon}
   </Component>
 );

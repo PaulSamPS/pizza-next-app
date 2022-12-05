@@ -10,8 +10,11 @@ import {
 } from '@components';
 import { PizzaIcon } from 'helpers/icons/category';
 import React from 'react';
+import { ArrowBackIcon } from '@helpers/icons/18';
+import { Category } from '@entities';
+import { LogoIcon } from '@helpers/icons/32';
 import styles from '../styles/Home.module.scss';
-import { ArrowBackIcon } from '../components/Button/assets';
+import { Header } from '../components/Header/Header';
 
 const sizes = ['20', '28', '32'];
 const type = ['Традиционное', 'Тонкое'];
@@ -71,6 +74,29 @@ export default function Home() {
       <Input appearance='btn' placeholder='Промокод' />
       <Input appearance='icon-button' placeholder='Адрес' />
       <Input appearance='code' placeholder='x' maxLength={1} />
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
+          <LogoIcon />
+          <Title level='5' caps>
+            Куда пицца
+          </Title>
+        </div>
+        <Category />
+        <Button appearance='cart'>0 ₽</Button>
+      </div>
+      <Header />
     </div>
   );
 }

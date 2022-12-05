@@ -1,4 +1,5 @@
-import ArrowDownIcon from './Arrow-down.svg';
-import CalendarIcon from './Calendar.svg';
+import ArrowDownIcon from './arrow-down.svg';
+import ArrowDownSmallIcon from './arrow-down-small.svg';
+import CalendarIcon from './calendar.svg';
 
-export { ArrowDownIcon, CalendarIcon };
+export { ArrowDownIcon, ArrowDownSmallIcon, CalendarIcon };
