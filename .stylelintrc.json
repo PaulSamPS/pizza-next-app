@@ -26,6 +26,7 @@
     "plugins": ["stylelint-order", "stylelint-scss"],
     "rules": {
         "indentation": "tab",
-        "color-hex-case": "upper"
+        "color-hex-case": "upper",
+        "no-descending-specificity": null
     }
 }

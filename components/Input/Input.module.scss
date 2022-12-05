@@ -1,3 +1,38 @@
+.input {
+	padding: 20px;
+
+	input {
+		border-radius: 6px;
+		border: 1px solid var(--line-gray);
+		color: var(--black);
+		background-color: var(--white);
+		padding: 14px 16px;
+		font-size: 14px;
+		width: 100%;
+
+		&::placeholder {
+			color: var(--gray-text);
+		}
+
+		&:focus {
+			outline-color: var(--primary);
+		}
+
+		@media (min-width: 767px) {
+			font-size: 16px;
+		}
+	}
+
+	label {
+		font-size: 12px;
+		color: var(--gray-text);
+
+		@media (min-width: 767px) {
+			font-size: 14px;
+		}
+	}
+}
+
 .text {
 	label {
 		display: block;
@@ -12,24 +47,6 @@
 .time,
 .error {
 	position: relative;
-}
-
-.error {
-	span {
-		position: absolute;
-		bottom: -10px;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		color: var(--red);
-	}
-
-	input {
-		border: 1px solid var(--red);
-
-		&::placeholder {
-			color: var(--red);
-		}
-	}
 }
 
 .money,
@@ -91,37 +108,20 @@
 	}
 }
 
-.input {
-	padding: 20px;
-
-	input {
-		border-radius: 6px;
-		border: 1px solid var(--line-gray);
-		color: var(--black);
-		background-color: var(--white);
-		padding: 14px 16px;
-		font-size: 14px;
-		width: 100%;
-
-		&::placeholder {
-			color: var(--gray-text);
-		}
-
-		&:focus {
-			outline-color: var(--primary);
-		}
-
-		@media (min-width: 767px) {
-			font-size: 16px;
-		}
+.error {
+	span {
+		position: absolute;
+		bottom: -10px;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: var(--red);
 	}
 
-	label {
-		font-size: 12px;
-		color: var(--gray-text);
+	input {
+		border: 1px solid var(--red);
 
-		@media (min-width: 767px) {
-			font-size: 14px;
+		&::placeholder {
+			color: var(--red);
 		}
 	}
 }
