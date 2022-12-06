@@ -21,7 +21,9 @@
       "@helpers/*": ["helpers/*"],
       "@entities/*": ["entities/*"],
       "@templates/*": ["templates/*"],
-      "@types": ["types"]
+      "@types": ["types"],
+      "@context": ["context"],
+      "@hoc": ["hoc"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

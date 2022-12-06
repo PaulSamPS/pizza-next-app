@@ -113,10 +113,11 @@
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
-	background-color: transparent;
+	background-color: var(--white);
 	border: none;
 	border-radius: 0;
 	height: 44px;
+	padding: 0;
 
 	@media (min-width: 767px) {
 		height: 48px;

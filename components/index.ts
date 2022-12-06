@@ -5,7 +5,6 @@ export * from './Spinner/Spinner';
 export * from './Button/Button';
 export * from './Count/Count';
 export * from './Tab/Tab';
-export * from './TabsGrid/TabsGrid';
 export * from './Radio/Radio';
 export * from './Input/Input';
 export * from './Card/Card';

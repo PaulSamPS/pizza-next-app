@@ -18,7 +18,7 @@ export const Button = ({
     tabActive && styles.active
   );
 
-  const i = appearance === 'icon' && icon;
+  const ico = appearance === 'icon' && icon;
   const cart = appearance === 'cart' && <CartIcon />;
   const filter = appearance === 'filter' && <FilterIcon />;
   const loading = appearance === 'loading' && (
@@ -29,7 +29,7 @@ export const Button = ({
 
   return (
     <button type='button' className={classes} {...restProps}>
-      {i}
+      {ico}
       {cart}
       {filter}
       {loading}

@@ -1,19 +1,37 @@
 import React from 'react';
-import { classNames } from '@lib';
+import cx from 'clsx';
 import { GridProps } from './Grid.props';
+import styles from './Grid.module.scss';
+import stylesMobile from './GridMobile.module.scss';
 
 export const Grid = ({
   children,
   Component = 'div',
-  gap,
   col,
+  colAuto,
+  columnGap,
+  rowGap,
+  width,
+  isDesktop = true,
+  getRootRef,
   ...restProps
-}: GridProps) => (
-  <Component
-    className={classNames('grid', `col-${col}`)}
-    style={{ columnGap: gap }}
-    {...restProps}
-  >
-    {children}
-  </Component>
-);
+}: GridProps) => {
+  const classes = cx(
+    styles.grid,
+    col && styles[col],
+    colAuto && styles[colAuto]
+  );
+
+  const classesMobile = stylesMobile.flex;
+
+  return (
+    <Component
+      ref={getRootRef}
+      className={isDesktop ? classes : classesMobile}
+      style={{ columnGap, rowGap, width }}
+      {...restProps}
+    >
+      {children}
+    </Component>
+  );
+};

@@ -1,7 +1,8 @@
 import React from 'react';
 
 export interface FlexProps extends React.AllHTMLAttributes<HTMLElement> {
-  justifyC?: 'space-between' | 'center';
-  align?: 'center';
+  justify?: 'justify-between' | 'justify-center';
+  align?: 'align-center';
+  direction?: 'direction-column';
   columnGap?: number;
 }

@@ -7,7 +7,5 @@ interface HasComponent {
 export interface CardProps
   extends React.AllHTMLAttributes<HTMLElement>,
     HasComponent {
-  direction?: 'column' | 'row';
-  appearance?: 'outline' | 'white';
-  navHeader?: boolean;
+  appearance?: 'category';
 }

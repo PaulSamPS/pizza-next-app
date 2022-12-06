@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { DeviceContext } from '@context';
 import { ContainerProps } from './Container.props';
 import styles from './Container.module.scss';
 
-export const Container = ({ children, ...restProps }: ContainerProps) => (
-  <div className={styles.container} {...restProps}>
-    {children}
-  </div>
-);
+export const Container = ({ children, ...restProps }: ContainerProps) => {
+  const { isDesktop } = useContext(DeviceContext);
+
+  return (
+    <div
+      className={isDesktop ? styles.container : styles.mobile}
+      {...restProps}
+    >
+      {children}
+    </div>
+  );
+};

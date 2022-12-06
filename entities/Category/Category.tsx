@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Card, Grid, Text } from '@components';
 import {
   ComboIcon,
@@ -10,7 +10,8 @@ import {
   SnacksIcon,
   SushiIcon,
 } from '@helpers/icons/category';
-import { ArrowDownSmallIcon } from '@helpers/icons/16';
+import { DeviceContext } from '@context';
+import styles from './Category.module.scss';
 
 const category = [
   {
@@ -56,28 +57,23 @@ const category = [
 ];
 
 export const Category = () => {
-  const [header, setHeader] = React.useState<boolean>(false);
+  const { isDesktop } = useContext(DeviceContext);
 
   return (
-    <Grid Component='nav' col={header ? '9' : '8'} gap={header ? 32 : 30}>
-      {category.map((c) => (
-        <Card
-          onClick={() => setHeader(!header)}
-          Component='a'
-          direction='column'
-          appearance='outline'
-          key={c.id}
-          tabIndex={0}
-        >
-          {header ? '' : c.icon}
-          <Text>{c.name}</Text>
-        </Card>
-      ))}
-      {header && (
-        <Card Component='a' navHeader={header} tabIndex={0}>
-          <Text icon={<ArrowDownSmallIcon />}>Другое</Text>
-        </Card>
-      )}
-    </Grid>
+    <div className={styles.category}>
+      <Grid
+        Component='nav'
+        col='col8'
+        columnGap={isDesktop ? 30 : 12}
+        isDesktop={isDesktop}
+      >
+        {category.map((c) => (
+          <Card Component='a' appearance='category' key={c.id} tabIndex={0}>
+            {c.icon}
+            <Text>{c.name}</Text>
+          </Card>
+        ))}
+      </Grid>
+    </div>
   );
 };
