@@ -1,11 +1,11 @@
-import PromotionsIcon from './Property1-Fill.svg';
-import PizzaIcon from './Property2-Fill.svg';
-import SushiIcon from './Property3-Fill.svg';
-import DrinksIcon from './Property4-Fill.svg';
-import SnacksIcon from './Property5-Fill.svg';
-import ComboIcon from './Property6-Fill.svg';
-import DessertsIcon from './Property7-Fill.svg';
-import SaucesIcon from './Property8-Fill.svg';
+import PromotionsIcon from './promotions.svg';
+import PizzaIcon from './pizza.svg';
+import SushiIcon from './sushi.svg';
+import DrinksIcon from './drinks.svg';
+import SnacksIcon from './snacks.svg';
+import ComboIcon from './combo.svg';
+import DessertsIcon from './desserts.svg';
+import SaucesIcon from './sauces.svg';
 
 export {
   PromotionsIcon,

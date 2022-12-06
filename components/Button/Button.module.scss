@@ -3,16 +3,16 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 13px 40px;
 	box-sizing: border-box;
 	cursor: pointer;
 	border-radius: 6px;
-	font-size: 16px;
 	line-height: 22px;
 	column-gap: 10px;
+	font-size: 16px;
 	border: 1px solid var(--primary);
 	height: 44px;
 	font-family: 'SF Pro Text Regular', sans-serif;
+	font-weight: 400;
 
 	@media (min-width: 767px) {
 		height: 48px;

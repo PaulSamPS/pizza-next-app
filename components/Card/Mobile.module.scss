@@ -11,4 +11,14 @@
 	align-items: center;
 	column-gap: 8px;
 	scroll-snap-align: start;
+
+	color: var(--primary);
+
+	&:first-child {
+		color: var(--red);
+
+		span {
+			color: var(--red);
+		}
+	}
 }

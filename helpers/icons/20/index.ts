@@ -1,4 +1,4 @@
-import LocationIcon from './Location.svg';
-import SendIcon from './Send.svg';
+import LocationIcon from './location.svg';
+import SendIcon from './send.svg';
 
 export { LocationIcon, SendIcon };

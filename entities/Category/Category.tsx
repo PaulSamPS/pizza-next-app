@@ -70,7 +70,7 @@ export const Category = () => {
         {category.map((c) => (
           <Card Component='a' appearance='category' key={c.id} tabIndex={0}>
             {c.icon}
-            <Text>{c.name}</Text>
+            <Text level='l1'>{c.name}</Text>
           </Card>
         ))}
       </Grid>

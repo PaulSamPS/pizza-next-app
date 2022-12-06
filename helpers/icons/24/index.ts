@@ -1,7 +1,7 @@
-import AccountIcon from './Account.svg';
-import ArrowLeftIcon from './Arrow-left.svg';
-import CrossIcon24 from './Cross.svg';
+import AccountIcon from './account.svg';
+import ArrowLeftIcon from './arrow-left.svg';
+import CloseIcon from './close.svg';
 import InfoIcon from './Info.svg';
-import ShoppingBagIcon from './Shopping-bag.svg';
+import CartIcon from './cart.svg';
 
-export { AccountIcon, ArrowLeftIcon, CrossIcon24, InfoIcon, ShoppingBagIcon };
+export { AccountIcon, ArrowLeftIcon, CloseIcon, InfoIcon, CartIcon };

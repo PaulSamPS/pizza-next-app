@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import cx from 'clsx';
 import { DeviceContext } from '@context';
 import { CardProps } from './Card.props';
-import styles from './Card.module.scss';
-import stylesMobile from './CardMobile.module.scss';
+import desktop from './Desktop.module.scss';
+import mobile from './Mobile.module.scss';
 
 export const Card = ({
   children,
@@ -12,14 +12,10 @@ export const Card = ({
   ...restProps
 }: CardProps) => {
   const { isDesktop } = useContext(DeviceContext);
-  console.log(isDesktop, 'desktop');
 
-  const classes = cx(styles.card, appearance && styles[appearance]);
+  const classes = cx(desktop.card, appearance && desktop[appearance]);
 
-  const classesMobile = cx(
-    stylesMobile.card,
-    appearance && stylesMobile[appearance]
-  );
+  const classesMobile = cx(mobile.card, appearance && mobile[appearance]);
 
   return (
     <Component className={isDesktop ? classes : classesMobile} {...restProps}>

@@ -4,15 +4,13 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   appearance:
     | 'primary'
-    | 'transparent'
-    | 'icon'
-    | 'loading'
-    | 'price'
-    | 'count'
-    | 'tab'
-    | 'filter'
     | 'secondary'
-    | 'cart';
+    | 'transparent'
+    | 'outline'
+    | 'overlay_primary';
   tabActive?: boolean;
-  icon?: React.ReactNode;
+  loading?: boolean;
+  before?: React.ReactNode;
+  width?: number;
+  height?: number;
 }
