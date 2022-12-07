@@ -14,12 +14,14 @@ export const Grid = ({
   width,
   isDesktop = true,
   getRootRef,
+  content,
   ...restProps
 }: GridProps) => {
   const classes = cx(
     styles.grid,
     col && styles[col],
-    colAuto && styles[colAuto]
+    colAuto && styles[colAuto],
+    content && styles[content]
   );
 
   const classesMobile = stylesMobile.flex;

@@ -1,0 +1,26 @@
+.select {
+	width: fit-content;
+	position: relative;
+	color: var(--black);
+
+	.current {
+		display: flex;
+		align-items: center;
+		column-gap: 8px;
+		cursor: pointer;
+
+		.arrow {
+			margin-top: 2px;
+			transition: all ease 0.2s;
+		}
+
+		.before {
+			color: var(--primary);
+			font-size: 0;
+		}
+
+		.open {
+			transform: rotate(180deg);
+		}
+	}
+}

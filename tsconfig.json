@@ -23,7 +23,8 @@
       "@templates/*": ["templates/*"],
       "@types": ["types"],
       "@context": ["context"],
-      "@hoc": ["hoc"]
+      "@hoc": ["hoc"],
+      "@hooks": ["hooks"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

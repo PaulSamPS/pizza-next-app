@@ -13,3 +13,4 @@ export * from './Divider/Divider';
 export * from './WhiteBlock/WhiteBlock';
 export * from './Container/Container';
 export * from './Flex/Flex';
+export * from './Select/Select';

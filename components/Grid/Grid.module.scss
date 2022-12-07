@@ -40,29 +40,33 @@
 }
 
 .col3auto {
-	grid-template-columns: repeat(2, auto);
+	grid-template-columns: repeat(3, auto);
 }
 
 .col4auto {
-	grid-template-columns: repeat(2, auto);
+	grid-template-columns: repeat(4, auto);
 }
 
 .col5auto {
-	grid-template-columns: repeat(2, auto);
+	grid-template-columns: repeat(5, auto);
 }
 
 .col6auto {
-	grid-template-columns: repeat(2, auto);
+	grid-template-columns: repeat(6, auto);
 }
 
 .col7auto {
-	grid-template-columns: repeat(2, auto);
+	grid-template-columns: repeat(7, auto);
 }
 
 .col8auto {
-	grid-template-columns: repeat(2, auto);
+	grid-template-columns: repeat(8, auto);
 }
 
 .col9auto {
-	grid-template-columns: repeat(2, auto);
+	grid-template-columns: repeat(9, auto);
+}
+
+.content-end {
+	justify-content: end;
 }

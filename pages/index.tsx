@@ -1,28 +1,24 @@
-import { Button, Container } from '@components';
 import React from 'react';
-import { Category } from '@entities/Category';
 import { GetServerSideProps } from 'next';
 import { getSelectorsByUserAgent } from 'react-device-detect';
 import { withLayout } from '@hoc';
-import { ArrowBackIcon } from '@helpers/icons/18';
+import { Header } from '@templates/Header';
+import { Container, Divider, WhiteBlock } from '@components';
+import { SubHeader } from '@templates/SubHeader/SubHeader';
 
 function Home() {
   return (
-    <Container>
-      <Category />
-      <Button
-        appearance='primary'
-        before={<ArrowBackIcon />}
-        width={48}
-        height={48}
-      />
-      <Button appearance='primary' loading width={178}>
-        Загрузка
-      </Button>
-      <Button appearance='primary' width={178}>
-        Применить
-      </Button>
-    </Container>
+    <WhiteBlock>
+      <Container>
+        <Header />
+      </Container>
+      <Divider />
+      <WhiteBlock>
+        <Container>
+          <SubHeader />
+        </Container>
+      </WhiteBlock>
+    </WhiteBlock>
   );
 }
 

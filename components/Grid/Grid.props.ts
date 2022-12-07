@@ -22,6 +22,7 @@ export interface GridProps
     | 'col7auto'
     | 'col8auto'
     | 'col9auto';
+  content?: 'content-end';
   columnGap?: number;
   rowGap?: number;
   width?: number;

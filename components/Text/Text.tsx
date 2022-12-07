@@ -21,8 +21,8 @@ export const Text = ({
 
   return (
     <Component {...restProps} className={classes}>
-      {children}
       {icon && icon}
+      {children}
     </Component>
   );
 };
