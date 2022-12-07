@@ -59,21 +59,21 @@ const category = [
 export const Category = () => {
   const { isDesktop } = useContext(DeviceContext);
 
-  return (
-    <div className={styles.category}>
-      <Grid
-        Component='nav'
-        col='col8'
-        columnGap={isDesktop ? 30 : 12}
-        isDesktop={isDesktop}
-      >
-        {category.map((c) => (
-          <Card Component='a' appearance='category' key={c.id} tabIndex={0}>
-            {c.icon}
-            <Text level='l1'>{c.name}</Text>
-          </Card>
-        ))}
-      </Grid>
-    </div>
+  const navCards = (
+    <Grid
+      Component='nav'
+      col='col8'
+      columnGap={isDesktop ? 30 : 12}
+      isDesktop={isDesktop}
+    >
+      {category.map((c) => (
+        <Card Component='a' appearance='category' key={c.id} tabIndex={0}>
+          {c.icon}
+          <Text level='l1'>{c.name}</Text>
+        </Card>
+      ))}
+    </Grid>
   );
+
+  return <div className={styles.category}>{navCards}</div>;
 };

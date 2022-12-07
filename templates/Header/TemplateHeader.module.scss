@@ -1,0 +1,26 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.top {
+	padding: 10px 0;
+	font-family: 'Inter Regular', sans-serif;
+}
+
+.bot {
+	padding: 12px 0;
+	font-family: 'SF Pro Text Regular', sans-serif;
+
+	.nav {
+		span {
+			cursor: pointer;
+			transition: color ease 0.2s;
+
+			&:hover {
+				color: var(--primary);
+			}
+		}
+	}
+}

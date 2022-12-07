@@ -1,0 +1,29 @@
+.auth {
+	display: grid;
+	grid-template-columns: repeat(2, auto);
+	column-gap: 40px;
+	justify-content: end;
+	align-items: center;
+
+	.login {
+		display: grid;
+		grid-template-columns: repeat(2, auto);
+		column-gap: 8px;
+		align-items: center;
+		cursor: pointer;
+
+		span {
+			transition: color ease 0.2s;
+		}
+
+		&:hover {
+			span {
+				color: var(--primary);
+			}
+		}
+
+		.icon {
+			color: var(--primary);
+		}
+	}
+}

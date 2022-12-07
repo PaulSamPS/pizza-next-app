@@ -1,11 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 
 interface HasComponent {
   Component?: React.ElementType;
 }
 
-export interface CardProps
+export interface IconProps
   extends React.AllHTMLAttributes<HTMLElement>,
     HasComponent {
-  appearance?: 'category' | 'link';
+  primary?: boolean;
 }

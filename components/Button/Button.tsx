@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'clsx';
+import { Icon } from '@components';
 import { ButtonProps } from './Button.props';
 import styles from './Button.module.scss';
 import { Spinner } from '../Spinner/Spinner';
@@ -28,7 +29,7 @@ export const Button = ({
       {...restProps}
     >
       {loading && <Spinner />}
-      {before && before}
+      {before && <Icon>{before}</Icon>}
       {children && children}
     </button>
   );

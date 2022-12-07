@@ -1,0 +1,5 @@
+.location {
+	display: grid;
+	grid-template-columns: repeat(3, auto);
+	column-gap: 40px;
+}

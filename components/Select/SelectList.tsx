@@ -1,8 +1,8 @@
 import React from 'react';
 import cx from 'clsx';
 import styles from './styles/SelectList.module.scss';
-import { UseSelect } from './useSelect';
-import { SelectProps } from './Select.props';
+import { UseSelect } from './hooks/useSelect';
+import { SelectProps } from './types/Select.props';
 
 interface SelectListProps
   extends Pick<SelectProps, 'editable' | 'position' | 'arr'>,

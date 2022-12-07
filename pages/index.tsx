@@ -2,23 +2,18 @@ import React from 'react';
 import { GetServerSideProps } from 'next';
 import { getSelectorsByUserAgent } from 'react-device-detect';
 import { withLayout } from '@hoc';
-import { Header } from '@templates/Header';
-import { Container, Divider, WhiteBlock } from '@components';
-import { SubHeader } from '@templates/SubHeader/SubHeader';
+import { TemplateHeader } from '@templates/Header';
+import { Container } from '@components';
+import { Category } from '@entities';
 
 function Home() {
   return (
-    <WhiteBlock>
+    <>
+      <TemplateHeader />
       <Container>
-        <Header />
+        <Category />
       </Container>
-      <Divider />
-      <WhiteBlock>
-        <Container>
-          <SubHeader />
-        </Container>
-      </WhiteBlock>
-    </WhiteBlock>
+    </>
   );
 }
 

@@ -1,11 +1,9 @@
 import React from 'react';
-import { ArrowDownIcon } from '@helpers/icons/12';
-import { Text } from '@components';
-import cx from 'clsx';
 import styles from './styles/Select.module.scss';
-import { SelectProps } from './Select.props';
-import { useSelect } from './useSelect';
+import { SelectProps } from './types/Select.props';
+import { useSelect } from './hooks/useSelect';
 import { SelectList } from './SelectList';
+import { SelectValue } from './SelectValue';
 
 export const Select = ({
   arr,
@@ -13,19 +11,21 @@ export const Select = ({
   placeholder,
   editable = false,
   position = 'basic',
+  level = 'l2',
 }: SelectProps) => {
   const { show, location, onClickSelectItem, selectRef, showItems } =
     useSelect(arr);
 
   return (
     <div className={styles.select} ref={selectRef}>
-      {/* eslint-disable-next-line max-len */}
-      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
-      <div className={styles.current} onClick={showItems} role='listitem'>
-        {before && <span className={styles.before}>{before}</span>}
-        <Text level='l2'>{placeholder || location}</Text>
-        <ArrowDownIcon className={cx(styles.arrow, show && styles.open)} />
-      </div>
+      <SelectValue
+        placeholder={placeholder}
+        show={show}
+        before={before}
+        showItems={showItems}
+        location={location}
+        level={level}
+      />
       <SelectList
         arr={arr}
         editable={editable}

@@ -15,6 +15,7 @@ export const Grid = ({
   isDesktop = true,
   getRootRef,
   content,
+  className,
   ...restProps
 }: GridProps) => {
   const classes = cx(
@@ -29,7 +30,7 @@ export const Grid = ({
   return (
     <Component
       ref={getRootRef}
-      className={isDesktop ? classes : classesMobile}
+      className={cx(className, isDesktop ? classes : classesMobile)}
       style={{ columnGap, rowGap, width }}
       {...restProps}
     >

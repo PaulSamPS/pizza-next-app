@@ -19,7 +19,7 @@
       "@components": ["components"],
       "@lib": ["lib"],
       "@helpers/*": ["helpers/*"],
-      "@entities/*": ["entities/*"],
+      "@entities": ["entities"],
       "@templates/*": ["templates/*"],
       "@types": ["types"],
       "@context": ["context"],
