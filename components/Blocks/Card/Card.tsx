@@ -23,9 +23,9 @@ export const Card = ({
   const { isDesktop } = useContext(DeviceContext);
 
   const classes = cx(
+    className,
     desktop.card,
-    appearance && desktop[appearance],
-    className
+    appearance && desktop[appearance]
   );
 
   const classesMobile = cx(

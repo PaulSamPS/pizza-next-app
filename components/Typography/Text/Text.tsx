@@ -9,10 +9,12 @@ export const Text = ({
   level,
   icon,
   Component = 'span',
+  className,
   center,
   ...restProps
 }: TextProps) => {
   const classes = cx(
+    className,
     styles.text,
     weight && styles[weight],
     level && styles[level],

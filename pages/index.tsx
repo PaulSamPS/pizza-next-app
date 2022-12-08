@@ -5,7 +5,7 @@ import { withLayout } from '@hoc';
 import { TemplateHeader } from '@templates/Header';
 import { Container } from '@components/Blocks';
 import { Select } from '@components/Form';
-import { Category } from '@entities';
+import { Category, ProductCard } from '@entities';
 
 const a = ['first', 'second', 'third'];
 
@@ -21,6 +21,7 @@ function Home() {
           editable
           placeholder='Выберите ресторан'
         />
+        <ProductCard />
       </Container>
     </>
   );
