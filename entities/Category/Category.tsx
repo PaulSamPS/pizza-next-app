@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
-import { Card, Grid, Text } from '@components';
+import React from 'react';
+import { Card } from '@components/Blocks';
+import { Text } from '@components/Typography';
 import {
   ComboIcon,
   DessertsIcon,
@@ -10,7 +11,6 @@ import {
   SnacksIcon,
   SushiIcon,
 } from '@helpers/icons/category';
-import { DeviceContext } from '@context';
 import styles from './Category.module.scss';
 
 const category = [
@@ -56,24 +56,19 @@ const category = [
   },
 ];
 
-export const Category = () => {
-  const { isDesktop } = useContext(DeviceContext);
-
-  const navCards = (
-    <Grid
-      Component='nav'
-      col='col8'
-      columnGap={isDesktop ? 30 : 12}
-      isDesktop={isDesktop}
-    >
-      {category.map((c) => (
-        <Card Component='a' appearance='category' key={c.id} tabIndex={0}>
-          {c.icon}
-          <Text level='l1'>{c.name}</Text>
-        </Card>
-      ))}
-    </Grid>
-  );
-
-  return <div className={styles.category}>{navCards}</div>;
-};
+export const Category = () => (
+  <div className={styles.category}>
+    {category.map((c) => (
+      <Card
+        Component='a'
+        appearance='outline'
+        key={c.id}
+        tabIndex={0}
+        className={styles.card}
+      >
+        {c.icon}
+        <Text level='l1'>{c.name}</Text>
+      </Card>
+    ))}
+  </div>
+);

@@ -1,0 +1,24 @@
+.value {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+
+	.arrow {
+		margin-top: 2px;
+		transition: all ease 0.2s;
+	}
+
+	.open {
+		transform: rotate(180deg);
+	}
+}
+
+.border {
+	padding: 14px 16px;
+	min-width: 310px;
+	justify-content: space-between;
+}
+
+.basic {
+	column-gap: 8px;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { LogoIcon } from '@helpers/icons/32';
-import { Icon, Title } from '@components';
+import { Title } from '@components/Typography';
+import { Icon } from '@components/Blocks';
 import styles from './styles/Logo.module.scss';
 
 export const Logo = () => (

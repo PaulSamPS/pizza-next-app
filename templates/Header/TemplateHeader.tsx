@@ -6,9 +6,9 @@ import {
   Container,
   Divider,
   Grid,
-  Select,
-  Text,
-} from '@components';
+} from '@components/Blocks';
+import { Select } from '@components/Form';
+import { Text } from '@components/Typography';
 import { Header } from '@entities';
 import { CartIcon } from '@helpers/icons/24';
 import cx from 'clsx';
@@ -103,11 +103,16 @@ export const TemplateHeader = () => {
               className={styles.nav}
             >
               {category.map((c) => (
-                <Card Component='a' appearance='link' key={c.id} tabIndex={0}>
+                <Card Component='a' key={c.id} tabIndex={0}>
                   <Text level='l2'>{c.name}</Text>
                 </Card>
               ))}
-              <Select arr={another} position='center' placeholder='Другое' />
+              <Select
+                arr={another}
+                position='center'
+                placeholder='Другое'
+                appearance='basic'
+              />
             </Grid>
           )}
           <Button

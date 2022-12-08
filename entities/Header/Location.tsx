@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
-import { Select, Text } from '@components';
+import { Select } from '@components/Form';
+import { Text } from '@components/Typography';
 import { LocationIcon } from '@helpers/icons/20';
 import { DeviceContext } from '@context';
 import styles from './styles/Location.module.scss';

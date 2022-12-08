@@ -1,5 +1,6 @@
 import React from 'react';
-import { Icon, Text } from '@components';
+import { Text } from '@components/Typography';
+import { Icon } from '@components/Blocks';
 import { AccountIcon } from '@helpers/icons/20';
 import styles from './styles/Auth.module.scss';
 

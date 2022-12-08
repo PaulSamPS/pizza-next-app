@@ -1,0 +1,15 @@
+.select {
+	width: fit-content;
+	position: relative;
+	color: var(--black);
+}
+
+.border {
+	border: 1px solid var(--line-gray);
+	border-radius: 12px;
+	background-color: var(--white);
+}
+
+.basic {
+	background-color: transparent;
+}

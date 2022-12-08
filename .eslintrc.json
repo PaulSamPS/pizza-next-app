@@ -10,6 +10,7 @@
     "no-param-reassign": 0,
     "operator-linebreak": "off",
     "prefer-rest-params": "off",
+    "react/require-default-props": "off",
     "no-continue": "off",
     "no-restricted-syntax": "off",
     "max-len": ["error", {
