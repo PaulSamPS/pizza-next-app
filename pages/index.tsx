@@ -9,6 +9,7 @@ import { Category, ProductCard, RadioGroup } from '@entities';
 import { LocationIcon, SendIcon } from '@helpers/icons/20';
 import { CalendarIcon } from '@helpers/icons/16';
 import { BasketProduct } from '../entities/BasketProduct';
+import { AdditionalCard } from '../entities/AdditionalCard';
 
 const a = ['first', 'second', 'third'];
 
@@ -41,6 +42,7 @@ function Home() {
         />
         <ProductCard />
         <BasketProduct size='small' />
+        <AdditionalCard description />
         <Input id='money' after={<CalendarIcon />} placeholder='Дата' />
         <Input id='money' after={<span>P</span>} placeholder='0' />
         <Count count={12} decrease={() => {}} increase={() => {}} />

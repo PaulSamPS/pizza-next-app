@@ -20,6 +20,7 @@ export interface ButtonProps
 }
 
 export const Button = ({
+  className,
   appearance,
   before,
   tabActive,
@@ -30,6 +31,7 @@ export const Button = ({
   ...restProps
 }: ButtonProps) => {
   const classes = cx(
+    className,
     styles.button,
     styles[appearance],
     tabActive && styles.active

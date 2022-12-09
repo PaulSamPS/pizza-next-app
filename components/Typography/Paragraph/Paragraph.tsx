@@ -7,9 +7,10 @@ export const Paragraph = ({
   Component = 'p',
   weight,
   children,
+  className,
   ...restProps
 }: ParagraphProps) => {
-  const classes = cx(styles.paragraph, weight && styles[weight]);
+  const classes = cx(className, styles.paragraph, weight && styles[weight]);
 
   return (
     <Component {...restProps} className={classes}>

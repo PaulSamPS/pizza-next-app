@@ -1,0 +1,35 @@
+.additional {
+  width: 190px;
+  overflow: hidden;
+  box-sizing: content-box;
+  font-family: "Inter Regular", sans-serif;
+
+  .info {
+    padding: 16px 16px 0;
+    text-align: center;
+
+    .name {
+      font-family: "SF Pro Text Regular", sans-serif;
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    .description {
+      line-height: 18px;
+      margin-top: 8px;
+    }
+  }
+
+  .bottom {
+    padding: 12px 16px 16px;
+
+    button {
+      height: 40px;
+      width: 100%;
+    }
+  }
+
+  .with-out-description {
+    padding: 16px;
+  }
+}
