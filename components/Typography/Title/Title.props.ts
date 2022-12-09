@@ -9,6 +9,6 @@ export interface TitleProps
   extends React.AllHTMLAttributes<HTMLElement>,
     HasComponent {
   weight?: TypeAttributes.Weight;
-  level?: TypeAttributes.LevelTitle;
+  level?: '1' | '2' | '3' | '4' | '5';
   caps?: boolean;
 }

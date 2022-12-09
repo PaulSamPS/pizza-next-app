@@ -6,7 +6,7 @@ import styles from './Title.module.scss';
 export const Title = ({
   children,
   weight,
-  level = 'l1',
+  level = '1',
   Component,
   caps,
   className,
@@ -19,7 +19,7 @@ export const Title = ({
   const classes = cx(
     className,
     styles.title,
-    styles[level],
+    styles[`level-${level}`],
     weight && styles[weight],
     caps && styles.uppercase
   );

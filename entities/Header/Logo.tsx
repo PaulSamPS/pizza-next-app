@@ -9,7 +9,7 @@ export const Logo = () => (
     <Icon primary>
       <LogoIcon />
     </Icon>
-    <Title level='l5' caps>
+    <Title level='5' caps>
       Pizza
     </Title>
   </div>
