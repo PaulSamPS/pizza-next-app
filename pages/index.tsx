@@ -8,6 +8,7 @@ import { Input, Select } from '@components/Form';
 import { Category, ProductCard, RadioGroup } from '@entities';
 import { LocationIcon, SendIcon } from '@helpers/icons/20';
 import { CalendarIcon } from '@helpers/icons/16';
+import { BasketProduct } from '../entities/BasketProduct';
 
 const a = ['first', 'second', 'third'];
 
@@ -32,13 +33,14 @@ function Home() {
           id='address'
           placeholder='Адрес'
           before={<LocationIcon />}
-          button={(
+          button={
             <Button appearance='primary' height={48}>
               <SendIcon />
             </Button>
-          )}
+          }
         />
         <ProductCard />
+        <BasketProduct />
         <Input id='money' after={<CalendarIcon />} placeholder='Дата' />
         <Input id='money' after={<span>P</span>} placeholder='0' />
         <Count count={12} decrease={() => {}} increase={() => {}} />
