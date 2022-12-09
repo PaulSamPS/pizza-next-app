@@ -40,7 +40,7 @@ function Home() {
           }
         />
         <ProductCard />
-        <BasketProduct />
+        <BasketProduct size='small' />
         <Input id='money' after={<CalendarIcon />} placeholder='Дата' />
         <Input id='money' after={<span>P</span>} placeholder='0' />
         <Count count={12} decrease={() => {}} increase={() => {}} />

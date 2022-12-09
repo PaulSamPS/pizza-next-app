@@ -9,12 +9,12 @@ export interface CardProps
   extends React.AllHTMLAttributes<HTMLElement>,
     HasComponent,
     HasRootRef<HTMLElement> {
-  appearance?: 'outline' | 'shadow';
+  appearance?: 'outline';
 }
 
 export const Card = ({
   children,
-  appearance,
+  appearance = 'outline',
   Component = 'div',
   getRootRef,
   className,

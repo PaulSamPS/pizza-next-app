@@ -1,24 +1,80 @@
 .basket-product {
-  width: 850px;
-  height: 152px;
-  display: grid;
-  grid-template-columns: 120px 1fr repeat(2, auto);
-  align-items: center;
-  font-family: "Inter Regular", sans-serif;
-  padding: 16px 24px 16px 16px;
+	display: grid;
+	align-items: center;
+	font-family: 'Inter Regular', sans-serif;
 
-  .description {
-    margin-left: 16px;
+	.info {
+		display: flex;
+		margin-left: 16px;
 
-    .name {
-      margin-bottom: 8px;
-    }
-  }
+		.description {
+			.name {
+				margin-bottom: 8px;
+			}
+		}
 
-  .total-price {
-    font-size: 20px;
-    line-height: 28px;
-    margin-left: 40px;
-    color: var(--primary);
-  }
+		.total {
+			display: flex;
+			align-items: center;
+
+			.total-price {
+				font-size: 20px;
+				line-height: 28px;
+				margin-left: 40px;
+				color: var(--primary);
+			}
+		}
+	}
+}
+
+.medium {
+	width: 850px;
+	height: 152px;
+	grid-template-columns: 120px 1fr;
+	box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+	padding: 16px 24px 16px 16px;
+
+	img {
+		width: 110px;
+		height: 110px;
+	}
+
+	.info {
+		justify-content: space-between;
+	}
+}
+
+.small {
+	grid-template-columns: 94px 1fr;
+	width: 380px;
+	height: 126px;
+	padding: 16px;
+
+	img {
+		height: 94px;
+		width: 94px;
+	}
+
+	.info {
+		flex-direction: column;
+
+		.description {
+			margin-bottom: 8px;
+
+			.name {
+				font-size: 16px;
+			}
+
+			.options {
+				font-size: 14px;
+			}
+		}
+
+		.total {
+			justify-content: space-between;
+			.total-price {
+				font-size: 16px;
+			}
+		}
+	}
 }

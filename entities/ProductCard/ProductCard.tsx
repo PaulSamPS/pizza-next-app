@@ -6,7 +6,7 @@ import styles from './ProductCard.module.scss';
 import pizza from './pizza.jpg';
 
 export const ProductCard = () => (
-  <Card appearance='outline' className={styles['product-card']}>
+  <Card className={styles['product-card']}>
     <Badge>New</Badge>
     <Image src={pizza} alt='pizza' width={300} height={300} />
     <div className={styles.body}>

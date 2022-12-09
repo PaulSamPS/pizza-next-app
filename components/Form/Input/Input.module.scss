@@ -1,5 +1,4 @@
 .input {
-	padding: 20px;
 	position: relative;
 
 	input {
@@ -28,8 +27,8 @@
 
 	.button {
 		position: absolute;
-		right: 20px;
-		top: 20px;
+		right: 0;
+		top: 0;
 
 		button {
 			border-radius: 0 6px 6px 0;
@@ -45,8 +44,8 @@
 	.before-item {
 		color: var(--primary);
 		position: absolute;
-		left: 34px;
-		top: 33px;
+		left: 13px;
+		top: 15px;
 		line-height: 0;
 	}
 }
@@ -58,8 +57,8 @@
 
 	.after-item {
 		position: absolute;
-		right: 40px;
-		top: 36px;
+		right: 20px;
+		top: 16px;
 		color: var(--gray-text);
 		line-height: 0;
 	}
