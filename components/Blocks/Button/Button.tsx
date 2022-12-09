@@ -1,7 +1,6 @@
 import React from 'react';
 import cx from 'clsx';
 import { Icon } from '@components/Blocks';
-import { Text } from '@components/Typography';
 import styles from './Button.module.scss';
 import { Spinner } from '../Spinner/Spinner';
 
@@ -11,8 +10,8 @@ export interface ButtonProps
     | 'primary'
     | 'secondary'
     | 'transparent'
-    | 'outline'
-    | 'overlay_primary';
+    | 'outline-gray'
+    | 'light-primary';
   tabActive?: boolean;
   loading?: boolean;
   before?: React.ReactNode;
@@ -45,7 +44,7 @@ export const Button = ({
     >
       {loading && <Spinner />}
       {before && <Icon>{before}</Icon>}
-      {children && <Text level='l2'>{children}</Text>}
+      {children && children}
     </button>
   );
 };

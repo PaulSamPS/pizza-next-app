@@ -12,14 +12,15 @@ interface CountProps extends React.AllHTMLAttributes<HTMLDivElement> {
 export const Count = ({ count, decrease, increase }: CountProps) => (
   <div className={styles.count}>
     <Button
-      appearance='overlay_primary'
+      appearance='light-primary'
+      height={36}
       onClick={decrease}
       disabled={count <= 0}
     >
       <MinusIcon />
     </Button>
     <div className={styles.value}>{count}</div>
-    <Button appearance='overlay_primary' onClick={increase}>
+    <Button appearance='light-primary' height={36} onClick={increase}>
       <PlusIcon />
     </Button>
   </div>

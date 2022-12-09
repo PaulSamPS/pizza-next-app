@@ -9,6 +9,7 @@ export const Title = ({
   level = 'l1',
   Component,
   caps,
+  className,
   ...restProps
 }: TitleProps) => {
   if (!Component) {
@@ -16,6 +17,7 @@ export const Title = ({
   }
 
   const classes = cx(
+    className,
     styles.title,
     styles[level],
     weight && styles[weight],

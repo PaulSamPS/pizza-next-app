@@ -1,11 +1,16 @@
 import React, { ForwardedRef, forwardRef } from 'react';
 import { Text } from '@components/Typography';
-import { RadioProps } from './Radio.props';
 import styles from './Radio.module.scss';
+
+export interface RadioProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
+  id: string;
+  currentValue: string;
+}
 
 export const Radio = forwardRef(
   (
-    { children, id, ...restProps }: RadioProps,
+    { children, id, currentValue, ...restProps }: RadioProps,
     ref: ForwardedRef<HTMLInputElement>
   ) => (
     <div className={styles.radio}>
@@ -15,10 +20,11 @@ export const Radio = forwardRef(
         id={id}
         name='radio-group'
         value={children?.toString()}
+        checked={currentValue === children?.toString()}
         {...restProps}
       />
       <label htmlFor={id}>
-        <Text level='l3'>{children}</Text>
+        <Text level='l2'>{children}</Text>
       </label>
     </div>
   )

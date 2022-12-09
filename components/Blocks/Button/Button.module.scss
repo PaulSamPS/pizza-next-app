@@ -9,14 +9,9 @@
 	line-height: 22px;
 	column-gap: 10px;
 	font-size: 16px;
-	border: 1px solid var(--primary);
-	height: 44px;
+	border: none;
 	font-family: 'SF Pro Text Regular', sans-serif;
 	font-weight: 400;
-
-	@media (min-width: 767px) {
-		height: 48px;
-	}
 
 	&:disabled {
 		opacity: 0.6;
@@ -37,6 +32,28 @@
 .transparent {
 	color: var(--primary);
 	background-color: transparent;
+}
+
+.secondary {
+	border: 1px solid var(--primary);
+	background-color: var(--white);
+	color: var(--primary);
+}
+
+.outline-gray {
+	border: 1px solid var(--line-gray);
+	background-color: var(--white);
+	color: var(--black);
+
+	svg {
+		color: var(--primary);
+	}
+}
+
+.light-primary {
+	background-color: var(--light-primary);
+	color: var(--primary);
+	border: none;
 }
 
 .active {

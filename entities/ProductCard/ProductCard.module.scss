@@ -1,23 +1,25 @@
 .product-card {
-  width: 300px;
-  height: 480px;
+	width: 300px;
+	height: 480px;
+	overflow: hidden;
+	box-sizing: content-box;
 
-  .body {
-    padding: 20px;
+	.body {
+		padding: 16px 20px 20px;
 
-    .text {
-      margin-bottom: 12px;
-    }
+		.text {
+			margin-bottom: 12px;
+		}
 
-    .bottom {
-      margin-top: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+		.bottom {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-top: 16px;
 
-      .price {
-        color: var(--primary);
-      }
-    }
-  }
+			.price {
+				color: var(--primary);
+			}
+		}
+	}
 }

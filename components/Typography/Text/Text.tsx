@@ -9,8 +9,8 @@ export const Text = ({
   level,
   icon,
   Component = 'span',
-  className,
   center,
+  className,
   ...restProps
 }: TextProps) => {
   const classes = cx(

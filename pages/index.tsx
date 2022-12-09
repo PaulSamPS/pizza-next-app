@@ -3,11 +3,18 @@ import { GetServerSideProps } from 'next';
 import { getSelectorsByUserAgent } from 'react-device-detect';
 import { withLayout } from '@hoc';
 import { TemplateHeader } from '@templates/Header';
-import { Container } from '@components/Blocks';
-import { Select } from '@components/Form';
-import { Category, ProductCard } from '@entities';
+import { Button, Container, Count } from '@components/Blocks';
+import { Input, Select } from '@components/Form';
+import { Category, ProductCard, RadioGroup } from '@entities';
+import { LocationIcon, SendIcon } from '@helpers/icons/20';
+import { CalendarIcon } from '@helpers/icons/16';
 
 const a = ['first', 'second', 'third'];
+
+const radioGr = [
+  { id: '1', name: 'Быстрее' },
+  { id: '2', name: 'По времени' },
+];
 
 function Home() {
   return (
@@ -21,7 +28,21 @@ function Home() {
           editable
           placeholder='Выберите ресторан'
         />
+        <Input
+          id='address'
+          placeholder='Адрес'
+          before={<LocationIcon />}
+          button={(
+            <Button appearance='primary' height={48}>
+              <SendIcon />
+            </Button>
+          )}
+        />
         <ProductCard />
+        <Input id='money' after={<CalendarIcon />} placeholder='Дата' />
+        <Input id='money' after={<span>P</span>} placeholder='0' />
+        <Count count={12} decrease={() => {}} increase={() => {}} />
+        <RadioGroup items={radioGr} />
       </Container>
     </>
   );

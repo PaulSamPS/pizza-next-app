@@ -1,23 +1,26 @@
 import React from 'react';
-import { Button, Card } from '@components/Blocks';
+import { Button, Card, Badge } from '@components/Blocks';
 import Image from 'next/image';
-import { Paragraph, Text } from '@components/Typography';
+import { Paragraph, Title } from '@components/Typography';
 import styles from './ProductCard.module.scss';
 import pizza from './pizza.jpg';
 
 export const ProductCard = () => (
   <Card appearance='outline' className={styles['product-card']}>
+    <Badge>New</Badge>
     <Image src={pizza} alt='pizza' width={300} height={300} />
     <div className={styles.body}>
-      <Text level='l2' weight='w1' className={styles.text}>
+      <Title level='l5' weight='w1' className={styles.text}>
         Пепперони по-деревенски
-      </Text>
+      </Title>
       <Paragraph>Огурцы маринованные, Пепперони, Сыр Моцарелла...</Paragraph>
       <div className={styles.bottom}>
-        <Button appearance='primary'>Выбрать</Button>
-        <Text level='l1' className={styles.price}>
+        <Button appearance='primary' height={48} width={130}>
+          Выбрать
+        </Button>
+        <Title level='l5' className={styles.price}>
           от 399 ₽
-        </Text>
+        </Title>
       </div>
     </div>
   </Card>

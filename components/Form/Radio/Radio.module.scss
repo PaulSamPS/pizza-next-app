@@ -1,4 +1,6 @@
 .radio {
+	font-family: 'SF Pro Text Regular', sans-serif;
+
 	input {
 		&:checked,
 		&:not(:checked) {
@@ -20,7 +22,7 @@
 			content: '';
 			position: absolute;
 			left: 0;
-			top: 3px;
+			top: 0;
 			width: 14px;
 			height: 14px;
 			border: 1px solid var(--primary);
@@ -35,7 +37,7 @@
 			height: 8px;
 			background: var(--primary);
 			position: absolute;
-			top: 7px;
+			top: 4px;
 			left: 4px;
 			border-radius: 100%;
 			transition: all 0.2s ease;
