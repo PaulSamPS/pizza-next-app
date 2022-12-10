@@ -20,6 +20,18 @@ body {
 }
 
 @font-face {
+	font-family: 'SF Pro Text Medium';
+	src: url('../fonts/SF-Pro-Text-Medium.otf');
+	font-weight: 500;
+}
+
+@font-face {
+	font-family: 'SF Pro Text Bold';
+	src: url('../fonts/SF-Pro-Text-Bold.otf');
+	font-weight: 600;
+}
+
+@font-face {
 	font-family: 'Inter Regular';
 	src: url('../fonts/Inter-Regular.ttf');
 	font-weight: 400;

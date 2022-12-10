@@ -34,11 +34,11 @@ function Home() {
           id='address'
           placeholder='Адрес'
           before={<LocationIcon />}
-          button={
+          button={(
             <Button appearance='primary' height={48}>
               <SendIcon />
             </Button>
-          }
+          )}
         />
         <ProductCard />
         <BasketProduct size='small' />

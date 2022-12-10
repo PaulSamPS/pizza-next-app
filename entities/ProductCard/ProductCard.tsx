@@ -1,29 +1,13 @@
-import React from 'react';
-import { Button, Card, Badge } from '@components/Blocks';
-import Image from 'next/image';
-import { Paragraph, Title } from '@components/Typography';
-import styles from './ProductCard.module.scss';
-import pizza from './pizza.jpg';
+import React, { useContext } from 'react';
+import { DeviceContext } from '@context';
+import { ProductCardDesktop } from './ProductCardDesktop';
+import { ProductCardMobile } from './ProductCardMobile';
 
-export const ProductCard = () => (
-  <Card className={styles['product-card']}>
-    <Badge>New</Badge>
-    <Image src={pizza} alt='pizza' width={300} height={300} />
-    <div className={styles.body}>
-      <Title level='5' weight='w1'>
-        Пепперони по-деревенски
-      </Title>
-      <Paragraph className={styles.text}>
-        Огурцы маринованные, Пепперони, Сыр Моцарелла...
-      </Paragraph>
-      <div className={styles.bottom}>
-        <Button appearance='primary' height={48} width={130}>
-          Выбрать
-        </Button>
-        <Title level='5' className={styles.price}>
-          от 399 ₽
-        </Title>
-      </div>
-    </div>
-  </Card>
-);
+export const ProductCard = () => {
+  const { isDesktop } = useContext(DeviceContext);
+
+  if (isDesktop) {
+    return <ProductCardDesktop />;
+  }
+  return <ProductCardMobile />;
+};
