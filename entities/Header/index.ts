@@ -1,3 +1,2 @@
-export * from './Location';
-export * from './Auth';
-export * from './Logo';
+export * from './HeaderDesktop';
+export * from './HeaderMobile';

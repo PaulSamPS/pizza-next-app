@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { Card } from '@components/Blocks';
 import { Text } from '@components/Typography';
 import {
@@ -11,9 +11,9 @@ import {
   SnacksIcon,
   SushiIcon,
 } from '@helpers/icons/category';
+import { DeviceContext } from '@context';
 import desktop from './styles/desktop.module.scss';
 import mobile from './styles/mobile.module.scss';
-import {DeviceContext} from "@context";
 
 const category = [
   {
@@ -59,22 +59,24 @@ const category = [
 ];
 
 export const Category = () => {
-  const {isDesktop} = useContext(DeviceContext)
+  const { isDesktop } = useContext(DeviceContext);
 
   return (
-      <div className={isDesktop ? desktop.category : mobile.category}>
-        {category.map((c) => (
-            <Card
-                Component='a'
-                appearance='outline'
-                key={c.id}
-                tabIndex={0}
-                className={isDesktop ? desktop.card : mobile.card}
-            >
-              {c.icon}
-              <Text level='l1' className={mobile.name}>{c.name}</Text>
-            </Card>
-        ))}
-      </div>
-  )
+    <nav className={isDesktop ? desktop.category : mobile.category}>
+      {category.map((c) => (
+        <Card
+          Component='a'
+          appearance='outline'
+          key={c.id}
+          tabIndex={0}
+          className={isDesktop ? desktop.card : mobile.card}
+        >
+          {c.icon}
+          <Text level='l1' className={mobile.name}>
+            {c.name}
+          </Text>
+        </Card>
+      ))}
+    </nav>
+  );
 };

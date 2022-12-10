@@ -2,17 +2,16 @@ import React from 'react';
 import { GetServerSideProps } from 'next';
 import { getSelectorsByUserAgent } from 'react-device-detect';
 import { withLayout } from '@hoc';
+import { Header } from '@templates/Header';
+import { Category } from '@entities';
 import { Container } from '@components/Blocks';
-import {ProductCard} from '@entities';
-import {AdditionalCard} from "../entities/AdditionalCard";
 
 function Home() {
   return (
     <>
+      <Header />
       <Container>
-        <ProductCard/>
-        <AdditionalCard/>
-        <AdditionalCard description/>
+        <Category />
       </Container>
     </>
   );

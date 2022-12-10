@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top {
+  padding: 9px 20px 9px 0;
+  font-family: 'Inter Regular', sans-serif;
+}
+
+.bot {
+  padding: 16px 20px 16px 0;
+  font-family: 'SF Pro Text Regular', sans-serif;
+
+  h1 {
+    font-size: 16px !important;
+  }
+}

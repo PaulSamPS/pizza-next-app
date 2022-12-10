@@ -1,1 +1,1 @@
-export * from './TemplateHeader';
+export * from './Header';

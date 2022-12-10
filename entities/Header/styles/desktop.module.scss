@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top {
+  padding: 10px 0;
+  font-family: 'Inter Regular', sans-serif;
+
+  .location {
+    display: flex;
+    align-items: center;
+    column-gap: 40px;
+  }
+}
+
+.bot {
+  padding: 12px 0;
+  font-family: 'SF Pro Text Regular', sans-serif;
+}

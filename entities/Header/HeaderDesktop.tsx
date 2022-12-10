@@ -1,15 +1,6 @@
-import React, { useContext } from 'react';
-import {
-  Block,
-  Button,
-  Card,
-  Container,
-  Divider,
-  Grid,
-} from '@components/Blocks';
-import { Select } from '@components/Form';
-import { Text } from '@components/Typography';
-import { Header } from '@entities';
+import React from 'react';
+import { Block, Button, Container, Divider } from '@components/Blocks';
+import { CategoryHeader } from '@entities';
 import { CartIcon } from '@helpers/icons/24';
 import cx from 'clsx';
 import {
@@ -22,8 +13,11 @@ import {
   SnacksIcon,
   SushiIcon,
 } from '@helpers/icons/category';
-import { DeviceContext } from '@context';
-import styles from './TemplateHeader.module.scss';
+import { Select } from '@components/Form';
+import { LocationIcon } from '@helpers/icons/20';
+import { Text } from '@components/Typography';
+import styles from './styles/desktop.module.scss';
+import { Logo, Auth } from './components';
 
 const city = ['Москва', 'Оренбург'];
 
@@ -70,51 +64,35 @@ const category = [
   },
 ];
 
-const another = [
-  'Акции',
-  'Пользовательское соглашение',
-  'О компании',
-  'Условия гарантии',
-  'Ресторан',
-];
-
-export const TemplateHeader = () => {
-  const { isDesktop } = useContext(DeviceContext);
+export const HeaderDesktop = () => {
   const [isSticky, setIsSticky] = React.useState<boolean>(false);
 
   return (
     <Block>
       <Container>
         <div className={cx(styles.header, styles.top)}>
-          <Header.Location arr={city} />
-          {isDesktop && <Header.Auth />}
+          <div className={styles.location}>
+            <Select
+              appearance='basic'
+              level='l3'
+              arr={city}
+              editable
+              before={<LocationIcon />}
+            />
+            <Text level='l3'>Проверить адрес</Text>
+            <Text level='l3'>
+              Среднее время доставки*:
+              <b> 00:24:19</b>
+            </Text>
+          </div>
+          <Auth />
         </div>
       </Container>
       <Divider />
       <Container>
         <div className={cx(styles.header, styles.bot)}>
-          <Header.Logo />
-          {isSticky && (
-            <Grid
-              Component='nav'
-              colAuto='col9auto'
-              columnGap={32}
-              isDesktop={isDesktop}
-              className={styles.nav}
-            >
-              {category.map((c) => (
-                <Card Component='a' key={c.id} tabIndex={0}>
-                  <Text level='l2'>{c.name}</Text>
-                </Card>
-              ))}
-              <Select
-                arr={another}
-                position='center'
-                placeholder='Другое'
-                appearance='basic'
-              />
-            </Grid>
-          )}
+          <Logo />
+          {isSticky && <CategoryHeader category={category} />}
           <Button
             appearance='primary'
             before={<CartIcon />}
