@@ -2,51 +2,17 @@ import React from 'react';
 import { GetServerSideProps } from 'next';
 import { getSelectorsByUserAgent } from 'react-device-detect';
 import { withLayout } from '@hoc';
-import { TemplateHeader } from '@templates/Header';
-import { Button, Container, Count } from '@components/Blocks';
-import { Input, Select } from '@components/Form';
-import { Category, ProductCard, RadioGroup } from '@entities';
-import { LocationIcon, SendIcon } from '@helpers/icons/20';
-import { CalendarIcon } from '@helpers/icons/16';
-import { BasketProduct } from '../entities/BasketProduct';
-import { AdditionalCard } from '../entities/AdditionalCard';
-
-const a = ['first', 'second', 'third'];
-
-const radioGr = [
-  { id: '1', name: 'Быстрее' },
-  { id: '2', name: 'По времени' },
-];
+import { Container } from '@components/Blocks';
+import {ProductCard} from '@entities';
+import {AdditionalCard} from "../entities/AdditionalCard";
 
 function Home() {
   return (
     <>
-      <TemplateHeader />
       <Container>
-        <Category />
-        <Select
-          appearance='border'
-          arr={a}
-          editable
-          placeholder='Выберите ресторан'
-        />
-        <Input
-          id='address'
-          placeholder='Адрес'
-          before={<LocationIcon />}
-          button={(
-            <Button appearance='primary' height={48}>
-              <SendIcon />
-            </Button>
-          )}
-        />
-        <ProductCard />
-        <BasketProduct size='small' />
-        <AdditionalCard description />
-        <Input id='money' after={<CalendarIcon />} placeholder='Дата' />
-        <Input id='money' after={<span>P</span>} placeholder='0' />
-        <Count count={12} decrease={() => {}} increase={() => {}} />
-        <RadioGroup items={radioGr} />
+        <ProductCard/>
+        <AdditionalCard/>
+        <AdditionalCard description/>
       </Container>
     </>
   );

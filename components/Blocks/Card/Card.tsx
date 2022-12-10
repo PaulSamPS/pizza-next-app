@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import cx from 'clsx';
 import { DeviceContext } from '@context';
 import { HasComponent, HasRootRef } from '@types';
-import desktop from './Desktop.module.scss';
-import mobile from './Mobile.module.scss';
+import desktop from './styles/desktop.module.scss';
+import mobile from './styles/mobile.module.scss';
 
 export interface CardProps
   extends React.AllHTMLAttributes<HTMLElement>,

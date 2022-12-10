@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Card } from '@components/Blocks';
 import { Text } from '@components/Typography';
 import {
@@ -11,7 +11,9 @@ import {
   SnacksIcon,
   SushiIcon,
 } from '@helpers/icons/category';
-import styles from './Category.module.scss';
+import desktop from './styles/desktop.module.scss';
+import mobile from './styles/mobile.module.scss';
+import {DeviceContext} from "@context";
 
 const category = [
   {
@@ -56,19 +58,23 @@ const category = [
   },
 ];
 
-export const Category = () => (
-  <div className={styles.category}>
-    {category.map((c) => (
-      <Card
-        Component='a'
-        appearance='outline'
-        key={c.id}
-        tabIndex={0}
-        className={styles.card}
-      >
-        {c.icon}
-        <Text level='l1'>{c.name}</Text>
-      </Card>
-    ))}
-  </div>
-);
+export const Category = () => {
+  const {isDesktop} = useContext(DeviceContext)
+
+  return (
+      <div className={isDesktop ? desktop.category : mobile.category}>
+        {category.map((c) => (
+            <Card
+                Component='a'
+                appearance='outline'
+                key={c.id}
+                tabIndex={0}
+                className={isDesktop ? desktop.card : mobile.card}
+            >
+              {c.icon}
+              <Text level='l1' className={mobile.name}>{c.name}</Text>
+            </Card>
+        ))}
+      </div>
+  )
+};
