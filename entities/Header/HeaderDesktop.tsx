@@ -16,7 +16,7 @@ import {
 import { Select } from '@components/Form';
 import { LocationIcon } from '@helpers/icons/20';
 import { Text } from '@components/Typography';
-import styles from './styles/desktop.module.scss';
+import styles from './styles/HeaderDesktop.module.scss';
 import { Logo, Auth } from './components';
 
 const city = ['Москва', 'Оренбург'];

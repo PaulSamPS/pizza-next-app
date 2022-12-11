@@ -19,6 +19,10 @@
 		scroll-snap-align: start;
 		color: var(--primary);
 
+		svg {
+			height: 24px;
+		}
+
 		&:first-child {
 			color: var(--red);
 
