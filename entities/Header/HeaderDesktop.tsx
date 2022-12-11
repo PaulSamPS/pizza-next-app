@@ -18,6 +18,7 @@ import { LocationIcon } from '@helpers/icons/20';
 import { Text } from '@components/Typography';
 import styles from './styles/HeaderDesktop.module.scss';
 import { Logo, Auth } from './components';
+import { ModalAuth } from '../ModalAuth';
 
 const city = ['Москва', 'Оренбург'];
 
@@ -66,6 +67,7 @@ const category = [
 
 export const HeaderDesktop = () => {
   const [isSticky, setIsSticky] = React.useState<boolean>(false);
+  const [modal, setModal] = React.useState<boolean>(false);
 
   return (
     <Block>
@@ -85,7 +87,8 @@ export const HeaderDesktop = () => {
               <b> 00:24:19</b>
             </Text>
           </div>
-          <Auth />
+          <Auth setModal={setModal} />
+          {modal && <ModalAuth setModal={setModal} />}
         </div>
       </Container>
       <Divider />

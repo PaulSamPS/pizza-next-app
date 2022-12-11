@@ -10,3 +10,4 @@ export * from './Container/Container';
 export * from './Flex/Flex';
 export * from './Icon/Icon';
 export * from './Badge/Badge';
+export * from './Modal/Modal';
