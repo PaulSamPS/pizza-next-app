@@ -12,4 +12,5 @@ export interface TextProps
   level?: TypeAttributes.Level;
   center?: boolean;
   icon?: React.ReactNode;
+  error?: boolean;
 }

@@ -1,0 +1,38 @@
+.enter-code {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  h2 {
+    margin-bottom: 16px;
+  }
+
+  .info {
+    margin-bottom: 20px;
+  }
+
+  .code {
+    display: flex;
+    justify-content: space-between;
+    width: 240px;
+    margin-bottom: 16px;
+
+    input {
+      width: 48px;
+      height: 48px;
+      text-align: center;
+    }
+  }
+
+  .resend-code {
+    margin-top: 12px;
+    display: flex;
+
+    .timer {
+      color: var(--gray-text);
+      margin-left: 5px;
+    }
+  }
+}

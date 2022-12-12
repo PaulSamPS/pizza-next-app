@@ -1,20 +1,15 @@
-.modal-auth {
-	width: 850px;
-	height: 444px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding: 60px 0;
+.phone {
+	width: 320px;
+	text-align: center;
+	margin: 0 auto;
 
 	h2 {
 		margin-bottom: 16px;
 	}
 
-	.form {
+	.input {
 		position: relative;
-		margin-top: 40px;
-		width: 320px;
-		text-align: center;
+		margin-top: 35px;
 
 		input {
 			border-radius: 6px;
@@ -43,12 +38,12 @@
 			font-size: 11px;
 			color: var(--gray-text);
 		}
+	}
 
-		button {
-			margin-top: 16px;
-			margin-bottom: 12px;
-			padding: 16px 40px;
-			width: 100%;
-		}
+	button {
+		margin-top: 16px;
+		margin-bottom: 12px;
+		padding: 16px 40px;
+		width: 100%;
 	}
 }

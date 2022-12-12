@@ -10,6 +10,7 @@ export const Text = ({
   icon,
   Component = 'span',
   center,
+  error,
   className,
   ...restProps
 }: TextProps) => {
@@ -18,7 +19,8 @@ export const Text = ({
     styles.text,
     weight && styles[weight],
     level && styles[level],
-    icon && styles.icon
+    icon && styles.icon,
+    error && styles.error
   );
 
   return (

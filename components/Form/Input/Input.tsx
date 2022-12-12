@@ -1,15 +1,16 @@
 import React, { ForwardedRef, forwardRef } from 'react';
-import { classNames } from '@lib';
 import { Text } from '@components/Typography';
+import cx from 'clsx';
 import styles from './Input.module.scss';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  id: 'address' | 'promo' | 'money' | 'date' | 'time' | 'code';
+  id: 'address' | 'promo' | 'money' | 'date' | 'time' | 'code' | string;
   text?: string;
   before?: React.ReactNode;
   after?: React.ReactNode;
   button?: React.ReactNode;
   error?: string;
+  code?: boolean;
 }
 
 export const Input = forwardRef(
@@ -23,6 +24,7 @@ export const Input = forwardRef(
       type,
       placeholder,
       error,
+      code,
       children,
       ...restProps
     }: InputProps,
@@ -52,9 +54,24 @@ export const Input = forwardRef(
       </label>
     );
 
+    if (code) {
+      return (
+        <input
+          ref={ref}
+          id={id}
+          type={type}
+          name={id}
+          placeholder={placeholder}
+          autoComplete='off'
+          className={styles['input-field']}
+          {...restProps}
+        />
+      );
+    }
+
     return (
       <div
-        className={classNames(
+        className={cx(
           styles.input,
           before && styles.before,
           after && styles.after,
@@ -70,6 +87,7 @@ export const Input = forwardRef(
           name={id}
           placeholder={placeholder}
           autoComplete='off'
+          className={styles['input-field']}
           {...restProps}
         />
         {button && buttonItem}

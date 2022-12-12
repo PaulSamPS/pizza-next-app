@@ -16,9 +16,9 @@ import {
 import { Select } from '@components/Form';
 import { LocationIcon } from '@helpers/icons/20';
 import { Text } from '@components/Typography';
+import { ModalAuth } from '@templates/ModalAuth';
 import styles from './styles/HeaderDesktop.module.scss';
 import { Logo, Auth } from './components';
-import { ModalAuth } from '../ModalAuth';
 
 const city = ['Москва', 'Оренбург'];
 
@@ -88,7 +88,7 @@ export const HeaderDesktop = () => {
             </Text>
           </div>
           <Auth setModal={setModal} />
-          {modal && <ModalAuth setModal={setModal} />}
+          <ModalAuth setModal={setModal} modal={modal} />
         </div>
       </Container>
       <Divider />

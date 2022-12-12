@@ -14,10 +14,11 @@ export const Icon = ({
   Component = 'span',
   primary,
   children,
+  className,
   ...restProps
 }: IconProps) => (
   <Component
-    className={cx(styles.icon, primary && styles.primary)}
+    className={cx(className, styles.icon, primary && styles.primary)}
     {...restProps}
   >
     {children}
