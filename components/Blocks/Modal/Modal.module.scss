@@ -8,20 +8,11 @@
 	background-color: rgb(25 25 25 / 40%);
 	backdrop-filter: blur(16px);
 	z-index: 10;
-	opacity: 0;
-	scale: 0;
-	transition: 0.2s cubic-bezier(0.8, 0.5, 0.2, 1.4);
-	transition-duration: 500ms;
 
 	.modal {
 		position: absolute;
 		left: 50%;
 		top: 50%;
-		transform: translate(-50%, -50%);
-		opacity: 0;
-		scale: 0;
-		transition: 0.2s cubic-bezier(0.8, 0.5, 0.2, 1.4);
-		transition-duration: 500ms;
 
 		.container {
 			background-color: var(--background-gray);
@@ -46,13 +37,4 @@
 			}
 		}
 	}
-}
-
-.open {
-	opacity: 1 !important;
-	scale: 1 !important;
-}
-
-.open-overlay {
-	background-color: rgb(25 25 25 / 40%);
 }

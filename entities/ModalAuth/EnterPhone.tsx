@@ -36,8 +36,7 @@ export const EnterPhone = () => {
           placeholder='+7 (123) 456-78-90'
           value={values.formattedValue}
           onValueChange={({ formattedValue, value }) =>
-            setValues({ formattedValue, value })
-          }
+            setValues({ formattedValue, value })}
         />
         <label htmlFor='phone'>Номер телефона</label>
       </div>
