@@ -3,15 +3,15 @@ import { GetServerSideProps } from 'next';
 import { getSelectorsByUserAgent } from 'react-device-detect';
 import { withLayout } from '@hoc';
 import { Header } from '@templates/Header';
-import { Category } from '@entities';
 import { Container } from '@components/Blocks';
+import { Auth } from '@templates/Auth/Auth';
 
 function Home() {
   return (
     <>
       <Header />
       <Container>
-        <Category />
+        <Auth />
       </Container>
     </>
   );

@@ -35,6 +35,7 @@ export const EnterPhone = () => {
           mask='_'
           placeholder='+7 (123) 456-78-90'
           value={values.formattedValue}
+          autoComplete='off'
           onValueChange={({ formattedValue, value }) =>
             setValues({ formattedValue, value })
           }

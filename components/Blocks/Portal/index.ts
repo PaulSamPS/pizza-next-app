@@ -5,8 +5,7 @@ interface PortalProps extends React.AllHTMLAttributes<HTMLDivElement> {}
 
 const Portal = ({ children }: PortalProps) => {
   const [container] = useState<HTMLDivElement>(() =>
-    document.createElement('div')
-  );
+    document.createElement('div'));
 
   useEffect(() => {
     document.body.appendChild(container);

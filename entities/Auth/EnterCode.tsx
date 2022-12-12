@@ -42,6 +42,7 @@ export const EnterCode = () => {
             id={String(index)}
             value={code}
             placeholder='X'
+            autoComplete='off'
             onChange={handleChangeInput}
           />
         ))}
