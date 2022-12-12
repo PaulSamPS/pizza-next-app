@@ -2,8 +2,9 @@ import React, { useContext } from 'react';
 import { Button } from '@components/Blocks';
 import { Text, Title } from '@components/Typography';
 import NumberFormat from 'react-number-format';
-import { StepContext } from '@context';
-import styles from './EnterPhone.module.scss';
+import { DeviceContext, StepContext } from '@context';
+import stylesDesktop from './EnterPhoneDesktop.module.scss';
+import stylesMobile from './EnterPhoneMobile.module.scss';
 
 type InputValueState = {
   formattedValue: string;
@@ -16,6 +17,9 @@ export const EnterPhone = () => {
     value: '',
   });
   const { setPhone, nextStep } = useContext(StepContext);
+  const { isDesktop } = useContext(DeviceContext);
+
+  const classes = isDesktop ? stylesDesktop : stylesMobile;
 
   const handleClick = () => {
     setPhone(values.formattedValue);
@@ -23,12 +27,12 @@ export const EnterPhone = () => {
   };
 
   return (
-    <div className={styles.phone}>
+    <div className={classes.phone}>
       <Title level='2'>Вход в аккаунт</Title>
-      <Text level='l2' className={styles.subtitle}>
+      <Text level='l2' className={classes.subtitle}>
         Сможете быстро оформлять заказы, использовать бонусы
       </Text>
-      <div className={styles.input}>
+      <div className={classes.input}>
         <NumberFormat
           name='phone'
           format='+7 (###) ###-##-##'
@@ -49,7 +53,7 @@ export const EnterPhone = () => {
       >
         Войти
       </Button>
-      <Text level='l3' className={styles.terms}>
+      <Text level='l3' className={classes.terms}>
         Продолжая, вы соглашаетесь со сбором и обработкой персональных данных и
         пользовательским соглашением
       </Text>

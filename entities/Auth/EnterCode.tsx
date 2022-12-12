@@ -1,11 +1,16 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useContext } from 'react';
 import { Input } from '@components/Form';
 import { Text, Title } from '@components/Typography';
 import { Button } from '@components/Blocks';
-import styles from './EnterCode.module.scss';
+import { DeviceContext } from '@context';
+import stylesDesktop from './EnterCodeDesktop.module.scss';
+import stylesMobile from './EnterCodeMobile.module.scss';
 
 export const EnterCode = () => {
   const [codes, setCodes] = React.useState<string[]>(['', '', '', '']);
+  const { isDesktop } = useContext(DeviceContext);
+
+  const classes = isDesktop ? stylesDesktop : stylesMobile;
 
   const onSubmit = async () => {
     // eslint-disable-next-line no-console
@@ -27,12 +32,12 @@ export const EnterCode = () => {
   };
 
   return (
-    <div className={styles['enter-code']}>
+    <div className={classes['enter-code']}>
       <Title level='2'>Код</Title>
-      <Text level='l2' className={styles.info}>
+      <Text level='l2' className={classes.info}>
         Введите последние 4 цифры звонившего номера.
       </Text>
-      <div className={styles.code}>
+      <div className={classes.code}>
         {codes.map((code, index) => (
           <Input
             code
@@ -49,16 +54,14 @@ export const EnterCode = () => {
       </div>
       <Button
         appearance='primary'
-        width={240}
-        height={48}
         onClick={onSubmit}
         disabled={codes.join('').length < 4}
       >
         Войти
       </Button>
-      <div className={styles['resend-code']}>
+      <div className={classes['resend-code']}>
         <Text level='l2'>Отправить код ещё раз через:</Text>
-        <Text level='l2' className={styles.timer}>
+        <Text level='l2' className={classes.timer}>
           59 секунд
         </Text>
       </div>

@@ -6,11 +6,12 @@ import { LocationIcon } from '@helpers/icons/20';
 import { Text } from '@components/Typography';
 import { Logo } from './components';
 import styles from './styles/HeaderMobile.module.scss';
+import { MenuMobile } from '../MenuMobile/MenuMobile';
 
 const city = ['Москва', 'Оренбург'];
 
 export const HeaderMobile = () => {
-  const [open, setOpen] = React.useState<boolean>(false);
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
   return (
     <Block>
@@ -36,8 +37,8 @@ export const HeaderMobile = () => {
           <Button
             appearance='transparent'
             type='button'
-            className={cx(styles.burger, open && styles['burger-open'])}
-            onClick={() => setOpen(!open)}
+            className={cx(styles.burger, isOpen && styles['burger-open'])}
+            onClick={() => setIsOpen(!isOpen)}
           >
             <span />
             <span />
@@ -46,6 +47,7 @@ export const HeaderMobile = () => {
         </div>
       </Container>
       <Divider />
+      <MenuMobile isOpened={isOpen} />
     </Block>
   );
 };
