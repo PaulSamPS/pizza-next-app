@@ -25,7 +25,7 @@ export const EnterPhone = () => {
   return (
     <div className={styles.phone}>
       <Title level='2'>Вход в аккаунт</Title>
-      <Text level='l2'>
+      <Text level='l2' className={styles.subtitle}>
         Сможете быстро оформлять заказы, использовать бонусы
       </Text>
       <div className={styles.input}>
@@ -36,7 +36,8 @@ export const EnterPhone = () => {
           placeholder='+7 (123) 456-78-90'
           value={values.formattedValue}
           onValueChange={({ formattedValue, value }) =>
-            setValues({ formattedValue, value })}
+            setValues({ formattedValue, value })
+          }
         />
         <label htmlFor='phone'>Номер телефона</label>
       </div>
@@ -47,7 +48,7 @@ export const EnterPhone = () => {
       >
         Войти
       </Button>
-      <Text level='l3'>
+      <Text level='l3' className={styles.terms}>
         Продолжая, вы соглашаетесь со сбором и обработкой персональных данных и
         пользовательским соглашением
       </Text>

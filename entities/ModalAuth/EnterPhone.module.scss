@@ -2,9 +2,14 @@
 	width: 320px;
 	text-align: center;
 	margin: 0 auto;
+	font-family: "Inter Regular", sans-serif;
 
 	h2 {
 		margin-bottom: 16px;
+	}
+
+	.subtitle {
+		font-family: "SF Pro Text Regular", sans-serif;
 	}
 
 	.input {
@@ -45,5 +50,16 @@
 		margin-bottom: 12px;
 		padding: 16px 40px;
 		width: 100%;
+	}
+
+	.terms {
+		opacity: 0.4;
+		transition: all ease-in .2s;
+		cursor: pointer;
+
+		&:hover {
+			opacity: 1;
+			text-decoration: underline;
+		}
 	}
 }

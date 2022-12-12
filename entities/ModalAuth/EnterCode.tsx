@@ -6,16 +6,16 @@ import styles from './EnterCode.module.scss';
 
 export const EnterCode = () => {
   const [codes, setCodes] = React.useState<string[]>(['', '', '', '']);
-  const [enteredCode, setEnteredCode] = React.useState<string>('');
 
   const onSubmit = async () => {
     // eslint-disable-next-line no-console
-    console.log(enteredCode);
+    console.log(codes.join(''));
   };
 
   const handleChangeInput = async (event: ChangeEvent<HTMLInputElement>) => {
     const index = Number(event.target.getAttribute('id'));
     const { value } = event.target;
+
     setCodes((prev) => {
       const newArr = [...prev];
       newArr[index] = value;
@@ -23,8 +23,6 @@ export const EnterCode = () => {
     });
     if (event.target.nextSibling) {
       (event.target.nextSibling as HTMLInputElement).focus();
-    } else {
-      await setEnteredCode([...codes, value].join(''));
     }
   };
 
@@ -48,7 +46,13 @@ export const EnterCode = () => {
           />
         ))}
       </div>
-      <Button appearance='primary' width={240} height={48} onClick={onSubmit}>
+      <Button
+        appearance='primary'
+        width={240}
+        height={48}
+        onClick={onSubmit}
+        disabled={codes.join('').length < 4}
+      >
         Войти
       </Button>
       <div className={styles['resend-code']}>
