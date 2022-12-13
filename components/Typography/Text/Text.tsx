@@ -1,5 +1,7 @@
 import * as React from 'react';
 import cx from 'clsx';
+import { useContext } from 'react';
+import { DeviceContext } from '@context';
 import { TextProps } from './Text.props';
 import styles from './Text.module.scss';
 
@@ -14,11 +16,13 @@ export const Text = ({
   className,
   ...restProps
 }: TextProps) => {
+  const { isDesktop } = useContext(DeviceContext);
+
   const classes = cx(
     className,
     styles.text,
     weight && styles[weight],
-    level && styles[level],
+    level && isDesktop ? styles[level] : styles[`mobile-${level}`],
     icon && styles.icon,
     error && styles.error
   );

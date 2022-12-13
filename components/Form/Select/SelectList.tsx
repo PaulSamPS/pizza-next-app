@@ -1,12 +1,16 @@
 import React from 'react';
 import cx from 'clsx';
 import { SelectProps } from '@components/Form/Select';
+import { Text } from '@components/Typography';
+import { TypeAttributes } from '@types';
 import styles from './styles/SelectList.module.scss';
 import { UseSelect } from './hooks/useSelect';
 
 interface SelectListProps
   extends Pick<SelectProps, 'editable' | 'position' | 'arr' | 'appearance'>,
-    Omit<UseSelect, 'selectRef'> {}
+    Omit<UseSelect, 'selectRef'> {
+  level?: TypeAttributes.Level;
+}
 
 export const SelectList = ({
   editable,
@@ -16,6 +20,7 @@ export const SelectList = ({
   value,
   position,
   arr,
+  level,
   appearance,
 }: SelectListProps) => (
   <ul
@@ -25,6 +30,7 @@ export const SelectList = ({
       position && styles[position],
       styles[appearance]
     )}
+    role='menu'
   >
     {arr.map((c) => (
       // eslint-disable-next-line max-len
@@ -33,8 +39,9 @@ export const SelectList = ({
         key={c}
         onClick={editable ? () => onClickSelectItem(c) : showItems}
         className={cx(styles.item, value === c && editable && styles.active)}
+        role='menuitem'
       >
-        {c}
+        <Text level={level}>{c}</Text>
       </li>
     ))}
   </ul>

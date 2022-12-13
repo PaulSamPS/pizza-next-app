@@ -41,8 +41,7 @@ export const EnterPhone = () => {
           value={values.formattedValue}
           autoComplete='off'
           onValueChange={({ formattedValue, value }) =>
-            setValues({ formattedValue, value })
-          }
+            setValues({ formattedValue, value })}
         />
         <label htmlFor='phone'>Номер телефона</label>
       </div>

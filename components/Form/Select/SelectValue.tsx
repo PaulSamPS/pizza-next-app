@@ -27,7 +27,8 @@ export const SelectValue = ({
   <div
     className={cx(styles.value, styles[appearance])}
     onClick={showItems}
-    role='listitem'
+    role='menuitem'
+    tabIndex={0}
   >
     {before && <Icon primary>{before}</Icon>}
     <Text level={level}>{value}</Text>

@@ -1,50 +1,50 @@
 .enter-code {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  font-family: 'SF Pro Text Regular', sans-serif;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	font-family: 'SF Pro Text Regular', sans-serif;
 
-  h2 {
-    margin-bottom: 16px;
-    font-family: Inter, sans-serif;
-    font-size: 28px;
-  }
+	h2 {
+		margin-bottom: 16px;
+		font-family: Inter, sans-serif;
+		font-size: 28px;
+	}
 
-  .info {
-    margin-bottom: 20px;
-    font-size: 14px;
-  }
+	.info {
+		margin-bottom: 20px;
+		font-size: 14px;
+	}
 
-  .code {
-    display: flex;
-    justify-content: space-between;
-    width: 240px;
-    margin-bottom: 16px;
+	.code {
+		display: flex;
+		justify-content: space-between;
+		width: 240px;
+		margin-bottom: 16px;
 
-    input {
-      font-size: 14px;
-      width: 44px;
-      height: 44px;
-      text-align: center;
-    }
-  }
+		input {
+			font-size: 14px;
+			width: 44px;
+			height: 44px;
+			text-align: center;
+		}
+	}
 
-  button {
-    height: 44px;
-    font-size: 14px;
-    width: 240px;
-  }
+	button {
+		height: 44px;
+		font-size: 14px;
+		width: 240px;
+	}
 
-  .resend-code {
-    margin-top: 12px;
-    display: flex;
-    font-size: 14px;
+	.resend-code {
+		margin-top: 12px;
+		display: flex;
+		font-size: 14px;
 
-    .timer {
-      color: var(--gray-text);
-      margin-left: 5px;
-    }
-  }
+		.timer {
+			color: var(--gray-text);
+			margin-left: 5px;
+		}
+	}
 }

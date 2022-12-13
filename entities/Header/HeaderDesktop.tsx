@@ -76,13 +76,13 @@ export const HeaderDesktop = () => {
           <div className={styles.location}>
             <Select
               appearance='basic'
-              level='l3'
+              level='l1'
               arr={city}
               editable
               before={<LocationIcon />}
             />
-            <Text level='l3'>Проверить адрес</Text>
-            <Text level='l3'>
+            <Text level='l1'>Проверить адрес</Text>
+            <Text level='l1'>
               Среднее время доставки*:
               <b> 00:24:19</b>
             </Text>
@@ -102,7 +102,7 @@ export const HeaderDesktop = () => {
             height={40}
             onClick={() => setIsSticky(!isSticky)}
           >
-            22550 р
+            22550 ₽
           </Button>
         </div>
       </Container>

@@ -19,12 +19,12 @@ export const HeaderMobile = () => {
         <div className={cx(styles.header, styles.top)}>
           <Select
             appearance='basic'
-            level='l3'
+            level='l1'
             arr={city}
             editable
             before={<LocationIcon />}
           />
-          <Text level='l3'>
+          <Text level='l1'>
             Среднее время доставки*:
             <b> 00:24:19</b>
           </Text>

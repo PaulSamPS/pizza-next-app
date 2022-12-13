@@ -3,16 +3,13 @@ import { GetServerSideProps } from 'next';
 import { getSelectorsByUserAgent } from 'react-device-detect';
 import { withLayout } from '@hoc';
 import { Header } from '@templates/Header';
-import { Container } from '@components/Blocks';
-import { Auth } from '@templates/Auth/Auth';
+import { Category } from '@entities';
 
 function Home() {
   return (
     <>
       <Header />
-      <Container>
-        <Auth />
-      </Container>
+      <Category />
     </>
   );
 }

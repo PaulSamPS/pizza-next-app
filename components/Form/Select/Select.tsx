@@ -31,7 +31,12 @@ export const Select = ({
   );
 
   return (
-    <div className={cx(styles.select, styles[appearance])} ref={selectRef}>
+    <div
+      className={cx(styles.select, styles[appearance])}
+      ref={selectRef}
+      role='menu'
+      tabIndex={0}
+    >
       <SelectValue
         appearance={appearance}
         show={show}
@@ -49,6 +54,7 @@ export const Select = ({
         show={show}
         onClickSelectItem={onClickSelectItem}
         showItems={showItems}
+        level={level}
       />
     </div>
   );
