@@ -4,12 +4,15 @@ import { getSelectorsByUserAgent } from 'react-device-detect';
 import { withLayout } from '@hoc';
 import { Header } from '@templates/Header';
 import { Category } from '@entities';
+import { Container } from '@components/Blocks';
 
 function Home() {
   return (
     <>
       <Header />
-      <Category />
+      <Container>
+        <Category />
+      </Container>
     </>
   );
 }

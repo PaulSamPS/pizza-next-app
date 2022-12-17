@@ -1,51 +1,51 @@
 .footer {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  font-family: "SF Pro Text Regular", sans-serif;
-  padding: 32px 0;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	font-family: 'SF Pro Text Regular', sans-serif;
+	padding: 32px 0;
 
-  h4 {
-    font-family: Inter, sans-serif;
-    margin-bottom: 22px;
-  }
+	h4 {
+		font-family: Inter, sans-serif;
+		margin-bottom: 22px;
+	}
 
-  .logo {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+	.logo {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
 
-  .list {
-    ul {
-      list-style-type: none;
-      padding: 0;
+	.list {
+		ul {
+			list-style-type: none;
+			padding: 0;
 
-      li {
-        margin-bottom: 20px;
-        cursor: pointer;
-        transition: color ease .2s;
+			li {
+				margin-bottom: 20px;
+				cursor: pointer;
+				transition: color ease 0.2s;
 
-        &:hover {
-          color: var(--primary);
-        }
+				&:hover {
+					color: var(--primary);
+				}
 
-        &:last-child {
-          margin-bottom: 0;
-        }
-      }
-    }
-  }
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
 
-  .contacts {
-    .item {
-      display: flex;
-      align-items: center;
-      column-gap: 15px;
-      margin-bottom: 20px;
+	.contacts {
+		.item {
+			display: flex;
+			align-items: center;
+			column-gap: 15px;
+			margin-bottom: 20px;
 
-      svg {
-        color: var(--primary);
-      }
-    }
-  }
+			svg {
+				color: var(--primary);
+			}
+		}
+	}
 }
