@@ -12,6 +12,7 @@
 	border: none;
 	font-family: 'SF Pro Text Regular', sans-serif;
 	font-weight: 400;
+	outline: var(--primary);
 
 	&:disabled {
 		opacity: 0.6;

@@ -4,3 +4,4 @@ export * from './RadioGroup';
 export * from './ProductCard';
 export * from './Auth';
 export * from './Footer';
+export * from './ModalProductCustomization';

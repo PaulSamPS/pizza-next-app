@@ -12,7 +12,6 @@ export interface ButtonProps
     | 'transparent'
     | 'outline-gray'
     | 'light-primary';
-  tabActive?: boolean;
   loading?: boolean;
   before?: React.ReactNode;
   width?: number;
@@ -23,19 +22,13 @@ export const Button = ({
   className,
   appearance,
   before,
-  tabActive,
   loading,
   height,
   width,
   children,
   ...restProps
 }: ButtonProps) => {
-  const classes = cx(
-    className,
-    styles.button,
-    styles[appearance],
-    tabActive && styles.active
-  );
+  const classes = cx(className, styles.button, styles[appearance]);
 
   return (
     <button

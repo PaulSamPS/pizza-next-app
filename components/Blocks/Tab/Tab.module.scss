@@ -1,3 +1,33 @@
 .tab {
 	color: var(--primary);
+	display: flex;
+	height: 48px;
+	border-radius: 12px;
+
+	.item {
+		width: 480px;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		background-color: transparent;
+		border: 1px solid var(--line-gray);
+		border-radius: 0;
+		color: var(--black);
+
+		&:first-child {
+			border-radius: 6px 0 0 6px;
+		}
+
+		&:last-child {
+			border-radius: 0 6px 6px 0;
+		}
+	}
+
+	.active {
+		background-color: var(--primary);
+		color: var(--white);
+		border: 1px solid var(--primary);
+	}
 }
