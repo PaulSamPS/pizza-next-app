@@ -1,0 +1,49 @@
+.addendum-card {
+  width: 105px;
+  text-align: center;
+  font-family: Inter, sans-serif;
+
+  .addendum-item {
+    width: 105px;
+    height: 105px;
+    position: relative;
+    margin-bottom: 8px;
+
+    .icon {
+      position: absolute;
+      right: 8px;
+      top: 8px;
+    }
+  }
+
+  .icon-price {
+    svg {
+      color: var(--primary);
+    }
+  }
+
+  .price-added {
+    color: var(--primary);
+    border: 1px solid var(--primary);
+
+    svg {
+      color: var(--primary);
+    }
+  }
+
+  .price {
+    color: var(--primary);
+  }
+}
+
+.added-primary {
+  color: var(--black);
+}
+
+.added {
+  color: var(--gray-text);
+
+  svg {
+    color: var(--gray-text);
+  }
+}

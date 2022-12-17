@@ -1,15 +1,14 @@
 import React from 'react';
-import { Badge, Button, Icon, ModalOverlay, Tab } from '@components/Blocks';
+import { Badge, Icon, ModalOverlay, Tab } from '@components/Blocks';
 import { motion } from 'framer-motion';
 import { CloseIcon32 } from '@helpers/icons/32';
 import Image from 'next/image';
 import { PromotionsIcon } from '@helpers/icons/category';
 import { Text, Title } from '@components/Typography';
 import { InfoIcon } from '@helpers/icons/24';
-import { CheeseIcon, RemoveIcon } from '@helpers/icons/addendum';
-import cx from 'clsx';
 import styles from './ModalProductCustomization.module.scss';
 import product from './product.jpg';
+import { AddToPizza } from './AddToPizza';
 
 type ModalProductCustomizationProps = {
   setModal: (modal: boolean) => void;
@@ -73,31 +72,20 @@ export const ModalProductCustomization = ({
               </Icon>
             </div>
             <div className={styles.addendum}>
-              <div
-                className={cx(
-                  styles['addendum-card'],
-                  addendumItem && styles.added
-                )}
-              >
-                <Button
-                  appearance='outline-gray'
-                  className={styles['addendum-item']}
-                  onClick={() => setAddendumItem(!addendumItem)}
-                >
-                  <CheeseIcon />
-                  {addendumItem && (
-                    <Icon className={styles.remove}>
-                      <RemoveIcon />
-                    </Icon>
-                  )}
-                </Button>
-                <Text level='l1'>Моцарелла</Text>
-              </div>
+              <AddToPizza
+                addendumItem={addendumItem}
+                setAddendumItem={setAddendumItem}
+              />
               <Tab arr={tabs} className={styles.dough} />
               <Tab arr={sizes} className={styles.sizes} />
               <Text level='l2' weight='w1' className={styles.subtitle}>
                 Добавьте в пиццу
               </Text>
+              <AddToPizza
+                addendumItem={addendumItem}
+                setAddendumItem={setAddendumItem}
+                price
+              />
             </div>
           </div>
         </div>

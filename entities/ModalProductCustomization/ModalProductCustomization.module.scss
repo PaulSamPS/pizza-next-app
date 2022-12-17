@@ -1,107 +1,80 @@
 .modal-product-customizations {
-  padding: 30px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: var(--white);
-  border-radius: 24px;
-  position: relative;
-  width: 1070px;
+	padding: 30px 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: var(--white);
+	border-radius: 24px;
+	position: relative;
+	width: 1070px;
 
+	.close-icon {
+		position: absolute;
+		top: 0;
+		right: -50px;
+		color: var(--white);
+		width: 32px;
+		height: 32px;
+		cursor: pointer;
+		transition: 0.2s cubic-bezier(0.8, 0.5, 0.2, 1.4);
+		transition-duration: 500ms;
 
-  .close-icon {
-    position: absolute;
-    top: 0;
-    right: -50px;
-    color: var(--white);
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-    transition: 0.2s cubic-bezier(0.8, 0.5, 0.2, 1.4);
-    transition-duration: 500ms;
+		&:hover {
+			transform: rotate(90deg);
+		}
+	}
 
-    &:hover {
-      transform: rotate(90deg);
-    }
-  }
+	.card {
+		display: grid;
+		grid-template-columns: repeat(2, 50%);
+		width: 100%;
 
-  .card {
-    display: grid;
-    grid-template-columns: repeat(2, 50%);
-    width: 100%;
+		.image {
+			padding: 30px 40px;
+		}
 
-    .image {
-      padding: 30px 40px;
-    }
+		.customizations {
+			.title {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				font-family: Inter, sans-serif;
+				text-align: center;
+				margin-bottom: 16px;
 
-    .customizations {
-      .title {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-family: Inter, sans-serif;
-        text-align: center;
-        margin-bottom: 16px;
+				.name {
+					display: flex;
+					align-items: center;
 
-        .name {
-          display: flex;
-          align-items: center;
+					svg {
+						color: var(--red);
+						height: 24px;
+						width: 24px;
+						margin-right: 8px;
+					}
+				}
 
-          svg {
-            color: var(--red);
-            height: 24px;
-            width: 24px;
-            margin-right: 8px;
-          }
-        }
+				.info {
+					color: var(--gray-text);
+					cursor: pointer;
+				}
+			}
 
-        .info {
-          color: var(--gray-text);
-          cursor: pointer;
-        }
-      }
+			.addendum {
+				.dough {
+					margin-top: 24px;
+					margin-bottom: 16px;
+				}
 
-      .addendum {
-        .addendum-card {
-          width: 105px;
-          text-align: center;
-          font-family: Inter, sans-serif;
+				.sizes {
+					margin-bottom: 24px;
+				}
 
-          .addendum-item {
-            width: 105px;
-            height: 105px;
-            position: relative;
-            margin-bottom: 8px;
-
-            .remove {
-              position: absolute;
-              right: 8px;
-              top: 8px;
-            }
-          }
-        }
-
-        .added {
-          color: var(--gray-text);
-
-          svg {
-            color: var(--gray-text);
-          }
-        }
-
-        .dough {
-          margin-top: 24px;
-          margin-bottom: 16px;
-        }
-
-        .sizes {
-          margin-bottom: 24px;
-        }
-
-        .subtitle {
-          font-family: Inter, sans-serif;
-        }
-      }
-    }
-  }
+				.subtitle {
+					font-family: Inter, sans-serif;
+					margin-bottom: 16px;
+				}
+			}
+		}
+	}
 }
