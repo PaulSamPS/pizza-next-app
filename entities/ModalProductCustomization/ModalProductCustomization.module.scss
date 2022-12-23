@@ -29,8 +29,43 @@
 		grid-template-columns: repeat(2, 50%);
 		width: 100%;
 
-		.image {
-			padding: 30px 40px;
+		.image-block {
+			width: 100%;
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			.image {
+				transition: margin 0.25s ease-in-out 0s;
+				width: 100%;
+
+				img {
+					object-fit: contain;
+					height: 100%;
+					width: 95%;
+					margin: 5% 0 0 5%;
+				}
+			}
+
+			.middle, .large {
+				position: absolute;
+				top:50%;
+				left:50%;
+				transform:translate(-50%, -50%);
+			}
+		}
+
+		.large-size {
+			margin: 0;
+		}
+
+		.medium-size {
+			margin: 0 38px 0;
+		}
+
+		.small-size {
+			margin: 0 78px 0;
 		}
 
 		.customizations {

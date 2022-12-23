@@ -5,10 +5,18 @@ import styles from './Tab.module.scss';
 
 interface TabProps extends React.AllHTMLAttributes<HTMLElement> {
   arr: string[];
+  setSize?: (size: string) => void;
 }
 
-export const Tab = ({ arr, className }: TabProps) => {
+export const Tab = ({ arr, setSize, className }: TabProps) => {
   const [activeIndex, setActiveIndex] = React.useState<number>(0);
+
+  const handleClick = (index: number, size: string) => {
+    setActiveIndex(index);
+    if (setSize) {
+      setSize(size);
+    }
+  };
 
   return (
     <div className={cx(className, styles.tab)}>
@@ -18,7 +26,7 @@ export const Tab = ({ arr, className }: TabProps) => {
           appearance='primary'
           tabIndex={0}
           key={index}
-          onClick={() => setActiveIndex(index)}
+          onClick={() => handleClick(index, s)}
           className={cx(styles.item, activeIndex === index && styles.active)}
         >
           {s}
