@@ -9,6 +9,12 @@
 		position: relative;
 		margin-bottom: 8px;
 
+		.image {
+			height: 100%;
+			width: 100%;
+			object-fit: contain;
+		}
+
 		.icon {
 			position: absolute;
 			right: 8px;
@@ -33,6 +39,7 @@
 
 	.price {
 		color: var(--primary);
+		margin-top: 4px;
 	}
 }
 

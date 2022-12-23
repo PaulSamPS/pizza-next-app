@@ -6,30 +6,34 @@ import styles from './Tab.module.scss';
 interface TabProps extends React.AllHTMLAttributes<HTMLElement> {
   arr: string[];
   setSize?: (size: string) => void;
+  setDough?: (dough: string) => void;
 }
 
-export const Tab = ({ arr, setSize, className }: TabProps) => {
+export const Tab = ({ arr, setSize, setDough, className }: TabProps) => {
   const [activeIndex, setActiveIndex] = React.useState<number>(0);
 
-  const handleClick = (index: number, size: string) => {
+  const handleClick = (index: number, value: string) => {
     setActiveIndex(index);
     if (setSize) {
-      setSize(size);
+      setSize(value);
+    }
+    if (setDough) {
+      setDough(value);
     }
   };
 
   return (
     <div className={cx(className, styles.tab)}>
-      {arr.map((s, index) => (
+      {arr.map((value, index) => (
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events
         <Button
           appearance='primary'
           tabIndex={0}
           key={index}
-          onClick={() => handleClick(index, s)}
+          onClick={() => handleClick(index, value)}
           className={cx(styles.item, activeIndex === index && styles.active)}
         >
-          {s}
+          {value}
         </Button>
       ))}
     </div>
