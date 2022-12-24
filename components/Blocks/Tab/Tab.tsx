@@ -5,20 +5,24 @@ import styles from './Tab.module.scss';
 
 interface TabProps extends React.AllHTMLAttributes<HTMLElement> {
   arr: string[];
-  setSize?: (size: string) => void;
-  setDough?: (dough: string) => void;
+  currentSize?: (size: string) => void;
+  currentDough?: (dough: string) => void;
+  currentValue: string;
 }
 
-export const Tab = ({ arr, setSize, setDough, className }: TabProps) => {
-  const [activeIndex, setActiveIndex] = React.useState<number>(0);
-
-  const handleClick = (index: number, value: string) => {
-    setActiveIndex(index);
-    if (setSize) {
-      setSize(value);
+export const Tab = ({
+  arr,
+  currentSize,
+  currentDough,
+  currentValue,
+  className,
+}: TabProps) => {
+  const handleClick = (value: string) => {
+    if (currentSize) {
+      currentSize(value);
     }
-    if (setDough) {
-      setDough(value);
+    if (currentDough) {
+      currentDough(value);
     }
   };
 
@@ -30,8 +34,8 @@ export const Tab = ({ arr, setSize, setDough, className }: TabProps) => {
           appearance='primary'
           tabIndex={0}
           key={index}
-          onClick={() => handleClick(index, value)}
-          className={cx(styles.item, activeIndex === index && styles.active)}
+          onClick={() => handleClick(value)}
+          className={cx(styles.item, value === currentValue && styles.active)}
         >
           {value}
         </Button>

@@ -1,20 +1,28 @@
 .product-card {
 	width: 300px;
-	height: 480px;
 	overflow: hidden;
 	box-sizing: content-box;
 
+	img {
+		padding-left: 15px;
+		object-fit: contain;
+	}
+
 	.body {
 		padding: 16px 20px 20px;
+		display: flex;
+		flex-direction: column;
 
 		.name {
 			font-family: 'SF Pro Text Bold', sans-serif;
 			font-size: 18px;
 			line-height: 24px;
+			text-align: center;
 		}
 
 		.text {
 			margin-top: 12px;
+			flex-grow: 1;
 		}
 
 		.bottom {

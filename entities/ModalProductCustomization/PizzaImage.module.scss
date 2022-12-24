@@ -1,0 +1,40 @@
+.image-block {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 520px;
+
+  .image {
+    transition: margin 0.25s ease-in-out 0s;
+    width: 100%;
+
+    img {
+      object-fit: contain;
+      height: 100%;
+      width: 95%;
+      margin: 5% 0 0 5%;
+    }
+  }
+
+  .middle,
+  .large {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.large-size {
+  margin: 0;
+}
+
+.medium-size {
+  margin: 0 38px;
+}
+
+.small-size {
+  margin: 0 78px;
+}

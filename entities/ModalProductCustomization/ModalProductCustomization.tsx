@@ -2,18 +2,10 @@ import React from 'react';
 import { Badge, Button, Icon, ModalOverlay, Tab } from '@components/Blocks';
 import { motion } from 'framer-motion';
 import { CloseIcon32 } from '@helpers/icons/32';
-import Image from 'next/image';
-import { PromotionsIcon } from '@helpers/icons/category';
-import { Paragraph, Text, Title } from '@components/Typography';
-import { InfoIcon } from '@helpers/icons/24';
-import { ArrowDownSmallIcon } from '@helpers/icons/16';
-import { LargeSizeIcon, MiddleSizeIcon } from '@helpers/icons/sizes';
-import { selectSize } from '@helpers/selectSize';
-import cx from 'clsx';
+import { Text, Title } from '@components/Typography';
+import { StaticImageData } from 'next/image';
 import styles from './ModalProductCustomization.module.scss';
-import product from './product.webp';
-import productSlim from './product-slim.webp';
-import { AddToPizza } from './AddToPizza';
+import { PizzaImage } from './PizzaImage';
 import mozzarella from './mozarella.png';
 import cheese from './cheese.png';
 import cholapenos from './cholapenos.png';
@@ -24,15 +16,30 @@ import tomato from './tomato.png';
 import pickles from './pickles.png';
 import crispyBacon from './crispy-bacon.png';
 import { useScrollAdditions } from './useScrollAdditions';
+import { ModalProductCustomizationTitle } from './ModalProductCustomizationTitle';
+import { ModalProductCustomizationDescription } from './ModalProductCustomizationDescription';
+import { ModalProductCustomizationAdditions } from './ModalProductCustomizationAdditions';
+import { useSelectSize } from './useSelectSize';
+
+type ProductType = {
+  id: number;
+  badge: string | null;
+  name: string;
+  description: string;
+  price: number;
+  image: { regular: StaticImageData; slim: StaticImageData };
+  promotion: boolean;
+};
 
 type ModalProductCustomizationProps = {
   setModal: (modal: boolean) => void;
   modal: boolean;
+  product: ProductType;
 };
 
 const tabs = ['Традиционное', 'Тонкое'];
 const sizes = ['25 см', '30 см', '35 см'];
-const addendum = [
+const additions = [
   {
     id: 0,
     name: 'Пармезан и чеддер',
@@ -92,11 +99,13 @@ const addendum = [
 export const ModalProductCustomization = ({
   setModal,
   modal,
+  product,
 }: ModalProductCustomizationProps) => {
   const [pizzaSize, setPizzaSize] = React.useState<string>('25 см');
   const [dough, setDough] = React.useState<string>('Традиционное');
   const { containerRef, scrollContainerBy, canScrollLeft, canScrollRight } =
     useScrollAdditions();
+  const { currentSize } = useSelectSize(pizzaSize);
 
   const closeModal = () => {
     if (setModal) {
@@ -127,96 +136,44 @@ export const ModalProductCustomization = ({
           <CloseIcon32 />
         </Icon>
         <div className={styles.card}>
-          <Badge top='32px'>New</Badge>
-          <div className={styles['image-block']}>
-            <div
-              className={cx(
-                styles.image,
-                styles[`${selectSize(pizzaSize)}-size`]
-              )}
-            >
-              <Image
-                src={dough === 'Традиционное' ? product : productSlim}
-                alt='product'
-              />
-            </div>
-            <i className={styles.middle}>
-              <MiddleSizeIcon />
-            </i>
-            <i className={styles.large}>
-              <LargeSizeIcon />
-            </i>
-          </div>
+          {product.badge && <Badge top='32px'>{product.badge}</Badge>}
+          <PizzaImage
+            pizzaSize={currentSize}
+            dough={dough}
+            image={product.image}
+          />
           <div className={styles.customizations}>
-            <div className={styles.title}>
-              <div className={styles.name}>
-                <Icon>
-                  <PromotionsIcon />
-                </Icon>
-                <Title level='4' weight='w1'>
-                  Пеперони по деревенски
-                </Title>
-              </div>
-              <Icon className={styles.info}>
-                <InfoIcon />
-              </Icon>
-            </div>
-            <div className={styles.description}>
-              <Text level='l2' className={styles.info}>
-                {`${pizzaSize}, ${dough.toLowerCase()} тесто, 330 г`}
-              </Text>
-              <Paragraph>
-                Моцарелла, сыры чеддер и пармезан, фирменный соус альфредо
-              </Paragraph>
-            </div>
+            <ModalProductCustomizationTitle
+              name={product.name}
+              promotion={product.promotion}
+            />
+            <ModalProductCustomizationDescription
+              pizzaSize={pizzaSize}
+              dough={dough}
+            />
             <div className={styles.addendum}>
-              <Tab arr={tabs} className={styles.dough} setDough={setDough} />
+              <Tab
+                arr={tabs}
+                currentValue={dough}
+                className={styles.dough}
+                currentDough={setDough}
+              />
               <Tab
                 arr={sizes}
+                currentValue={pizzaSize}
                 className={styles.sizes}
-                setSize={setPizzaSize}
+                currentSize={setPizzaSize}
               />
               <Text level='l2' weight='w1' className={styles.subtitle}>
                 Добавьте в пиццу
               </Text>
-              <div className={styles.additions}>
-                <Button
-                  width={30}
-                  height={30}
-                  appearance='primary'
-                  className={cx(
-                    styles['arrow-left'],
-                    !canScrollLeft && styles.none
-                  )}
-                  disabled={!canScrollLeft}
-                  onClick={() => scrollContainerBy(-115)}
-                >
-                  <ArrowDownSmallIcon />
-                </Button>
-                <Button
-                  width={30}
-                  height={30}
-                  appearance='primary'
-                  className={cx(
-                    styles['arrow-right'],
-                    !canScrollRight && styles.none
-                  )}
-                  disabled={!canScrollRight}
-                  onClick={() => scrollContainerBy(115)}
-                >
-                  <ArrowDownSmallIcon />
-                </Button>
-                <div className={styles.items} ref={containerRef}>
-                  {addendum.map((item) => (
-                    <AddToPizza
-                      key={item.id}
-                      image={item.img}
-                      name={item.name}
-                      price={item.price}
-                    />
-                  ))}
-                </div>
-              </div>
+              <ModalProductCustomizationAdditions
+                canScrollLeft={canScrollLeft}
+                canScrollRight={canScrollRight}
+                scrollContainerBy={scrollContainerBy}
+                containerRef={containerRef}
+                additions={additions}
+              />
               <div className={styles.add}>
                 <Title level='4'>Итого: 379 ₽</Title>
                 <Button appearance='primary' height={48} width={155}>

@@ -1,0 +1,42 @@
+.additions {
+  position: relative;
+
+  .items {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    column-gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .none {
+    opacity: 0;
+  }
+
+  .arrow-left {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    z-index: 2;
+    border-radius: 50%;
+    padding: 0;
+    transform: rotate(90deg);
+  }
+
+  .arrow-right {
+    padding: 0;
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+    top: 20%;
+    z-index: 2;
+    transform: rotate(270deg);
+  }
+}

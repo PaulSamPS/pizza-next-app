@@ -29,81 +29,7 @@
 		grid-template-columns: repeat(2, 50%);
 		width: 100%;
 
-		.image-block {
-			width: 100%;
-			position: relative;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			min-height: 520px;
-
-			.image {
-				transition: margin 0.25s ease-in-out 0s;
-				width: 100%;
-
-				img {
-					object-fit: contain;
-					height: 100%;
-					width: 95%;
-					margin: 5% 0 0 5%;
-				}
-			}
-
-			.middle,
-			.large {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-			}
-		}
-
-		.large-size {
-			margin: 0;
-		}
-
-		.medium-size {
-			margin: 0 38px;
-		}
-
-		.small-size {
-			margin: 0 78px;
-		}
-
 		.customizations {
-			.title {
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				font-family: Inter, sans-serif;
-				text-align: center;
-				margin-bottom: 16px;
-
-				.name {
-					display: flex;
-					align-items: center;
-
-					svg {
-						color: var(--red);
-						height: 24px;
-						width: 24px;
-						margin-right: 8px;
-					}
-				}
-
-				.info {
-					color: var(--gray-text);
-					cursor: pointer;
-				}
-			}
-
-			.description {
-				.info {
-					color: var(--gray-text);
-					margin-bottom: 10px;
-				}
-			}
-
 			.addendum {
 				.dough {
 					margin-top: 24px;
@@ -117,49 +43,6 @@
 				.subtitle {
 					font-family: Inter, sans-serif;
 					margin-bottom: 16px;
-				}
-
-				.additions {
-					position: relative;
-
-					.items {
-						display: flex;
-						justify-content: space-between;
-						width: 100%;
-						column-gap: 10px;
-						overflow-x: auto;
-						scroll-snap-type: x mandatory;
-						-webkit-overflow-scrolling: touch;
-						scroll-behavior: smooth;
-
-						&::-webkit-scrollbar {
-							display: none;
-						}
-					}
-
-					.none {
-						opacity: 0;
-					}
-
-					.arrow-left {
-						position: absolute;
-						top: 20%;
-						left: 0;
-						z-index: 2;
-						border-radius: 50%;
-						padding: 0;
-						transform: rotate(90deg);
-					}
-
-					.arrow-right {
-						padding: 0;
-						border-radius: 50%;
-						position: absolute;
-						right: 0;
-						top: 20%;
-						z-index: 2;
-						transform: rotate(270deg);
-					}
 				}
 
 				.add {

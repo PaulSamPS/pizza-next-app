@@ -37,7 +37,7 @@ export const useScrollAdditions = (): UseScrollAdditions => {
       current?.removeEventListener('scroll', debounceCheckForScrollPosition);
       debounceCheckForScrollPosition.cancel();
     };
-  }, []);
+  }, [debounceCheckForScrollPosition]);
 
   return { canScrollLeft, canScrollRight, scrollContainerBy, containerRef };
 };
