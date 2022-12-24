@@ -2,7 +2,6 @@ import React from 'react';
 
 export const useSelectSize = (size: string) => {
   const [currentSize, setCurrentSize] = React.useState('');
-  console.log(currentSize);
 
   React.useEffect(() => {
     switch (size) {

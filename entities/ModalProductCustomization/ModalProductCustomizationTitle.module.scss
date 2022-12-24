@@ -1,25 +1,25 @@
 .title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-family: Inter, sans-serif;
-  text-align: center;
-  margin-bottom: 16px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-family: Inter, sans-serif;
+	text-align: center;
+	margin-bottom: 16px;
 
-  .name {
-    display: flex;
-    align-items: center;
+	.name {
+		display: flex;
+		align-items: center;
 
-    svg {
-      color: var(--red);
-      height: 24px;
-      width: 24px;
-      margin-right: 8px;
-    }
-  }
+		svg {
+			color: var(--red);
+			height: 24px;
+			width: 24px;
+			margin-right: 8px;
+		}
+	}
 
-  .info {
-    color: var(--gray-text);
-    cursor: pointer;
-  }
+	.info {
+		color: var(--gray-text);
+		cursor: pointer;
+	}
 }
