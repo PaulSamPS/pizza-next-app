@@ -38,7 +38,9 @@ export const AddToPizza = ({ price, image, name }: AddToPizzaProps) => {
           </Icon>
         )}
       </Button>
-      <Text level='l1'>{name}</Text>
+      <Text level='l1' className={styles.name}>
+        {name}
+      </Text>
       <Text level='l1' className={styles.price}>
         {price}
       </Text>

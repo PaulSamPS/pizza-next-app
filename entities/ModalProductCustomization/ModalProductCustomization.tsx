@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { PromotionsIcon } from '@helpers/icons/category';
 import { Paragraph, Text, Title } from '@components/Typography';
 import { InfoIcon } from '@helpers/icons/24';
+import { ArrowDownSmallIcon } from '@helpers/icons/16';
 import { LargeSizeIcon, MiddleSizeIcon } from '@helpers/icons/sizes';
 import { selectSize } from '@helpers/selectSize';
 import cx from 'clsx';
@@ -18,6 +19,7 @@ import cheese from './cheese.png';
 import cholapenos from './cholapenos.png';
 import pepperoni from './peperoni.png';
 import ham from './ham.png';
+import { useScrollAdditions } from './useScrollAdditions';
 
 type ModalProductCustomizationProps = {
   setModal: (modal: boolean) => void;
@@ -65,6 +67,8 @@ export const ModalProductCustomization = ({
 }: ModalProductCustomizationProps) => {
   const [pizzaSize, setPizzaSize] = React.useState<string>('25 см');
   const [dough, setDough] = React.useState<string>('Традиционное');
+  const { containerRef, scrollContainerBy, canScrollLeft, canScrollRight } =
+    useScrollAdditions();
 
   const closeModal = () => {
     if (setModal) {
@@ -148,14 +152,42 @@ export const ModalProductCustomization = ({
                 Добавьте в пиццу
               </Text>
               <div className={styles.additions}>
-                {addendum.map((item) => (
-                  <AddToPizza
-                    key={item.id}
-                    image={item.img}
-                    name={item.name}
-                    price={item.price}
-                  />
-                ))}
+                <Button
+                  width={30}
+                  height={30}
+                  appearance='primary'
+                  className={cx(
+                    styles['arrow-left'],
+                    !canScrollLeft && styles.none
+                  )}
+                  disabled={!canScrollLeft}
+                  onClick={() => scrollContainerBy(-115)}
+                >
+                  <ArrowDownSmallIcon />
+                </Button>
+                <Button
+                  width={30}
+                  height={30}
+                  appearance='primary'
+                  className={cx(
+                    styles['arrow-right'],
+                    !canScrollRight && styles.none
+                  )}
+                  disabled={!canScrollRight}
+                  onClick={() => scrollContainerBy(115)}
+                >
+                  <ArrowDownSmallIcon />
+                </Button>
+                <div className={styles.items} ref={containerRef}>
+                  {addendum.map((item) => (
+                    <AddToPizza
+                      key={item.id}
+                      image={item.img}
+                      name={item.name}
+                      price={item.price}
+                    />
+                  ))}
+                </div>
               </div>
               <div className={styles.add}>
                 <Title level='4'>Итого: 379 ₽</Title>

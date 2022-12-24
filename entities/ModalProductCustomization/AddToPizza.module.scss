@@ -3,6 +3,8 @@
 	text-align: center;
 	font-family: Inter, sans-serif;
 	scroll-snap-align: start;
+	display: flex;
+	flex-direction: column;
 
 	.addendum-item {
 		width: 105px;
@@ -36,6 +38,10 @@
 		svg {
 			color: var(--primary);
 		}
+	}
+
+	.name {
+		flex-grow: 1;
 	}
 
 	.price {
