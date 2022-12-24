@@ -19,6 +19,10 @@ import cheese from './cheese.png';
 import cholapenos from './cholapenos.png';
 import pepperoni from './peperoni.png';
 import ham from './ham.png';
+import mushrooms from './mushrooms.png';
+import tomato from './tomato.png';
+import pickles from './pickles.png';
+import crispyBacon from './crispy-bacon.png';
 import { useScrollAdditions } from './useScrollAdditions';
 
 type ModalProductCustomizationProps = {
@@ -58,6 +62,30 @@ const addendum = [
     name: 'Ветчина',
     img: ham,
     price: '79 ₽',
+  },
+  {
+    id: 5,
+    name: 'Шампиньоны',
+    img: mushrooms,
+    price: '59 ₽',
+  },
+  {
+    id: 6,
+    name: 'Маринованные огурчики',
+    img: pickles,
+    price: '59 ₽',
+  },
+  {
+    id: 7,
+    name: 'Хрустящий бекон',
+    img: crispyBacon,
+    price: '79 ₽',
+  },
+  {
+    id: 8,
+    name: 'Свежие томаты',
+    img: tomato,
+    price: '59 ₽',
   },
 ];
 
