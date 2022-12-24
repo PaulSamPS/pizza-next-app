@@ -16,6 +16,8 @@ import { AddToPizza } from './AddToPizza';
 import mozzarella from './mozarella.png';
 import cheese from './cheese.png';
 import cholapenos from './cholapenos.png';
+import pepperoni from './peperoni.png';
+import ham from './ham.png';
 
 type ModalProductCustomizationProps = {
   setModal: (modal: boolean) => void;
@@ -42,6 +44,18 @@ const addendum = [
     name: 'Острый холапеньо',
     img: cholapenos,
     price: '70 ₽',
+  },
+  {
+    id: 3,
+    name: 'Пикантная пепперони',
+    img: pepperoni,
+    price: '79 ₽',
+  },
+  {
+    id: 4,
+    name: 'Ветчина',
+    img: ham,
+    price: '79 ₽',
   },
 ];
 
