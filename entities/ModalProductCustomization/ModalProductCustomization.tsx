@@ -3,7 +3,7 @@ import { Badge, Button, Icon, ModalOverlay, Tab } from '@components/Blocks';
 import { motion } from 'framer-motion';
 import { CloseIcon32 } from '@helpers/icons/32';
 import { Text, Title } from '@components/Typography';
-import { StaticImageData } from 'next/image';
+import { IProduct } from '@types';
 import styles from './ModalProductCustomization.module.scss';
 import { PizzaImage } from './PizzaImage';
 import mozzarella from './mozarella.png';
@@ -21,20 +21,10 @@ import { ModalProductCustomizationDescription } from './ModalProductCustomizatio
 import { ModalProductCustomizationAdditions } from './ModalProductCustomizationAdditions';
 import { useSelectSize } from './useSelectSize';
 
-type ProductType = {
-  id: number;
-  badge: string | null;
-  name: string;
-  description: string;
-  price: number;
-  image: { regular: StaticImageData; slim: StaticImageData };
-  promotion: boolean;
-};
-
 type ModalProductCustomizationProps = {
   setModal: (modal: boolean) => void;
   modal: boolean;
-  product: ProductType;
+  product: IProduct;
 };
 
 const tabs = ['Традиционное', 'Тонкое'];
@@ -105,7 +95,12 @@ export const ModalProductCustomization = ({
   const [dough, setDough] = React.useState<string>('Традиционное');
   const { containerRef, scrollContainerBy, canScrollLeft, canScrollRight } =
     useScrollAdditions();
-  const { currentSize } = useSelectSize(pizzaSize);
+  const { currentSize, sizeIndex } = useSelectSize(pizzaSize);
+
+  const weight =
+    dough === 'Традиционное'
+      ? product.weight[sizeIndex]
+      : product.weightSlim[sizeIndex];
 
   const closeModal = () => {
     if (setModal) {
@@ -150,6 +145,8 @@ export const ModalProductCustomization = ({
             <ModalProductCustomizationDescription
               pizzaSize={pizzaSize}
               dough={dough}
+              desc={product.description}
+              weight={weight}
             />
             <div className={styles.addendum}>
               <Tab

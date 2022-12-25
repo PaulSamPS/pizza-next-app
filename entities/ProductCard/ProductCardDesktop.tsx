@@ -1,22 +1,13 @@
 import React from 'react';
 import { Button, Card, Badge } from '@components/Blocks';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import { Paragraph, Title } from '@components/Typography';
 import { ModalProductCustomization } from '@entities';
+import { IProduct } from '@types';
 import desktop from './styles/desktop.module.scss';
 
-type ProductType = {
-  id: number;
-  badge: string | null;
-  name: string;
-  description: string;
-  price: number;
-  image: { regular: StaticImageData; slim: StaticImageData };
-  promotion: boolean;
-};
-
 type Product = {
-  product: ProductType;
+  product: IProduct;
 };
 
 export const ProductCardDesktop = ({ product }: Product) => {

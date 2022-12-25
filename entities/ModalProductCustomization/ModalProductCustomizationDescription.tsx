@@ -5,18 +5,20 @@ import styles from './ModalProductCustomizationDescription.module.scss';
 type ModalProductCustomizationDescriptionProps = {
   pizzaSize: string;
   dough: string;
+  weight: string;
+  desc: string;
 };
 
 export const ModalProductCustomizationDescription = ({
   dough,
   pizzaSize,
+  weight,
+  desc,
 }: ModalProductCustomizationDescriptionProps) => (
   <div className={styles.description}>
     <Text level='l2' className={styles.info}>
-      {`${pizzaSize}, ${dough.toLowerCase()} тесто, 330 г`}
+      {`${pizzaSize}, ${dough.toLowerCase()} тесто, ${weight}`}
     </Text>
-    <Paragraph>
-      Моцарелла, сыры чеддер и пармезан, фирменный соус альфредо
-    </Paragraph>
+    <Paragraph>{desc}</Paragraph>
   </div>
 );
