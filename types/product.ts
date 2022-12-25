@@ -10,4 +10,6 @@ export interface IProduct {
   promotion: boolean;
   weight: string[];
   weightSlim: string[];
+  size: string[];
+  dough: string[];
 }

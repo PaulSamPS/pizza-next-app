@@ -15,6 +15,8 @@ export const products = [
     promotion: true,
     weight: ['400 г', '610 г', '820 г'],
     weightSlim: ['300 г', '500 г', '700 г'],
+    dough: ['Традиционное', 'Тонкое'],
+    size: ['25 см', '30 см', '35 см'],
   },
   {
     id: 1,
@@ -26,5 +28,7 @@ export const products = [
     promotion: false,
     weight: ['330 г', '490 г', '670 г'],
     weightSlim: ['230 г', '390 г', '550 г'],
+    dough: ['Традиционное', 'Тонкое'],
+    size: ['25 см', '30 см', '35 см'],
   },
 ];

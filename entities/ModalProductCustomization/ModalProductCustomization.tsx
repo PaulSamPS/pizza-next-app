@@ -4,22 +4,14 @@ import { motion } from 'framer-motion';
 import { CloseIcon32 } from '@helpers/icons/32';
 import { Text, Title } from '@components/Typography';
 import { IProduct } from '@types';
+import { additionAdapter } from '@packages/adapter/additionAdapter';
 import styles from './ModalProductCustomization.module.scss';
 import { PizzaImage } from './PizzaImage';
-import mozzarella from './mozarella.png';
-import cheese from './cheese.png';
-import cholapenos from './cholapenos.png';
-import pepperoni from './peperoni.png';
-import ham from './ham.png';
-import mushrooms from './mushrooms.png';
-import tomato from './tomato.png';
-import pickles from './pickles.png';
-import crispyBacon from './crispy-bacon.png';
 import { useScrollAdditions } from './useScrollAdditions';
 import { ModalProductCustomizationTitle } from './ModalProductCustomizationTitle';
 import { ModalProductCustomizationDescription } from './ModalProductCustomizationDescription';
 import { ModalProductCustomizationAdditions } from './ModalProductCustomizationAdditions';
-import { useSelectSize } from './useSelectSize';
+import { useModalProductCustomization } from './useModalProductCustomization';
 
 type ModalProductCustomizationProps = {
   setModal: (modal: boolean) => void;
@@ -27,80 +19,26 @@ type ModalProductCustomizationProps = {
   product: IProduct;
 };
 
-const tabs = ['Традиционное', 'Тонкое'];
-const sizes = ['25 см', '30 см', '35 см'];
-const additions = [
-  {
-    id: 0,
-    name: 'Пармезан и чеддер',
-    img: cheese,
-    price: '99 ₽',
-  },
-  {
-    id: 1,
-    name: 'Сливочная моцарелла',
-    img: mozzarella,
-    price: '99 ₽',
-  },
-  {
-    id: 2,
-    name: 'Острый холапеньо',
-    img: cholapenos,
-    price: '70 ₽',
-  },
-  {
-    id: 3,
-    name: 'Пикантная пепперони',
-    img: pepperoni,
-    price: '79 ₽',
-  },
-  {
-    id: 4,
-    name: 'Ветчина',
-    img: ham,
-    price: '79 ₽',
-  },
-  {
-    id: 5,
-    name: 'Шампиньоны',
-    img: mushrooms,
-    price: '59 ₽',
-  },
-  {
-    id: 6,
-    name: 'Маринованные огурчики',
-    img: pickles,
-    price: '59 ₽',
-  },
-  {
-    id: 7,
-    name: 'Хрустящий бекон',
-    img: crispyBacon,
-    price: '79 ₽',
-  },
-  {
-    id: 8,
-    name: 'Свежие томаты',
-    img: tomato,
-    price: '59 ₽',
-  },
-];
-
 export const ModalProductCustomization = ({
   setModal,
   modal,
   product,
 }: ModalProductCustomizationProps) => {
-  const [pizzaSize, setPizzaSize] = React.useState<string>('25 см');
-  const [dough, setDough] = React.useState<string>('Традиционное');
   const { containerRef, scrollContainerBy, canScrollLeft, canScrollRight } =
     useScrollAdditions();
-  const { currentSize, sizeIndex } = useSelectSize(pizzaSize);
-
-  const weight =
-    dough === 'Традиционное'
-      ? product.weight[sizeIndex]
-      : product.weightSlim[sizeIndex];
+  const {
+    setPizzaSize,
+    currentSize,
+    currentWeight,
+    setDough,
+    pizzaSize,
+    dough,
+    sizeIndex,
+  } = useModalProductCustomization({
+    weight: product.weight,
+    weightSlim: product.weightSlim,
+  });
+  const additions = additionAdapter();
 
   const closeModal = () => {
     if (setModal) {
@@ -146,17 +84,17 @@ export const ModalProductCustomization = ({
               pizzaSize={pizzaSize}
               dough={dough}
               desc={product.description}
-              weight={weight}
+              weight={currentWeight}
             />
             <div className={styles.addendum}>
               <Tab
-                arr={tabs}
+                arr={product.dough}
                 currentValue={dough}
                 className={styles.dough}
                 currentDough={setDough}
               />
               <Tab
-                arr={sizes}
+                arr={product.size}
                 currentValue={pizzaSize}
                 className={styles.sizes}
                 currentSize={setPizzaSize}
