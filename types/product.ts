@@ -5,7 +5,7 @@ export interface IProduct {
   badge: string | null;
   name: string;
   description: string;
-  price: number;
+  price: number[];
   image: { regular: StaticImageData; slim: StaticImageData };
   promotion: boolean;
   weight: string[];

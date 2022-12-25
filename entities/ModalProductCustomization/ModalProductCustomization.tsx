@@ -172,7 +172,7 @@ export const ModalProductCustomization = ({
                 additions={additions}
               />
               <div className={styles.add}>
-                <Title level='4'>Итого: 379 ₽</Title>
+                <Title level='4'>{`Итого: ${product.price[sizeIndex]} ₽`}</Title>
                 <Button appearance='primary' height={48} width={155}>
                   Добавить
                 </Button>

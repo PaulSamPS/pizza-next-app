@@ -32,7 +32,7 @@ export const ProductCardDesktop = ({ product }: Product) => {
             Выбрать
           </Button>
           <Title level='5' className={desktop.price}>
-            {`от ${product.price} ₽`}
+            {`от ${product.price[0]} ₽`}
           </Title>
         </div>
       </div>
