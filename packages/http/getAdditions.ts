@@ -1,12 +1,12 @@
-import cheese from '../../entities/ModalProductCustomization/cheese.png';
-import mozzarella from '../../entities/ModalProductCustomization/mozarella.png';
-import cholapenos from '../../entities/ModalProductCustomization/cholapenos.png';
-import pepperoni from '../../entities/ModalProductCustomization/peperoni.png';
-import ham from '../../entities/ModalProductCustomization/ham.png';
-import mushrooms from '../../entities/ModalProductCustomization/mushrooms.png';
-import pickles from '../../entities/ModalProductCustomization/pickles.png';
-import crispyBacon from '../../entities/ModalProductCustomization/crispy-bacon.png';
-import tomato from '../../entities/ModalProductCustomization/tomato.png';
+import cheese from './assets/additions/cheese.png';
+import mozzarella from './assets/additions/mozarella.png';
+import cholapenos from './assets/additions/cholapenos.png';
+import pepperoni from './assets/additions/peperoni.png';
+import ham from './assets/additions/ham.png';
+import mushrooms from './assets/additions/mushrooms.png';
+import pickles from './assets/additions/pickles.png';
+import crispyBacon from './assets/additions/crispy-bacon.png';
+import tomato from './assets/additions/tomato.png';
 
 export const additions = [
   {

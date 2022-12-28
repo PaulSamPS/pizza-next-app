@@ -1,7 +1,7 @@
-import pizza1 from '../../entities/ProductCard/pizza2.webp';
-import pizza1Slim from '../../entities/ProductCard/pizza2Slim.webp';
-import pizza2 from '../../entities/ProductCard/product.webp';
-import pizza2Slim from '../../entities/ProductCard/product-slim.webp';
+import pizza1 from './assets/products/pizza2.webp';
+import pizza1Slim from './assets/products/pizza2Slim.webp';
+import pizza2 from './assets/products/product.webp';
+import pizza2Slim from './assets/products/product-slim.webp';
 
 export const products = [
   {

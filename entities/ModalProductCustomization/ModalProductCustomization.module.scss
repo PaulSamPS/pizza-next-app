@@ -23,36 +23,4 @@
 			transform: rotate(90deg);
 		}
 	}
-
-	.card {
-		display: grid;
-		grid-template-columns: repeat(2, 50%);
-		width: 100%;
-
-		.customizations {
-			.addendum {
-				.dough {
-					margin-top: 24px;
-					margin-bottom: 16px;
-				}
-
-				.sizes {
-					margin-bottom: 24px;
-				}
-
-				.subtitle {
-					font-family: Inter, sans-serif;
-					margin-bottom: 16px;
-				}
-
-				.add {
-					display: flex;
-					align-items: center;
-					justify-content: space-between;
-					margin-top: 25px;
-					color: var(--primary);
-				}
-			}
-		}
-	}
 }

@@ -2,9 +2,9 @@ import React from 'react';
 import { Button, Card, Badge } from '@components/Blocks';
 import Image from 'next/image';
 import { Paragraph, Title } from '@components/Typography';
-import { ModalProductCustomization } from '@entities';
 import { IProduct } from '@types';
 import desktop from './styles/desktop.module.scss';
+import { ProductCustomization } from '../ModalProductCustomization/ProductCustomization';
 
 type Product = {
   product: IProduct;
@@ -36,7 +36,7 @@ export const ProductCardDesktop = ({ product }: Product) => {
           </Title>
         </div>
       </div>
-      <ModalProductCustomization
+      <ProductCustomization
         setModal={setModal}
         modal={modal}
         product={product}
