@@ -1,0 +1,18 @@
+.bottom {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px 20px;
+
+	.price {
+		color: var(--primary);
+	}
+
+	.gram {
+		color: var(--gray-text);
+	}
+
+	button {
+		height: 48px;
+	}
+}

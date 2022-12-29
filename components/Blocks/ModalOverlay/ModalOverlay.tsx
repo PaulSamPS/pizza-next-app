@@ -7,6 +7,7 @@ import styles from './ModalOverlay.module.scss';
 interface OverlayingPopupProps extends React.AllHTMLAttributes<HTMLElement> {
   isOpened: boolean;
   position: 'center' | 'left' | 'right';
+  setModal: (modal: boolean) => void;
 }
 
 const Portal = dynamic(() => import('@components/Blocks/Portal'), {
@@ -17,6 +18,7 @@ export const ModalOverlay = ({
   children,
   isOpened,
   position = 'center',
+  setModal,
 }: OverlayingPopupProps) => {
   const variants = {
     open: { opacity: 1 },
@@ -30,6 +32,7 @@ export const ModalOverlay = ({
           <div className={cx(styles.container, styles[position])}>
             <motion.div
               className={styles.overlay}
+              onClick={() => setModal(false)}
               animate={isOpened ? 'open' : 'closed'}
               variants={variants}
               initial='closed'

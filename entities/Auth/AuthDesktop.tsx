@@ -23,7 +23,7 @@ export const AuthDesktop = ({ setModal, modal, children }: ModalAuthProps) => {
   };
 
   return (
-    <ModalOverlay position='center' isOpened={modal}>
+    <ModalOverlay position='center' isOpened={modal} setModal={setModal}>
       <motion.div
         className={styles['modal-auth']}
         animate={modal ? 'open' : 'closed'}

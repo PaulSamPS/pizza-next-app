@@ -27,7 +27,7 @@ export const ModalProductCustomization = ({
   };
 
   return (
-    <ModalOverlay position='center' isOpened={modal}>
+    <ModalOverlay position='center' isOpened={modal} setModal={setModal}>
       <motion.div
         className={styles['modal-product-customizations']}
         animate={modal ? 'open' : 'closed'}

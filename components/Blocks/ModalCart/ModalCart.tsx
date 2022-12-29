@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, ModalOverlay } from '@components/Blocks';
+import { Bottom, Divider, Icon, ModalOverlay } from '@components/Blocks';
 import { motion } from 'framer-motion';
 import { CloseIcon32 } from '@helpers/icons/32';
 import { Title } from '@components/Typography';
@@ -23,7 +23,7 @@ export const ModalCart = ({ setModal, modal, children }: ModalCartProps) => {
   };
 
   return (
-    <ModalOverlay position='right' isOpened={modal}>
+    <ModalOverlay position='right' isOpened={modal} setModal={setModal}>
       <motion.div
         className={styles['modal-cart']}
         animate={modal ? 'open' : 'closed'}
@@ -36,11 +36,17 @@ export const ModalCart = ({ setModal, modal, children }: ModalCartProps) => {
           stiffness: 250,
         }}
       >
-        <Title level='2'>Ваш заказ</Title>
-        <Icon className={styles['close-icon']} onClick={closeModal}>
-          <CloseIcon32 />
-        </Icon>
-        {children}
+        <div className={styles.top}>
+          <Title level='2'>Ваш заказ</Title>
+          <Icon className={styles['close-icon']} onClick={closeModal}>
+            <CloseIcon32 />
+          </Icon>
+        </div>
+        <div className={styles.items}>{children}</div>
+        <div className={styles.bottom}>
+          <Divider />
+          <Bottom totalPrice={555}>Оформить заказ</Bottom>
+        </div>
       </motion.div>
     </ModalOverlay>
   );

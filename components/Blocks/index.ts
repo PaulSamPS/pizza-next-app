@@ -13,3 +13,4 @@ export * from './Badge/Badge';
 export * from './ModalOverlay/ModalOverlay';
 export * from './ModalProductCustomization/ModalProductCustomization';
 export * from './ModalCart/ModalCart';
+export * from './Bottom/Bottom';

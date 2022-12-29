@@ -1,26 +1,42 @@
 .modal-cart {
-  padding: 40px 20px;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--white);
-  position: relative;
-  width: 420px;
-  height: 100%;
-  row-gap: 20px;
+	padding: 40px 20px 0;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--white);
+	position: relative;
+	width: 420px;
+	height: 100%;
 
-  .close-icon {
-    position: absolute;
-    right: 20px;
-    top: 40px;
-    color: var(--gray-text);
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-    transition: 0.2s cubic-bezier(0.8, 0.5, 0.2, 1.4);
-    transition-duration: 500ms;
+	.top {
+		margin-bottom: 20px;
 
-    &:hover {
-      transform: rotate(90deg);
-    }
-  }
+		.close-icon {
+			position: absolute;
+			right: 20px;
+			top: 40px;
+			color: var(--gray-text);
+			width: 32px;
+			height: 32px;
+			cursor: pointer;
+			transition: 0.2s cubic-bezier(0.8, 0.5, 0.2, 1.4);
+			transition-duration: 500ms;
+
+			&:hover {
+				transform: rotate(90deg);
+			}
+		}
+	}
+
+	.items {
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+		row-gap: 20px;
+		max-height: 848px;
+		overflow-y: auto;
+	}
+
+	.bottom {
+		margin-top: 20px;
+	}
 }
