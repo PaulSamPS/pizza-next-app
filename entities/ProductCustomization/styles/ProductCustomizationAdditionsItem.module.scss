@@ -25,13 +25,7 @@
 		}
 	}
 
-	.icon-price {
-		svg {
-			color: var(--primary);
-		}
-	}
-
-	.price-added {
+	.added {
 		color: var(--primary);
 		border: 1px solid var(--primary);
 
@@ -50,14 +44,6 @@
 	}
 }
 
-.added-primary {
+.added-text {
 	color: var(--black);
-}
-
-.added {
-	color: var(--gray-text);
-
-	svg {
-		color: var(--gray-text);
-	}
 }

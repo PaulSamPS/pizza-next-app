@@ -16,9 +16,11 @@ import {
 import { Select } from '@components/Form';
 import { LocationIcon } from '@helpers/icons/20';
 import { Text } from '@components/Typography';
-import { Auth } from '@templates/Auth/Auth';
+import { Auth } from '@templates';
+import { IProduct } from '@types';
 import styles from './styles/HeaderDesktop.module.scss';
 import { Logo, Login } from './components';
+import { TemplateCartModal } from '../../templates/TemplateCartModal/TemplateCartModal';
 
 const city = ['Москва', 'Оренбург'];
 
@@ -65,9 +67,19 @@ const category = [
   },
 ];
 
-export const HeaderDesktop = () => {
+type HeaderDesktopProps = {
+  product: IProduct[];
+};
+
+export const HeaderDesktop = ({ product }: HeaderDesktopProps) => {
   const [isSticky, setIsSticky] = React.useState<boolean>(false);
   const [modal, setModal] = React.useState<boolean>(false);
+  const [modalCart, setModalCart] = React.useState<boolean>(false);
+
+  const handleClick = () => {
+    setIsSticky(!isSticky);
+    setModalCart(!modalCart);
+  };
 
   return (
     <Block>
@@ -100,13 +112,18 @@ export const HeaderDesktop = () => {
             appearance='primary'
             before={<CartIcon />}
             height={40}
-            onClick={() => setIsSticky(!isSticky)}
+            onClick={handleClick}
           >
             22550 ₽
           </Button>
         </div>
       </Container>
       <Divider />
+      <TemplateCartModal
+        product={product}
+        setModal={setModalCart}
+        modal={modalCart}
+      />
     </Block>
   );
 };

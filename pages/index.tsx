@@ -2,7 +2,7 @@ import React from 'react';
 import { GetServerSideProps } from 'next';
 import { getSelectorsByUserAgent } from 'react-device-detect';
 import { withLayout } from '@hoc';
-import { Header } from '@templates/Header';
+import { Header } from '@templates';
 import { Category, ProductCard } from '@entities';
 import { Container } from '@components/Blocks';
 import { productAdapter } from '@packages/adapter/productAdapter';
@@ -11,7 +11,7 @@ import { IProduct } from '@types';
 function Home({ products }: HomeProps) {
   return (
     <>
-      <Header />
+      <Header product={products} />
       <Category />
       <Container>
         <ProductCard products={products} />

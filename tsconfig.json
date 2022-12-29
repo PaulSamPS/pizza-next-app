@@ -21,7 +21,7 @@
       "@lib": ["lib"],
       "@helpers/*": ["helpers/*"],
       "@entities": ["entities"],
-      "@templates/*": ["templates/*"],
+      "@templates": ["templates"],
       "@types": ["types"],
       "@context": ["context"],
       "@hoc": ["hoc"],

@@ -3,14 +3,14 @@ import { Icon } from '@components/Blocks';
 import { PromotionsIcon } from '@helpers/icons/category';
 import { Title } from '@components/Typography';
 import { InfoIcon } from '@helpers/icons/24';
-import styles from './ModalProductCustomizationTitle.module.scss';
+import styles from '../styles/ProductCustomizationTitle.module.scss';
 
 type ModalProductCustomizationTitleProps = {
   name: string;
   promotion: boolean;
 };
 
-export const ModalProductCustomizationTitle = ({
+export const ProductCustomizationTitle = ({
   name,
   promotion,
 }: ModalProductCustomizationTitleProps) => (

@@ -4,7 +4,7 @@ import { Button, Icon } from '@components/Blocks';
 import { DoneIcon } from '@helpers/icons/addendum';
 import { Text } from '@components/Typography';
 import Image, { StaticImageData } from 'next/image';
-import styles from './AddToPizza.module.scss';
+import styles from '../styles/ProductCustomizationAdditionsItem.module.scss';
 
 type AddToPizzaProps = {
   price: string;
@@ -12,22 +12,20 @@ type AddToPizzaProps = {
   image: StaticImageData;
 };
 
-export const AddToPizza = ({ price, image, name }: AddToPizzaProps) => {
+export const ProductCustomizationAdditionsItem = ({
+  price,
+  image,
+  name,
+}: AddToPizzaProps) => {
   const [additionItem, setAdditionItem] = React.useState<boolean>(false);
 
   return (
-    <div
-      className={cx(
-        styles['addendum-card'],
-        additionItem && price ? styles['added-primary'] : styles.added
-      )}
-    >
+    <div className={cx(styles['addendum-card'], additionItem && styles.added)}>
       <Button
         appearance='outline-gray'
         className={cx(
           styles['addendum-item'],
-          price && additionItem && styles['price-added'],
-          price && styles['icon-price']
+          additionItem && styles['added-text']
         )}
         onClick={() => setAdditionItem(!additionItem)}
       >

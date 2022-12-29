@@ -3,8 +3,8 @@ import { Button } from '@components/Blocks';
 import cx from 'clsx';
 import { ArrowDownSmallIcon } from '@helpers/icons/16';
 import { StaticImageData } from 'next/image';
-import styles from './ModalProductCustomizationAdditions.module.scss';
-import { AddToPizza } from './AddToPizza';
+import styles from '../styles/ProductCustomizationAdditionsList.module.scss';
+import { ProductCustomizationAdditionsItem } from './ProductCustomizationAdditionsItem';
 
 type Additions = {
   id: number;
@@ -21,7 +21,7 @@ type ModalProductCustomizationAdditionsProps = {
   additions: Additions[];
 };
 
-export const ModalProductCustomizationAdditions = ({
+export const ProductCustomizationAdditionsList = ({
   containerRef,
   scrollContainerBy,
   canScrollRight,
@@ -51,7 +51,7 @@ export const ModalProductCustomizationAdditions = ({
     </Button>
     <div className={styles.items} ref={containerRef}>
       {additions.map((item) => (
-        <AddToPizza
+        <ProductCustomizationAdditionsItem
           key={item.id}
           image={item.img}
           name={item.name}
