@@ -6,7 +6,8 @@
 	img {
 		padding-left: 15px;
 		object-fit: contain;
-		transition: all ease-out .2s;
+		transition: all ease-out 0.2s;
+		cursor: pointer;
 
 		&:hover {
 			transform: translateY(3%);

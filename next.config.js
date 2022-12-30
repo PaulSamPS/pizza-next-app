@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
   images: {
-    domains: ['localhost:5000'],
+    domains: ['localhost'],
   },
   webpack(config, options) {
     config.module.rules.push({

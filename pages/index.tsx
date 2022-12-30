@@ -5,8 +5,8 @@ import { withLayout } from '@hoc';
 import { Header } from '@templates';
 import { Category, ProductCard } from '@entities';
 import { Container } from '@components/Blocks';
-import { productAdapter } from '@packages/adapter/productAdapter';
 import { IProduct } from '@types';
+import { product } from '@packages/http/getProducts';
 
 function Home({ products }: HomeProps) {
   return (
@@ -24,9 +24,9 @@ export default withLayout(Home);
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const userAgent = req.headers['user-agent'];
-  const products = productAdapter();
-
+  const products = await product();
   const { isDesktop } = getSelectorsByUserAgent(userAgent!);
+
   return {
     props: { isDesktop, products },
   };

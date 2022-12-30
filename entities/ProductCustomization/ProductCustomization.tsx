@@ -31,7 +31,6 @@ export const ProductCustomization = ({
     sizeIndex,
   } = useModalProductCustomization({
     weight: product.weight,
-    weightSlim: product.weightSlim,
   });
   const additions = additionAdapter();
 
@@ -41,7 +40,8 @@ export const ProductCustomization = ({
       <ProductCustomizationImage
         pizzaSize={currentSize}
         dough={dough}
-        image={product.image}
+        image={product.img}
+        name={product.name}
       />
       <div className={styles.customizations}>
         <ProductCustomizationTitle

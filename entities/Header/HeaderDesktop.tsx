@@ -16,11 +16,12 @@ import {
 import { Select } from '@components/Form';
 import { LocationIcon } from '@helpers/icons/20';
 import { Text } from '@components/Typography';
-import { Auth } from '@templates';
+import { Auth, TemplateCartModal } from '@templates';
 import { IProduct } from '@types';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import styles from './styles/HeaderDesktop.module.scss';
 import { Logo, Login } from './components';
-import { TemplateCartModal } from '../../templates/TemplateCartModal/TemplateCartModal';
 
 const city = ['Москва', 'Оренбург'];
 
@@ -73,8 +74,8 @@ type HeaderDesktopProps = {
 
 export const HeaderDesktop = ({ product }: HeaderDesktopProps) => {
   const [isSticky, setIsSticky] = React.useState<boolean>(false);
-  const [modal, setModal] = React.useState<boolean>(false);
   const [modalCart, setModalCart] = React.useState<boolean>(false);
+  const router = useRouter();
 
   const handleClick = () => {
     setIsSticky(!isSticky);
@@ -99,8 +100,13 @@ export const HeaderDesktop = ({ product }: HeaderDesktopProps) => {
               <b> 00:24:19</b>
             </Text>
           </div>
-          <Login setModal={setModal} />
-          <Auth isOpened={modal} setIsOpened={setModal} />
+          <Link href='/?auth=login'>
+            <Login setModal={() => router.push('/')} />
+          </Link>
+          <Auth
+            isOpened={!!router.query.auth}
+            setIsOpened={() => router.push('/')}
+          />
         </div>
       </Container>
       <Divider />

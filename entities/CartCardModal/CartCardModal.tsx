@@ -11,7 +11,12 @@ type CartCardModalProps = {
 
 export const CartCardModal = ({ product }: CartCardModalProps) => (
   <Card className={styles['cart-card-modal']}>
-    <Image src={product.image.regular} alt='pizza' />
+    <Image
+      src={`http://localhost:5000/product/${product.name}/${product.img.regular}`}
+      alt='pizza'
+      width={94}
+      height={94}
+    />
     <div className={styles.info}>
       <Text level='l2' weight='w1' className={styles.name}>
         {product.name}
