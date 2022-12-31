@@ -22,8 +22,8 @@ export const ModalProductCustomization = ({
   };
 
   const variantsModal = {
-    open: { opacity: 1, y: 0 },
-    closed: { opacity: 0, y: '-100%' },
+    open: { opacity: 1 },
+    closed: { opacity: 0 },
   };
 
   return (
@@ -35,9 +35,7 @@ export const ModalProductCustomization = ({
         initial='closed'
         exit='closed'
         transition={{
-          damping: 20,
-          type: 'spring',
-          stiffness: 250,
+          duration: 0.4,
         }}
       >
         <Icon className={styles['close-icon']} onClick={closeModal}>

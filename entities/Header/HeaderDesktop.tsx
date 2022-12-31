@@ -74,13 +74,7 @@ type HeaderDesktopProps = {
 
 export const HeaderDesktop = ({ product }: HeaderDesktopProps) => {
   const [isSticky, setIsSticky] = React.useState<boolean>(false);
-  const [modalCart, setModalCart] = React.useState<boolean>(false);
   const router = useRouter();
-
-  const handleClick = () => {
-    setIsSticky(!isSticky);
-    setModalCart(!modalCart);
-  };
 
   return (
     <Block>
@@ -114,21 +108,23 @@ export const HeaderDesktop = ({ product }: HeaderDesktopProps) => {
         <div className={cx(styles.header, styles.bot)}>
           <Logo />
           {isSticky && <CategoryHeader category={category} />}
-          <Button
-            appearance='primary'
-            before={<CartIcon />}
-            height={40}
-            onClick={handleClick}
-          >
-            22550 ₽
-          </Button>
+          <Link href='/?basket=modal'>
+            <Button
+              appearance='primary'
+              before={<CartIcon />}
+              height={40}
+              onClick={() => setIsSticky(true)}
+            >
+              22550 ₽
+            </Button>
+          </Link>
         </div>
       </Container>
       <Divider />
       <TemplateCartModal
+        setModal={() => router.push('/')}
+        modal={!!router.query.basket}
         product={product}
-        setModal={setModalCart}
-        modal={modalCart}
       />
     </Block>
   );

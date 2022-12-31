@@ -31,9 +31,7 @@ export const ModalCart = ({ setModal, modal, children }: ModalCartProps) => {
         initial='closed'
         exit='closed'
         transition={{
-          damping: 20,
-          type: 'spring',
-          stiffness: 250,
+          duration: 0.3,
         }}
       >
         <div className={styles.top}>

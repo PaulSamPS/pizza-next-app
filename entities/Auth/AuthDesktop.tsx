@@ -18,8 +18,8 @@ export const AuthDesktop = ({ setModal, modal, children }: ModalAuthProps) => {
   };
 
   const variantsModal = {
-    open: { opacity: 1, y: 0 },
-    closed: { opacity: 0, y: '-100%' },
+    open: { opacity: 1 },
+    closed: { opacity: 0 },
   };
 
   return (
@@ -31,9 +31,7 @@ export const AuthDesktop = ({ setModal, modal, children }: ModalAuthProps) => {
         initial='closed'
         exit='closed'
         transition={{
-          damping: 20,
-          type: 'spring',
-          stiffness: 250,
+          duration: 0.3,
         }}
       >
         <Icon className={styles['close-icon']} onClick={closeModal}>
