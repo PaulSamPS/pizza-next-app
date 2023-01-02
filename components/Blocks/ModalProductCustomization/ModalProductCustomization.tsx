@@ -1,48 +1,33 @@
-import React from 'react';
-import { Icon, ModalOverlay } from '@components/Blocks';
-import { motion } from 'framer-motion';
-import { CloseIcon32 } from '@helpers/icons/32';
-import styles from './ModalProductCustomization.module.scss';
+import React, { useContext } from 'react';
+import { DeviceContext } from '@context';
+import {
+  ModalProductCustomizationDesktop,
+  ModalProductCustomizationMobile,
+} from '@components/Blocks';
 
-interface ModalProductCustomizationProps
-  extends React.AllHTMLAttributes<HTMLDivElement> {
-  setModal: (modal: boolean) => void;
+type ModalProductCustomizationProps = {
+  setModal: () => void;
   modal: boolean;
-}
-
+  children: React.ReactNode;
+};
 export const ModalProductCustomization = ({
   setModal,
   modal,
   children,
 }: ModalProductCustomizationProps) => {
-  const closeModal = () => {
-    if (setModal) {
-      setModal(false);
-    }
-  };
+  const { isDesktop } = useContext(DeviceContext);
 
-  const variantsModal = {
-    open: { opacity: 1 },
-    closed: { opacity: 0 },
-  };
+  if (isDesktop) {
+    return (
+      <ModalProductCustomizationDesktop setModal={setModal} modal={modal}>
+        {children}
+      </ModalProductCustomizationDesktop>
+    );
+  }
 
   return (
-    <ModalOverlay position='center' isOpened={modal} setModal={setModal}>
-      <motion.div
-        className={styles['modal-product-customizations']}
-        animate={modal ? 'open' : 'closed'}
-        variants={variantsModal}
-        initial='closed'
-        exit='closed'
-        transition={{
-          duration: 0.4,
-        }}
-      >
-        <Icon className={styles['close-icon']} onClick={closeModal}>
-          <CloseIcon32 />
-        </Icon>
-        {children}
-      </motion.div>
-    </ModalOverlay>
+    <ModalProductCustomizationMobile setModal={setModal} modal={modal}>
+      {children}
+    </ModalProductCustomizationMobile>
   );
 };

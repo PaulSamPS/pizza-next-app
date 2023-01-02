@@ -4,7 +4,7 @@ import { CartCardModal } from '@entities';
 import { IProduct } from '@types';
 
 type TemplateCartModalProps = {
-  setModal: (modal: boolean) => void;
+  setModal: () => void;
   modal: boolean;
   product: IProduct[];
 };

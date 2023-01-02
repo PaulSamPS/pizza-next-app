@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'clsx';
 import { LargeSizeIcon, MiddleSizeIcon } from '@helpers/icons/sizes';
 import Image from 'next/image';
-import styles from '../styles/ProductCustomizationImage.module.scss';
+import styles from '../styles/ProductCustomizationImageDesktop.module.scss';
 
 type PizzaImageProps = {
   pizzaSize: string;
@@ -11,7 +11,7 @@ type PizzaImageProps = {
   name: string;
 };
 
-export const ProductCustomizationImage = ({
+export const ProductCustomizationImageDesktop = ({
   pizzaSize,
   dough,
   image,

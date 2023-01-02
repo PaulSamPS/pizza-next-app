@@ -1,19 +1,22 @@
 import React from 'react';
 import { ModalProductCustomization } from '@components/Blocks';
 import { ProductCustomization } from '@entities';
-import { IProduct } from '@types';
+import { useSelector } from 'react-redux';
+import { productModalState } from '../../store/selector/selector';
 
 type TemplateProductCustomizationProps = {
-  product: IProduct;
-  setModal: (modal: boolean) => void;
+  setModal: () => void;
   modal: boolean;
 };
 export const TemplateProductCustomization = ({
-  product,
   setModal,
   modal,
-}: TemplateProductCustomizationProps) => (
-  <ModalProductCustomization modal={modal} setModal={setModal}>
-    <ProductCustomization product={product} />
-  </ModalProductCustomization>
-);
+}: TemplateProductCustomizationProps) => {
+  const { product } = useSelector(productModalState);
+
+  return (
+    <ModalProductCustomization modal={modal} setModal={setModal}>
+      {product && <ProductCustomization product={product} />}
+    </ModalProductCustomization>
+  );
+};

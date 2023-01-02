@@ -12,5 +12,7 @@ export * from './Icon/Icon';
 export * from './Badge/Badge';
 export * from './ModalOverlay/ModalOverlay';
 export * from './ModalProductCustomization/ModalProductCustomization';
+export * from './ModalProductCustomization/ModalProductCustomizationDesktop';
+export * from './ModalProductCustomization/ModalProductCustomizationMobile';
 export * from './ModalCart/ModalCart';
 export * from './Bottom/Bottom';
