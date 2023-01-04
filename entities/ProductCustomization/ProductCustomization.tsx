@@ -13,8 +13,6 @@ export const ProductCustomization = ({
 }: ProductCustomizationProps) => {
   const { isDesktop } = React.useContext(DeviceContext);
 
-  React.useEffect(() => {}, []);
-
   if (isDesktop) {
     return <ProductCustomizationDesktop product={product} />;
   }

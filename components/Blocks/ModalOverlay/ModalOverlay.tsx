@@ -8,7 +8,6 @@ interface OverlayingPopupProps extends React.AllHTMLAttributes<HTMLElement> {
   isOpened: boolean;
   position: 'center' | 'left' | 'right' | 'bottom';
   setModal: () => void;
-  opacity?: number;
 }
 
 const Portal = dynamic(() => import('@components/Blocks/Portal'), {
@@ -20,10 +19,9 @@ export const ModalOverlay = ({
   isOpened,
   position = 'center',
   setModal,
-  opacity,
 }: OverlayingPopupProps) => {
   const variants = {
-    open: { opacity: opacity ? 1 - opacity : 1 },
+    open: { opacity: 1 },
     closed: { opacity: 0 },
   };
 

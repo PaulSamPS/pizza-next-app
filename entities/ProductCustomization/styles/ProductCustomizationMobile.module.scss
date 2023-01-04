@@ -3,4 +3,44 @@
 	display: flex;
 	align-items: center;
 	flex-direction: column;
+	overflow-y: auto;
+	height: 100%;
+	padding: 0 20px;
+
+	.close-icon {
+		align-self: flex-start;
+		color: var(--gray-text);
+		padding-top: 20px;
+		width: 32px;
+		height: 32px;
+	}
+
+	.customizations {
+		width: 100%;
+
+		.addendum {
+			.dough {
+				margin-top: 24px;
+				margin-bottom: 16px;
+			}
+
+			.sizes {
+				margin-bottom: 24px;
+			}
+
+			.subtitle {
+				font-family: Inter, sans-serif;
+				margin-bottom: 16px;
+			}
+
+			.add {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				margin-top: 25px;
+				color: var(--primary);
+				margin-bottom: 20px;
+			}
+		}
+	}
 }

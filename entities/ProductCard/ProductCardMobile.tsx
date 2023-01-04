@@ -25,7 +25,9 @@ export const ProductCardMobile = ({ product }: ProductCardMobileProps) => (
       </Title>
       <Paragraph className={mobile.text}>{product.description}</Paragraph>
       <div className={mobile.bottom}>
-        <Link href={`/?${product.type}=${product.pathname}`}>
+        <Link
+          href={{ pathname: '/', query: `${product.type}=${product.pathname}` }}
+        >
           <Button appearance='light-primary'>от 399 ₽</Button>
         </Link>
       </div>
