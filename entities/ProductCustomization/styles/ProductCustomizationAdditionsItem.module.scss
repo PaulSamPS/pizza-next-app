@@ -5,6 +5,7 @@
 	scroll-snap-align: start;
 	display: flex;
 	flex-direction: column;
+	color: var(--gray-text);
 
 	.addendum-item {
 		width: 105px;
@@ -24,6 +25,7 @@
 			top: 8px;
 		}
 	}
+
 
 	.added {
 		color: var(--primary);

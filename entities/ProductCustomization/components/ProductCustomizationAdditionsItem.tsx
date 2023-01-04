@@ -20,13 +20,10 @@ export const ProductCustomizationAdditionsItem = ({
   const [additionItem, setAdditionItem] = React.useState<boolean>(false);
 
   return (
-    <div className={cx(styles['addendum-card'], additionItem && styles.added)}>
+    <div className={styles['addendum-card']}>
       <Button
         appearance='outline-gray'
-        className={cx(
-          styles['addendum-item'],
-          additionItem && styles['added-text']
-        )}
+        className={cx(styles['addendum-item'], additionItem && styles.added)}
         onClick={() => setAdditionItem(!additionItem)}
       >
         <Image src={image} alt='сыр' className={styles.image} />
@@ -36,7 +33,10 @@ export const ProductCustomizationAdditionsItem = ({
           </Icon>
         )}
       </Button>
-      <Text level='l1' className={styles.name}>
+      <Text
+        level='l1'
+        className={cx(styles.name, additionItem && styles['added-text'])}
+      >
         {name}
       </Text>
       <Text level='l1' className={styles.price}>
