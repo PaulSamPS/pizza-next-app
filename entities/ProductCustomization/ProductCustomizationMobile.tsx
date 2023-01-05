@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { IProduct } from '@types';
-import { Button, Icon, Tab } from '@components/Blocks';
-import { Text, Title } from '@components/Typography';
+import { Bottom, Icon, Tab } from '@components/Blocks';
+import { Text } from '@components/Typography';
 import { additionAdapter } from '@packages/adapter/additionAdapter';
 import { CloseIcon32 } from '@helpers/icons/32';
 import { useRouter } from 'next/router';
@@ -42,8 +42,8 @@ const ProductCustomizationMobile = ({
             : `http://localhost:5000/product/${product.name}/${product.img.slim}`
         }
         alt={product.name}
-        width={300}
-        height={300}
+        width={250}
+        height={250}
       />
       <div className={styles.customizations}>
         <ProductCustomizationTitle
@@ -79,12 +79,13 @@ const ProductCustomizationMobile = ({
             containerRef={containerRef}
             additions={additions}
           />
-          <div className={styles.add}>
-            <Title level='4'>{`Итого: ${product.price[sizeIndex]} ₽`}</Title>
-            <Button appearance='primary' height={48} width={155}>
-              Добавить
-            </Button>
-          </div>
+          <Bottom
+            totalPrice={product.price[sizeIndex]}
+            buttonHeight={40}
+            buttonWidth={150}
+          >
+            Добавить
+          </Bottom>
         </div>
       </div>
     </div>

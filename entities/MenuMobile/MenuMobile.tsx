@@ -5,6 +5,7 @@ import { Text } from '@components/Typography';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Auth } from '@templates';
 import styles from './MenuMobile.module.scss';
 
 type MenuMobileProps = {
@@ -46,12 +47,15 @@ export const MenuMobile = ({ isOpened }: MenuMobileProps) => {
               bounceStiffness: 2,
             }}
           >
-            <div className={styles.login}>
-              <Icon primary>
-                <AccountIcon />
-              </Icon>
-              <Text level='l3'>Войти в аккаунт</Text>
-            </div>
+            <Link href='/?auth=login'>
+              <div className={styles.login}>
+                <Icon primary>
+                  <AccountIcon />
+                </Icon>
+                <Text level='l3'>Войти в аккаунт</Text>
+              </div>
+            </Link>
+            <Auth />
             <Divider />
             <div className={styles.list}>
               {another.map((a) => (

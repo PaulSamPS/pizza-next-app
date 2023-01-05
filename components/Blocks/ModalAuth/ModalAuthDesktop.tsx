@@ -1,8 +1,8 @@
 import React from 'react';
 import { Icon, ModalOverlay } from '@components/Blocks';
-import { CloseIcon32 } from '@helpers/icons/32';
 import { motion } from 'framer-motion';
-import styles from './AuthDesktop.module.scss';
+import { CloseIcon32 } from '@helpers/icons/32';
+import styles from './ModalAuthDesktop.module.scss';
 
 type ModalAuthProps = {
   setModal: () => void;
@@ -10,7 +10,11 @@ type ModalAuthProps = {
   children: React.ReactNode;
 };
 
-export const AuthDesktop = ({ setModal, modal, children }: ModalAuthProps) => {
+export const ModalAuthDesktop = ({
+  setModal,
+  modal,
+  children,
+}: ModalAuthProps) => {
   const variantsModal = {
     open: { opacity: 1 },
     closed: { opacity: 0 },

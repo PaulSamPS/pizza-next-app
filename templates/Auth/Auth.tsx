@@ -1,17 +1,14 @@
-import React, { FunctionComponent, useContext } from 'react';
-import { EnterCode, EnterPhone, AuthDesktop, AuthMobile } from '@entities';
-import { DeviceContext, StepContext } from '@context';
+import React, { FunctionComponent } from 'react';
+import { EnterCode, EnterPhone } from '@entities';
+import { StepContext } from '@context';
+import { ModalAuth } from '@components/Blocks/ModalAuth/ModalAuth';
+import { useRouter } from 'next/router';
 
 type StepComponentType = {
   [key: number]: FunctionComponent;
 };
 
-type AuthProps = {
-  isOpened?: boolean;
-  setIsOpened?: (isOpened: boolean) => void;
-};
-
-export const Auth = ({ isOpened, setIsOpened }: AuthProps) => {
+export const Auth = () => {
   const [step, setStep] = React.useState<number>(0);
   const [phone, setPhone] = React.useState<string>('');
   const stepComponents: StepComponentType = {
@@ -19,7 +16,7 @@ export const Auth = ({ isOpened, setIsOpened }: AuthProps) => {
     1: EnterCode,
   };
   const Step = stepComponents[step];
-  const { isDesktop } = useContext(DeviceContext);
+  const router = useRouter();
 
   const nextStep = () => {
     setStep((prev) => prev + 1);
@@ -35,21 +32,11 @@ export const Auth = ({ isOpened, setIsOpened }: AuthProps) => {
     []
   );
 
-  if (isDesktop) {
-    return (
-      <AuthDesktop modal={isOpened!} setModal={setIsOpened!}>
-        <StepContext.Provider value={contextValue}>
-          <Step />
-        </StepContext.Provider>
-      </AuthDesktop>
-    );
-  }
-
   return (
-    <AuthMobile>
+    <ModalAuth setModal={() => router.push('/')} modal={!!router.query.auth}>
       <StepContext.Provider value={contextValue}>
         <Step />
       </StepContext.Provider>
-    </AuthMobile>
+    </ModalAuth>
   );
 };

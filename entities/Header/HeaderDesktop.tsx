@@ -97,10 +97,7 @@ export const HeaderDesktop = ({ product }: HeaderDesktopProps) => {
           <Link href='/?auth=login'>
             <Login setModal={() => router.push('/')} />
           </Link>
-          <Auth
-            isOpened={!!router.query.auth}
-            setIsOpened={() => router.push('/')}
-          />
+          <Auth />
         </div>
       </Container>
       <Divider />

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Badge, Button, Tab } from '@components/Blocks';
-import { Text, Title } from '@components/Typography';
+import { Badge, Bottom, Tab } from '@components/Blocks';
+import { Text } from '@components/Typography';
 import { IProduct } from '@types';
 import { additionAdapter } from '@packages/adapter/additionAdapter';
-import styles from './styles/ProductCustomization.module.scss';
+import styles from './styles/ProductCustomizationDesktop.module.scss';
 import { useModalProductCustomization, useScrollAdditions } from './hooks';
 import {
   ProductCustomizationImageDesktop,
@@ -77,12 +77,9 @@ export const ProductCustomizationDesktop = ({
             containerRef={containerRef}
             additions={additions}
           />
-          <div className={styles.add}>
-            <Title level='4'>{`Итого: ${product.price[sizeIndex]} ₽`}</Title>
-            <Button appearance='primary' height={48} width={155}>
-              Добавить
-            </Button>
-          </div>
+          <Bottom totalPrice={product.price[sizeIndex]} buttonWidth={155}>
+            Добавить
+          </Bottom>
         </div>
       </div>
     </div>
