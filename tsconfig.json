@@ -26,7 +26,8 @@
       "@context": ["context"],
       "@hoc": ["hoc"],
       "@hooks": ["hooks"],
-      "@packages/*": ["packages/*"]
+      "@packages/*": ["packages/*"],
+      "@layout": ["layout"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

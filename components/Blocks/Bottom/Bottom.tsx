@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text } from '@components/Typography';
 import { Button } from '@components/Blocks';
+import cx from 'clsx';
 import styles from './Bottom.module.scss';
 
 interface BottomProps extends React.AllHTMLAttributes<HTMLDivElement> {
@@ -15,8 +16,9 @@ export const Bottom = ({
   children,
   buttonHeight = 48,
   buttonWidth,
+  className,
 }: BottomProps) => (
-  <div className={styles.bottom}>
+  <div className={cx(styles.bottom, className)}>
     <div className={styles.total}>
       <Text className={styles.price} level='l3' weight='w1'>
         {`Итого: ${totalPrice} ₽`}

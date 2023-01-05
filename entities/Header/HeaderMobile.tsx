@@ -4,6 +4,7 @@ import cx from 'clsx';
 import { Select } from '@components/Form';
 import { LocationIcon } from '@helpers/icons/20';
 import { Text } from '@components/Typography';
+import Link from 'next/link';
 import { Logo } from './components';
 import styles from './styles/HeaderMobile.module.scss';
 import { MenuMobile } from '../MenuMobile/MenuMobile';
@@ -33,7 +34,9 @@ export const HeaderMobile = () => {
       <Divider />
       <Container>
         <div className={cx(styles.header, styles.bot)}>
-          <Logo />
+          <Link href='/'>
+            <Logo />
+          </Link>
           <Button
             appearance='transparent'
             type='button'

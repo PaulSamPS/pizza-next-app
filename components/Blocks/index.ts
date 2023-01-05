@@ -16,3 +16,4 @@ export * from './ModalProductCustomization/ModalProductCustomizationDesktop';
 export * from './ModalProductCustomization/ModalProductCustomizationMobile';
 export * from './ModalCart/ModalCart';
 export * from './Bottom/Bottom';
+export * from './BasketButtonMobile/BasketButtonMobile';

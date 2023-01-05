@@ -16,12 +16,13 @@ import {
 import { Select } from '@components/Form';
 import { LocationIcon } from '@helpers/icons/20';
 import { Text } from '@components/Typography';
-import { Auth, TemplateCartModal } from '@templates';
-import { IProduct } from '@types';
+import { Auth } from '@templates';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useAppDispatch } from '@hooks';
 import styles from './styles/HeaderDesktop.module.scss';
 import { Logo, Login } from './components';
+import { setBasketModalIsOpened } from '../../store/slices/basketModal.slice';
 
 const city = ['Москва', 'Оренбург'];
 
@@ -68,13 +69,15 @@ const category = [
   },
 ];
 
-type HeaderDesktopProps = {
-  product: IProduct[];
-};
-
-export const HeaderDesktop = ({ product }: HeaderDesktopProps) => {
+export const HeaderDesktop = () => {
   const [isSticky, setIsSticky] = React.useState<boolean>(false);
+  const dispatch = useAppDispatch();
   const router = useRouter();
+
+  const handleOpenModalCart = () => {
+    dispatch(setBasketModalIsOpened(true));
+    setIsSticky(true);
+  };
 
   return (
     <Block>
@@ -103,26 +106,21 @@ export const HeaderDesktop = ({ product }: HeaderDesktopProps) => {
       <Divider />
       <Container>
         <div className={cx(styles.header, styles.bot)}>
-          <Logo />
-          {isSticky && <CategoryHeader category={category} />}
-          <Link href='/?basket=modal'>
-            <Button
-              appearance='primary'
-              before={<CartIcon />}
-              height={40}
-              onClick={() => setIsSticky(true)}
-            >
-              22550 ₽
-            </Button>
+          <Link href='/'>
+            <Logo />
           </Link>
+          {isSticky && <CategoryHeader category={category} />}
+          <Button
+            appearance='primary'
+            before={<CartIcon />}
+            height={40}
+            onClick={handleOpenModalCart}
+          >
+            22550 ₽
+          </Button>
         </div>
       </Container>
       <Divider />
-      <TemplateCartModal
-        setModal={() => router.push('/')}
-        modal={!!router.query.basket}
-        product={product}
-      />
     </Block>
   );
 };
