@@ -3,14 +3,14 @@ import Image from 'next/image';
 import { Paragraph, Title } from '@components/Typography';
 import { Button, Card } from '@components/Blocks';
 import cx from 'clsx';
-import additional from './additional.jpg';
-import styles from './Additional.module.scss';
+import additional from './addition.jpg';
+import styles from './AdditionCardDesktop.module.scss';
 
 type AdditionalCardProps = {
   description?: boolean;
 };
 
-export const AdditionalCard = ({
+export const AdditionCardDesktop = ({
   description = false,
 }: AdditionalCardProps) => (
   <Card className={styles.additional}>

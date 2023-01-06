@@ -1,8 +1,8 @@
 import { StaticImageData } from 'next/image';
 
 export type AdditionsType = {
-  id: number;
+  id: string;
   name: string;
   img: StaticImageData;
-  price: string;
+  price: number;
 };

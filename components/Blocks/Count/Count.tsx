@@ -5,8 +5,8 @@ import styles from './Count.module.scss';
 
 interface CountProps extends React.AllHTMLAttributes<HTMLDivElement> {
   count: number;
-  decrease: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  increase: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  decrease: () => void;
+  increase: () => void;
 }
 
 export const Count = ({ count, decrease, increase }: CountProps) => (

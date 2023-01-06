@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container } from '@components/Blocks';
 import { Header } from '@entities';
 
 type LayoutProps = {
@@ -9,6 +8,6 @@ type LayoutProps = {
 export const Layout = ({ children }: LayoutProps) => (
   <>
     <Header />
-    <Container>{children}</Container>
+    {children}
   </>
 );

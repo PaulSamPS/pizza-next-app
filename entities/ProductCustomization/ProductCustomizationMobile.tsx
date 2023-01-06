@@ -6,11 +6,12 @@ import { Text } from '@components/Typography';
 import { CloseIcon32 } from '@helpers/icons/32';
 import styles from './styles/ProductCustomizationMobile.module.scss';
 import {
-  ProductCustomizationAdditionsList,
+  ProductCustomizationAdditionsItem,
   ProductCustomizationDescription,
   ProductCustomizationTitle,
 } from './components';
 import { AdditionsType } from '../../types/additions';
+import { AdditionsList } from '../AddionList/AdditionsList';
 
 type ProductCustomizationMobileProps = {
   product: IProduct;
@@ -84,13 +85,22 @@ const ProductCustomizationMobile = ({
         <Text level='l2' weight='w1' className={styles.subtitle}>
           Добавьте в пиццу
         </Text>
-        <ProductCustomizationAdditionsList
+        <AdditionsList
           canScrollLeft={canScrollLeft}
           canScrollRight={canScrollRight}
           scrollContainerBy={scrollContainerBy}
           containerRef={containerRef}
-          additions={additions}
-        />
+          distance={105}
+        >
+          {additions.map((item) => (
+            <ProductCustomizationAdditionsItem
+              key={item.id}
+              image={item.img}
+              name={item.name}
+              price={item.price}
+            />
+          ))}
+        </AdditionsList>
         <Bottom
           totalPrice={product.price[sizeIndex]}
           buttonHeight={40}

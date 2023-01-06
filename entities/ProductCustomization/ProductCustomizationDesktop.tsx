@@ -5,11 +5,12 @@ import { IProduct } from '@types';
 import styles from './styles/ProductCustomizationDesktop.module.scss';
 import {
   ProductCustomizationImageDesktop,
-  ProductCustomizationAdditionsList,
   ProductCustomizationTitle,
   ProductCustomizationDescription,
+  ProductCustomizationAdditionsItem,
 } from './components';
 import { AdditionsType } from '../../types/additions';
+import { AdditionsList } from '../AddionList/AdditionsList';
 
 type ProductCustomizationDesktopProps = {
   product: IProduct;
@@ -77,13 +78,22 @@ export const ProductCustomizationDesktop = ({
         <Text level='l2' weight='w1' className={styles.subtitle}>
           Добавьте в пиццу
         </Text>
-        <ProductCustomizationAdditionsList
+        <AdditionsList
           canScrollLeft={canScrollLeft}
           canScrollRight={canScrollRight}
           scrollContainerBy={scrollContainerBy}
           containerRef={containerRef}
-          additions={additions}
-        />
+          distance={105}
+        >
+          {additions.map((item) => (
+            <ProductCustomizationAdditionsItem
+              key={item.id}
+              image={item.img}
+              name={item.name}
+              price={item.price}
+            />
+          ))}
+        </AdditionsList>
         <Bottom
           totalPrice={product.price[sizeIndex]}
           buttonWidth={155}

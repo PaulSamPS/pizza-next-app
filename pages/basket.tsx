@@ -2,15 +2,26 @@ import React from 'react';
 import { withLayout } from '@hoc';
 import { GetServerSideProps } from 'next';
 import { getSelectorsByUserAgent } from 'react-device-detect';
+import { product } from '@packages/http/getProducts';
+import { wrapper } from '../store/store';
+import { setProducts } from '../store/slices/products.slice';
+import BasketMobile from '../entities/Basket/BasketMobile';
 
-const Basket = () => <div>basket</div>;
+const Basket = () => <BasketMobile />;
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const userAgent = req.headers['user-agent'];
-  const { isDesktop } = getSelectorsByUserAgent(userAgent!);
+export const getServerSideProps: GetServerSideProps =
+  wrapper.getServerSideProps(({ dispatch }) => async ({ req }) => {
+    const userAgent = req.headers['user-agent'];
+    const { isDesktop } = getSelectorsByUserAgent(userAgent!);
+    const products = await product();
 
-  return {
-    props: { isDesktop },
-  };
-};
+    if (products) {
+      dispatch(setProducts(products));
+    }
+
+    return {
+      props: { isDesktop },
+    };
+  });
+
 export default withLayout(Basket);

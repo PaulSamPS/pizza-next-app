@@ -36,6 +36,19 @@
 	}
 }
 
+.label-text {
+	position: absolute;
+	top: -25px;
+	left: 0;
+	color: var(--gray-text);
+	font-size: 12px;
+	font-family: 'Inter Regular', sans-serif;
+}
+
+.text {
+	margin-top: 40px;
+}
+
 .before {
 	input {
 		padding: 14px 60px 14px 42px;

@@ -1,0 +1,30 @@
+.additional {
+	width: 310px;
+	min-width: 310px;
+	font-family: 'Inter Regular', sans-serif;
+	display: flex;
+	align-items: center;
+	column-gap: 12px;
+	padding: 12px;
+	scroll-snap-align: start;
+
+	.info {
+		.name {
+			font-size: 14px;
+			line-height: 24px;
+			margin-bottom: 10px;
+		}
+
+		.price {
+			background-color: var(--light-primary);
+			color: var(--primary);
+			display: inline-block;
+			padding: 7px 16px;
+			border-radius: 6px;
+
+			span {
+				margin-left: 5px;
+			}
+		}
+	}
+}

@@ -13,10 +13,10 @@ export const ProductCard = ({ products, isDesktop }: Products) => (
   <>
     {isDesktop
       ? products.map((item) => (
-          <ProductCardDesktop key={item.id} product={item} />
+        <ProductCardDesktop key={item.id} product={item} />
         ))
       : products.map((item) => (
-          <ProductCardMobile key={item.id} product={item} />
+        <ProductCardMobile key={item.id} product={item} />
         ))}
     <TemplateProductCustomization />
   </>

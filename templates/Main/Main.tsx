@@ -3,7 +3,7 @@ import { Category, ProductCard } from '@entities';
 import { useSelector } from 'react-redux';
 import { DeviceContext } from '@context';
 import { useAppDispatch } from '@hooks';
-import { BasketButtonMobile } from '@components/Blocks';
+import { BasketButtonMobile, Container } from '@components/Blocks';
 import { TemplateCartModal } from '../TemplateCartModal/TemplateCartModal';
 import { basketModalState, productState } from '../../store/selector/selector';
 import { setBasketModalIsOpened } from '../../store/slices/basketModal.slice';
@@ -21,13 +21,15 @@ export const Main = () => {
   return (
     <>
       <Category />
-      <ProductCard products={products} isDesktop={isDesktop} />
-      <TemplateCartModal
-        setModal={handleCloseModalCart}
-        modal={basketModalIsOpened}
-        product={products}
-      />
-      {!isDesktop && <BasketButtonMobile />}
+      <Container>
+        <ProductCard products={products} isDesktop={isDesktop} />
+        <TemplateCartModal
+          setModal={handleCloseModalCart}
+          modal={basketModalIsOpened}
+          product={products}
+        />
+        {!isDesktop && <BasketButtonMobile />}
+      </Container>
     </>
   );
 };

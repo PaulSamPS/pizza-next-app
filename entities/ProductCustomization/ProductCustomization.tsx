@@ -3,9 +3,10 @@ import { DeviceContext } from '@context';
 import { IProduct } from '@types';
 import { additionAdapter } from '@packages/adapter/additionAdapter';
 import { useRouter } from 'next/router';
+import { useScrollAdditions } from '@hooks';
 import { ProductCustomizationDesktop } from './ProductCustomizationDesktop';
 import ProductCustomizationMobile from './ProductCustomizationMobile';
-import { useModalProductCustomization, useScrollAdditions } from './hooks';
+import { useModalProductCustomization } from './hooks';
 
 type ProductCustomizationProps = {
   product: IProduct;

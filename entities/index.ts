@@ -5,4 +5,4 @@ export * from './ProductCard';
 export * from './Auth';
 export * from './Footer';
 export * from './ProductCustomization';
-export * from './CartCardModal/CartCardModal';
+export * from './CartCard/CartCard';

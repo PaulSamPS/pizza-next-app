@@ -7,7 +7,7 @@ import Image, { StaticImageData } from 'next/image';
 import styles from '../styles/ProductCustomizationAdditionsItem.module.scss';
 
 type AddToPizzaProps = {
-  price: string;
+  price: number;
   name: string;
   image: StaticImageData;
 };
