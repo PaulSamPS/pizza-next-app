@@ -4,12 +4,16 @@
 	justify-content: space-between;
 	padding-top: 12px;
 
-	.price {
-		color: var(--primary);
-	}
+	.total {
+		text-align: center;
 
-	.gram {
-		color: var(--gray-text);
+		.price {
+			color: var(--primary);
+		}
+
+		.gram {
+			color: var(--gray-text);
+		}
 	}
 
 	button {

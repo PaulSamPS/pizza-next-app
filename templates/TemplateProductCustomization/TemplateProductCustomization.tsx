@@ -2,20 +2,18 @@ import React from 'react';
 import { ModalProductCustomization } from '@components/Blocks';
 import { ProductCustomization } from '@entities';
 import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import { productModalState } from '../../store/selector/selector';
 
-type TemplateProductCustomizationProps = {
-  setModal: () => void;
-  modal: boolean;
-};
-export const TemplateProductCustomization = ({
-  setModal,
-  modal,
-}: TemplateProductCustomizationProps) => {
+export const TemplateProductCustomization = () => {
   const { product } = useSelector(productModalState);
+  const router = useRouter();
 
   return (
-    <ModalProductCustomization modal={modal} setModal={setModal}>
+    <ModalProductCustomization
+      modal={!!router.query.pizza}
+      setModal={() => router.push('/')}
+    >
       {product && <ProductCustomization product={product} />}
     </ModalProductCustomization>
   );

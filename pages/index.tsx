@@ -26,7 +26,7 @@ export const getServerSideProps: GetServerSideProps =
     dispatch(setProductModal(productModal));
 
     return {
-      props: { isDesktop, products },
+      props: { isDesktop },
     };
   });
 

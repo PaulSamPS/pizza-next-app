@@ -6,7 +6,7 @@ import styles from './Bottom.module.scss';
 
 interface BottomProps extends React.AllHTMLAttributes<HTMLDivElement> {
   totalPrice: number;
-  gram?: string;
+  gram?: string | false;
   buttonHeight?: number;
   buttonWidth?: number;
 }

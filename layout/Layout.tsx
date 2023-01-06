@@ -1,6 +1,6 @@
 import React from 'react';
-import { Header } from '@templates';
 import { Container } from '@components/Blocks';
+import { Header } from '@entities';
 
 type LayoutProps = {
   children: React.ReactNode;

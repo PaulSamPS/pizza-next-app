@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { Category, ProductCard } from '@entities';
 import { useSelector } from 'react-redux';
 import { DeviceContext } from '@context';
-import { useRouter } from 'next/router';
 import { useAppDispatch } from '@hooks';
 import { BasketButtonMobile } from '@components/Blocks';
 import { TemplateCartModal } from '../TemplateCartModal/TemplateCartModal';
@@ -15,8 +14,6 @@ export const Main = () => {
   const { isDesktop } = useContext(DeviceContext);
   const dispatch = useAppDispatch();
 
-  const router = useRouter();
-
   const handleCloseModalCart = () => {
     dispatch(setBasketModalIsOpened(false));
   };
@@ -24,7 +21,7 @@ export const Main = () => {
   return (
     <>
       <Category />
-      <ProductCard products={products} isDesktop={isDesktop} router={router} />
+      <ProductCard products={products} isDesktop={isDesktop} />
       <TemplateCartModal
         setModal={handleCloseModalCart}
         modal={basketModalIsOpened}
