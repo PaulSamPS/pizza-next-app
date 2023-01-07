@@ -40,7 +40,10 @@
 			display: flex;
 			column-gap: 20px;
 
-			.entrance, .level, .apartment-number, .code {
+			.entrance,
+			.level,
+			.apartment-number,
+			.code {
 				width: 50%;
 			}
 		}

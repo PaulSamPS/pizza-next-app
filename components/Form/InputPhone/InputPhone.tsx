@@ -30,8 +30,7 @@ export const InputPhone = ({ values, setValues, name }: InputPhoneProps) => {
         value={values.formattedValue}
         autoComplete='off'
         onValueChange={({ formattedValue, value }) =>
-          setValues({ formattedValue, value })
-        }
+          setValues({ formattedValue, value })}
       />
       <label htmlFor='phone'>{name}</label>
     </div>

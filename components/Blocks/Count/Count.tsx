@@ -15,7 +15,7 @@ export const Count = ({ count, decrease, increase }: CountProps) => (
       appearance='light-primary'
       height={36}
       onClick={decrease}
-      disabled={count <= 0}
+      disabled={count <= 1}
     >
       <MinusIcon />
     </Button>
