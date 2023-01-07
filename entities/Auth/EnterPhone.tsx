@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Button } from '@components/Blocks';
 import { Text, Title } from '@components/Typography';
-import NumberFormat from 'react-number-format';
 import { DeviceContext, StepContext } from '@context';
+import { InputPhone } from '@components/Form';
 import stylesDesktop from './EnterPhoneDesktop.module.scss';
 import stylesMobile from './EnterPhoneMobile.module.scss';
 
@@ -32,19 +32,7 @@ export const EnterPhone = () => {
       <Text level='l2' className={classes.subtitle}>
         Сможете быстро оформлять заказы, использовать бонусы
       </Text>
-      <div className={classes.input}>
-        <NumberFormat
-          name='phone'
-          format='+7 (###) ###-##-##'
-          mask='_'
-          placeholder='+7 (123) 456-78-90'
-          value={values.formattedValue}
-          autoComplete='off'
-          onValueChange={({ formattedValue, value }) =>
-            setValues({ formattedValue, value })}
-        />
-        <label htmlFor='phone'>Номер телефона</label>
-      </div>
+      <InputPhone name='Номер телефона' values={values} setValues={setValues} />
       <Button
         appearance='primary'
         disabled={values.value.length < 10}

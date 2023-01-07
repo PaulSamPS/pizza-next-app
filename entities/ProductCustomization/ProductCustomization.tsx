@@ -48,6 +48,7 @@ export const ProductCustomization = ({
         setPizzaSize={setPizzaSize}
         pizzaSize={pizzaSize}
         currentSize={currentSize}
+        isDesktop={isDesktop}
       />
     );
   }
@@ -67,6 +68,7 @@ export const ProductCustomization = ({
       sizeIndex={sizeIndex}
       setPizzaSize={setPizzaSize}
       pizzaSize={pizzaSize}
+      isDesktop={isDesktop}
     />
   );
 };

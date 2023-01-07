@@ -8,6 +8,7 @@ interface TabProps extends React.AllHTMLAttributes<HTMLElement> {
   currentSize?: (size: string) => void;
   currentDough?: (dough: string) => void;
   currentValue: string;
+  setValue?: (value: string) => void;
 }
 
 export const Tab = ({
@@ -15,6 +16,7 @@ export const Tab = ({
   currentSize,
   currentDough,
   currentValue,
+  setValue,
   className,
 }: TabProps) => {
   const handleClick = (value: string) => {
@@ -23,6 +25,9 @@ export const Tab = ({
     }
     if (currentDough) {
       currentDough(value);
+    }
+    if (setValue) {
+      setValue(value);
     }
   };
 

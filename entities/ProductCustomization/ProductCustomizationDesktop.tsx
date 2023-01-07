@@ -26,6 +26,7 @@ type ProductCustomizationDesktopProps = {
   sizeIndex: number;
   additions: AdditionsType[];
   currentSize: string;
+  isDesktop: boolean;
 };
 
 export const ProductCustomizationDesktop = ({
@@ -42,6 +43,7 @@ export const ProductCustomizationDesktop = ({
   containerRef,
   additions,
   currentSize,
+  isDesktop,
 }: ProductCustomizationDesktopProps) => (
   <div className={styles.card}>
     {product.badge && <Badge top='32px'>{product.badge}</Badge>}
@@ -84,6 +86,7 @@ export const ProductCustomizationDesktop = ({
           scrollContainerBy={scrollContainerBy}
           containerRef={containerRef}
           distance={105}
+          isDesktop={isDesktop}
         >
           {additions.map((item) => (
             <ProductCustomizationAdditionsItem

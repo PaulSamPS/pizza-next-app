@@ -11,10 +11,10 @@
 		align-items: center;
 		justify-content: center;
 		cursor: pointer;
-		background-color: transparent;
 		border: 1px solid var(--line-gray);
 		border-radius: 0;
 		color: var(--black);
+		background-color: var(--white);
 
 		&:first-child {
 			border-radius: 6px 0 0 6px;

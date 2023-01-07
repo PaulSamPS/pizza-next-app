@@ -60,7 +60,8 @@ export const Input = forwardRef(
           before && styles.before,
           after && styles.after,
           error && styles.error,
-          text && styles.text
+          text && styles.text,
+          className
         )}
       >
         {before && beforeItem}
@@ -72,7 +73,7 @@ export const Input = forwardRef(
           name={id}
           placeholder={placeholder}
           autoComplete='off'
-          className={cx(styles['input-field'], className)}
+          className={cx(styles['input-field'])}
           {...restProps}
         />
         {button && buttonItem}

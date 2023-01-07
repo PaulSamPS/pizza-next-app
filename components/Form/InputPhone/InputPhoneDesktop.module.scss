@@ -1,0 +1,32 @@
+.input {
+  position: relative;
+  margin-top: 35px;
+
+  input {
+    border-radius: 6px;
+    border: 1px solid var(--line-gray);
+    color: var(--black);
+    background-color: var(--white);
+    padding: 14px 16px;
+    font-size: 16px;
+    width: 100%;
+    font-family: 'SF Pro Text Regular', sans-serif;
+
+    &::placeholder {
+      color: var(--gray-text);
+      font-size: 16px;
+    }
+
+    &:focus {
+      outline-color: var(--primary);
+    }
+  }
+
+  label {
+    position: absolute;
+    left: 0;
+    top: -20px;
+    font-size: 11px;
+    color: var(--gray-text);
+  }
+}

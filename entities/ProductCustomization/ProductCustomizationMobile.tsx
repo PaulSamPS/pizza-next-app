@@ -27,6 +27,7 @@ type ProductCustomizationMobileProps = {
   sizeIndex: number;
   additions: AdditionsType[];
   navigateToMain: () => void;
+  isDesktop: boolean;
 };
 
 const ProductCustomizationMobile = ({
@@ -43,6 +44,7 @@ const ProductCustomizationMobile = ({
   scrollContainerBy,
   canScrollLeft,
   containerRef,
+  isDesktop,
 }: ProductCustomizationMobileProps) => (
   <div className={styles.card}>
     <Icon className={styles['close-icon']} onClick={navigateToMain}>
@@ -91,6 +93,7 @@ const ProductCustomizationMobile = ({
           scrollContainerBy={scrollContainerBy}
           containerRef={containerRef}
           distance={105}
+          isDesktop={isDesktop}
         >
           {additions.map((item) => (
             <ProductCustomizationAdditionsItem

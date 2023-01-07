@@ -15,4 +15,34 @@
 	.divider {
 		margin-bottom: 20px;
 	}
+
+	.personal-data {
+		margin: 20px 0;
+	}
+
+	.delivery {
+		margin-top: 20px;
+
+		.address {
+			display: flex;
+			column-gap: 20px;
+
+			.street {
+				width: 75%;
+			}
+
+			.house {
+				width: 25%;
+			}
+		}
+
+		.house-info {
+			display: flex;
+			column-gap: 20px;
+
+			.entrance, .level, .apartment-number, .code {
+				width: 50%;
+			}
+		}
+	}
 }
