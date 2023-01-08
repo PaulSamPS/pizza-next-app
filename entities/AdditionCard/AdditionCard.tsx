@@ -16,7 +16,31 @@ export const AdditionCard = ({ add }: AdditionCardProps) => {
     useScrollAdditions();
 
   if (isDesktop) {
-    return <AdditionCardDesktop />;
+    return (
+      <AdditionsList
+        canScrollLeft={canScrollLeft}
+        canScrollRight={canScrollRight}
+        containerRef={containerRef}
+        scrollContainerBy={scrollContainerBy}
+        distance={310}
+        isDesktop={isDesktop}
+      >
+        {add.map((addition) =>
+          (isDesktop ? (
+            <AdditionCardDesktop
+              name={addition.name}
+              img={addition.img}
+              price={addition.price}
+            />
+          ) : (
+            <AdditionCardMobile
+              name={addition.name}
+              img={addition.img}
+              price={addition.price}
+            />
+          )))}
+      </AdditionsList>
+    );
   }
 
   return (
@@ -28,13 +52,20 @@ export const AdditionCard = ({ add }: AdditionCardProps) => {
       distance={310}
       isDesktop={isDesktop}
     >
-      {add.map((addition) => (
-        <AdditionCardMobile
-          name={addition.name}
-          img={addition.img}
-          price={addition.price}
-        />
-      ))}
+      {add.map((addition) =>
+        (isDesktop ? (
+          <AdditionCardMobile
+            name={addition.name}
+            img={addition.img}
+            price={addition.price}
+          />
+        ) : (
+          <AdditionCardMobile
+            name={addition.name}
+            img={addition.img}
+            price={addition.price}
+          />
+        )))}
     </AdditionsList>
   );
 };

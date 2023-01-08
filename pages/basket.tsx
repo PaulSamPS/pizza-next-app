@@ -5,9 +5,9 @@ import { getSelectorsByUserAgent } from 'react-device-detect';
 import { product } from '@packages/http/getProducts';
 import { wrapper } from '../store/store';
 import { setProducts } from '../store/slices/products.slice';
-import BasketMobile from '../entities/Basket/BasketMobile';
+import { Basket } from '../entities/Basket/Basket';
 
-const Basket = () => <BasketMobile />;
+const BasketPage = () => <Basket />;
 
 export const getServerSideProps: GetServerSideProps =
   wrapper.getServerSideProps(({ dispatch }) => async ({ req }) => {
@@ -24,4 +24,4 @@ export const getServerSideProps: GetServerSideProps =
     };
   });
 
-export default withLayout(Basket);
+export default withLayout(BasketPage);

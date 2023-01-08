@@ -3,6 +3,7 @@
 	overflow: hidden;
 	box-sizing: content-box;
 	font-family: 'Inter Regular', sans-serif;
+	margin: 20px 0;
 
 	.info {
 		padding: 16px 16px 0;
@@ -17,6 +18,18 @@
 		.description {
 			line-height: 18px;
 			margin-top: 8px;
+		}
+
+		.price {
+			background-color: var(--light-primary);
+			color: var(--primary);
+			display: inline-block;
+			padding: 7px 16px;
+			border-radius: 6px;
+
+			span {
+				margin-left: 5px;
+			}
 		}
 	}
 

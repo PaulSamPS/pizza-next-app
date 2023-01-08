@@ -1,0 +1,53 @@
+.basket-desktop {
+  padding: 20px;
+  width: 850px;
+  margin: 0 auto;
+
+  h3 {
+    font-size: 18px;
+  }
+
+  .sum {
+    color: var(--primary);
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .divider {
+    margin-bottom: 20px;
+  }
+
+  .personal-data {
+    margin: 20px 0;
+  }
+
+  .delivery {
+    margin-top: 20px;
+
+    .address {
+      display: flex;
+      column-gap: 20px;
+
+      .street {
+        width: 75%;
+      }
+
+      .house {
+        width: 25%;
+      }
+    }
+
+    .house-info {
+      display: flex;
+      column-gap: 20px;
+
+      .entrance,
+      .level,
+      .apartment-number,
+      .code {
+        width: 50%;
+      }
+    }
+  }
+}

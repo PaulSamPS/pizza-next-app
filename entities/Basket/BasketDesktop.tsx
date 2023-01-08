@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, Title } from '@components/Typography';
 import { Divider, Tab } from '@components/Blocks';
 import { Input, InputPhone } from '@components/Form';
-import styles from './BasketMobile.module.scss';
+import styles from './BasketDesktop.module.scss';
 import { CartCardList } from '../CartCardList/CartCardList';
 import { AdditionCard } from '../AdditionCard/AdditionCard';
 import additional from '../AdditionCard/addition.jpg';
@@ -67,8 +67,7 @@ type InputValueState = {
 };
 
 const delivery = ['Доставка', 'Самовывоз'];
-
-export const BasketMobile = () => {
+export const BasketDesktop = () => {
   const [values, setValues] = React.useState<InputValueState>({
     formattedValue: '',
     value: '',
@@ -76,7 +75,7 @@ export const BasketMobile = () => {
   const [deliveryValue, setDeliveryValue] = React.useState<string>(delivery[0]);
 
   return (
-    <div className={styles['basket-mobile']}>
+    <div className={styles['basket-desktop']}>
       <Title level='3'>Ваш Заказ</Title>
       <CartCardList />
       <Text level='l3' weight='w1' className={styles.sum}>
