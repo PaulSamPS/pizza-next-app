@@ -1,53 +1,71 @@
 .basket-desktop {
-  padding: 20px;
-  width: 850px;
-  margin: 0 auto;
+	padding: 20px;
+	width: 850px;
+	margin: 0 auto;
 
-  h3 {
-    font-size: 18px;
-  }
+	h3 {
+		font-size: 18px;
+	}
 
-  .sum {
-    color: var(--primary);
-    font-size: 18px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
+	.sum {
+		color: var(--primary);
+		font-size: 18px;
+		text-align: center;
+		margin-bottom: 20px;
+	}
 
-  .divider {
-    margin-bottom: 20px;
-  }
+	.divider {
+		margin-bottom: 20px;
+	}
 
-  .personal-data {
-    margin: 20px 0;
-  }
+	.personal-data {
+		margin: 20px 0;
+		display: flex;
+		column-gap: 10px;
+		justify-content: space-between;
+		align-items: center;
 
-  .delivery {
-    margin-top: 20px;
+		input {
+			width: 250px;
+		}
+	}
 
-    .address {
-      display: flex;
-      column-gap: 20px;
+	.delivery {
+		margin-top: 20px;
 
-      .street {
-        width: 75%;
-      }
+		.top {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
 
-      .house {
-        width: 25%;
-      }
-    }
+			.tabs {
+				width: 350px;
+			}
+		}
 
-    .house-info {
-      display: flex;
-      column-gap: 20px;
+		.address {
+			display: flex;
+			column-gap: 20px;
 
-      .entrance,
-      .level,
-      .apartment-number,
-      .code {
-        width: 50%;
-      }
-    }
-  }
+			.street {
+				width: 75%;
+			}
+
+			.house {
+				width: 25%;
+			}
+		}
+
+		.house-info {
+			display: flex;
+			column-gap: 20px;
+
+			.entrance,
+			.level,
+			.apartment-number,
+			.code {
+				width: 50%;
+			}
+		}
+	}
 }

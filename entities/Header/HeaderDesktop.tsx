@@ -18,11 +18,11 @@ import { LocationIcon } from '@helpers/icons/20';
 import { Text } from '@components/Typography';
 import { Auth } from '@templates';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { useAppDispatch } from '@hooks';
 import styles from './styles/HeaderDesktop.module.scss';
 import { Logo, Login } from './components';
 import { setBasketModalIsOpened } from '../../store/slices/basketModal.slice';
+import { useRouter } from 'next/router';
 
 const city = ['Москва', 'Оренбург'];
 
@@ -75,8 +75,10 @@ export const HeaderDesktop = () => {
   const router = useRouter();
 
   const handleOpenModalCart = () => {
-    dispatch(setBasketModalIsOpened(true));
-    setIsSticky(true);
+    if (router.pathname !== '/basket') {
+      dispatch(setBasketModalIsOpened(true));
+      setIsSticky(true);
+    }
   };
 
   return (
@@ -97,9 +99,7 @@ export const HeaderDesktop = () => {
               <b> 00:24:19</b>
             </Text>
           </div>
-          <Link href='/?auth=login'>
-            <Login setModal={() => router.push('/')} />
-          </Link>
+          <Login />
           <Auth />
         </div>
       </Container>

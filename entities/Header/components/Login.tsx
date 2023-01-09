@@ -2,22 +2,24 @@ import React from 'react';
 import { Text } from '@components/Typography';
 import { Icon } from '@components/Blocks';
 import { AccountIcon } from '@helpers/icons/20';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import styles from './styles/Login.module.scss';
 
-type LoginProps = {
-  setModal: (modal: boolean) => void;
-};
+export const Login = () => {
+  const router = useRouter();
 
-export const Login = ({ setModal }: LoginProps) => (
-  <div className={styles.auth}>
-    <Text level='l1'>Время работы: с 11:00 до 23:00</Text>
-    {/* eslint-disable-next-line max-len */}
-    {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-    <div className={styles.login} onClick={() => setModal(true)}>
-      <Icon primary>
-        <AccountIcon />
-      </Icon>
-      <Text level='l1'>Войти в аккаунт</Text>
+  return (
+    <div className={styles.auth}>
+      <Text level='l1'>Время работы: с 11:00 до 23:00</Text>
+      <Link href={`${router.pathname}/?auth=login`}>
+        <div className={styles.login}>
+          <Icon primary>
+            <AccountIcon />
+          </Icon>
+          <Text level='l1'>Войти в аккаунт</Text>
+        </div>
+      </Link>
     </div>
-  </div>
-);
+  );
+};

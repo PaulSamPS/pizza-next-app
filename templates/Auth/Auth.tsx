@@ -33,7 +33,10 @@ export const Auth = () => {
   );
 
   return (
-    <ModalAuth setModal={() => router.push('/')} modal={!!router.query.auth}>
+    <ModalAuth
+      setModal={() => router.push(router.pathname)}
+      modal={!!router.query.auth}
+    >
       <StepContext.Provider value={contextValue}>
         <Step />
       </StepContext.Provider>

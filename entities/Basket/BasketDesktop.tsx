@@ -32,6 +32,12 @@ const add = [
     price: 250,
     img: additional,
   },
+  {
+    id: '5',
+    name: 'Картофель из печи5',
+    price: 250,
+    img: additional,
+  },
 ];
 
 const sauces = [
@@ -56,6 +62,12 @@ const sauces = [
   {
     id: '4',
     name: 'Картофель из печи4',
+    price: 250,
+    img: additional,
+  },
+  {
+    id: '5',
+    name: 'Картофель из печи5',
     price: 250,
     img: additional,
   },
@@ -101,13 +113,16 @@ export const BasketDesktop = () => {
         />
         <Input id='email' text='Почта*' placeholder='mail@gmail.com' />
       </div>
-      <Title level='3'>Доставка</Title>
       <div className={styles.delivery}>
-        <Tab
-          arr={delivery}
-          currentValue={deliveryValue}
-          setValue={setDeliveryValue}
-        />
+        <div className={styles.top}>
+          <Title level='3'>Доставка</Title>
+          <Tab
+            arr={delivery}
+            currentValue={deliveryValue}
+            setValue={setDeliveryValue}
+            className={styles.tabs}
+          />
+        </div>
         <div className={styles.address}>
           <Input
             id='street'

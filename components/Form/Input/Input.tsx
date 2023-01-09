@@ -10,6 +10,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   after?: React.ReactNode;
   button?: React.ReactNode;
   error?: string;
+  code: boolean;
 }
 
 export const Input = forwardRef(
@@ -24,6 +25,7 @@ export const Input = forwardRef(
       placeholder,
       error,
       children,
+      code,
       className,
       ...restProps
     }: InputProps,
@@ -52,6 +54,21 @@ export const Input = forwardRef(
         {button}
       </label>
     );
+
+    if (code) {
+      return (
+        <input
+          ref={ref}
+          id={id}
+          type={type}
+          name={id}
+          placeholder={placeholder}
+          autoComplete='off'
+          className={styles['input-field']}
+          {...restProps}
+        />
+      );
+    }
 
     return (
       <div
