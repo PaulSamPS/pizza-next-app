@@ -26,7 +26,7 @@ export const AdditionCard = ({ add }: AdditionCardProps) => {
         isDesktop={isDesktop}
       >
         {add.map((addition) =>
-          isDesktop ? (
+          (isDesktop ? (
             <AdditionCardDesktop
               key={addition.id}
               name={addition.name}
@@ -40,8 +40,7 @@ export const AdditionCard = ({ add }: AdditionCardProps) => {
               img={addition.img}
               price={addition.price}
             />
-          )
-        )}
+          )))}
       </AdditionsList>
     );
   }
@@ -56,7 +55,7 @@ export const AdditionCard = ({ add }: AdditionCardProps) => {
       isDesktop={isDesktop}
     >
       {add.map((addition) =>
-        isDesktop ? (
+        (isDesktop ? (
           <AdditionCardMobile
             name={addition.name}
             img={addition.img}
@@ -68,8 +67,7 @@ export const AdditionCard = ({ add }: AdditionCardProps) => {
             img={addition.img}
             price={addition.price}
           />
-        )
-      )}
+        )))}
     </AdditionsList>
   );
 };

@@ -4,6 +4,7 @@ import { HYDRATE } from 'next-redux-wrapper';
 
 type ProductModal = {
   products: IProduct[];
+  allItems: IProduct[];
   error: string | null | unknown;
   isLoading: boolean;
 };
@@ -12,14 +13,18 @@ const initialState: ProductModal = {
   products: [],
   isLoading: false,
   error: null,
+  allItems: [],
 };
 
 const products = createSlice({
   name: 'profile',
   initialState,
   reducers: {
-    setProducts(state, action: PayloadAction<IProduct[]>) {
+    setPizzas(state, action: PayloadAction<IProduct[]>) {
       state.products = action.payload;
+    },
+    setProducts(state, action: PayloadAction<IProduct[]>) {
+      state.allItems = action.payload;
     },
   },
   extraReducers: {
@@ -27,10 +32,13 @@ const products = createSlice({
       if (action.payload.products.products) {
         state.products = action.payload.products.products;
       }
+      if (action.payload.products.allItems) {
+        state.allItems = action.payload.products.allItems;
+      }
     },
   },
 });
 
-export const { setProducts } = products.actions;
+export const { setPizzas, setProducts } = products.actions;
 
 export default products.reducer;
