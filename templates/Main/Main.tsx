@@ -9,7 +9,7 @@ import { basketModalState, productState } from '../../store/selector/selector';
 import { setBasketModalIsOpened } from '../../store/slices/basketModal.slice';
 
 export const Main = () => {
-  const { products } = useSelector(productState);
+  const { pizza, items } = useSelector(productState);
   const { basketModalIsOpened } = useSelector(basketModalState);
   const { isDesktop } = useContext(DeviceContext);
   const dispatch = useAppDispatch();
@@ -22,11 +22,11 @@ export const Main = () => {
     <>
       <Category />
       <Container>
-        <ProductCard products={products} isDesktop={isDesktop} />
+        <ProductCard pizzas={pizza} items={items} isDesktop={isDesktop} />
         <TemplateCartModal
           setModal={handleCloseModalCart}
           modal={basketModalIsOpened}
-          product={products}
+          product={pizza}
         />
         {!isDesktop && <BasketButtonMobile />}
       </Container>

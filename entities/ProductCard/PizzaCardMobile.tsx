@@ -1,12 +1,21 @@
 import React from 'react';
-import { Button, Card, Badge, Count } from '@components/Blocks';
+import { Button, Card, Badge } from '@components/Blocks';
 import Image from 'next/image';
 import { Paragraph, Title } from '@components/Typography';
 import Link from 'next/link';
 import mobile from './styles/mobile.module.scss';
-import { ProductCardInterface } from './productCard.interface';
 
-export const ProductCardMobile = ({
+export type PizzaCardInterface = {
+  badge: string | null;
+  name: string;
+  img: string;
+  description: string;
+  type: string;
+  pathname?: string;
+  price: number;
+};
+
+export const PizzaCardMobile = ({
   type,
   name,
   img,
@@ -14,8 +23,7 @@ export const ProductCardMobile = ({
   badge,
   price,
   pathname,
-  inCart,
-}: ProductCardInterface) => (
+}: PizzaCardInterface) => (
   <Card className={mobile['product-card']}>
     {badge && <Badge>{badge}</Badge>}
     <Link href={`/?${type}=${pathname}`}>
@@ -32,13 +40,11 @@ export const ProductCardMobile = ({
       </Title>
       <Paragraph className={mobile.text}>{description}</Paragraph>
       <div className={mobile.bottom}>
-        {inCart ? (
-          <Count count={1} decrease={() => {}} increase={() => {}} />
-        ) : (
+        <Link href={`/?${type}=${pathname}`}>
           <Button appearance='light-primary'>
             {type === 'pizza' ? `от ${price} ₽` : `${price} ₽`}
           </Button>
-        )}
+        </Link>
       </div>
     </div>
   </Card>

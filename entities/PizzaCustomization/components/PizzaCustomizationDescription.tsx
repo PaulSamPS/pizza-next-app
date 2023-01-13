@@ -1,6 +1,6 @@
 import React from 'react';
 import { Paragraph, Text } from '@components/Typography';
-import styles from '../styles/ProductCustomizationDescription.module.scss';
+import styles from '../styles/PizzaCustomizationDescription.module.scss';
 
 type ModalProductCustomizationDescriptionProps = {
   pizzaSize: string;
@@ -9,7 +9,7 @@ type ModalProductCustomizationDescriptionProps = {
   desc: string;
 };
 
-export const ProductCustomizationDescription = ({
+export const PizzaCustomizationDescription = ({
   dough,
   pizzaSize,
   weight,

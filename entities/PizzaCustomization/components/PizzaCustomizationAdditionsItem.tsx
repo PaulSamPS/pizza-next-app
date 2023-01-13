@@ -4,7 +4,7 @@ import { Button, Icon } from '@components/Blocks';
 import { DoneIcon } from '@helpers/icons/addendum';
 import { Text } from '@components/Typography';
 import Image, { StaticImageData } from 'next/image';
-import styles from '../styles/ProductCustomizationAdditionsItem.module.scss';
+import styles from '../styles/PizzaCustomizationAdditionsItem.module.scss';
 
 type AddToPizzaProps = {
   price: number;
@@ -12,7 +12,7 @@ type AddToPizzaProps = {
   image: StaticImageData;
 };
 
-export const ProductCustomizationAdditionsItem = ({
+export const PizzaCustomizationAdditionsItem = ({
   price,
   image,
   name,

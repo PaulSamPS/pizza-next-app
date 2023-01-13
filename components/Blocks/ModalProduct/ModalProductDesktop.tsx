@@ -2,19 +2,18 @@ import React from 'react';
 import { Icon, ModalOverlay } from '@components/Blocks';
 import { motion } from 'framer-motion';
 import { CloseIcon32 } from '@helpers/icons/32';
-import styles from './ModalProductCustomizationDesktop.module.scss';
+import styles from './ModalProductDesktop.module.scss';
 
-interface ModalProductCustomizationProps
-  extends React.AllHTMLAttributes<HTMLDivElement> {
+interface ModalProductProps extends React.AllHTMLAttributes<HTMLDivElement> {
   setModal: () => void;
   modal: boolean;
 }
 
-export const ModalProductCustomizationDesktop = ({
+export const ModalProductDesktop = ({
   setModal,
   modal,
   children,
-}: ModalProductCustomizationProps) => {
+}: ModalProductProps) => {
   const variantsModal = {
     open: { opacity: 1 },
     closed: { opacity: 0 },

@@ -1,19 +1,29 @@
 import React from 'react';
-import { Button, Card, Badge, Count } from '@components/Blocks';
+import { Button, Card, Badge } from '@components/Blocks';
 import { Paragraph, Title } from '@components/Typography';
 import Image from 'next/image';
+import Link from 'next/link';
 import desktop from './styles/desktop.module.scss';
-import { ProductCardInterface } from './productCard.interface';
 
-export const ProductCardDesktop = ({
+export type PizzaCardInterface = {
+  badge: string | null;
+  name: string;
+  img: string;
+  description: string;
+  type: string;
+  pathname?: string;
+  price: number;
+};
+
+export const PizzaCardDesktop = ({
   img,
   type,
+  pathname,
   price,
   name,
   badge,
   description,
-  inCart,
-}: ProductCardInterface) => (
+}: PizzaCardInterface) => (
   <Card className={desktop['product-card']}>
     {badge && <Badge>{badge}</Badge>}
     <Image
@@ -28,13 +38,11 @@ export const ProductCardDesktop = ({
       </Title>
       <Paragraph className={desktop.text}>{description}</Paragraph>
       <div className={desktop.bottom}>
-        {inCart ? (
-          <Count count={1} decrease={() => {}} increase={() => {}} />
-          ) : (
-            <Button appearance='primary' height={48} width={130}>
-              В корзину
-            </Button>
-          )}
+        <Link href={`/?${type}=${pathname}`}>
+          <Button appearance='primary' height={48} width={130}>
+            Выбрать
+          </Button>
+        </Link>
         <Title level='5' className={desktop.price}>
           {type === 'pizza' ? `от ${price} ₽` : `${price} ₽`}
         </Title>

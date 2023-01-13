@@ -1,20 +1,20 @@
 import React from 'react';
 import Image from 'next/image';
-import { IProduct } from '@types';
+import { IPizzaLocal } from '@types';
 import { Bottom, Icon, Tab } from '@components/Blocks';
 import { Text } from '@components/Typography';
 import { CloseIcon32 } from '@helpers/icons/32';
-import styles from './styles/ProductCustomizationMobile.module.scss';
+import styles from './styles/PizzaCustomizationMobile.module.scss';
 import {
-  ProductCustomizationAdditionsItem,
-  ProductCustomizationDescription,
-  ProductCustomizationTitle,
+  PizzaCustomizationAdditionsItem,
+  PizzaCustomizationDescription,
+  PizzaCustomizationTitle,
 } from './components';
 import { AdditionsType } from '../../types/additions';
 import { AdditionsList } from '../AddionList/AdditionsList';
 
 type ProductCustomizationMobileProps = {
-  product: IProduct;
+  pizza: IPizzaLocal;
   containerRef: React.RefObject<HTMLDivElement>;
   scrollContainerBy: (distance: number) => void;
   canScrollLeft: boolean;
@@ -30,8 +30,8 @@ type ProductCustomizationMobileProps = {
   isDesktop: boolean;
 };
 
-const ProductCustomizationMobile = ({
-  product,
+const PizzaCustomizationMobile = ({
+  pizza,
   additions,
   navigateToMain,
   pizzaSize,
@@ -53,33 +53,30 @@ const ProductCustomizationMobile = ({
     <Image
       src={
         dough === 'Традиционное'
-          ? `http://localhost:5000/product/${product.name}/${product.img.regular}`
-          : `http://localhost:5000/product/${product.name}/${product.img.slim}`
+          ? `http://localhost:5000/product/${pizza.name}/${pizza.img.regular}`
+          : `http://localhost:5000/product/${pizza.name}/${pizza.img.slim}`
       }
-      alt={product.name}
+      alt={pizza.name}
       width={250}
       height={250}
     />
     <div className={styles.customizations}>
-      <ProductCustomizationTitle
-        name={product.name}
-        promotion={product.promotion}
-      />
-      <ProductCustomizationDescription
+      <PizzaCustomizationTitle name={pizza.name} promotion={pizza.promotion} />
+      <PizzaCustomizationDescription
         pizzaSize={pizzaSize}
         dough={dough}
-        desc={product.description}
+        desc={pizza.description}
         weight={currentWeight}
       />
       <div className={styles.addendum}>
         <Tab
-          arr={product.dough}
+          arr={pizza.dough}
           currentValue={dough}
           className={styles.dough}
           currentDough={setDough}
         />
         <Tab
-          arr={product.size}
+          arr={pizza.size}
           currentValue={pizzaSize}
           className={styles.sizes}
           currentSize={setPizzaSize}
@@ -96,7 +93,7 @@ const ProductCustomizationMobile = ({
           isDesktop={isDesktop}
         >
           {additions.map((item) => (
-            <ProductCustomizationAdditionsItem
+            <PizzaCustomizationAdditionsItem
               key={item.id}
               image={item.img}
               name={item.name}
@@ -105,10 +102,10 @@ const ProductCustomizationMobile = ({
           ))}
         </AdditionsList>
         <Bottom
-          totalPrice={product.price[sizeIndex]}
+          totalPrice={pizza.price[sizeIndex]}
           buttonHeight={40}
           buttonWidth={150}
-          gram={product.type === 'pizza' && `${currentWeight}`}
+          gram={pizza.type === 'pizza' && `${currentWeight}`}
         >
           Добавить
         </Bottom>
@@ -117,4 +114,4 @@ const ProductCustomizationMobile = ({
   </div>
 );
 
-export default ProductCustomizationMobile;
+export default PizzaCustomizationMobile;

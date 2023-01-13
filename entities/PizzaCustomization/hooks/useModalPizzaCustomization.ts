@@ -4,7 +4,7 @@ import { useSelectSize } from './useSelectSize';
 
 interface UseModalProductCustomizationProps extends Pick<IProduct, 'weight'> {}
 
-export const useModalProductCustomization = ({
+export const useModalPizzaCustomization = ({
   weight,
 }: UseModalProductCustomizationProps) => {
   const [pizzaSize, setPizzaSize] = React.useState<string>('25 см');

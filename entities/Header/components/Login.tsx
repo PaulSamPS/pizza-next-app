@@ -12,7 +12,7 @@ export const Login = () => {
   return (
     <div className={styles.auth}>
       <Text level='l1'>Время работы: с 11:00 до 23:00</Text>
-      <Link href={`${router.pathname}/?auth=login`}>
+      <Link href={`${router.pathname}?auth=login`}>
         <div className={styles.login}>
           <Icon primary>
             <AccountIcon />

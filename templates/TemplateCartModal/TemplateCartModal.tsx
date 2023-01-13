@@ -1,12 +1,12 @@
 import React from 'react';
 import { ModalCart } from '@components/Blocks';
 import { CartCard } from '@entities';
-import { IProduct } from '@types';
+import { IPizzaLocal } from '@types';
 
 type TemplateCartModalProps = {
   setModal: () => void;
   modal: boolean;
-  product: IProduct[];
+  product: IPizzaLocal[];
 };
 
 export const TemplateCartModal = ({

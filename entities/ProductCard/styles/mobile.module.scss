@@ -3,10 +3,18 @@
 	overflow: hidden;
 	box-sizing: content-box;
 	display: flex;
+	padding: 16px 0;
+
+	img {
+		padding-left: 15px;
+		object-fit: contain;
+	}
 
 	.info {
 		font-family: 'Inter Regular', sans-serif;
 		padding: 12px;
+		display: flex;
+		flex-direction: column;
 
 		.name {
 			font-size: 14px;
@@ -17,6 +25,7 @@
 			margin-top: 8px;
 			font-size: 12px;
 			line-height: 16px;
+			flex-grow: 1;
 		}
 
 		.bottom {

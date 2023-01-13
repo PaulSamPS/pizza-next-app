@@ -1,20 +1,18 @@
 import React from 'react';
 import { DeviceContext } from '@context';
-import { IProduct } from '@types';
+import { IPizzaLocal } from '@types';
 import { additionAdapter } from '@packages/adapter/additionAdapter';
 import { useRouter } from 'next/router';
 import { useScrollAdditions } from '@hooks';
-import { ProductCustomizationDesktop } from './ProductCustomizationDesktop';
-import ProductCustomizationMobile from './ProductCustomizationMobile';
-import { useModalProductCustomization } from './hooks';
+import { PizzaCustomizationDesktop } from './PizzaCustomizationDesktop';
+import PizzaCustomizationMobile from './PizzaCustomizationMobile';
+import { useModalPizzaCustomization } from './hooks';
 
 type ProductCustomizationProps = {
-  product: IProduct;
+  pizza: IPizzaLocal;
 };
 
-export const ProductCustomization = ({
-  product,
-}: ProductCustomizationProps) => {
+export const PizzaCustomization = ({ pizza }: ProductCustomizationProps) => {
   const { isDesktop } = React.useContext(DeviceContext);
   const { containerRef, scrollContainerBy, canScrollLeft, canScrollRight } =
     useScrollAdditions();
@@ -26,16 +24,16 @@ export const ProductCustomization = ({
     dough,
     sizeIndex,
     currentSize,
-  } = useModalProductCustomization({
-    weight: product.weight,
+  } = useModalPizzaCustomization({
+    weight: pizza.weight,
   });
   const additions = additionAdapter();
   const router = useRouter();
 
   if (isDesktop) {
     return (
-      <ProductCustomizationDesktop
-        product={product}
+      <PizzaCustomizationDesktop
+        pizza={pizza}
         additions={additions}
         canScrollRight={canScrollRight}
         scrollContainerBy={scrollContainerBy}
@@ -54,8 +52,8 @@ export const ProductCustomization = ({
   }
 
   return (
-    <ProductCustomizationMobile
-      product={product}
+    <PizzaCustomizationMobile
+      pizza={pizza}
       additions={additions}
       navigateToMain={() => router.push('/')}
       canScrollRight={canScrollRight}

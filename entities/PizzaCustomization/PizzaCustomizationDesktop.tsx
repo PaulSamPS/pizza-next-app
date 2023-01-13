@@ -1,19 +1,19 @@
 import React from 'react';
 import { Badge, Bottom, Tab } from '@components/Blocks';
 import { Text } from '@components/Typography';
-import { IProduct } from '@types';
-import styles from './styles/ProductCustomizationDesktop.module.scss';
+import { IPizzaLocal } from '@types';
+import styles from './styles/PizzaCustomizationDesktop.module.scss';
 import {
-  ProductCustomizationImageDesktop,
-  ProductCustomizationTitle,
-  ProductCustomizationDescription,
-  ProductCustomizationAdditionsItem,
+  PizzaCustomizationImageDesktop,
+  PizzaCustomizationTitle,
+  PizzaCustomizationDescription,
+  PizzaCustomizationAdditionsItem,
 } from './components';
 import { AdditionsType } from '../../types/additions';
 import { AdditionsList } from '../AddionList/AdditionsList';
 
 type ProductCustomizationDesktopProps = {
-  product: IProduct;
+  pizza: IPizzaLocal;
   containerRef: React.RefObject<HTMLDivElement>;
   scrollContainerBy: (distance: number) => void;
   canScrollLeft: boolean;
@@ -29,8 +29,8 @@ type ProductCustomizationDesktopProps = {
   isDesktop: boolean;
 };
 
-export const ProductCustomizationDesktop = ({
-  product,
+export const PizzaCustomizationDesktop = ({
+  pizza,
   setDough,
   pizzaSize,
   dough,
@@ -46,33 +46,30 @@ export const ProductCustomizationDesktop = ({
   isDesktop,
 }: ProductCustomizationDesktopProps) => (
   <div className={styles.card}>
-    {product.badge && <Badge top='32px'>{product.badge}</Badge>}
-    <ProductCustomizationImageDesktop
+    {pizza.badge && <Badge top='32px'>{pizza.badge}</Badge>}
+    <PizzaCustomizationImageDesktop
       pizzaSize={currentSize}
       dough={dough}
-      image={product.img}
-      name={product.name}
+      image={pizza.img}
+      name={pizza.name}
     />
     <div className={styles.customizations}>
-      <ProductCustomizationTitle
-        name={product.name}
-        promotion={product.promotion}
-      />
-      <ProductCustomizationDescription
+      <PizzaCustomizationTitle name={pizza.name} promotion={pizza.promotion} />
+      <PizzaCustomizationDescription
         pizzaSize={pizzaSize}
         dough={dough}
-        desc={product.description}
+        desc={pizza.description}
         weight={currentWeight}
       />
       <div className={styles.addendum}>
         <Tab
-          arr={product.dough}
+          arr={pizza.dough}
           currentValue={dough}
           className={styles.dough}
           currentDough={setDough}
         />
         <Tab
-          arr={product.size}
+          arr={pizza.size}
           currentValue={pizzaSize}
           className={styles.sizes}
           currentSize={setPizzaSize}
@@ -89,7 +86,7 @@ export const ProductCustomizationDesktop = ({
           isDesktop={isDesktop}
         >
           {additions.map((item) => (
-            <ProductCustomizationAdditionsItem
+            <PizzaCustomizationAdditionsItem
               key={item.id}
               image={item.img}
               name={item.name}
@@ -98,9 +95,9 @@ export const ProductCustomizationDesktop = ({
           ))}
         </AdditionsList>
         <Bottom
-          totalPrice={product.price[sizeIndex]}
+          totalPrice={pizza.price[sizeIndex]}
           buttonWidth={155}
-          gram={product.type === 'pizza' && `${currentWeight}`}
+          gram={pizza.type === 'pizza' && `${currentWeight}`}
         >
           Добавить
         </Bottom>

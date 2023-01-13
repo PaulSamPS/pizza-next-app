@@ -1,15 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IProduct } from '@types';
+import { IPizzaLocal, IProductLocal } from '@types';
 import { HYDRATE } from 'next-redux-wrapper';
 
 type ProductModal = {
-  product: IProduct | null;
+  product: IProductLocal | null;
+  pizza: IPizzaLocal | null;
   error: string | null | unknown;
   isLoading: boolean;
 };
 
 const initialState: ProductModal = {
-  product: {} as IProduct,
+  product: {} as IProductLocal,
+  pizza: {} as IPizzaLocal,
   isLoading: false,
   error: null,
 };
@@ -18,8 +20,11 @@ const productModal = createSlice({
   name: 'profile',
   initialState,
   reducers: {
-    setProductModal(state, action: PayloadAction<IProduct | null>) {
+    setProductModal(state, action: PayloadAction<IProductLocal | null>) {
       state.product = action.payload;
+    },
+    setPizzaModal(state, action: PayloadAction<IPizzaLocal | null>) {
+      state.pizza = action.payload;
     },
   },
   extraReducers: {
@@ -27,10 +32,13 @@ const productModal = createSlice({
       if (action.payload.productModal.product) {
         state.product = action.payload.productModal.product;
       }
+      if (action.payload.productModal.pizza) {
+        state.pizza = action.payload.productModal.pizza;
+      }
     },
   },
 });
 
-export const { setProductModal } = productModal.actions;
+export const { setProductModal, setPizzaModal } = productModal.actions;
 
 export default productModal.reducer;

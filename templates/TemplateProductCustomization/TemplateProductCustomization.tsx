@@ -1,20 +1,30 @@
 import React from 'react';
-import { ModalProductCustomization } from '@components/Blocks';
-import { ProductCustomization } from '@entities';
+import { ModalProduct } from '@components/Blocks';
+import { PizzaCustomization } from '@entities';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { productModalState } from '../../store/selector/selector';
+import { ProductCardModalMobile } from '../../entities/ProductCardModal';
 
 export const TemplateProductCustomization = () => {
-  const { product } = useSelector(productModalState);
+  const { pizza, product } = useSelector(productModalState);
   const router = useRouter();
+  const queryName = Object.keys(router.query)[0];
 
   return (
-    <ModalProductCustomization
-      modal={!!router.query.pizza}
-      setModal={() => router.push('/')}
-    >
-      {product && <ProductCustomization product={product} />}
-    </ModalProductCustomization>
+    <ModalProduct modal={!!queryName} setModal={() => router.push('/')}>
+      {queryName === 'pizza' ? (
+        <PizzaCustomization pizza={pizza!} />
+      ) : (
+        <ProductCardModalMobile
+          name={product!.name}
+          price={product!.price}
+          img={product!.img}
+          description={product!.description}
+          weight={product!.weight}
+          promotion={product!.promotion}
+        />
+      )}
+    </ModalProduct>
   );
 };

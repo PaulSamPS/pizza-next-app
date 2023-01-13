@@ -1,19 +1,18 @@
 import React from 'react';
 import { ModalOverlay } from '@components/Blocks';
 import { motion } from 'framer-motion';
-import styles from './ModalProductCustomizationMobile.module.scss';
+import styles from './ModalProductMobile.module.scss';
 
-interface ModalProductCustomizationProps
-  extends React.AllHTMLAttributes<HTMLDivElement> {
+interface ModalProductProps extends React.AllHTMLAttributes<HTMLDivElement> {
   setModal: () => void;
   modal: boolean;
 }
 
-export const ModalProductCustomizationMobile = ({
+export const ModalProductMobile = ({
   setModal,
   modal,
   children,
-}: ModalProductCustomizationProps) => {
+}: ModalProductProps) => {
   const variantsModal = {
     open: {
       opacity: 1,

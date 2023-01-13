@@ -1,4 +1,4 @@
-export interface IProduct {
+export interface IPizzaLocal {
   id: string;
   badge: string | null;
   name: string;
@@ -13,7 +13,7 @@ export interface IProduct {
   type: string;
 }
 
-export interface IProductServer {
+export interface IPizzaServer {
   _id: string;
   badge: string | null;
   name: string;
@@ -26,4 +26,30 @@ export interface IProductServer {
   size: string[];
   dough: string[];
   type: string;
+}
+
+export interface IProductLocal {
+  id: string;
+  name: string;
+  description: string;
+  type: string;
+  badge: string | null;
+  pathname: string;
+  promotion: boolean;
+  img: string;
+  price: number;
+  weight: string | null;
+}
+
+export interface IProductServer {
+  _id: string;
+  name: string;
+  description: string;
+  type: string;
+  badge: string | null;
+  pathname: string;
+  promotion: boolean;
+  img: string;
+  price: number;
+  weight: string;
 }
