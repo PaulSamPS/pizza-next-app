@@ -6,3 +6,5 @@ export * from './Auth';
 export * from './Footer';
 export * from './PizzaCustomization';
 export * from './CartCard/CartCard';
+export * from './AddionList';
+export * from './ProductList/ProductList';

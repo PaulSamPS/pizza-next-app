@@ -2,8 +2,8 @@ import React from 'react';
 import Image from 'next/image';
 import { Title, Text } from '@components/Typography';
 import { Card } from '@components/Blocks';
+import { AdditionsType } from '@types';
 import styles from './AdditionCardMobile.module.scss';
-import { AdditionsType } from '../../types/additions';
 
 interface AdditionCardMobileProps extends Omit<AdditionsType, 'id'> {}
 
@@ -24,4 +24,4 @@ export const AdditionCardMobile = ({
       </Text>
     </div>
   </Card>
-  );
+);

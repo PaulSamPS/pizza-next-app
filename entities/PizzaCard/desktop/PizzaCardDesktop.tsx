@@ -3,17 +3,8 @@ import { Button, Card, Badge } from '@components/Blocks';
 import { Paragraph, Title } from '@components/Typography';
 import Image from 'next/image';
 import Link from 'next/link';
-import desktop from './styles/desktop.module.scss';
-
-export type PizzaCardInterface = {
-  badge: string | null;
-  name: string;
-  img: string;
-  description: string;
-  type: string;
-  pathname?: string;
-  price: number;
-};
+import desktop from './PizzaDesktop.module.scss';
+import { PizzaCardInterface } from '../interface';
 
 export const PizzaCardDesktop = ({
   img,
@@ -24,14 +15,16 @@ export const PizzaCardDesktop = ({
   badge,
   description,
 }: PizzaCardInterface) => (
-  <Card className={desktop['product-card']}>
+  <Card className={desktop['pizza-card']}>
     {badge && <Badge>{badge}</Badge>}
-    <Image
-      src={`http://localhost:5000/product/${name}/${img}`}
-      alt='pizza'
-      width={300}
-      height={300}
-    />
+    <Link href={`/?${type}=${pathname}`}>
+      <Image
+        src={`http://localhost:5000/product/${name}/${img}`}
+        alt='pizza'
+        width={300}
+        height={300}
+      />
+    </Link>
     <div className={desktop.body}>
       <Title level='3' weight='w1' className={desktop.name}>
         {name}
@@ -49,4 +42,4 @@ export const PizzaCardDesktop = ({
       </div>
     </div>
   </Card>
-  );
+);

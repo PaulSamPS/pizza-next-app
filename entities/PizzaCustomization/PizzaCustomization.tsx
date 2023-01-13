@@ -4,8 +4,8 @@ import { IPizzaLocal } from '@types';
 import { additionAdapter } from '@packages/adapter/additionAdapter';
 import { useRouter } from 'next/router';
 import { useScrollAdditions } from '@hooks';
-import { PizzaCustomizationDesktop } from './PizzaCustomizationDesktop';
-import PizzaCustomizationMobile from './PizzaCustomizationMobile';
+import { PizzaCustomizationDesktop } from './desktop';
+import { PizzaCustomizationMobile } from './mobile';
 import { useModalPizzaCustomization } from './hooks';
 
 type ProductCustomizationProps = {

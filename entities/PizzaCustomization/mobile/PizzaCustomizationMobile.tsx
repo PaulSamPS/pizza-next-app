@@ -4,14 +4,14 @@ import { IPizzaLocal } from '@types';
 import { Bottom, Icon, Tab } from '@components/Blocks';
 import { Text } from '@components/Typography';
 import { CloseIcon32 } from '@helpers/icons/32';
-import styles from './styles/PizzaCustomizationMobile.module.scss';
+import styles from './PizzaCustomizationMobile.module.scss';
 import {
   PizzaCustomizationAdditionsItem,
   PizzaCustomizationDescription,
   PizzaCustomizationTitle,
-} from './components';
-import { AdditionsType } from '../../types/additions';
-import { AdditionsList } from '../AddionList/AdditionsList';
+} from '../components';
+import { AdditionsType } from '../../../types/additions';
+import { AdditionsList } from '../../AddionList/AdditionsList';
 
 type ProductCustomizationMobileProps = {
   pizza: IPizzaLocal;
@@ -30,7 +30,7 @@ type ProductCustomizationMobileProps = {
   isDesktop: boolean;
 };
 
-const PizzaCustomizationMobile = ({
+export const PizzaCustomizationMobile = ({
   pizza,
   additions,
   navigateToMain,
@@ -113,5 +113,3 @@ const PizzaCustomizationMobile = ({
     </div>
   </div>
 );
-
-export default PizzaCustomizationMobile;

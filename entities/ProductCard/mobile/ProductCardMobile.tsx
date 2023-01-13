@@ -3,8 +3,8 @@ import { Button, Card, Badge, Count } from '@components/Blocks';
 import Image from 'next/image';
 import { Paragraph, Title } from '@components/Typography';
 import Link from 'next/link';
-import mobile from './styles/mobile.module.scss';
-import { ProductCardInterface } from './productCard.interface';
+import mobile from './ProductCardMobile.module.scss';
+import { ProductCardInterface } from '../interface';
 
 export const ProductCardMobile = ({
   type,

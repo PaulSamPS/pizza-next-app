@@ -1,0 +1,47 @@
+.product-card {
+  width: 300px;
+  overflow: hidden;
+  box-sizing: content-box;
+
+  img {
+    object-fit: contain;
+    transition: all ease-out 0.2s;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(3%);
+    }
+  }
+
+  .body {
+    padding: 16px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    height: 196px;
+
+    .name {
+      font-family: 'SF Pro Text Bold', sans-serif;
+      font-size: 18px;
+      line-height: 24px;
+      text-align: center;
+    }
+
+    .text {
+      margin-top: 12px;
+      max-height: 60px;
+      overflow: hidden;
+      flex-grow: 1;
+    }
+
+    .bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 16px;
+
+      .price {
+        color: var(--primary);
+      }
+    }
+  }
+}

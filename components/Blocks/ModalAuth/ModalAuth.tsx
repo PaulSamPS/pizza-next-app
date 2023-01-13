@@ -1,7 +1,7 @@
 import React from 'react';
 import { DeviceContext } from '@context';
-import { ModalAuthDesktop } from '@components/Blocks/ModalAuth/ModalAuthDesktop';
-import { ModalAuthMobile } from '@components/Blocks/ModalAuth/ModalAuthMobile';
+import { ModalAuthDesktop } from './desktop';
+import { ModalAuthMobile } from './mobile';
 
 type ModalAuthProps = {
   setModal: () => void;

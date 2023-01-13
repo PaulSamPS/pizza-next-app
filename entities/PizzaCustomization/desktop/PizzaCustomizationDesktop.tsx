@@ -2,15 +2,15 @@ import React from 'react';
 import { Badge, Bottom, Tab } from '@components/Blocks';
 import { Text } from '@components/Typography';
 import { IPizzaLocal } from '@types';
-import styles from './styles/PizzaCustomizationDesktop.module.scss';
+import { AdditionsList } from '@entities';
+import styles from './PizzaCustomizationDesktop.module.scss';
 import {
   PizzaCustomizationImageDesktop,
   PizzaCustomizationTitle,
   PizzaCustomizationDescription,
   PizzaCustomizationAdditionsItem,
-} from './components';
-import { AdditionsType } from '../../types/additions';
-import { AdditionsList } from '../AddionList/AdditionsList';
+} from '../components';
+import { AdditionsType } from '../../../types/additions';
 
 type ProductCustomizationDesktopProps = {
   pizza: IPizzaLocal;

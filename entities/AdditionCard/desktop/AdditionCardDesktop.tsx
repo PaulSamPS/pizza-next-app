@@ -3,8 +3,8 @@ import Image from 'next/image';
 import { Paragraph, Title } from '@components/Typography';
 import { Button, Card } from '@components/Blocks';
 import cx from 'clsx';
+import { AdditionsType } from '@types';
 import styles from './AdditionCardDesktop.module.scss';
-import { AdditionsType } from '../../types/additions';
 
 interface AdditionCardDesktopProps extends Omit<AdditionsType, 'id'> {
   description?: boolean;

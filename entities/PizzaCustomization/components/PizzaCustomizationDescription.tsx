@@ -1,6 +1,6 @@
 import React from 'react';
 import { Paragraph, Text } from '@components/Typography';
-import styles from '../styles/PizzaCustomizationDescription.module.scss';
+import styles from './styles/PizzaCustomizationDescription.module.scss';
 
 type ModalProductCustomizationDescriptionProps = {
   pizzaSize: string;

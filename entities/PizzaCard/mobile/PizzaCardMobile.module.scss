@@ -1,4 +1,4 @@
-.product-card {
+.pizza-card {
 	width: 350px;
 	overflow: hidden;
 	box-sizing: content-box;
@@ -6,8 +6,8 @@
 	padding: 16px 0;
 
 	img {
-		padding-left: 15px;
 		object-fit: contain;
+		padding-left: 15px;
 	}
 
 	.info {

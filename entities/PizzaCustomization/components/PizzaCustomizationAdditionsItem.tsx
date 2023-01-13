@@ -4,7 +4,7 @@ import { Button, Icon } from '@components/Blocks';
 import { DoneIcon } from '@helpers/icons/addendum';
 import { Text } from '@components/Typography';
 import Image, { StaticImageData } from 'next/image';
-import styles from '../styles/PizzaCustomizationAdditionsItem.module.scss';
+import styles from './styles/PizzaCustomizationAdditionsItem.module.scss';
 
 type AddToPizzaProps = {
   price: number;

@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
-import { Category, ProductCard } from '@entities';
+import { Category, ProductList } from '@entities';
 import { useSelector } from 'react-redux';
 import { DeviceContext } from '@context';
 import { useAppDispatch } from '@hooks';
 import { BasketButtonMobile, Container } from '@components/Blocks';
+import { basketModalState, productState } from '@store/selector';
+import { setBasketModalIsOpened } from '@store/slices/basketModal.slice';
 import { TemplateCartModal } from '../TemplateCartModal/TemplateCartModal';
-import { basketModalState, productState } from '../../store/selector/selector';
-import { setBasketModalIsOpened } from '../../store/slices/basketModal.slice';
+import { TemplateProductCustomization } from '../TemplateProductCustomization';
 
 export const Main = () => {
   const { pizza, items } = useSelector(productState);
@@ -22,7 +23,8 @@ export const Main = () => {
     <>
       <Category />
       <Container>
-        <ProductCard pizzas={pizza} items={items} isDesktop={isDesktop} />
+        <ProductList pizzas={pizza} product={items} isDesktop={isDesktop} />
+        <TemplateProductCustomization />
         <TemplateCartModal
           setModal={handleCloseModalCart}
           modal={basketModalIsOpened}

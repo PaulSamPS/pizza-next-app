@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { DeviceContext } from '@context';
-import { ModalProductDesktop, ModalProductMobile } from '@components/Blocks';
+import { ModalProductDesktop } from './desktop';
+import { ModalProductMobile } from './mobile';
 
 type ModalProductProps = {
   setModal: () => void;

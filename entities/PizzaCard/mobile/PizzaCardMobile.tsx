@@ -3,17 +3,8 @@ import { Button, Card, Badge } from '@components/Blocks';
 import Image from 'next/image';
 import { Paragraph, Title } from '@components/Typography';
 import Link from 'next/link';
-import mobile from './styles/mobile.module.scss';
-
-export type PizzaCardInterface = {
-  badge: string | null;
-  name: string;
-  img: string;
-  description: string;
-  type: string;
-  pathname?: string;
-  price: number;
-};
+import mobile from './PizzaCardMobile.module.scss';
+import { PizzaCardInterface } from '../interface';
 
 export const PizzaCardMobile = ({
   type,
@@ -24,7 +15,7 @@ export const PizzaCardMobile = ({
   price,
   pathname,
 }: PizzaCardInterface) => (
-  <Card className={mobile['product-card']}>
+  <Card className={mobile['pizza-card']}>
     {badge && <Badge>{badge}</Badge>}
     <Link href={`/?${type}=${pathname}`}>
       <Image

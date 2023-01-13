@@ -7,13 +7,19 @@ interface CountProps extends React.AllHTMLAttributes<HTMLDivElement> {
   count: number;
   decrease: () => void;
   increase: () => void;
+  height?: number;
 }
 
-export const Count = ({ count, decrease, increase }: CountProps) => (
+export const Count = ({
+  count,
+  decrease,
+  increase,
+  height = 36,
+}: CountProps) => (
   <div className={styles.count}>
     <Button
       appearance='light-primary'
-      height={36}
+      height={height}
       onClick={decrease}
       disabled={count <= 1}
     >

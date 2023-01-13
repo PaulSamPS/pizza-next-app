@@ -1,1 +1,1 @@
-export * from './AdditionCardDesktop';
+export * from './desktop/AdditionCardDesktop';

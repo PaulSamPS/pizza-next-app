@@ -1,24 +1,23 @@
 import React, { useContext } from 'react';
 import { DeviceContext } from '@context';
-import { ProductCardInterface } from './interface';
-import { ProductCardDesktop } from './desktop';
-import { ProductCardMobile } from './mobile';
+import { PizzaCardDesktop } from './desktop';
+import { PizzaCardInterface } from './interface';
+import { PizzaCardMobile } from './mobile';
 
-export const ProductCard = ({
-  img,
-  badge,
-  type,
-  pathname,
+export const PizzaCard = ({
   price,
+  type,
   name,
+  img,
   description,
-  inCart,
-}: ProductCardInterface) => {
+  badge,
+  pathname,
+}: PizzaCardInterface) => {
   const { isDesktop } = useContext(DeviceContext);
 
   if (isDesktop) {
     return (
-      <ProductCardDesktop
+      <PizzaCardDesktop
         badge={badge}
         name={name}
         img={img}
@@ -26,13 +25,12 @@ export const ProductCard = ({
         type={type}
         price={price}
         pathname={pathname}
-        inCart={inCart}
       />
     );
   }
 
   return (
-    <ProductCardMobile
+    <PizzaCardMobile
       badge={badge}
       name={name}
       img={img}
@@ -40,7 +38,6 @@ export const ProductCard = ({
       type={type}
       price={price}
       pathname={pathname}
-      inCart={inCart}
     />
   );
 };

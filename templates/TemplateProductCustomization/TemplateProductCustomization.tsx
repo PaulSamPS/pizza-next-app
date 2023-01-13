@@ -3,7 +3,7 @@ import { ModalProduct } from '@components/Blocks';
 import { PizzaCustomization } from '@entities';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import { productModalState } from '../../store/selector/selector';
+import { productModalState } from '@store/selector';
 import { ProductCardModalMobile } from '../../entities/ProductCardModal';
 
 export const TemplateProductCustomization = () => {
@@ -13,9 +13,8 @@ export const TemplateProductCustomization = () => {
 
   return (
     <ModalProduct modal={!!queryName} setModal={() => router.push('/')}>
-      {queryName === 'pizza' ? (
-        <PizzaCustomization pizza={pizza!} />
-      ) : (
+      {queryName === 'pizza' && <PizzaCustomization pizza={pizza!} />}
+      {queryName === 'snack' && (
         <ProductCardModalMobile
           name={product!.name}
           price={product!.price}

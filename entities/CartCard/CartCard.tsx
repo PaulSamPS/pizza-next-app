@@ -1,12 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
 import { Paragraph, Text } from '@components/Typography';
-import { IProduct } from '@types';
+import { IPizzaLocal } from '@types';
 import { Card, Count } from '@components/Blocks';
 import styles from './CartCard.module.scss';
 
 type CartCardModalProps = {
-  product: IProduct;
+  product: IPizzaLocal;
 };
 
 export const CartCard = ({ product }: CartCardModalProps) => {
