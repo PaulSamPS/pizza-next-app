@@ -7,9 +7,9 @@ import * as getProduct from '@packages/http/getProducts';
 import {
   setPizzaModal,
   setProductModal,
-} from '../store/slices/productModal.slice';
-import { wrapper } from '../store/store';
-import { setPizzas, setProducts } from '../store/slices/products.slice';
+} from '@store/slices/productModal.slice';
+import { wrapper } from '@store/store';
+import { setPizzas, setProducts } from '@store/slices/products.slice';
 
 function Home() {
   return <Main />;

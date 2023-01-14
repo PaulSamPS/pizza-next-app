@@ -35,7 +35,7 @@ export const ProductCardMobile = ({
         {inCart ? (
           <Count count={1} decrease={() => {}} increase={() => {}} />
         ) : (
-          <Button appearance='light-primary'>
+          <Button appearance='light-primary' height={36}>
             {type === 'pizza' ? `от ${price} ₽` : `${price} ₽`}
           </Button>
         )}

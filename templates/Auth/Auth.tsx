@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { EnterCode, EnterPhone } from '@entities';
 import { StepContext } from '@context';
-import { ModalAuth } from '@components/Blocks/ModalAuth/ModalAuth';
+import { ModalAuth } from '@components/Blocks/ModalAuth';
 import { useRouter } from 'next/router';
 
 type StepComponentType = {

@@ -32,7 +32,7 @@ export const PizzaCardMobile = ({
       <Paragraph className={mobile.text}>{description}</Paragraph>
       <div className={mobile.bottom}>
         <Link href={`/?${type}=${pathname}`}>
-          <Button appearance='light-primary'>
+          <Button appearance='light-primary' height={36}>
             {type === 'pizza' ? `от ${price} ₽` : `${price} ₽`}
           </Button>
         </Link>

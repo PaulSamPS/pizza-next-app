@@ -2,8 +2,8 @@ import React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import cx from 'clsx';
-import styles from './ModalOverlay.module.scss';
 import { useFixedBody } from '@hooks';
+import styles from './ModalOverlay.module.scss';
 
 interface OverlayingPopupProps extends React.AllHTMLAttributes<HTMLElement> {
   isOpened: boolean;
