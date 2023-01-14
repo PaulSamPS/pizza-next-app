@@ -13,29 +13,27 @@ export const ProductCardModalDesktop = ({
   description,
   weight,
   promotion,
-}: ProductCardModalProps) => {
-  return (
-    <div className={styles.card}>
-      <Image
-        src={`http://localhost:5000/product/${name}/${img}`}
-        alt='product'
-        width={390}
-        height={390}
-      />
-      <div className={styles.info}>
-        <PizzaCustomizationTitle name={name} promotion={promotion} />
-        {weight && (
-          <Text level='l2' className={styles.weight}>
-            {`${weight} г`}
-          </Text>
+}: ProductCardModalProps) => (
+  <div className={styles.card}>
+    <Image
+      src={`http://localhost:5000/product/${name}/${img}`}
+      alt='product'
+      width={390}
+      height={390}
+    />
+    <div className={styles.info}>
+      <PizzaCustomizationTitle name={name} promotion={promotion} />
+      {weight && (
+      <Text level='l2' className={styles.weight}>
+        {`${weight} г`}
+      </Text>
         )}
-        <Text level='l2' className={styles.desc}>
-          {description}
-        </Text>
-        <Button appearance='primary' height={48}>
-          {`Добавить в корзину за ${price} ₽`}
-        </Button>
-      </div>
+      <Text level='l2' className={styles.desc}>
+        {description}
+      </Text>
+      <Button appearance='primary' height={48}>
+        {`Добавить в корзину за ${price} ₽`}
+      </Button>
     </div>
+  </div>
   );
-};

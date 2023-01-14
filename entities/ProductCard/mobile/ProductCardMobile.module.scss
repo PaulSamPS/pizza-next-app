@@ -25,6 +25,11 @@
 			font-size: 12px;
 			line-height: 16px;
 			flex-grow: 1;
+			height: 48px;
+			display: -webkit-box;
+			overflow: hidden;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 3;
 		}
 
 		.bottom {

@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import cx from 'clsx';
 import styles from './ModalOverlay.module.scss';
+import { useFixedBody } from '@hooks';
 
 interface OverlayingPopupProps extends React.AllHTMLAttributes<HTMLElement> {
   isOpened: boolean;
@@ -20,6 +21,8 @@ export const ModalOverlay = ({
   position = 'center',
   setModal,
 }: OverlayingPopupProps) => {
+  useFixedBody(isOpened);
+
   const variants = {
     open: { opacity: 1 },
     closed: { opacity: 0 },
