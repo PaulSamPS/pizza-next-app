@@ -5,9 +5,9 @@ import { Select } from '@components/Form';
 import { LocationIcon } from '@helpers/icons/20';
 import { Text } from '@components/Typography';
 import Link from 'next/link';
-import { Logo } from './components';
-import styles from './styles/HeaderMobile.module.scss';
-import { MenuMobile } from '../MenuMobile/MenuMobile';
+import { Logo } from '../components';
+import styles from '../styles/HeaderMobile.module.scss';
+import { MenuMobile } from '../../MenuMobile/MenuMobile';
 
 const city = ['Москва', 'Оренбург'];
 

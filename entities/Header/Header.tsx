@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { DeviceContext } from '@context';
-import { HeaderMobile } from './HeaderMobile';
-import { HeaderDesktop } from './HeaderDesktop';
+import { HeaderMobile } from './mobile';
+import { HeaderDesktop } from './desktop';
 
 export const Header = () => {
   const { isDesktop } = useContext(DeviceContext);

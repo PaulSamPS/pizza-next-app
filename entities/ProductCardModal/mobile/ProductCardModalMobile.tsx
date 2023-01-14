@@ -4,17 +4,9 @@ import { Button, Icon } from '@components/Blocks';
 import { CloseIcon32 } from '@helpers/icons/32';
 import { useRouter } from 'next/router';
 import { Text } from '@components/Typography';
-import { PizzaCustomizationTitle } from '../PizzaCustomization/components';
+import { PizzaCustomizationTitle } from '../../PizzaCustomization/components';
 import styles from './ProductCardMobile.module.scss';
-
-type ProductCardModalMobileProps = {
-  name: string;
-  img: string;
-  price: number;
-  description: string;
-  weight: string | null;
-  promotion: boolean;
-};
+import { ProductCardModalProps } from '../interface';
 
 export const ProductCardModalMobile = ({
   name,
@@ -23,7 +15,7 @@ export const ProductCardModalMobile = ({
   description,
   weight,
   promotion,
-}: ProductCardModalMobileProps) => {
+}: ProductCardModalProps) => {
   const router = useRouter();
   return (
     <div className={styles.card}>

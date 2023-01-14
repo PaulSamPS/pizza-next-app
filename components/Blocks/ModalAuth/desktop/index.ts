@@ -1,1 +1,1 @@
-export * from './ModalAuthDesktop'
+export * from './ModalAuthDesktop';

@@ -1,1 +1,1 @@
-export * from './ProductCardModalMobile';
+export * from './ProductCardModal';

@@ -20,9 +20,9 @@ import { Auth } from '@templates';
 import Link from 'next/link';
 import { useAppDispatch } from '@hooks';
 import { useRouter } from 'next/router';
-import styles from './styles/HeaderDesktop.module.scss';
-import { Logo, Login } from './components';
 import { setBasketModalIsOpened } from '@store/slices/basketModal.slice';
+import styles from '../styles/HeaderDesktop.module.scss';
+import { Logo, Login } from '../components';
 
 const city = ['Москва', 'Оренбург'];
 

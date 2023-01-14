@@ -1,1 +1,1 @@
-export * from './PizzaCustomizationDesktop'
+export * from './PizzaCustomizationDesktop';

@@ -1,42 +1,42 @@
 .product-card {
-  width: 350px;
-  overflow: hidden;
-  box-sizing: content-box;
-  display: flex;
-  padding: 16px 0;
+	width: 350px;
+	overflow: hidden;
+	box-sizing: content-box;
+	display: flex;
+	padding: 16px 0;
 
-  img {
-    object-fit: contain;
-  }
+	img {
+		object-fit: contain;
+	}
 
-  .info {
-    font-family: 'Inter Regular', sans-serif;
-    padding: 12px;
-    display: flex;
-    flex-direction: column;
+	.info {
+		font-family: 'Inter Regular', sans-serif;
+		padding: 12px;
+		display: flex;
+		flex-direction: column;
 
-    .name {
-      font-size: 14px;
-      line-height: 18px;
-    }
+		.name {
+			font-size: 14px;
+			line-height: 18px;
+		}
 
-    .text {
-      margin-top: 8px;
-      font-size: 12px;
-      line-height: 16px;
-      flex-grow: 1;
-    }
+		.text {
+			margin-top: 8px;
+			font-size: 12px;
+			line-height: 16px;
+			flex-grow: 1;
+		}
 
-    .bottom {
-      margin-top: 10px;
+		.bottom {
+			margin-top: 10px;
 
-      button {
-        padding: 7px 16px;
-        font-family: 'Inter Regular', sans-serif;
-        font-size: 14px;
-        line-height: 18px;
-        font-weight: 600;
-      }
-    }
-  }
+			button {
+				padding: 7px 16px;
+				font-family: 'Inter Regular', sans-serif;
+				font-size: 14px;
+				line-height: 18px;
+				font-weight: 600;
+			}
+		}
+	}
 }

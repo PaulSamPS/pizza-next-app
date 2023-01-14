@@ -1,1 +1,1 @@
-export * from './PizzaCardDesktop'
+export * from './PizzaCardDesktop';

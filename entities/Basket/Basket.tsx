@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { DeviceContext } from '@context';
-import { BasketDesktop } from './BasketDesktop';
-import { BasketMobile } from './BasketMobile';
+import { BasketDesktop } from './desktop';
+import { BasketMobile } from './mobile';
 
 export const Basket = () => {
   const { isDesktop } = useContext(DeviceContext);

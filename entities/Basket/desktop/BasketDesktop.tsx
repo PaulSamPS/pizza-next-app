@@ -3,9 +3,9 @@ import { Text, Title } from '@components/Typography';
 import { Divider, Tab } from '@components/Blocks';
 import { Input, InputPhone } from '@components/Form';
 import styles from './BasketDesktop.module.scss';
-import { CartCardList } from '../CartCardList/CartCardList';
-import { AdditionCard } from '../AdditionCard/AdditionCard';
-import additional from '../AdditionCard/addition.jpg';
+import { CartCardList } from '../../CartCardList/CartCardList';
+import { AdditionCard } from '../../AdditionCard/AdditionCard';
+import additional from '../../AdditionCard/addition.jpg';
 
 const add = [
   {

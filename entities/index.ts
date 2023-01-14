@@ -8,3 +8,4 @@ export * from './PizzaCustomization';
 export * from './CartCard/CartCard';
 export * from './AddionList';
 export * from './ProductList/ProductList';
+export * from './ProductCardModal';
