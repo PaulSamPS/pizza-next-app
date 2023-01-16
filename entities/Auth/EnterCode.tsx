@@ -14,7 +14,6 @@ export const EnterCode = () => {
   const enterCode = useEnterCode();
   const codeTimer = useCodeTimer();
   const sendCode = useSendCode();
-  console.log(step.phone);
 
   const classes = isDesktop ? stylesDesktop : stylesMobile;
 
