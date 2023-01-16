@@ -5,6 +5,9 @@ const nextConfig = {
   images: {
     domains: ['localhost'],
   },
+  env: {
+    API_URL: 'http://localhost:5000/api',
+  },
   webpack(config, options) {
     config.module.rules.push({
       loader: '@svgr/webpack',

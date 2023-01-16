@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import { Button } from '@components/Blocks';
 import { Text, Title } from '@components/Typography';
-import { DeviceContext, StepContext } from '@context';
+import { DeviceContext } from '@context';
 import { InputPhone } from '@components/Form';
+import { useSendCode } from '@hooks';
 import stylesDesktop from './EnterPhoneDesktop.module.scss';
 import stylesMobile from './EnterPhoneMobile.module.scss';
 
@@ -16,15 +17,10 @@ export const EnterPhone = () => {
     formattedValue: '',
     value: '',
   });
-  const { setPhone, nextStep } = useContext(StepContext);
   const { isDesktop } = useContext(DeviceContext);
+  const { onSubmit, error } = useSendCode();
 
   const classes = isDesktop ? stylesDesktop : stylesMobile;
-
-  const handleClick = () => {
-    setPhone(values.formattedValue);
-    nextStep();
-  };
 
   return (
     <div className={classes.phone}>
@@ -32,15 +28,20 @@ export const EnterPhone = () => {
       <Text level='l2' className={classes.subtitle}>
         Сможете быстро оформлять заказы, использовать бонусы
       </Text>
+      {error && (
+        <Text level='l2' className={classes.message}>
+          {error}
+        </Text>
+      )}
       <InputPhone name='Номер телефона' values={values} setValues={setValues} />
       <Button
         appearance='primary'
         disabled={values.value.length < 10}
-        onClick={handleClick}
+        onClick={() => onSubmit(values.formattedValue)}
       >
         Войти
       </Button>
-      <Text level='l3' className={classes.terms}>
+      <Text level='l1' className={classes.terms}>
         Продолжая, вы соглашаетесь со сбором и обработкой персональных данных и
         пользовательским соглашением
       </Text>

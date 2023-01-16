@@ -11,6 +11,7 @@ type StepComponentType = {
 export const Auth = () => {
   const [step, setStep] = React.useState<number>(0);
   const [phone, setPhone] = React.useState<string>('');
+  const [userId, setUserId] = React.useState<string>('');
   const stepComponents: StepComponentType = {
     0: EnterPhone,
     1: EnterCode,
@@ -25,11 +26,14 @@ export const Auth = () => {
   const contextValue = React.useMemo(
     () => ({
       step,
+      setStep,
       nextStep,
       setPhone,
       phone,
+      setUserId,
+      userId,
     }),
-    []
+    [userId]
   );
 
   return (

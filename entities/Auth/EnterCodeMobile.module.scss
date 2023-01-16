@@ -5,6 +5,7 @@
 	flex-direction: column;
 	justify-content: center;
 	font-family: 'SF Pro Text Regular', sans-serif;
+	position: relative;
 
 	h2 {
 		margin-bottom: 16px;
@@ -15,6 +16,18 @@
 	.info {
 		margin-bottom: 20px;
 		font-size: 14px;
+	}
+
+	.error-message {
+		color: var(--red);
+		position: absolute;
+		top: 73px;
+	}
+
+	.error-code {
+		input {
+			border: 1px solid var(--red);
+		}
 	}
 
 	.code {
@@ -41,10 +54,11 @@
 		margin-top: 12px;
 		display: flex;
 		font-size: 14px;
+		flex-direction: column;
+		row-gap: 12px;
 
-		.timer {
+		span {
 			color: var(--gray-text);
-			margin-left: 5px;
 		}
 	}
 }

@@ -1,35 +1,22 @@
-import React, { ChangeEvent, useContext } from 'react';
+import React from 'react';
 import { Input } from '@components/Form';
 import { Text, Title } from '@components/Typography';
 import { Button } from '@components/Blocks';
-import { DeviceContext } from '@context';
+import { DeviceContext, StepContext } from '@context';
+import { useCodeTimer, useEnterCode, useSendCode } from '@hooks';
+import cx from 'clsx';
 import stylesDesktop from './EnterCodeDesktop.module.scss';
 import stylesMobile from './EnterCodeMobile.module.scss';
 
 export const EnterCode = () => {
-  const [codes, setCodes] = React.useState<string[]>(['', '', '', '']);
-  const { isDesktop } = useContext(DeviceContext);
+  const { isDesktop } = React.useContext(DeviceContext);
+  const step = React.useContext(StepContext);
+  const enterCode = useEnterCode();
+  const codeTimer = useCodeTimer();
+  const sendCode = useSendCode();
+  console.log(step.phone);
 
   const classes = isDesktop ? stylesDesktop : stylesMobile;
-
-  const onSubmit = async () => {
-    // eslint-disable-next-line no-console
-    console.log(codes.join(''));
-  };
-
-  const handleChangeInput = async (event: ChangeEvent<HTMLInputElement>) => {
-    const index = Number(event.target.getAttribute('id'));
-    const { value } = event.target;
-
-    setCodes((prev) => {
-      const newArr = [...prev];
-      newArr[index] = value;
-      return newArr;
-    });
-    if (event.target.nextSibling) {
-      (event.target.nextSibling as HTMLInputElement).focus();
-    }
-  };
 
   return (
     <div className={classes['enter-code']}>
@@ -37,8 +24,15 @@ export const EnterCode = () => {
       <Text level='l2' className={classes.info}>
         Введите последние 4 цифры звонившего номера.
       </Text>
-      <div className={classes.code}>
-        {codes.map((code, index) => (
+      {enterCode.error && (
+        <Text level='l2' className={classes['error-message']}>
+          {enterCode.error}
+        </Text>
+      )}
+      <div
+        className={cx(classes.code, enterCode.error && classes['error-code'])}
+      >
+        {enterCode.codes.map((code, index) => (
           <Input
             code
             error='Error'
@@ -48,21 +42,33 @@ export const EnterCode = () => {
             value={code}
             placeholder='X'
             autoComplete='off'
-            onChange={handleChangeInput}
+            onChange={enterCode.handleInputCode}
           />
         ))}
       </div>
       <Button
         appearance='primary'
-        onClick={onSubmit}
-        disabled={codes.join('').length < 4}
+        onClick={enterCode.onSubmit}
+        disabled={enterCode.codes.join('').length < 4}
       >
         Войти
       </Button>
       <div className={classes['resend-code']}>
-        <Text level='l2'>Отправить код ещё раз через:</Text>
-        <Text level='l2' className={classes.timer}>
-          59 секунд
+        {codeTimer.isStopTimer ? (
+          <Text level='l2' className={classes.timer}>
+            {`Отправить код ещё раз через: ${`${codeTimer.minutes}:${
+              codeTimer.seconds < 10 && typeof codeTimer.seconds !== 'string'
+                ? '0'
+                : ''
+            }${codeTimer.seconds}`}`}
+          </Text>
+        ) : (
+          <Text level='l2' onClick={() => sendCode.onSubmit(step.phone)}>
+            Получить новый код
+          </Text>
+        )}
+        <Text level='l2' onClick={() => step.setStep(0)}>
+          Ввести другой телефон
         </Text>
       </div>
     </div>
