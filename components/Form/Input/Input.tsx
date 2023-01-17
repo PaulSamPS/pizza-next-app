@@ -10,7 +10,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   after?: React.ReactNode;
   button?: React.ReactNode;
   error?: string;
-  code: boolean;
+  code?: boolean;
 }
 
 export const Input = forwardRef(

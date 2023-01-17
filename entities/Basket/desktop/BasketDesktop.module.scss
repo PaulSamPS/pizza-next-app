@@ -67,5 +67,32 @@
 				width: 50%;
 			}
 		}
+
+		.how-soon {
+			display: flex;
+			flex-direction: column;
+			row-gap: 12px;
+			margin-top: 16px;
+
+			.title {
+				color: var(--gray-text);
+			}
+
+			.column {
+				display: flex;
+				column-gap: 24px;
+				align-items: center;
+				margin-top: 4px;
+			}
+
+			.items {
+				display: flex;
+				column-gap: 24px;
+			}
+
+			.change-input {
+				width: 130px;
+			}
+		}
 	}
 }

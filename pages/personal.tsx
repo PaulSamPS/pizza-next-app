@@ -1,23 +1,20 @@
 import React from 'react';
-import { withLayout } from '@hoc';
+import { withLayout, withAuth } from '@hoc';
+import { PersonalTemplate } from '@templates';
 import { GetServerSideProps } from 'next';
-import { getSelectorsByUserAgent } from 'react-device-detect';
-import * as getProduct from '@packages/http/getProducts';
 import { wrapper } from '@store/store';
-import { setProducts } from '@store/slices/products.slice';
+import { getSelectorsByUserAgent } from 'react-device-detect';
 import axios from 'axios';
 import { setCookie } from 'cookies-next';
 import { setUser } from '@store/slices/user.slice';
 import jwtDecode from 'jwt-decode';
-import { Basket } from '../entities/Basket/Basket';
 
-const BasketPage = () => <Basket />;
+const Personal = () => <PersonalTemplate />;
 
 export const getServerSideProps: GetServerSideProps =
   wrapper.getServerSideProps(({ dispatch }) => async ({ req, res }) => {
     const userAgent = req.headers['user-agent'];
     const { isDesktop } = getSelectorsByUserAgent(userAgent!);
-    const products = await getProduct.getAllProducts();
     const cookie = req.cookies.accessToken || req.cookies.refreshToken;
 
     if (cookie) {
@@ -41,14 +38,9 @@ export const getServerSideProps: GetServerSideProps =
       //   console.log(e.response?.data.message!);
       // });
     }
-
-    if (products) {
-      dispatch(setProducts(products));
-    }
-
     return {
       props: { isDesktop },
     };
   });
 
-export default withLayout(BasketPage);
+export default withLayout(withAuth(Personal));

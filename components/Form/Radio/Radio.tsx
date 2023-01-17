@@ -6,11 +6,12 @@ export interface RadioProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   id: string;
   currentValue: string;
+  nameGroup: string;
 }
 
 export const Radio = forwardRef(
   (
-    { children, id, currentValue, ...restProps }: RadioProps,
+    { children, id, currentValue, nameGroup, ...restProps }: RadioProps,
     ref: ForwardedRef<HTMLInputElement>
   ) => (
     <div className={styles.radio}>
@@ -18,7 +19,7 @@ export const Radio = forwardRef(
         ref={ref}
         type='radio'
         id={id}
-        name='radio-group'
+        name={nameGroup}
         value={children?.toString()}
         checked={currentValue === children?.toString()}
         {...restProps}

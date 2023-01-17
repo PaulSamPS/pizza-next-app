@@ -22,7 +22,7 @@
 			content: '';
 			position: absolute;
 			left: 0;
-			top: 0;
+			top: 2px;
 			width: 14px;
 			height: 14px;
 			border: 1px solid var(--primary);
@@ -37,7 +37,7 @@
 			height: 8px;
 			background: var(--primary);
 			position: absolute;
-			top: 4px;
+			top: 6px;
 			left: 4px;
 			border-radius: 100%;
 			transition: all 0.2s ease;

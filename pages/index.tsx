@@ -31,7 +31,7 @@ export const getServerSideProps: GetServerSideProps =
 
     if (req.cookies.accessToken || req.cookies.refreshToken) {
       await axios
-        .get(`${process.env.API_URL}/user`, {
+        .get<{ token: string; exp: number }>(`${process.env.API_URL}/user`, {
           withCredentials: true,
           headers: {
             accessToken: req.cookies.accessToken,
@@ -43,6 +43,9 @@ export const getServerSideProps: GetServerSideProps =
             req,
             res,
             expires: new Date(response.data.exp * 1000),
+            httpOnly: true,
+            sameSite: 'none',
+            secure: true,
           });
           dispatch(setUser(jwtDecode(response.data.token)));
         });

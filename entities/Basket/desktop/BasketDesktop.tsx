@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, Title } from '@components/Typography';
 import { Divider, Tab } from '@components/Blocks';
 import { Input, InputPhone } from '@components/Form';
+import { RadioGroup } from '@entities';
 import styles from './BasketDesktop.module.scss';
 import { CartCardList } from '../../CartCardList/CartCardList';
 import { AdditionCard } from '../../AdditionCard/AdditionCard';
@@ -73,6 +74,30 @@ const sauces = [
   },
 ];
 
+const howSoon = [
+  {
+    id: '1',
+    name: 'Как можно скорее',
+  },
+  { id: '2', name: 'По времени' },
+];
+
+const payment = [
+  {
+    id: '3',
+    name: 'Наличными',
+  },
+  { id: '4', name: 'Картой' },
+];
+
+const change = [
+  {
+    id: '3',
+    name: 'Без сдачи',
+  },
+  { id: '4', name: 'Сдача с' },
+];
+
 type InputValueState = {
   formattedValue: string;
   value: string;
@@ -85,6 +110,9 @@ export const BasketDesktop = () => {
     value: '',
   });
   const [deliveryValue, setDeliveryValue] = React.useState<string>(delivery[0]);
+  const [howSoonRadio, setHowSoonRadio] = React.useState(howSoon[0].name);
+  const [paymentRadio, setPaymentRadio] = React.useState(payment[0].name);
+  const [changeMoney, setChangeMoney] = React.useState(change[0].name);
 
   return (
     <div className={styles['basket-desktop']}>
@@ -164,6 +192,52 @@ export const BasketDesktop = () => {
             placeholder='0000'
             className={styles.code}
           />
+        </div>
+        <div className={styles['how-soon']}>
+          <Text level='l2' className={styles.title}>
+            Когда выполнить заказ?
+          </Text>
+          <RadioGroup
+            items={howSoon}
+            nameGroup='howSoon'
+            className={styles.items}
+            onChangeRadio={setHowSoonRadio}
+            value={howSoonRadio}
+          />
+        </div>
+        <div className={styles['how-soon']}>
+          <Text level='l2' className={styles.title}>
+            Оплата
+          </Text>
+          <RadioGroup
+            items={payment}
+            nameGroup='payment'
+            className={styles.items}
+            onChangeRadio={setPaymentRadio}
+            value={paymentRadio}
+          />
+        </div>
+        <div className={styles['how-soon']}>
+          <Text level='l2' className={styles.title}>
+            Сдача
+          </Text>
+          <div className={styles.column}>
+            <RadioGroup
+              items={change}
+              nameGroup='change-money'
+              className={styles.items}
+              onChangeRadio={setChangeMoney}
+              value={changeMoney}
+            />
+            {changeMoney === change[1].name && (
+              <Input
+                className={styles['change-input']}
+                id='change-money'
+                after={<Text level='l3'>₽</Text>}
+                placeholder='0'
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>

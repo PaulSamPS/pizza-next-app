@@ -1,6 +1,6 @@
 import React from 'react';
 import { Radio } from '@components/Form';
-import { Text } from '@components/Typography';
+import cx from 'clsx';
 import styles from './RadioGroup.module.scss';
 
 interface Items {
@@ -8,26 +8,31 @@ interface Items {
   name: string;
 }
 
-interface RadioGroupProps {
+interface RadioGroupProps extends React.AllHTMLAttributes<HTMLDivElement> {
   items: Items[];
+  nameGroup: string;
+  onChangeRadio: (e: string) => void;
+  value: string;
 }
 
-export const RadioGroup = ({ items }: RadioGroupProps) => {
-  const [radio, setRadio] = React.useState<string>('Быстрее');
-
-  return (
-    <div className={styles['radio-group']}>
-      {items.map((i) => (
-        <Radio
-          key={i.id}
-          id={i.id}
-          currentValue={radio}
-          onChange={(e) => setRadio(e.target.value)}
-        >
-          {i.name}
-        </Radio>
-      ))}
-      <Text level='l1'>{radio}</Text>
-    </div>
-  );
-};
+export const RadioGroup = ({
+  items,
+  nameGroup,
+  onChangeRadio,
+  value,
+  className,
+}: RadioGroupProps) => (
+  <div className={cx(styles['radio-group'], className)}>
+    {items.map((i) => (
+      <Radio
+        key={i.name}
+        id={i.name}
+        currentValue={value}
+        nameGroup={nameGroup}
+        onChange={(e) => onChangeRadio(e.target.value)}
+      >
+        {i.name}
+      </Radio>
+    ))}
+  </div>
+);

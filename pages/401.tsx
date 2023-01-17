@@ -1,16 +1,9 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
 import { getSelectorsByUserAgent } from 'react-device-detect';
-import { Auth } from '@templates';
-import { Login } from '../entities/Header/components';
+import { Error401Page } from '@templates';
 
-const Error401 = () => (
-  <div>
-    Не Авторизован
-    <Login />
-    <Auth />
-  </div>
-);
+const Error401 = () => <Error401Page />;
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const userAgent = req.headers['user-agent'];

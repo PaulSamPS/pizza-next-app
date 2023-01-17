@@ -12,7 +12,7 @@ export const Login = () => {
   const router = useRouter();
   const { user } = useSelector(userState);
 
-  const linkTo = user.phone ? '/cabinet' : `${router.pathname}?auth=login`;
+  const linkTo = user.phone ? '/personal' : `${router.pathname}?auth=login`;
 
   return (
     <div className={styles.auth}>

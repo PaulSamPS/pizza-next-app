@@ -74,10 +74,12 @@ export const HeaderDesktop = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
-  const handleOpenModalCart = () => {
-    if (router.pathname !== '/basket') {
+  const handleOpenModalCart = async () => {
+    if (router.pathname === '/') {
       dispatch(setBasketModalIsOpened(true));
       setIsSticky(true);
+    } else {
+      await router.push('/basket');
     }
   };
 
