@@ -33,6 +33,7 @@ export const useCodeTimer = () => {
 
       return () => clearInterval(interval);
     }
+      setIsStopTimer(false);
   }, [seconds]);
 
   return {

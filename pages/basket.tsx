@@ -3,8 +3,8 @@ import { withLayout } from '@hoc';
 import { GetServerSideProps } from 'next';
 import { getSelectorsByUserAgent } from 'react-device-detect';
 import * as getProduct from '@packages/http/getProducts';
-import { wrapper } from '../store/store';
-import { setProducts } from '../store/slices/products.slice';
+import { wrapper } from '@store/store';
+import { setProducts } from '@store/slices/products.slice';
 import { Basket } from '../entities/Basket/Basket';
 
 const BasketPage = () => <Basket />;

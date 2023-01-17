@@ -3,7 +3,7 @@ import { Button } from '@components/Blocks';
 import { Text, Title } from '@components/Typography';
 import { DeviceContext } from '@context';
 import { InputPhone } from '@components/Form';
-import { useSendCode } from '@hooks';
+import { useSendCode } from './hooks';
 import stylesDesktop from './EnterPhoneDesktop.module.scss';
 import stylesMobile from './EnterPhoneMobile.module.scss';
 

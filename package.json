@@ -19,6 +19,7 @@
     "axios": "^1.2.2",
     "clsx": "^1.2.1",
     "framer-motion": "^7.6.19",
+    "jwt-decode": "^3.1.2",
     "lodash.debounce": "^4.0.8",
     "moment": "^2.29.4",
     "next": "13.0.6",

@@ -3,8 +3,8 @@ import { Input } from '@components/Form';
 import { Text, Title } from '@components/Typography';
 import { Button } from '@components/Blocks';
 import { DeviceContext, StepContext } from '@context';
-import { useCodeTimer, useEnterCode, useSendCode } from '@hooks';
 import cx from 'clsx';
+import { useCodeTimer, useEnterCode, useSendCode } from './hooks';
 import stylesDesktop from './EnterCodeDesktop.module.scss';
 import stylesMobile from './EnterCodeMobile.module.scss';
 
@@ -16,6 +16,8 @@ export const EnterCode = () => {
   const sendCode = useSendCode();
 
   const classes = isDesktop ? stylesDesktop : stylesMobile;
+
+  const addZero = codeTimer.seconds < 10 ? '0' : '';
 
   return (
     <div className={classes['enter-code']}>
@@ -55,11 +57,7 @@ export const EnterCode = () => {
       <div className={classes['resend-code']}>
         {codeTimer.isStopTimer ? (
           <Text level='l2' className={classes.timer}>
-            {`Отправить код ещё раз через: ${`${codeTimer.minutes}:${
-              codeTimer.seconds < 10 && typeof codeTimer.seconds !== 'string'
-                ? '0'
-                : ''
-            }${codeTimer.seconds}`}`}
+            {`Отправить код ещё раз через: ${`${codeTimer.minutes}:${addZero}${codeTimer.seconds}`}`}
           </Text>
         ) : (
           <Text level='l2' onClick={() => sendCode.onSubmit(step.phone)}>
