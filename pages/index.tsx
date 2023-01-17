@@ -10,16 +10,17 @@ import {
 } from '@store/slices/productModal.slice';
 import { wrapper } from '@store/store';
 import { setPizzas, setProducts } from '@store/slices/products.slice';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import { setUser } from '@store/slices/user.slice';
+import { setCookie } from 'cookies-next';
 
 function Home() {
   return <Main />;
 }
 
 export const getServerSideProps: GetServerSideProps =
-  wrapper.getServerSideProps(({ dispatch }) => async ({ req, query }) => {
+  wrapper.getServerSideProps(({ dispatch }) => async ({ req, res, query }) => {
     const queryName = Object.keys(query)[0];
     const userAgent = req.headers['user-agent'];
     const { isDesktop } = getSelectorsByUserAgent(userAgent!);
@@ -37,12 +38,17 @@ export const getServerSideProps: GetServerSideProps =
             refreshToken: req.cookies.refreshToken,
           },
         })
-        .then((res) => {
-          dispatch(setUser(jwtDecode(res.data.token)));
-        })
-        .catch((e: AxiosError<{ message: string }>) => {
-          console.log(e.response?.data.message!);
+        .then((response) => {
+          setCookie('accessToken', response.data.token, {
+            req,
+            res,
+            expires: new Date(response.data.exp * 1000),
+          });
+          dispatch(setUser(jwtDecode(response.data.token)));
         });
+      // .catch((e: AxiosError<{ message: string }>) => {
+      //   console.log(e.response?.data.message!);
+      // });
     }
 
     if (pizzas) {
