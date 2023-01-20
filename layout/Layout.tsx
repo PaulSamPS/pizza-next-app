@@ -1,5 +1,5 @@
 import React from 'react';
-import { Footer, Header } from '@entities';
+import { Header, Nav } from '@entities';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -8,7 +8,7 @@ type LayoutProps = {
 export const Layout = ({ children }: LayoutProps) => (
   <>
     <Header />
+    <Nav />
     {children}
-    <Footer />
   </>
 );

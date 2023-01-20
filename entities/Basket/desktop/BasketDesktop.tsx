@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, Title } from '@components/Typography';
-import { Divider, Tab } from '@components/Blocks';
-import { Input, InputPhone } from '@components/Form';
+import { Button, Divider, Tab } from '@components/Blocks';
+import { Input, InputPhone, Textarea } from '@components/Form';
 import { RadioGroup } from '@entities';
 import styles from './BasketDesktop.module.scss';
 import { CartCardList } from '../../CartCardList/CartCardList';
@@ -243,6 +243,19 @@ export const BasketDesktop = () => {
           </div>
         </div>
         <Divider />
+        <div className={styles.comment}>
+          <Title level='3'>Комментарий</Title>
+          <Textarea />
+        </div>
+        <Divider />
+      </div>
+      <div className={styles.checkout}>
+        <Text level='l3' weight='w1' className={styles.sum}>
+          Итого: 2 379 ₽
+        </Text>
+        <Button appearance='primary' height={48}>
+          Оформить заказ
+        </Button>
       </div>
     </div>
   );

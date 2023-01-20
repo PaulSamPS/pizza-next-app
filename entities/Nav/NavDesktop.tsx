@@ -1,26 +1,26 @@
 import React from 'react';
 import cx from 'clsx';
+import { Button, Container, Divider } from '@components/Blocks';
 import Link from 'next/link';
 import { CategoryHeader } from '@entities';
-import { Button, Container, Divider } from '@components/Blocks';
 import { CartIcon } from '@helpers/icons/24';
 import { useAppDispatch, useScrollY } from '@hooks';
-import { setBasketModalIsOpened } from '@store/slices/basketModal.slice';
 import { useRouter } from 'next/router';
-import { Logo } from '../components';
-import styles from './HeaderDesktopBottom.module.scss';
+import { setBasketModalIsOpened } from '@store/slices/basketModal.slice';
+import { Logo } from '../Header/components';
+import styles from './NavDesktop.module.scss';
 
-type CategoryHeaderDesk = {
+type INav = {
   id: number;
   name: string;
   icon: React.ReactNode;
 };
 
-type HeaderDesktopBottomProps = {
-  category: CategoryHeaderDesk[];
+type NavDesktopProps = {
+  category: INav[];
 };
 
-export const HeaderDesktopBottom = ({ category }: HeaderDesktopBottomProps) => {
+export const NavDesktop = ({ category }: NavDesktopProps) => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const scrollY = useScrollY();
@@ -34,9 +34,9 @@ export const HeaderDesktopBottom = ({ category }: HeaderDesktopBottomProps) => {
   };
 
   return (
-    <div className={cx(styles.bottom, scrollY >= 41 && styles.sticky)}>
+    <nav className={cx(styles.nav, scrollY >= 41 && styles.sticky)}>
       <Container>
-        <div className={cx(styles.header, styles.bot)}>
+        <div className={styles.items}>
           <Link href='/'>
             <Logo />
           </Link>
@@ -52,6 +52,6 @@ export const HeaderDesktopBottom = ({ category }: HeaderDesktopBottomProps) => {
         </div>
       </Container>
       <Divider />
-    </div>
+    </nav>
   );
 };
