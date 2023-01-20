@@ -5,7 +5,7 @@ import styles from './Spinner.module.scss';
 
 export const Spinner = React.memo(
   ({
-    position = 'relative',
+    position = 'absolute',
     color,
     'aria-label': ariaLabel = 'Загружается...',
     ...restProps

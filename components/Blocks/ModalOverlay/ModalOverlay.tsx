@@ -8,7 +8,7 @@ import styles from './ModalOverlay.module.scss';
 interface OverlayingPopupProps extends React.AllHTMLAttributes<HTMLElement> {
   isOpened: boolean;
   position: 'center' | 'left' | 'right' | 'bottom';
-  setModal: () => void;
+  setModal?: () => void;
 }
 
 const Portal = dynamic(() => import('@components/Blocks/Portal'), {

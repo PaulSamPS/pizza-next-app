@@ -12,6 +12,8 @@ import {
   SushiIcon,
 } from '@helpers/icons/category';
 import { DeviceContext } from '@context';
+import { useScrollY } from '@hooks';
+import cx from 'clsx';
 import desktop from './styles/desktop.module.scss';
 import mobile from './styles/mobile.module.scss';
 
@@ -60,9 +62,15 @@ const category = [
 
 export const Category = () => {
   const { isDesktop } = useContext(DeviceContext);
+  const scrollY = useScrollY();
 
   return (
-    <nav className={isDesktop ? desktop.category : mobile.category}>
+    <nav
+      className={cx(
+        isDesktop ? desktop.category : mobile.category,
+        scrollY >= 120 && desktop.none
+      )}
+    >
       {category.map((c) => (
         <Card
           Component='a'

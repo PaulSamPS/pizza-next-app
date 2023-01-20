@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Category, ProductList } from '@entities';
+import { ProductList } from '@entities';
 import { useSelector } from 'react-redux';
 import { DeviceContext } from '@context';
 import { useAppDispatch } from '@hooks';
@@ -20,18 +20,15 @@ export const Main = () => {
   };
 
   return (
-    <>
-      <Category />
-      <Container>
-        <ProductList pizzas={pizza} product={items} isDesktop={isDesktop} />
-        <TemplateProductCustomization />
-        <TemplateCartModal
-          setModal={handleCloseModalCart}
-          modal={basketModalIsOpened}
-          product={pizza}
-        />
-        {!isDesktop && <BasketButtonMobile />}
-      </Container>
-    </>
+    <Container>
+      <ProductList pizzas={pizza} product={items} isDesktop={isDesktop} />
+      <TemplateProductCustomization />
+      <TemplateCartModal
+        setModal={handleCloseModalCart}
+        modal={basketModalIsOpened}
+        product={pizza}
+      />
+      {!isDesktop && <BasketButtonMobile />}
+    </Container>
   );
 };

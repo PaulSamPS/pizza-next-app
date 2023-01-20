@@ -1,7 +1,5 @@
 import React from 'react';
-import { Block, Button, Container, Divider } from '@components/Blocks';
-import { CategoryHeader } from '@entities';
-import { CartIcon } from '@helpers/icons/24';
+import { Block, Container, Divider } from '@components/Blocks';
 import cx from 'clsx';
 import {
   ComboIcon,
@@ -17,12 +15,9 @@ import { Select } from '@components/Form';
 import { LocationIcon } from '@helpers/icons/20';
 import { Text } from '@components/Typography';
 import { Auth } from '@templates';
-import Link from 'next/link';
-import { useAppDispatch } from '@hooks';
-import { useRouter } from 'next/router';
-import { setBasketModalIsOpened } from '@store/slices/basketModal.slice';
 import styles from '../styles/HeaderDesktop.module.scss';
-import { Logo, Login } from '../components';
+import { Login } from '../components';
+import { HeaderDesktopBottom } from './HeaderDesktopBottom';
 
 const city = ['Москва', 'Оренбург'];
 
@@ -69,21 +64,8 @@ const category = [
   },
 ];
 
-export const HeaderDesktop = () => {
-  const [isSticky, setIsSticky] = React.useState<boolean>(false);
-  const dispatch = useAppDispatch();
-  const router = useRouter();
-
-  const handleOpenModalCart = async () => {
-    if (router.pathname === '/') {
-      dispatch(setBasketModalIsOpened(true));
-      setIsSticky(true);
-    } else {
-      await router.push('/basket');
-    }
-  };
-
-  return (
+export const HeaderDesktop = () => (
+  <>
     <Block>
       <Container>
         <div className={cx(styles.header, styles.top)}>
@@ -106,23 +88,7 @@ export const HeaderDesktop = () => {
         </div>
       </Container>
       <Divider />
-      <Container>
-        <div className={cx(styles.header, styles.bot)}>
-          <Link href='/'>
-            <Logo />
-          </Link>
-          {isSticky && <CategoryHeader category={category} />}
-          <Button
-            appearance='primary'
-            before={<CartIcon />}
-            height={40}
-            onClick={handleOpenModalCart}
-          >
-            22550 ₽
-          </Button>
-        </div>
-      </Container>
-      <Divider />
     </Block>
-  );
-};
+    <HeaderDesktopBottom category={category} />
+  </>
+);

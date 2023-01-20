@@ -141,6 +141,7 @@ export const BasketDesktop = () => {
         />
         <Input id='email' text='Почта*' placeholder='mail@gmail.com' />
       </div>
+      <Divider />
       <div className={styles.delivery}>
         <div className={styles.top}>
           <Title level='3'>Доставка</Title>
@@ -205,6 +206,7 @@ export const BasketDesktop = () => {
             value={howSoonRadio}
           />
         </div>
+        <Divider />
         <div className={styles['how-soon']}>
           <Text level='l2' className={styles.title}>
             Оплата
@@ -217,7 +219,8 @@ export const BasketDesktop = () => {
             value={paymentRadio}
           />
         </div>
-        <div className={styles['how-soon']}>
+        <Divider />
+        <div className={styles['change-money']}>
           <Text level='l2' className={styles.title}>
             Сдача
           </Text>
@@ -239,6 +242,7 @@ export const BasketDesktop = () => {
             )}
           </div>
         </div>
+        <Divider />
       </div>
     </div>
   );
