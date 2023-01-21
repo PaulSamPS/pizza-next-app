@@ -16,10 +16,6 @@
 		margin-bottom: 20px;
 	}
 
-	.personal-data {
-		margin: 20px 0;
-	}
-
 	.delivery {
 		margin-top: 20px;
 
@@ -45,53 +41,6 @@
 			.apartment-number,
 			.code {
 				width: 50%;
-			}
-		}
-
-		.how-soon {
-			display: flex;
-			flex-direction: column;
-			row-gap: 12px;
-			margin-top: 16px;
-			margin-bottom: 16px;
-
-			.title {
-				color: var(--gray-text);
-			}
-
-			.items {
-				display: flex;
-				flex-direction: column;
-				row-gap: 16px;
-			}
-		}
-
-		.change-money {
-			display: flex;
-			flex-direction: column;
-			row-gap: 12px;
-			margin-top: 16px;
-			margin-bottom: 16px;
-
-			.title {
-				color: var(--gray-text);
-			}
-
-			.column {
-				display: flex;
-				row-gap: 16px;
-				flex-direction: column;
-				margin-top: 4px;
-			}
-
-			.items {
-				display: flex;
-				flex-direction: column;
-				row-gap: 16px;
-			}
-
-			.change-input {
-				width: 100%;
 			}
 		}
 

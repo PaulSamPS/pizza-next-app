@@ -7,10 +7,10 @@ import { AdditionCardDesktop } from './desktop';
 import { AdditionCardMobile } from './mobile';
 
 type AdditionCardProps = {
-  add: AdditionsType[];
+  arr: AdditionsType[];
 };
 
-export const AdditionCard = ({ add }: AdditionCardProps) => {
+export const AdditionCard = ({ arr }: AdditionCardProps) => {
   const { isDesktop } = useContext(DeviceContext);
   const { containerRef, scrollContainerBy, canScrollLeft, canScrollRight } =
     useScrollAdditions();
@@ -25,7 +25,7 @@ export const AdditionCard = ({ add }: AdditionCardProps) => {
         distance={310}
         isDesktop={isDesktop}
       >
-        {add.map((addition) =>
+        {arr.map((addition) =>
           (isDesktop ? (
             <AdditionCardDesktop
               key={addition.id}
@@ -54,15 +54,17 @@ export const AdditionCard = ({ add }: AdditionCardProps) => {
       distance={310}
       isDesktop={isDesktop}
     >
-      {add.map((addition) =>
+      {arr.map((addition) =>
         (isDesktop ? (
           <AdditionCardMobile
+            key={addition.id}
             name={addition.name}
             img={addition.img}
             price={addition.price}
           />
         ) : (
           <AdditionCardMobile
+            key={addition.id}
             name={addition.name}
             img={addition.img}
             price={addition.price}

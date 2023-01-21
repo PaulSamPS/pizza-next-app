@@ -1,6 +1,7 @@
 import React, { ForwardedRef, forwardRef } from 'react';
 import { Text } from '@components/Typography';
 import cx from 'clsx';
+import type { FieldError } from 'react-hook-form';
 import styles from './Input.module.scss';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -9,7 +10,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   before?: React.ReactNode;
   after?: React.ReactNode;
   button?: React.ReactNode;
-  error?: string;
+  error?: FieldError;
   code?: boolean;
 }
 
@@ -57,16 +58,23 @@ export const Input = forwardRef(
 
     if (code) {
       return (
-        <input
-          ref={ref}
-          id={id}
-          type={type}
-          name={id}
-          placeholder={placeholder}
-          autoComplete='off'
-          className={styles['input-field']}
-          {...restProps}
-        />
+        <div className={styles.input}>
+          <input
+            ref={ref}
+            id={id}
+            type={type}
+            name={id}
+            placeholder={placeholder}
+            autoComplete='off'
+            className={cx(styles['input-field'], error && styles.error)}
+            {...restProps}
+          />
+          {error && (
+            <Text level='l2' className={styles['error-message']}>
+              {error.message}
+            </Text>
+          )}
+        </div>
       );
     }
 
@@ -76,7 +84,6 @@ export const Input = forwardRef(
           styles.input,
           before && styles.before,
           after && styles.after,
-          error && styles.error,
           text && styles.text,
           className
         )}
@@ -90,12 +97,16 @@ export const Input = forwardRef(
           name={id}
           placeholder={placeholder}
           autoComplete='off'
-          className={cx(styles['input-field'])}
+          className={cx(styles['input-field'], error && styles.error)}
           {...restProps}
         />
         {button && buttonItem}
         {after && afterItem}
-        {error && <Text level='l2'>{error}</Text>}
+        {error && (
+          <Text level='l2' className={styles['error-message']}>
+            {error.message}
+          </Text>
+        )}
       </div>
     );
   }

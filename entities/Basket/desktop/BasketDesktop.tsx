@@ -1,12 +1,13 @@
 import React from 'react';
 import { Text, Title } from '@components/Typography';
 import { Button, Divider, Tab } from '@components/Blocks';
-import { Input, InputPhone, Textarea } from '@components/Form';
+import { Input, Textarea } from '@components/Form';
 import { RadioGroup } from '@entities';
 import styles from './BasketDesktop.module.scss';
 import { CartCardList } from '../../CartCardList/CartCardList';
 import { AdditionCard } from '../../AdditionCard/AdditionCard';
 import additional from '../../AdditionCard/addition.jpg';
+import { PersonalData } from '../components';
 
 const add = [
   {
@@ -98,17 +99,8 @@ const change = [
   { id: '4', name: 'Сдача с' },
 ];
 
-type InputValueState = {
-  formattedValue: string;
-  value: string;
-};
-
 const delivery = ['Доставка', 'Самовывоз'];
 export const BasketDesktop = () => {
-  const [values, setValues] = React.useState<InputValueState>({
-    formattedValue: '',
-    value: '',
-  });
   const [deliveryValue, setDeliveryValue] = React.useState<string>(delivery[0]);
   const [howSoonRadio, setHowSoonRadio] = React.useState(howSoon[0].name);
   const [paymentRadio, setPaymentRadio] = React.useState(payment[0].name);
@@ -124,23 +116,15 @@ export const BasketDesktop = () => {
       <Divider className={styles.divider} />
       <Title level='3'>Добавить к заказу?</Title>
       <div className={styles.additions}>
-        <AdditionCard add={add} />
+        <AdditionCard arr={add} />
       </div>
       <Title level='3'>Соусы</Title>
       <div className={styles.sauces}>
-        <AdditionCard add={sauces} />
+        <AdditionCard arr={sauces} />
       </div>
       <Divider className={styles.divider} />
       <Title level='3'>Личные данные</Title>
-      <div className={styles['personal-data']}>
-        <Input id='name' text='Имя*' placeholder='Иван' />
-        <InputPhone
-          values={values}
-          setValues={setValues}
-          name='Номер телефона*'
-        />
-        <Input id='email' text='Почта*' placeholder='mail@gmail.com' />
-      </div>
+      <PersonalData />
       <Divider />
       <div className={styles.delivery}>
         <div className={styles.top}>

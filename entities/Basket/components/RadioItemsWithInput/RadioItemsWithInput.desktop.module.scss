@@ -1,0 +1,25 @@
+.radio-items-with-input {
+  margin-top: 16px;
+  margin-bottom: 16px;
+
+  .title {
+    color: var(--gray-text);
+  }
+
+  .column {
+    display: flex;
+    column-gap: 24px;
+    align-items: center;
+    margin-top: 4px;
+    height: 49px;
+  }
+
+  .items {
+    display: flex;
+    column-gap: 24px;
+  }
+
+  .input {
+    width: 160px;
+  }
+}

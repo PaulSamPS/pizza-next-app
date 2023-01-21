@@ -5,7 +5,7 @@ import styles from './RadioGroup.module.scss';
 
 interface Items {
   id: string;
-  name: string;
+  value: string;
 }
 
 interface RadioGroupProps extends React.AllHTMLAttributes<HTMLDivElement> {
@@ -25,13 +25,13 @@ export const RadioGroup = ({
   <div className={cx(styles['radio-group'], className)}>
     {items.map((i) => (
       <Radio
-        key={i.name}
-        id={i.name}
+        key={i.value}
+        id={i.value}
         currentValue={value}
         nameGroup={nameGroup}
         onChange={(e) => onChangeRadio(e.target.value)}
       >
-        {i.name}
+        {i.value}
       </Radio>
     ))}
   </div>

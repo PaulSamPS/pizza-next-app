@@ -36,7 +36,6 @@ export const EnterCode = () => {
         {enterCode.codes.map((code, index) => (
           <Input
             code
-            error='Error'
             key={index}
             maxLength={1}
             id={String(index)}

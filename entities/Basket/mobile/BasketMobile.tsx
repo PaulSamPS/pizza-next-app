@@ -1,110 +1,58 @@
 import React from 'react';
 import { Text, Title } from '@components/Typography';
 import { Button, Divider, Tab } from '@components/Blocks';
-import { Input, InputPhone, Textarea } from '@components/Form';
+import { Input, Textarea } from '@components/Form';
+import { Controller, useForm } from 'react-hook-form';
 import styles from './BasketMobile.module.scss';
+import { PersonalData, RadioItems, RadioItemsWithInput } from '../components';
 import { CartCardList } from '../../CartCardList/CartCardList';
 import { AdditionCard } from '../../AdditionCard/AdditionCard';
-import additional from '../../AdditionCard/addition.jpg';
-import { RadioGroup } from '@entities';
+import type { BasketItems, BasketRadioItems } from '../basket.interface';
 
-const add = [
-  {
-    id: '1',
-    name: 'Картофель из печи',
-    price: 179,
-    img: additional,
-  },
-  {
-    id: '2',
-    name: 'Картофель из печи2',
-    price: 250,
-    img: additional,
-  },
-  {
-    id: '3',
-    name: 'Картофель из печи3',
-    price: 179,
-    img: additional,
-  },
-  {
-    id: '4',
-    name: 'Картофель из печи4',
-    price: 250,
-    img: additional,
-  },
-];
-
-const sauces = [
-  {
-    id: '1',
-    name: 'Картофель из печи',
-    price: 179,
-    img: additional,
-  },
-  {
-    id: '2',
-    name: 'Картофель из печи2',
-    price: 250,
-    img: additional,
-  },
-  {
-    id: '3',
-    name: 'Картофель из печи3',
-    price: 179,
-    img: additional,
-  },
-  {
-    id: '4',
-    name: 'Картофель из печи4',
-    price: 250,
-    img: additional,
-  },
-];
-
-const howSoon = [
-  {
-    id: '1',
-    name: 'Как можно скорее',
-  },
-  { id: '2', name: 'По времени' },
-];
-
-const payment = [
-  {
-    id: '3',
-    name: 'Наличными',
-  },
-  { id: '4', name: 'Картой' },
-];
-
-const change = [
-  {
-    id: '3',
-    name: 'Без сдачи',
-  },
-  { id: '4', name: 'Сдача с' },
-];
-
-type InputValueState = {
-  formattedValue: string;
-  value: string;
+type BasketMobileProps = {
+  deliveryMethod: string[];
+  valueDeliveryMethod: string;
+  setValueDeliveryMethod: (value: string) => void;
+  additions: BasketItems[];
+  sauces: BasketItems[];
+  arrRadioFirst: BasketRadioItems[];
+  arrRadioSecond: BasketRadioItems[];
+  arrRadioThird: BasketRadioItems[];
 };
 
-const delivery = ['Доставка', 'Самовывоз'];
+export interface IReviewForm {
+  name: string;
+  title: string;
+  description: string;
+  rating: number;
+}
 
-export const BasketMobile = () => {
-  const [values, setValues] = React.useState<InputValueState>({
-    formattedValue: '',
-    value: '',
-  });
-  const [deliveryValue, setDeliveryValue] = React.useState<string>(delivery[0]);
-  const [howSoonRadio, setHowSoonRadio] = React.useState(howSoon[0].name);
-  const [paymentRadio, setPaymentRadio] = React.useState(payment[0].name);
-  const [changeMoney, setChangeMoney] = React.useState(change[0].name);
+export type DeliveryFrom = {
+  street: string;
+  house: string;
+  entrance: string;
+  level: string;
+  apartment: string;
+  intercom: string;
+  howSoon: string;
+  payment: string;
+  change: string;
+  changeMoney: string;
+  comment: string;
+};
+export const BasketMobile = ({ ...props }: BasketMobileProps) => {
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<DeliveryFrom>({ mode: 'onChange' });
+  const onSubmit = async (formData: DeliveryFrom) => {
+    console.log(formData);
+  };
 
   return (
-    <div className={styles['basket-mobile']}>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles['basket-mobile']}>
       <Title level='3'>Ваш Заказ</Title>
       <CartCardList />
       <Text level='l3' weight='w1' className={styles.sum}>
@@ -113,38 +61,38 @@ export const BasketMobile = () => {
       <Divider className={styles.divider} />
       <Title level='3'>Добавить к заказу?</Title>
       <div className={styles.additions}>
-        <AdditionCard add={add} />
+        <AdditionCard arr={props.additions} />
       </div>
       <Title level='3'>Соусы</Title>
       <div className={styles.sauces}>
-        <AdditionCard add={sauces} />
+        <AdditionCard arr={props.sauces} />
       </div>
       <Divider className={styles.divider} />
       <Title level='3'>Личные данные</Title>
-      <div className={styles['personal-data']}>
-        <Input id='name' text='Имя*' placeholder='Иван' />
-        <InputPhone
-          values={values}
-          setValues={setValues}
-          name='Номер телефона*'
-        />
-        <Input id='email' text='Почта*' placeholder='mail@gmail.com' />
-      </div>
+      <PersonalData />
       <Title level='3'>Доставка</Title>
       <div className={styles.delivery}>
         <Tab
-          arr={delivery}
-          currentValue={deliveryValue}
-          setValue={setDeliveryValue}
+          arr={props.deliveryMethod}
+          currentValue={props.valueDeliveryMethod}
+          setValue={props.setValueDeliveryMethod}
         />
         <div className={styles.address}>
           <Input
+            {...register('street', {
+              required: { value: true, message: 'Введите улицу' },
+            })}
+            error={errors.street}
             id='street'
             text='Улица*'
             placeholder='Пушкина'
             className={styles.street}
           />
           <Input
+            {...register('house', {
+              required: { value: true, message: 'Введите дом' },
+            })}
+            error={errors.house}
             id='house'
             text='Дом*'
             placeholder='1а'
@@ -153,12 +101,14 @@ export const BasketMobile = () => {
         </div>
         <div className={styles['house-info']}>
           <Input
+            {...register('entrance')}
             id='entrance'
             text='Подъезд'
             placeholder='1'
             className={styles.entrance}
           />
           <Input
+            {...register('level')}
             id='level'
             text='Этаж'
             placeholder='2'
@@ -167,70 +117,68 @@ export const BasketMobile = () => {
         </div>
         <div className={styles['house-info']}>
           <Input
+            {...register('apartment')}
             id='apartment'
             text='Квартира'
             placeholder='1'
             className={styles['apartment-number']}
           />
           <Input
-            id='code'
+            {...register('intercom')}
+            id='intercom'
             text='Домофон'
             placeholder='0000'
             className={styles.code}
           />
         </div>
-        <div className={styles['how-soon']}>
-          <Text level='l2' className={styles.title}>
-            Когда выполнить заказ?
-          </Text>
-          <RadioGroup
-            items={howSoon}
-            nameGroup='howSoon'
-            className={styles.items}
-            onChangeRadio={setHowSoonRadio}
-            value={howSoonRadio}
-          />
-        </div>
-        <Divider />
-        <div className={styles['how-soon']}>
-          <Text level='l2' className={styles.title}>
-            Оплата
-          </Text>
-          <RadioGroup
-            items={payment}
-            nameGroup='payment'
-            className={styles.items}
-            onChangeRadio={setPaymentRadio}
-            value={paymentRadio}
-          />
-        </div>
-        <Divider />
-        <div className={styles['change-money']}>
-          <Text level='l2' className={styles.title}>
-            Сдача
-          </Text>
-          <div className={styles.column}>
-            <RadioGroup
-              items={change}
-              nameGroup='change-money'
-              className={styles.items}
-              onChangeRadio={setChangeMoney}
-              value={changeMoney}
+        <Controller
+          control={control}
+          render={({ field: { onChange, value } }) => (
+            <RadioItems
+              id='how-soon'
+              items={props.arrRadioFirst}
+              onChange={onChange}
+              value={value}
+              title='Когда выполнить заказ?'
             />
-            {changeMoney === change[1].name && (
-              <Input
-                className={styles['change-input']}
-                id='change-money'
-                after={<Text level='l3'>₽</Text>}
-                placeholder='0'
-              />
-            )}
-          </div>
-        </div>
+          )}
+          name='howSoon'
+        />
+        <Divider />
+        <Controller
+          control={control}
+          render={({ field: { onChange, value } }) => (
+            <RadioItems
+              id='payment'
+              items={props.arrRadioSecond}
+              onChange={onChange}
+              value={value}
+              title='Оплата'
+            />
+          )}
+          name='payment'
+        />
+        <Divider />
+        <Controller
+          control={control}
+          render={({ field: { onChange, value } }) => (
+            <RadioItemsWithInput
+              placeholder='0'
+              items={props.arrRadioThird}
+              onChange={onChange}
+              value={value}
+              title='Сдача'
+              id='change-money'
+              errors={errors}
+              register={register}
+            />
+          )}
+          name='change'
+        />
         <Divider />
         <div className={styles.comment}>
           <Title level='3'>Комментарий</Title>
-          <Textarea />
+          <Textarea {...register('comment')} placeholder='Есть уточнения?' />
         </div>
         <Divider />
       </div>
@@ -238,10 +186,10 @@ export const BasketMobile = () => {
         <Text level='l3' weight='w1' className={styles['checkout-sum']}>
           Итого: 2 379 ₽
         </Text>
-        <Button appearance='primary' height={48}>
+        <Button appearance='primary' type='submit' height={48}>
           Оформить заказ
         </Button>
       </div>
-    </div>
+    </form>
   );
 };
