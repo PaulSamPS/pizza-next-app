@@ -1,0 +1,17 @@
+.radio-items {
+	display: flex;
+	flex-direction: column;
+	row-gap: 12px;
+	margin-top: 16px;
+	margin-bottom: 16px;
+
+	.title {
+		color: var(--gray-text);
+	}
+
+	.items {
+		display: flex;
+		flex-direction: column;
+		row-gap: 16px;
+	}
+}

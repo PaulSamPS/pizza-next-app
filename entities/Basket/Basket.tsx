@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { DeviceContext } from '@context';
-import { BasketDesktop } from './desktop';
 import { BasketMobile } from './mobile';
 import additional from '../AdditionCard/addition.jpg';
+import { BasketDesktop } from './desktop';
 
 const additions = [
   {
@@ -25,6 +25,12 @@ const additions = [
   },
   {
     id: '4',
+    name: 'Картофель из печи4',
+    price: 250,
+    img: additional,
+  },
+  {
+    id: '5',
     name: 'Картофель из печи4',
     price: 250,
     img: additional,
@@ -52,6 +58,12 @@ const sauces = [
   },
   {
     id: '4',
+    name: 'Картофель из печи4',
+    price: 250,
+    img: additional,
+  },
+  {
+    id: '5',
     name: 'Картофель из печи4',
     price: 250,
     img: additional,
@@ -87,12 +99,20 @@ const delivery = ['Доставка', 'Самовывоз'];
 export const Basket = () => {
   const { isDesktop } = useContext(DeviceContext);
   const [deliveryValue, setDeliveryValue] = React.useState<string>(delivery[0]);
-  const [howSoonRadio, setHowSoonRadio] = React.useState(howSoon[0].value);
-  const [paymentRadio, setPaymentRadio] = React.useState(payment[0].value);
-  const [changeMoney, setChangeMoney] = React.useState(change[0].value);
 
   if (isDesktop) {
-    return <BasketDesktop />;
+    return (
+      <BasketDesktop
+        deliveryMethod={delivery}
+        valueDeliveryMethod={deliveryValue}
+        setValueDeliveryMethod={setDeliveryValue}
+        sauces={sauces}
+        additions={additions}
+        arrRadioFirst={howSoon}
+        arrRadioSecond={payment}
+        arrRadioThird={change}
+      />
+    );
   }
 
   return (
@@ -103,14 +123,8 @@ export const Basket = () => {
       sauces={sauces}
       additions={additions}
       arrRadioFirst={howSoon}
-      valueRadioFirst={howSoonRadio}
-      setValueRadioFirst={setHowSoonRadio}
       arrRadioSecond={payment}
-      valueRadioSecond={paymentRadio}
-      setValueRadioSecond={setPaymentRadio}
       arrRadioThird={change}
-      valueRadioThird={changeMoney}
-      setValueRadioThird={setChangeMoney}
     />
   );
 };

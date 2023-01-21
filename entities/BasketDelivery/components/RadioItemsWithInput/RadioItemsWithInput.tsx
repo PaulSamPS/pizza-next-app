@@ -7,7 +7,7 @@ import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import type { RadioItemsProps } from '../RadioItems/RadioItems.interface';
 import desktop from './RadioItemsWithInput.desktop.module.scss';
 import mobile from './RadioItemsWithInput.mobile.module.scss';
-import type { DeliveryFrom } from '../../mobile';
+import type { DeliveryFrom } from '../../../Basket/mobile';
 
 interface RadioItemsWithInputProps extends RadioItemsProps {
   placeholder: string;
