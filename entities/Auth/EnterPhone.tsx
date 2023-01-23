@@ -7,16 +7,8 @@ import { useSendCode } from './hooks';
 import stylesDesktop from './EnterPhoneDesktop.module.scss';
 import stylesMobile from './EnterPhoneMobile.module.scss';
 
-type InputValueState = {
-  formattedValue: string;
-  value: string;
-};
-
 export const EnterPhone = () => {
-  const [values, setValues] = React.useState<InputValueState>({
-    formattedValue: '',
-    value: '',
-  });
+  const [value, setValue] = React.useState<string>('');
   const { isDesktop } = useContext(DeviceContext);
   const { onSubmit, error } = useSendCode();
 
@@ -33,11 +25,15 @@ export const EnterPhone = () => {
           {error}
         </Text>
       )}
-      <InputPhone name='Номер телефона' values={values} setValues={setValues} />
+      <InputPhone
+        name='Номер телефона'
+        value={value}
+        setValues={(e) => setValue(e.target.value)}
+      />
       <Button
         appearance='primary'
-        disabled={values.value.length < 10}
-        onClick={() => onSubmit(values.formattedValue)}
+        disabled={value.length < 10}
+        onClick={() => onSubmit(value)}
       >
         Войти
       </Button>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ModalCart } from '@components/Blocks';
-import { CartCard } from '@entities';
+import { BasketCard } from '@entities';
 import { IPizzaLocal } from '@types';
 
 type TemplateCartModalProps = {
@@ -16,7 +16,7 @@ export const TemplateCartModal = ({
 }: TemplateCartModalProps) => (
   <ModalCart modal={modal} setModal={setModal}>
     {product.map((p) => (
-      <CartCard key={p.id} product={p} />
+      <BasketCard key={p.id} product={p} />
     ))}
   </ModalCart>
 );

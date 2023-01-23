@@ -28,10 +28,8 @@
 }
 
 .medium {
-	width: 850px;
-	height: 152px;
+	width: 100%;
 	grid-template-columns: 120px 1fr;
-	box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
 	padding: 16px 24px 16px 16px;
 
 	img {
@@ -46,8 +44,7 @@
 
 .small {
 	grid-template-columns: 94px 1fr;
-	width: 380px;
-	height: 126px;
+	width: 100%;
 	padding: 16px;
 
 	img {

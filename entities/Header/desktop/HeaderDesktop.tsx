@@ -28,7 +28,10 @@ export const HeaderDesktop = () => (
             <b> 00:24:19</b>
           </Text>
         </div>
-        <Login />
+        <div className={styles.auth}>
+          <Text level='l1'>Время работы: с 11:00 до 23:00</Text>
+          <Login />
+        </div>
         <Auth />
       </div>
     </Container>

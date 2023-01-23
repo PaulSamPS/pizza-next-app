@@ -1,12 +1,13 @@
 import React from 'react';
-import { Divider, Icon } from '@components/Blocks';
-import { AccountIcon, LocationIcon, PhoneIcon } from '@helpers/icons/20';
+import { Divider } from '@components/Blocks';
+import { LocationIcon, PhoneIcon } from '@helpers/icons/20';
 import { Text } from '@components/Typography';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Auth } from '@templates';
 import styles from './MenuMobile.module.scss';
+import { Login } from '../Header/components';
 
 type MenuMobileProps = {
   isOpened: boolean;
@@ -47,14 +48,7 @@ export const MenuMobile = ({ isOpened }: MenuMobileProps) => {
               bounceStiffness: 2,
             }}
           >
-            <Link href='/?auth=login'>
-              <div className={styles.login}>
-                <Icon primary>
-                  <AccountIcon />
-                </Icon>
-                <Text level='l3'>Войти в аккаунт</Text>
-              </div>
-            </Link>
+            <Login />
             <Auth />
             <Divider />
             <div className={styles.list}>

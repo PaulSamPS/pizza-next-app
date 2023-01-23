@@ -2,12 +2,13 @@ import React from 'react';
 import { Text, Title } from '@components/Typography';
 import { Button, Divider } from '@components/Blocks';
 import { useForm } from 'react-hook-form';
+import type { DeliveryFrom } from '@types';
 import styles from './BasketDesktop.module.scss';
-import { CartCardList } from '../../CartCardList/CartCardList';
-import { AdditionCard } from '../../AdditionCard/AdditionCard';
-import { PersonalData } from '../../BasketDelivery/components';
 import { BasketDelivery } from '../../BasketDelivery';
-import type { BasketProps, DeliveryFrom } from '../basket.interface';
+import type { BasketProps } from '../basket.interface';
+import { PersonalData } from '../../PersonalData';
+import { BasketProduct } from '../../BasketProduct';
+import { AdditionsView } from '../../AdditionsView';
 
 export const BasketDesktop = ({ ...props }: BasketProps) => {
   const {
@@ -23,7 +24,6 @@ export const BasketDesktop = ({ ...props }: BasketProps) => {
       change: props.arrRadioThird[0].value,
     },
   });
-
   const onSubmit = async (formData: DeliveryFrom) => {
     console.log(formData);
   };
@@ -34,22 +34,24 @@ export const BasketDesktop = ({ ...props }: BasketProps) => {
       className={styles['basket-desktop']}
     >
       <Title level='3'>Ваш Заказ</Title>
-      <CartCardList />
+      <div className={styles.order}>
+        <BasketProduct size='medium' />
+      </div>
       <Text level='l3' weight='w1' className={styles.sum}>
         Итого: 2 379 ₽
       </Text>
       <Divider className={styles.divider} />
       <Title level='3'>Добавить к заказу?</Title>
       <div className={styles.additions}>
-        <AdditionCard arr={props.additions} />
+        <AdditionsView arr={props.additions} distance={310} />
       </div>
       <Title level='3'>Соусы</Title>
       <div className={styles.sauces}>
-        <AdditionCard arr={props.sauces} />
+        <AdditionsView arr={props.sauces} distance={310} />
       </div>
       <Divider className={styles.divider} />
       <Title level='3'>Личные данные</Title>
-      <PersonalData />
+      <PersonalData register={register} errors={errors} control={control} />
       <Divider />
       <BasketDelivery
         register={register}
@@ -63,7 +65,7 @@ export const BasketDesktop = ({ ...props }: BasketProps) => {
         <Text level='l3' weight='w1' className={styles.sum}>
           Итого: 2 379 ₽
         </Text>
-        <Button appearance='primary' height={48}>
+        <Button appearance='primary' type='submit' height={48}>
           Оформить заказ
         </Button>
       </div>

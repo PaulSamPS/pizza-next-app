@@ -40,7 +40,7 @@ export const NavDesktop = ({ category }: NavDesktopProps) => {
           <Link href='/'>
             <Logo />
           </Link>
-          <CategoryHeader category={category} />
+          {router.pathname === '/' && <CategoryHeader category={category} />}
           <Button
             appearance='primary'
             before={<CartIcon />}

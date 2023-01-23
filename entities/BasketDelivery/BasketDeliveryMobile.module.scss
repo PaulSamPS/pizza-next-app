@@ -1,37 +1,37 @@
 .delivery {
-  margin-top: 20px;
+	margin-top: 20px;
 
-  .address {
-    display: flex;
-    column-gap: 20px;
+	.address {
+		display: flex;
+		column-gap: 20px;
 
-    .street {
-      width: 75%;
-    }
+		.street {
+			width: 75%;
+		}
 
-    .house {
-      width: 25%;
-    }
-  }
+		.house {
+			width: 25%;
+		}
+	}
 
-  .house-info {
-    display: flex;
-    column-gap: 20px;
+	.house-info {
+		display: flex;
+		column-gap: 20px;
 
-    .entrance,
-    .level,
-    .apartment-number,
-    .code {
-      width: 50%;
-    }
-  }
+		.entrance,
+		.level,
+		.apartment-number,
+		.code {
+			width: 50%;
+		}
+	}
 
-  .comment {
-    width: 100%;
-    padding-bottom: 20px;
+	.comment {
+		width: 100%;
+		padding-bottom: 20px;
 
-    h3 {
-      margin: 20px 0 !important;
-    }
-  }
+		h3 {
+			margin: 20px 0 !important;
+		}
+	}
 }

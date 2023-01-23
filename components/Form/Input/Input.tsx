@@ -58,23 +58,16 @@ export const Input = forwardRef(
 
     if (code) {
       return (
-        <div className={styles.input}>
-          <input
-            ref={ref}
-            id={id}
-            type={type}
-            name={id}
-            placeholder={placeholder}
-            autoComplete='off'
-            className={cx(styles['input-field'], error && styles.error)}
-            {...restProps}
-          />
-          {error && (
-            <Text level='l2' className={styles['error-message']}>
-              {error.message}
-            </Text>
-          )}
-        </div>
+        <input
+          ref={ref}
+          id={id}
+          type={type}
+          name={id}
+          placeholder={placeholder}
+          autoComplete='off'
+          className={cx(styles['input-field'], error && styles.error)}
+          {...restProps}
+        />
       );
     }
 

@@ -1,4 +1,5 @@
 import { StaticImageData } from 'next/image';
+import { DeliveryFrom, FormProps } from '@types';
 
 export type BasketItems = {
   id: string;
@@ -12,21 +13,7 @@ export type BasketRadioItems = {
   value: string;
 };
 
-export type DeliveryFrom = {
-  street: string;
-  house: string;
-  entrance: string;
-  level: string;
-  apartment: string;
-  intercom: string;
-  howSoon: string;
-  payment: string;
-  change: string;
-  changeMoney: string;
-  comment: string;
-};
-
-export type BasketProps = {
+export interface BasketProps extends FormProps<DeliveryFrom> {
   additions: BasketItems[];
   sauces: BasketItems[];
   deliveryMethod: string[];
@@ -35,4 +22,4 @@ export type BasketProps = {
   arrRadioFirst: BasketRadioItems[];
   arrRadioSecond: BasketRadioItems[];
   arrRadioThird: BasketRadioItems[];
-};
+}

@@ -1,28 +1,21 @@
 import React, { useContext } from 'react';
 import { Divider } from '@components/Blocks';
 import { Input, Textarea } from '@components/Form';
-import {
-  Control,
-  Controller,
-  FieldErrors,
-  UseFormRegister,
-} from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 import { Title } from '@components/Typography';
 import { DeviceContext } from '@context';
+import type { DeliveryFrom, FormProps } from '@types';
 import mobile from './BasketDeliveryMobile.module.scss';
 import desktop from './BasketDeliveryDesktop.module.scss';
 import { RadioItems, RadioItemsWithInput } from './components';
-import type { BasketProps, DeliveryFrom } from '../Basket/basket.interface';
+import type { BasketProps } from '../Basket/basket.interface';
 
 interface BasketDeliveryProps
   extends Pick<
-    BasketProps,
-    'arrRadioFirst' | 'arrRadioSecond' | 'arrRadioThird'
-  > {
-  register: UseFormRegister<DeliveryFrom>;
-  control: Control<DeliveryFrom, any>;
-  errors: FieldErrors<DeliveryFrom>;
-}
+      BasketProps,
+      'arrRadioFirst' | 'arrRadioSecond' | 'arrRadioThird'
+    >,
+    Omit<FormProps<DeliveryFrom>, 'handleSubmit'> {}
 
 export const BasketDelivery = ({ ...props }: BasketDeliveryProps) => {
   const { isDesktop } = useContext(DeviceContext);

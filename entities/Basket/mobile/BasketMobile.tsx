@@ -1,57 +1,76 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Text, Title } from '@components/Typography';
 import { Button, Divider, Tab } from '@components/Blocks';
-import { useForm } from 'react-hook-form';
-import mobile from './BasketMobile.module.scss';
-import desktop from '../desktop/BasketDesktop.module.scss';
-import { PersonalData } from '../../BasketDelivery/components';
-import { CartCardList } from '../../CartCardList/CartCardList';
+import type { DeliveryFrom } from '@types';
+import { AdditionsList } from '@entities';
+import { useScrollAdditions } from '@hooks';
+import { DeviceContext } from '@context';
+import styles from './BasketMobile.module.scss';
 import { AdditionCard } from '../../AdditionCard/AdditionCard';
-import type { BasketProps, DeliveryFrom } from '../basket.interface';
+import type { BasketProps } from '../basket.interface';
 import { BasketDelivery } from '../../BasketDelivery';
+import { PersonalData } from '../../PersonalData';
+import { BasketProduct } from '../../BasketProduct';
 
 export const BasketMobile = ({ ...props }: BasketProps) => {
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm<DeliveryFrom>({
-    mode: 'onChange',
-    defaultValues: {
-      howSoon: props.arrRadioFirst[0].value,
-      payment: props.arrRadioSecond[0].value,
-      change: props.arrRadioThird[0].value,
-    },
-  });
-  const classes = props.isDesktop ? desktop : mobile;
+  const { containerRef, scrollContainerBy, canScrollLeft, canScrollRight } =
+    useScrollAdditions();
+  const { isDesktop } = useContext(DeviceContext);
   const onSubmit = async (formData: DeliveryFrom) => {
     console.log(formData);
   };
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
-      className={classes['basket-mobile']}
+      onSubmit={props.handleSubmit(onSubmit)}
+      className={styles['basket-mobile']}
     >
       <Title level='3'>Ваш Заказ</Title>
-      <CartCardList />
-      <Text level='l3' weight='w1' className={classes.sum}>
+      <div className={styles.order}>
+        <BasketProduct size='small' />
+      </div>
+      <Text level='l3' weight='w1' className={styles.sum}>
         Итого: 2 379 ₽
       </Text>
-      <Divider className={classes.divider} />
+      <Divider className={styles.divider} />
       <Title level='3'>Добавить к заказу?</Title>
-      <div className={classes.additions}>
-        <AdditionCard arr={props.additions} />
+      <div className={styles.additions}>
+        <AdditionsList
+          canScrollLeft={canScrollLeft}
+          canScrollRight={canScrollRight}
+          scrollContainerBy={scrollContainerBy}
+          containerRef={containerRef}
+          distance={310}
+          isDesktop={isDesktop}
+        >
+          {props.additions.map((addition) => (
+            <AdditionCard key={addition.id} addition={addition} />
+          ))}
+        </AdditionsList>
       </div>
       <Divider />
       <Title level='3'>Соусы</Title>
-      <div className={classes.sauces}>
-        <AdditionCard arr={props.sauces} />
+      <div className={styles.sauces}>
+        <AdditionsList
+          canScrollLeft={canScrollLeft}
+          canScrollRight={canScrollRight}
+          scrollContainerBy={scrollContainerBy}
+          containerRef={containerRef}
+          distance={310}
+          isDesktop={isDesktop}
+        >
+          {props.sauces.map((sauce) => (
+            <AdditionCard key={sauce.id} addition={sauce} />
+          ))}
+        </AdditionsList>
       </div>
-      <Divider className={classes.divider} />
+      <Divider className={styles.divider} />
       <Title level='3'>Личные данные</Title>
-      <PersonalData />
+      <PersonalData
+        register={props.register}
+        errors={props.errors}
+        control={props.control}
+      />
       <Title level='3'>Доставка</Title>
       <Tab
         arr={props.deliveryMethod}
@@ -59,15 +78,15 @@ export const BasketMobile = ({ ...props }: BasketProps) => {
         setValue={props.setValueDeliveryMethod}
       />
       <BasketDelivery
-        control={control}
-        errors={errors}
-        register={register}
+        control={props.control}
+        errors={props.errors}
+        register={props.register}
         arrRadioFirst={props.arrRadioFirst}
         arrRadioSecond={props.arrRadioSecond}
         arrRadioThird={props.arrRadioThird}
       />
-      <div className={classes.checkout}>
-        <Text level='l3' weight='w1' className={classes['checkout-sum']}>
+      <div className={styles.checkout}>
+        <Text level='l3' weight='w1' className={styles['checkout-sum']}>
           Итого: 2 379 ₽
         </Text>
         <Button appearance='primary' type='submit' height={48}>

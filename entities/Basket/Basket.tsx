@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import { DeviceContext } from '@context';
+import { useForm } from 'react-hook-form';
+import { DeliveryFrom } from '@types';
 import { BasketMobile } from './mobile';
 import additional from '../AdditionCard/addition.jpg';
 import { BasketDesktop } from './desktop';
@@ -99,6 +101,19 @@ const delivery = ['Доставка', 'Самовывоз'];
 export const Basket = () => {
   const { isDesktop } = useContext(DeviceContext);
   const [deliveryValue, setDeliveryValue] = React.useState<string>(delivery[0]);
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<DeliveryFrom>({
+    mode: 'onChange',
+    defaultValues: {
+      howSoon: howSoon[0].value,
+      payment: payment[0].value,
+      change: change[0].value,
+    },
+  });
 
   if (isDesktop) {
     return (
@@ -111,6 +126,10 @@ export const Basket = () => {
         arrRadioFirst={howSoon}
         arrRadioSecond={payment}
         arrRadioThird={change}
+        control={control}
+        errors={errors}
+        handleSubmit={handleSubmit}
+        register={register}
       />
     );
   }
@@ -125,6 +144,10 @@ export const Basket = () => {
       arrRadioFirst={howSoon}
       arrRadioSecond={payment}
       arrRadioThird={change}
+      control={control}
+      errors={errors}
+      handleSubmit={handleSubmit}
+      register={register}
     />
   );
 };

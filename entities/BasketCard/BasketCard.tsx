@@ -3,13 +3,13 @@ import Image from 'next/image';
 import { Paragraph, Text } from '@components/Typography';
 import { IPizzaLocal } from '@types';
 import { Card, Count } from '@components/Blocks';
-import styles from './CartCard.module.scss';
+import styles from './BasketCard.module.scss';
 
 type CartCardModalProps = {
   product: IPizzaLocal;
 };
 
-export const CartCard = ({ product }: CartCardModalProps) => {
+export const BasketCard = ({ product }: CartCardModalProps) => {
   const [count, setCount] = React.useState<number>(1);
 
   const decrease = () => {
@@ -21,7 +21,7 @@ export const CartCard = ({ product }: CartCardModalProps) => {
   };
 
   return (
-    <Card className={styles['cart-card-modal']}>
+    <Card className={styles['basket-card-modal']}>
       <Image
         src={`http://localhost:5000/product/${product.name}/${product.img.regular}`}
         alt='pizza'

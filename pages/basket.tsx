@@ -4,7 +4,7 @@ import { GetServerSideProps } from 'next';
 import { getSelectorsByUserAgent } from 'react-device-detect';
 import * as getProduct from '@packages/http/getProducts';
 import { wrapper } from '@store/store';
-import { setProducts } from '@store/slices/products.slice';
+import { setPizzas, setProducts } from '@store/slices/products.slice';
 import axios from 'axios';
 import { setCookie } from 'cookies-next';
 import { setUser } from '@store/slices/user.slice';
@@ -17,6 +17,7 @@ export const getServerSideProps: GetServerSideProps =
   wrapper.getServerSideProps(({ dispatch }) => async ({ req, res }) => {
     const userAgent = req.headers['user-agent'];
     const { isDesktop } = getSelectorsByUserAgent(userAgent!);
+    const pizzas = await getProduct.getAllPizzas();
     const products = await getProduct.getAllProducts();
     const cookie = req.cookies.accessToken || req.cookies.refreshToken;
 
@@ -40,6 +41,9 @@ export const getServerSideProps: GetServerSideProps =
       // .catch((e: AxiosError<{ message: string }>) => {
       //   console.log(e.response?.data.message!);
       // });
+    }
+    if (pizzas) {
+      dispatch(setPizzas(pizzas));
     }
 
     if (products) {

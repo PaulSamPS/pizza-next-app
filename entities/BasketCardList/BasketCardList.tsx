@@ -1,15 +1,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { CartCard } from '@entities';
+import { BasketCard } from '@entities';
 import { productState } from '@store/selector';
-import styles from './CartCardList.module.scss';
+import styles from './BasketCardList.module.scss';
 
-export const CartCardList = () => {
+export const BasketCardList = () => {
   const { pizza } = useSelector(productState);
   return (
-    <div className={styles['cart-card-list']}>
+    <div className={styles['basket-card-list']}>
       {pizza.map((product) => (
-        <CartCard key={product.id} product={product} />
+        <BasketCard key={product.id} product={product} />
       ))}
     </div>
   );
