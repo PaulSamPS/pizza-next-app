@@ -23,6 +23,7 @@ export interface DeliveryFrom {
   name: string;
   email: string;
   phone: string;
+  resto: string;
 }
 
 export interface FormProps<T extends FieldValues> {

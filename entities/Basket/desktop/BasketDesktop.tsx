@@ -1,14 +1,17 @@
 import React from 'react';
 import { Text, Title } from '@components/Typography';
-import { Button, Divider } from '@components/Blocks';
+import { Button, Divider, Tab } from '@components/Blocks';
 import { useForm } from 'react-hook-form';
 import type { DeliveryFrom } from '@types';
+import { Input, Textarea } from '@components/Form';
+import { ArrowDownSmallIcon } from '@helpers/icons/16';
 import styles from './BasketDesktop.module.scss';
 import { BasketDelivery } from '../../BasketDelivery';
 import type { BasketProps } from '../basket.interface';
 import { PersonalData } from '../../PersonalData';
 import { BasketProduct } from '../../BasketProduct';
 import { AdditionsView } from '../../AdditionsView';
+import { BasketRadio } from '../../BasketRadio/BasketRadio';
 
 export const BasketDesktop = ({ ...props }: BasketProps) => {
   const {
@@ -53,14 +56,53 @@ export const BasketDesktop = ({ ...props }: BasketProps) => {
       <Title level='3'>Личные данные</Title>
       <PersonalData register={register} errors={errors} control={control} />
       <Divider />
-      <BasketDelivery
-        register={register}
-        control={control}
-        errors={errors}
+      <div className={styles.top}>
+        <Title level='3'>Доставка</Title>
+        <Tab
+          arr={props.deliveryMethod}
+          currentValue={props.valueDeliveryMethod}
+          setValue={props.setValueDeliveryMethod}
+          className={styles.tabs}
+        />
+      </div>
+      {props.valueDeliveryMethod === 'Доставка' && (
+        <BasketDelivery
+          register={register}
+          control={control}
+          errors={errors}
+          arrRadioFirst={props.arrRadioFirst}
+          arrRadioSecond={props.arrRadioSecond}
+          arrRadioThird={props.arrRadioThird}
+        />
+      )}
+      {props.valueDeliveryMethod === 'Самовывоз' && (
+        <Input
+          {...register('resto', {
+            required: { value: true, message: 'Выберите ресторан' },
+          })}
+          id='resto'
+          error={errors.resto}
+          after={<ArrowDownSmallIcon />}
+          placeholder='Выберите ресторан'
+          text='Ресторан*'
+        />
+      )}
+      <BasketRadio
         arrRadioFirst={props.arrRadioFirst}
         arrRadioSecond={props.arrRadioSecond}
         arrRadioThird={props.arrRadioThird}
+        register={props.register}
+        control={props.control}
+        errors={props.errors}
       />
+      <div className={styles.comment}>
+        <Title level='3'>Комментарий</Title>
+        <Textarea
+          {...props.register('comment')}
+          placeholder='Есть уточнения?'
+        />
+      </div>
+      <Divider />
       <div className={styles.checkout}>
         <Text level='l3' weight='w1' className={styles.sum}>
           Итого: 2 379 ₽

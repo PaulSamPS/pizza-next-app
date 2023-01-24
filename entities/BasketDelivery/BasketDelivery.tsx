@@ -1,13 +1,9 @@
 import React, { useContext } from 'react';
-import { Divider } from '@components/Blocks';
-import { Input, Textarea } from '@components/Form';
-import { Controller } from 'react-hook-form';
-import { Title } from '@components/Typography';
+import { Input } from '@components/Form';
 import { DeviceContext } from '@context';
 import type { DeliveryFrom, FormProps } from '@types';
 import mobile from './BasketDeliveryMobile.module.scss';
 import desktop from './BasketDeliveryDesktop.module.scss';
-import { RadioItems, RadioItemsWithInput } from './components';
 import type { BasketProps } from '../Basket/basket.interface';
 
 interface BasketDeliveryProps
@@ -77,59 +73,6 @@ export const BasketDelivery = ({ ...props }: BasketDeliveryProps) => {
           className={classes.code}
         />
       </div>
-      <Controller
-        control={props.control}
-        render={({ field: { onChange, value } }) => (
-          <RadioItems
-            id='how-soon'
-            items={props.arrRadioFirst}
-            onChange={onChange}
-            value={value}
-            title='Когда выполнить заказ?'
-          />
-        )}
-        name='howSoon'
-      />
-      <Divider />
-      <Controller
-        control={props.control}
-        render={({ field: { onChange, value } }) => (
-          <RadioItems
-            id='payment'
-            items={props.arrRadioSecond}
-            onChange={onChange}
-            value={value}
-            title='Оплата'
-          />
-        )}
-        name='payment'
-      />
-      <Divider />
-      <Controller
-        control={props.control}
-        render={({ field: { onChange, value } }) => (
-          <RadioItemsWithInput
-            placeholder='0'
-            items={props.arrRadioThird}
-            onChange={onChange}
-            value={value}
-            title='Сдача'
-            id='change-money'
-            errors={props.errors}
-            register={props.register}
-          />
-        )}
-        name='change'
-      />
-      <Divider />
-      <div className={classes.comment}>
-        <Title level='3'>Комментарий</Title>
-        <Textarea
-          {...props.register('comment')}
-          placeholder='Есть уточнения?'
-        />
-      </div>
-      <Divider />
     </div>
   );
 };

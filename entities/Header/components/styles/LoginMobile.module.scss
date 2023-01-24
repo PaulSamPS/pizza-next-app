@@ -1,16 +1,16 @@
 .login {
-  display: grid;
-  grid-template-columns: 24px auto;
-  column-gap: 8px;
-  align-items: center;
-  cursor: pointer;
-  padding: 20px;
+	display: grid;
+	grid-template-columns: 24px auto;
+	column-gap: 8px;
+	align-items: center;
+	cursor: pointer;
+	padding: 20px;
 
-  span {
-    font-size: 16px;
-  }
+	span {
+		font-size: 16px;
+	}
 
-  .icon {
-    color: var(--primary);
-  }
+	.icon {
+		color: var(--primary);
+	}
 }
