@@ -19,6 +19,8 @@ export const TemplateProductCustomization = () => {
       {router.query.pizza && <PizzaCustomization pizza={pizza!} />}
       {query && (
         <ProductCardModal
+          id={product!.id}
+          pizzaId={pizza!.id}
           name={product!.name}
           price={product!.price}
           img={product!.img}

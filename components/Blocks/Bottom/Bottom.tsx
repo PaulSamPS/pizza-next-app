@@ -9,6 +9,7 @@ interface BottomProps extends React.AllHTMLAttributes<HTMLDivElement> {
   gram?: string | false;
   buttonHeight?: number;
   buttonWidth?: number;
+  handleClick: () => void;
 }
 export const Bottom = ({
   totalPrice,
@@ -16,6 +17,7 @@ export const Bottom = ({
   children,
   buttonHeight = 48,
   buttonWidth,
+  handleClick,
   className,
 }: BottomProps) => (
   <div className={cx(styles.bottom, className)}>
@@ -25,7 +27,12 @@ export const Bottom = ({
       </Text>
       {gram && <Text className={styles.gram}>{gram}</Text>}
     </div>
-    <Button appearance='primary' height={buttonHeight} width={buttonWidth}>
+    <Button
+      appearance='primary'
+      height={buttonHeight}
+      width={buttonWidth}
+      onClick={handleClick}
+    >
       {children}
     </Button>
   </div>

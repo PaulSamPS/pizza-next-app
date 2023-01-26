@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Paragraph, Text } from '@components/Typography';
 import { IPizzaLocal } from '@types';
 import { Card, Count } from '@components/Blocks';
+import axios from 'axios';
 import styles from './BasketCard.module.scss';
 
 type CartCardModalProps = {
@@ -12,12 +13,28 @@ type CartCardModalProps = {
 export const BasketCard = ({ product }: CartCardModalProps) => {
   const [count, setCount] = React.useState<number>(1);
 
-  const decrease = () => {
-    setCount((prev) => prev - 1);
-  };
+  // const decrease = () => {
+  //   setCount((prev) => prev - 1);
+  // };
 
   const increase = () => {
     setCount((prev) => prev + 1);
+  };
+
+  const decrease = async () => {
+    try {
+      const { data: newBasket } = await axios.post(
+        'http://localhost:5000/api/basket/decrease',
+        {
+          productId: product.id,
+          productPrice: product.price[0],
+        },
+        { withCredentials: true }
+      );
+      console.log(newBasket);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (

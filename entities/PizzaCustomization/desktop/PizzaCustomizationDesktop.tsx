@@ -3,6 +3,7 @@ import { Badge, Bottom, Tab } from '@components/Blocks';
 import { Text } from '@components/Typography';
 import { IPizzaLocal } from '@types';
 import { AdditionsList } from '@entities';
+import axios from 'axios';
 import styles from './PizzaCustomizationDesktop.module.scss';
 import {
   PizzaCustomizationImageDesktop,
@@ -44,64 +45,86 @@ export const PizzaCustomizationDesktop = ({
   additions,
   currentSize,
   isDesktop,
-}: ProductCustomizationDesktopProps) => (
-  <div className={styles.card}>
-    {pizza.badge && <Badge top='32px'>{pizza.badge}</Badge>}
-    <PizzaCustomizationImageDesktop
-      pizzaSize={currentSize}
-      dough={dough}
-      image={pizza.img}
-      name={pizza.name}
-    />
-    <div className={styles.customizations}>
-      <PizzaCustomizationTitle name={pizza.name} promotion={pizza.promotion} />
-      <PizzaCustomizationDescription
-        pizzaSize={pizzaSize}
+}: ProductCustomizationDesktopProps) => {
+  const addToBasket = async () => {
+    try {
+      const { data: newBasket } = await axios.post(
+        'http://localhost:5000/api/basket/add',
+        {
+          productId: pizza.id,
+          productPrice: pizza.price[sizeIndex],
+        },
+        { withCredentials: true }
+      );
+      console.log(newBasket);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  return (
+    <div className={styles.card}>
+      {pizza.badge && <Badge top='32px'>{pizza.badge}</Badge>}
+      <PizzaCustomizationImageDesktop
+        pizzaSize={currentSize}
         dough={dough}
-        desc={pizza.description}
-        weight={currentWeight}
+        image={pizza.img}
+        name={pizza.name}
       />
-      <div className={styles.addendum}>
-        <Tab
-          arr={pizza.dough}
-          currentValue={dough}
-          className={styles.dough}
-          currentDough={setDough}
+      <div className={styles.customizations}>
+        <PizzaCustomizationTitle
+          name={pizza.name}
+          promotion={pizza.promotion}
         />
-        <Tab
-          arr={pizza.size}
-          currentValue={pizzaSize}
-          className={styles.sizes}
-          currentSize={setPizzaSize}
+        <PizzaCustomizationDescription
+          pizzaSize={pizzaSize}
+          dough={dough}
+          desc={pizza.description}
+          weight={currentWeight}
         />
-        <Text level='l2' weight='w1' className={styles.subtitle}>
-          Добавьте в пиццу
-        </Text>
-        <AdditionsList
-          canScrollLeft={canScrollLeft}
-          canScrollRight={canScrollRight}
-          scrollContainerBy={scrollContainerBy}
-          containerRef={containerRef}
-          distance={105}
-          isDesktop={isDesktop}
-        >
-          {additions.map((item) => (
-            <PizzaCustomizationAdditionsItem
-              key={item.id}
-              image={item.img}
-              name={item.name}
-              price={item.price}
-            />
-          ))}
-        </AdditionsList>
-        <Bottom
-          totalPrice={pizza.price[sizeIndex]}
-          buttonWidth={155}
-          gram={pizza.type === 'pizza' && `${currentWeight}`}
-        >
-          Добавить
-        </Bottom>
+        <div className={styles.addendum}>
+          <Tab
+            arr={pizza.dough}
+            currentValue={dough}
+            className={styles.dough}
+            currentDough={setDough}
+          />
+          <Tab
+            arr={pizza.size}
+            currentValue={pizzaSize}
+            className={styles.sizes}
+            currentSize={setPizzaSize}
+          />
+          <Text level='l2' weight='w1' className={styles.subtitle}>
+            Добавьте в пиццу
+          </Text>
+          <AdditionsList
+            canScrollLeft={canScrollLeft}
+            canScrollRight={canScrollRight}
+            scrollContainerBy={scrollContainerBy}
+            containerRef={containerRef}
+            distance={105}
+            isDesktop={isDesktop}
+          >
+            {additions.map((item) => (
+              <PizzaCustomizationAdditionsItem
+                key={item.id}
+                image={item.img}
+                name={item.name}
+                price={item.price}
+              />
+            ))}
+          </AdditionsList>
+          <Bottom
+            totalPrice={pizza.price[sizeIndex]}
+            buttonWidth={155}
+            gram={pizza.type === 'pizza' && `${currentWeight}`}
+            handleClick={addToBasket}
+          >
+            Добавить
+          </Bottom>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};

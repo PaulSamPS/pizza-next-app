@@ -5,6 +5,7 @@ import { ProductCardModalMobile } from './mobile';
 import { ProductCardModalProps } from './interface';
 
 export const ProductCardModal = ({
+  id,
   img,
   weight,
   promotion,
@@ -17,6 +18,7 @@ export const ProductCardModal = ({
   if (isDesktop) {
     return (
       <ProductCardModalDesktop
+        id={id}
         name={name}
         img={img}
         price={price}
@@ -29,6 +31,7 @@ export const ProductCardModal = ({
 
   return (
     <ProductCardModalMobile
+      id={id}
       name={name}
       img={img}
       price={price}

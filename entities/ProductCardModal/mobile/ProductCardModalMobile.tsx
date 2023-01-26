@@ -4,11 +4,13 @@ import { Button, Icon } from '@components/Blocks';
 import { CloseIcon32 } from '@helpers/icons/32';
 import { useRouter } from 'next/router';
 import { Text } from '@components/Typography';
+import axios from 'axios';
 import { PizzaCustomizationTitle } from '../../PizzaCustomization/components';
 import styles from './ProductCardMobile.module.scss';
 import { ProductCardModalProps } from '../interface';
 
 export const ProductCardModalMobile = ({
+  id,
   name,
   img,
   price,
@@ -17,6 +19,23 @@ export const ProductCardModalMobile = ({
   promotion,
 }: ProductCardModalProps) => {
   const router = useRouter();
+
+  const addToBasket = async () => {
+    try {
+      const { data: newBasket } = await axios.post(
+        'http://localhost:5000/api/basket/add',
+        {
+          productId: id,
+          productPrice: price,
+        },
+        { withCredentials: true }
+      );
+      console.log(newBasket);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <div className={styles.card}>
       <Icon className={styles['close-icon']} onClick={() => router.push('/')}>
@@ -38,7 +57,7 @@ export const ProductCardModalMobile = ({
         <Text level='l2' className={styles.desc}>
           {description}
         </Text>
-        <Button appearance='primary' height={40}>
+        <Button appearance='primary' height={40} onClick={addToBasket}>
           {`Добавить в корзину за ${price} ₽`}
         </Button>
       </div>

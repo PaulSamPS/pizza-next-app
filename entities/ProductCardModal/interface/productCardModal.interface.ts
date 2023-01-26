@@ -1,4 +1,5 @@
 export type ProductCardModalProps = {
+  id: string;
   name: string;
   img: string;
   price: number;
