@@ -49,10 +49,12 @@ export const PizzaCustomizationDesktop = ({
   const addToBasket = async () => {
     try {
       const { data: newBasket } = await axios.post(
-        'http://localhost:5000/api/basket/add',
+        'http://localhost:5000/api/basket/add-pizza',
         {
-          productId: pizza.id,
-          productPrice: pizza.price[sizeIndex],
+          pizzaId: pizza.id,
+          pizzaPrice: pizza.price[sizeIndex],
+          size: pizzaSize,
+          dough,
         },
         { withCredentials: true }
       );

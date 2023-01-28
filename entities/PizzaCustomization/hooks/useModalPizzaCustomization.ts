@@ -1,8 +1,9 @@
 import React from 'react';
-import { IProduct } from '@types';
+import { IPizzaLocal } from '@types';
 import { useSelectSize } from './useSelectSize';
 
-interface UseModalProductCustomizationProps extends Pick<IProduct, 'weight'> {}
+interface UseModalProductCustomizationProps
+  extends Pick<IPizzaLocal, 'weight'> {}
 
 export const useModalPizzaCustomization = ({
   weight,

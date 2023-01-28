@@ -23,7 +23,7 @@ export const ProductCardModalMobile = ({
   const addToBasket = async () => {
     try {
       const { data: newBasket } = await axios.post(
-        'http://localhost:5000/api/basket/add',
+        'http://localhost:5000/api/basket/add-product',
         {
           productId: id,
           productPrice: price,
