@@ -1,37 +1,39 @@
 import React from 'react';
 import Image from 'next/image';
 import { Paragraph, Text } from '@components/Typography';
-import { IPizzaLocal } from '@types';
+import { BasketType, IPizzaServer, IProductServer } from '@types';
 import { Card, Count } from '@components/Blocks';
 import axios from 'axios';
+import { priceCartFromSize } from '@helpers/priceCartFromSize';
+import { setSuccessBasket } from '@store/slices/basket.slice';
+import { useAppDispatch } from '@hooks';
 import styles from './BasketCard.module.scss';
 
 type CartCardModalProps = {
-  product: IPizzaLocal;
+  product: IProductServer;
+  pizza: IPizzaServer;
+  item: { qty: number; size: string; dough: string };
 };
 
-export const BasketCard = ({ product }: CartCardModalProps) => {
-  const [count, setCount] = React.useState<number>(1);
-
-  // const decrease = () => {
-  //   setCount((prev) => prev - 1);
-  // };
-
-  const increase = () => {
-    setCount((prev) => prev + 1);
-  };
+export const BasketCard = ({ product, pizza, item }: CartCardModalProps) => {
+  const dispatch = useAppDispatch();
 
   const decrease = async () => {
     try {
-      const { data: newBasket } = await axios.post(
+      const newBasket = await axios.post<BasketType>(
         'http://localhost:5000/api/basket/decrease',
         {
-          productId: product.id,
-          productPrice: product.price[0],
+          // eslint-disable-next-line no-underscore-dangle
+          productId: pizza ? pizza._id : product._id,
+          productPrice: pizza
+            ? pizza.price[priceCartFromSize(item.size)]
+            : product.price,
+          size: item.size,
+          dough: item.dough,
         },
         { withCredentials: true }
       );
-      console.log(newBasket);
+      dispatch(setSuccessBasket(newBasket.data));
     } catch (e) {
       console.log(e);
     }
@@ -40,20 +42,24 @@ export const BasketCard = ({ product }: CartCardModalProps) => {
   return (
     <Card className={styles['basket-card-modal']}>
       <Image
-        src={`http://localhost:5000/product/${product.name}/${product.img.regular}`}
+        src={`http://localhost:5000/product/${
+          pizza ? pizza.name : product.name
+        }/${pizza ? pizza.img.regular : product.img}`}
         alt='pizza'
         width={94}
         height={94}
       />
       <div className={styles.info}>
         <Text level='l2' weight='w1' className={styles.name}>
-          {product.name}
+          {pizza ? pizza.name : product.name}
         </Text>
-        <Paragraph>{product.dough[0]}</Paragraph>
+        {pizza && <Paragraph>{item.dough}</Paragraph>}
         <div className={styles.bot}>
-          <Count count={count} decrease={decrease} increase={increase} />
+          <Count count={item.qty} decrease={decrease} increase={() => {}} />
           <Text level='l3' weight='w1' className={styles.price}>
-            {`${product.price[0] * count} ₽`}
+            {pizza
+              ? `${pizza.price[0] * item.qty} ₽`
+              : `${product.price * item.qty} ₽`}
           </Text>
         </div>
       </div>

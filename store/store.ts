@@ -5,6 +5,7 @@ import productModal from './slices/productModal.slice';
 import products from './slices/products.slice';
 import basketModal from './slices/basketModal.slice';
 import user from './slices/user.slice';
+import basket from './slices/basket.slice';
 
 export function makeStore() {
   return configureStore({
@@ -13,6 +14,7 @@ export function makeStore() {
       products,
       basketModal,
       user,
+      basket,
     },
   });
 }

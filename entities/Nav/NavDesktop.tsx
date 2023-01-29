@@ -7,8 +7,11 @@ import { CartIcon } from '@helpers/icons/24';
 import { useAppDispatch, useScrollY } from '@hooks';
 import { useRouter } from 'next/router';
 import { setBasketModalIsOpened } from '@store/slices/basketModal.slice';
-import { Logo } from '../Header/components';
+import { getBasket } from '@packages/http/getBasket';
+import { useSelector } from 'react-redux';
+import { basketState } from '@store/selector';
 import styles from './NavDesktop.module.scss';
+import { Logo } from '../Header/components';
 
 type INav = {
   id: number;
@@ -24,6 +27,11 @@ export const NavDesktop = ({ category }: NavDesktopProps) => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const scrollY = useScrollY();
+  const { basket } = useSelector(basketState);
+
+  React.useEffect(() => {
+    dispatch(getBasket());
+  }, []);
 
   const handleOpenModalCart = async () => {
     if (router.pathname === '/') {
@@ -47,7 +55,9 @@ export const NavDesktop = ({ category }: NavDesktopProps) => {
             height={40}
             onClick={handleOpenModalCart}
           >
-            22550 ₽
+            {basket?.totalPrice}
+            {' '}
+            ₽
           </Button>
         </div>
       </Container>

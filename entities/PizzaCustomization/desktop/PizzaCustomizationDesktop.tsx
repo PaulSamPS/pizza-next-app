@@ -4,6 +4,9 @@ import { Text } from '@components/Typography';
 import { IPizzaLocal } from '@types';
 import { AdditionsList } from '@entities';
 import axios from 'axios';
+import type { AdditionsType } from '@types';
+import { useAppDispatch } from '@hooks';
+import { setSuccessBasket } from '@store/slices/basket.slice';
 import styles from './PizzaCustomizationDesktop.module.scss';
 import {
   PizzaCustomizationImageDesktop,
@@ -11,7 +14,6 @@ import {
   PizzaCustomizationDescription,
   PizzaCustomizationAdditionsItem,
 } from '../components';
-import { AdditionsType } from '../../../types/additions';
 
 type ProductCustomizationDesktopProps = {
   pizza: IPizzaLocal;
@@ -46,6 +48,7 @@ export const PizzaCustomizationDesktop = ({
   currentSize,
   isDesktop,
 }: ProductCustomizationDesktopProps) => {
+  const dispatch = useAppDispatch();
   const addToBasket = async () => {
     try {
       const { data: newBasket } = await axios.post(
@@ -58,7 +61,7 @@ export const PizzaCustomizationDesktop = ({
         },
         { withCredentials: true }
       );
-      console.log(newBasket);
+      dispatch(setSuccessBasket(newBasket));
     } catch (e) {
       console.log(e);
     }

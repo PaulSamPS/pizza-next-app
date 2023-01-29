@@ -1,22 +1,31 @@
 import React from 'react';
 import { ModalCart } from '@components/Blocks';
 import { BasketCard } from '@entities';
-import { IPizzaLocal } from '@types';
+import { useSelector } from 'react-redux';
+import { basketState } from '@store/selector';
 
 type TemplateCartModalProps = {
   setModal: () => void;
   modal: boolean;
-  product: IPizzaLocal[];
 };
 
 export const TemplateCartModal = ({
   setModal,
   modal,
-  product,
-}: TemplateCartModalProps) => (
-  <ModalCart modal={modal} setModal={setModal}>
-    {product.map((p) => (
-      <BasketCard key={p.id} product={p} />
-    ))}
-  </ModalCart>
-);
+}: TemplateCartModalProps) => {
+  const { basket } = useSelector(basketState);
+  return (
+    <ModalCart modal={modal} setModal={setModal}>
+      {basket &&
+        basket.products.map((p, index) => (
+          // eslint-disable-next-line no-underscore-dangle
+          <BasketCard
+            key={index}
+            product={p.product}
+            pizza={p.pizza}
+            item={p}
+          />
+        ))}
+    </ModalCart>
+  );
+};

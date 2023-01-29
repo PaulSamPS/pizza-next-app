@@ -5,6 +5,8 @@ import { CloseIcon32 } from '@helpers/icons/32';
 import { Title } from '@components/Typography';
 import Link from 'next/link';
 import { useAppDispatch } from '@hooks';
+import { useSelector } from 'react-redux';
+import { basketState } from '@store/selector';
 import styles from './ModalCartDesktop.module.scss';
 import { setBasketModalIsOpened } from '../../../store/slices/basketModal.slice';
 
@@ -20,6 +22,7 @@ export const ModalCartDesktop = ({
   children,
 }: ModalCartDesktopProps) => {
   const dispatch = useAppDispatch();
+  const { basket } = useSelector(basketState);
 
   const handleCloseBasketModal = () => {
     dispatch(setBasketModalIsOpened(false));
@@ -52,7 +55,11 @@ export const ModalCartDesktop = ({
         <div className={styles.bottom}>
           <Divider />
           <Link href='/basket' onClick={handleCloseBasketModal}>
-            <Bottom totalPrice={555} className={styles.bot}>
+            <Bottom
+              totalPrice={basket?.totalPrice!}
+              className={styles.bot}
+              handleClick={() => {}}
+            >
               Оформить заказ
             </Bottom>
           </Link>
