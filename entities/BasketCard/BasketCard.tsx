@@ -12,7 +12,7 @@ import styles from './BasketCard.module.scss';
 type CartCardModalProps = {
   product: IProductServer;
   pizza: IPizzaServer;
-  item: { qty: number; size: string; dough: string };
+  item: { qty: number; size: string; dough: string; price: number };
 };
 
 export const BasketCard = ({ product, pizza, item }: CartCardModalProps) => {
@@ -22,6 +22,27 @@ export const BasketCard = ({ product, pizza, item }: CartCardModalProps) => {
     try {
       const newBasket = await axios.post<BasketType>(
         'http://localhost:5000/api/basket/decrease',
+        {
+          // eslint-disable-next-line no-underscore-dangle
+          productId: pizza ? pizza._id : product._id,
+          productPrice: pizza
+            ? pizza.price[priceCartFromSize(item.size)]
+            : product.price,
+          size: item.size,
+          dough: item.dough,
+        },
+        { withCredentials: true }
+      );
+      dispatch(setSuccessBasket(newBasket.data));
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const increase = async () => {
+    try {
+      const newBasket = await axios.post<BasketType>(
+        'http://localhost:5000/api/basket/increase',
         {
           // eslint-disable-next-line no-underscore-dangle
           productId: pizza ? pizza._id : product._id,
@@ -55,11 +76,9 @@ export const BasketCard = ({ product, pizza, item }: CartCardModalProps) => {
         </Text>
         {pizza && <Paragraph>{item.dough}</Paragraph>}
         <div className={styles.bot}>
-          <Count count={item.qty} decrease={decrease} increase={() => {}} />
+          <Count count={item.qty} decrease={decrease} increase={increase} />
           <Text level='l3' weight='w1' className={styles.price}>
-            {pizza
-              ? `${pizza.price[0] * item.qty} ₽`
-              : `${product.price * item.qty} ₽`}
+            {`${item.price * item.qty} ₽`}
           </Text>
         </div>
       </div>

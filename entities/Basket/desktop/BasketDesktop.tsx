@@ -5,6 +5,8 @@ import { useForm } from 'react-hook-form';
 import type { DeliveryFrom } from '@types';
 import { Input, Textarea } from '@components/Form';
 import { ArrowDownSmallIcon } from '@helpers/icons/16';
+import { useSelector } from 'react-redux';
+import { basketState } from '@store/selector';
 import styles from './BasketDesktop.module.scss';
 import { BasketDelivery } from '../../BasketDelivery';
 import type { BasketProps } from '../basket.interface';
@@ -14,6 +16,7 @@ import { AdditionsView } from '../../AdditionsView';
 import { BasketRadio } from '../../BasketRadio/BasketRadio';
 
 export const BasketDesktop = ({ ...props }: BasketProps) => {
+  const { basket } = useSelector(basketState);
   const {
     register,
     handleSubmit,
@@ -38,10 +41,15 @@ export const BasketDesktop = ({ ...props }: BasketProps) => {
     >
       <Title level='3'>Ваш Заказ</Title>
       <div className={styles.order}>
-        <BasketProduct size='medium' />
+        {basket?.products
+          .filter((i) => i.pizza)
+          .map((p, index) => (
+            // eslint-disable-next-line no-underscore-dangle
+            <BasketProduct key={index} size='medium' item={p} />
+          ))}
       </div>
       <Text level='l3' weight='w1' className={styles.sum}>
-        Итого: 2 379 ₽
+        {`Итого: ${basket?.totalPrice!} ₽`}
       </Text>
       <Divider className={styles.divider} />
       <Title level='3'>Добавить к заказу?</Title>
@@ -105,7 +113,7 @@ export const BasketDesktop = ({ ...props }: BasketProps) => {
       <Divider />
       <div className={styles.checkout}>
         <Text level='l3' weight='w1' className={styles.sum}>
-          Итого: 2 379 ₽
+          {`Итого: ${basket?.totalPrice} ₽`}
         </Text>
         <Button appearance='primary' type='submit' height={48}>
           Оформить заказ
