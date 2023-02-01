@@ -16,11 +16,12 @@
 		.total {
 			display: flex;
 			align-items: center;
+			justify-content: space-between;
+			width: 200px;
 
 			.total-price {
 				font-size: 20px;
 				line-height: 28px;
-				margin-left: 40px;
 				color: var(--primary);
 			}
 		}

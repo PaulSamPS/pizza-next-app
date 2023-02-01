@@ -1,6 +1,6 @@
 import React from 'react';
 import { withLayout, withAuth } from '@hoc';
-import { PersonalTemplate } from '@templates';
+import { CabinetTemplate } from '@templates';
 import { GetServerSideProps } from 'next';
 import { wrapper } from '@store/store';
 import { getSelectorsByUserAgent } from 'react-device-detect';
@@ -9,7 +9,7 @@ import { setCookie } from 'cookies-next';
 import { setUser } from '@store/slices/user.slice';
 import jwtDecode from 'jwt-decode';
 
-const Personal = () => <PersonalTemplate />;
+const Cabinet = () => <CabinetTemplate />;
 
 export const getServerSideProps: GetServerSideProps =
   wrapper.getServerSideProps(({ dispatch }) => async ({ req, res }) => {
@@ -43,4 +43,4 @@ export const getServerSideProps: GetServerSideProps =
     };
   });
 
-export default withLayout(withAuth(Personal));
+export default withLayout(withAuth(Cabinet));

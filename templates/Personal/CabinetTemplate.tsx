@@ -1,8 +1,9 @@
 import React from 'react';
 import { Container } from '@components/Blocks';
+import { Cabinet } from '@entities';
 
-export const PersonalTemplate = () => (
+export const CabinetTemplate = () => (
   <Container>
-    <h1>Cabinet</h1>
+    <Cabinet />
   </Container>
 );

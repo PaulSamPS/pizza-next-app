@@ -10,3 +10,4 @@ export * from './AddionList';
 export * from './ProductList/ProductList';
 export * from './ProductCardModal';
 export * from './Nav';
+export * from './Cabinet/Cabinet';
