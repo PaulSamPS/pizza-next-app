@@ -23,7 +23,10 @@ export const TemplateCartModal = ({
             key={index}
             product={p.product}
             pizza={p.pizza}
-            item={p}
+            dough={p.dough}
+            price={p.price}
+            qty={p.qty}
+            size={p.size}
           />
         ))}
     </ModalCart>

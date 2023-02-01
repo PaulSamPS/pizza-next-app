@@ -1,7 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
 import { Paragraph, Text } from '@components/Typography';
-import { BasketType, IPizzaServer, IProductServer } from '@types';
+import {
+  BasketPizzaType,
+  BasketType,
+  IPizzaServer,
+  IProductServer,
+} from '@types';
 import { Card, Count } from '@components/Blocks';
 import axios from 'axios';
 import { priceCartFromSize } from '@helpers/priceCartFromSize';
@@ -9,13 +14,19 @@ import { setSuccessBasket } from '@store/slices/basket.slice';
 import { useAppDispatch } from '@hooks';
 import styles from './BasketCard.module.scss';
 
-type CartCardModalProps = {
+interface CartCardModalProps extends Omit<BasketPizzaType, 'pizza'> {
   product: IProductServer;
   pizza: IPizzaServer;
-  item: { qty: number; size: string; dough: string; price: number };
-};
+}
 
-export const BasketCard = ({ product, pizza, item }: CartCardModalProps) => {
+export const BasketCard = ({
+  product,
+  pizza,
+  qty,
+  size,
+  dough,
+  price,
+}: CartCardModalProps) => {
   const dispatch = useAppDispatch();
 
   const decrease = async () => {
@@ -26,10 +37,10 @@ export const BasketCard = ({ product, pizza, item }: CartCardModalProps) => {
           // eslint-disable-next-line no-underscore-dangle
           productId: pizza ? pizza._id : product._id,
           productPrice: pizza
-            ? pizza.price[priceCartFromSize(item.size)]
+            ? pizza.price[priceCartFromSize(size)]
             : product.price,
-          size: item.size,
-          dough: item.dough,
+          size,
+          dough,
         },
         { withCredentials: true }
       );
@@ -47,10 +58,10 @@ export const BasketCard = ({ product, pizza, item }: CartCardModalProps) => {
           // eslint-disable-next-line no-underscore-dangle
           productId: pizza ? pizza._id : product._id,
           productPrice: pizza
-            ? pizza.price[priceCartFromSize(item.size)]
+            ? pizza.price[priceCartFromSize(size)]
             : product.price,
-          size: item.size,
-          dough: item.dough,
+          size,
+          dough,
         },
         { withCredentials: true }
       );
@@ -74,11 +85,11 @@ export const BasketCard = ({ product, pizza, item }: CartCardModalProps) => {
         <Text level='l2' weight='w1' className={styles.name}>
           {pizza ? pizza.name : product.name}
         </Text>
-        {pizza && <Paragraph>{item.dough}</Paragraph>}
+        {pizza && <Paragraph>{dough}</Paragraph>}
         <div className={styles.bot}>
-          <Count count={item.qty} decrease={decrease} increase={increase} />
+          <Count count={qty} decrease={decrease} increase={increase} />
           <Text level='l3' weight='w1' className={styles.price}>
-            {`${item.price * item.qty} ₽`}
+            {`${price * qty} ₽`}
           </Text>
         </div>
       </div>

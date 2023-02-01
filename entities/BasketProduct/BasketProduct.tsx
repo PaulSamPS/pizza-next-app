@@ -3,18 +3,31 @@ import Image from 'next/image';
 import { Text, Title } from '@components/Typography';
 import { Card, Count } from '@components/Blocks';
 import cx from 'clsx';
-import { BasketPizzaType, BasketType } from '@types';
+import {
+  BasketPizzaType,
+  BasketType,
+  IPizzaServer,
+  IProductServer,
+} from '@types';
 import { useAppDispatch } from '@hooks';
 import axios from 'axios';
 import { setSuccessBasket } from '@store/slices/basket.slice';
+import { priceCartFromSize } from '@helpers/priceCartFromSize';
 import styles from './BasketProduct.module.scss';
 
-type BasketProductProps = {
+interface BasketProductProps {
   size?: 'small' | 'medium';
-  item: BasketPizzaType;
-};
+  product: IProductServer;
+  pizza: IPizzaServer;
+  item: Omit<BasketPizzaType, 'pizza'>;
+}
 
-export const BasketProduct = ({ size = 'small', item }: BasketProductProps) => {
+export const BasketProduct = ({
+  size = 'small',
+  product,
+  pizza,
+  item,
+}: BasketProductProps) => {
   const dispatch = useAppDispatch();
 
   const decrease = async () => {
@@ -23,8 +36,10 @@ export const BasketProduct = ({ size = 'small', item }: BasketProductProps) => {
         'http://localhost:5000/api/basket/decrease',
         {
           // eslint-disable-next-line no-underscore-dangle
-          productId: item.pizza._id,
-          productPrice: item.price,
+          productId: pizza ? pizza._id : product._id,
+          productPrice: pizza
+            ? pizza.price[priceCartFromSize(size)]
+            : product.price,
           size: item.size,
           dough: item.dough,
         },
@@ -42,8 +57,10 @@ export const BasketProduct = ({ size = 'small', item }: BasketProductProps) => {
         'http://localhost:5000/api/basket/increase',
         {
           // eslint-disable-next-line no-underscore-dangle
-          productId: item.pizza._id,
-          productPrice: item.price,
+          productId: pizza ? pizza._id : product._id,
+          productPrice: pizza
+            ? pizza.price[priceCartFromSize(size)]
+            : product.price,
           size: item.size,
           dough: item.dough,
         },
@@ -58,11 +75,9 @@ export const BasketProduct = ({ size = 'small', item }: BasketProductProps) => {
   return (
     <Card className={cx(styles['basket-product'], size && styles[size])}>
       <Image
-        src={`http://localhost:5000/product/${item.pizza.name}/${
-          item.dough === 'Традиционное'
-            ? item.pizza.img.regular
-            : item.pizza.img.slim
-        }`}
+        src={`http://localhost:5000/product/${
+          pizza ? pizza.name : product.name
+        }/${pizza ? pizza.img.regular : product.img}`}
         width={110}
         height={110}
         alt='pizza'
@@ -70,10 +85,10 @@ export const BasketProduct = ({ size = 'small', item }: BasketProductProps) => {
       <div className={styles.info}>
         <div className={styles.description}>
           <Title level='5' weight='w1' className={styles.name}>
-            {item.pizza.name}
+            {pizza ? pizza.name : product.name}
           </Title>
           <Text level='l2' className={styles.options}>
-            {`${item.dough} тесто, ${item.size}`}
+            {pizza ? `${item.dough} тесто, ${item.size}` : product.weight}
           </Text>
         </div>
         <div className={styles.total}>

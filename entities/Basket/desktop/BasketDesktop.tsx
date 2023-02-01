@@ -41,12 +41,16 @@ export const BasketDesktop = ({ ...props }: BasketProps) => {
     >
       <Title level='3'>Ваш Заказ</Title>
       <div className={styles.order}>
-        {basket?.products
-          .filter((i) => i.pizza)
-          .map((p, index) => (
-            // eslint-disable-next-line no-underscore-dangle
-            <BasketProduct key={index} size='medium' item={p} />
-          ))}
+        {basket?.products.map((p, index) => (
+          // eslint-disable-next-line no-underscore-dangle
+          <BasketProduct
+            key={index}
+            size='medium'
+            item={p}
+            pizza={p.pizza}
+            product={p.product}
+          />
+        ))}
       </div>
       <Text level='l3' weight='w1' className={styles.sum}>
         {`Итого: ${basket?.totalPrice!} ₽`}
