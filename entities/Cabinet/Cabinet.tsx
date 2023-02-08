@@ -2,6 +2,7 @@ import React from 'react';
 import { Title } from '@components/Typography';
 import { Tab } from '@components/Blocks';
 import styles from './Cabinet.module.scss';
+import { CabinetOrderCard } from '../CabinetOrderCard/CabinetOrderCard';
 
 const arr = ['История заказов', 'Настройки'];
 
@@ -18,6 +19,7 @@ export const Cabinet = () => {
           setValue={setCurrentValue}
         />
       </div>
+      <CabinetOrderCard />
     </div>
   );
 };
