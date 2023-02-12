@@ -26,7 +26,6 @@ export const Main = () => {
       <TemplateCartModal
         setModal={handleCloseModalCart}
         modal={basketModalIsOpened}
-        product={pizza}
       />
       {!isDesktop && <BasketButtonMobile />}
     </Container>

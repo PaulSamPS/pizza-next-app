@@ -1,1 +1,1 @@
-export * from './desktop/AdditionCardDesktop';
+export * from './ui/desktop/AdditionCardDesktop';

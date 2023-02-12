@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { DeviceContext } from '@context';
 import { AdditionsType } from '@types';
-import { AdditionCardDesktop } from './desktop';
-import { AdditionCardMobile } from './mobile';
+import { AdditionCardDesktop } from './ui/desktop';
+import { AdditionCardMobile } from './ui/mobile';
 
 type AdditionCardProps = {
   addition: AdditionsType;

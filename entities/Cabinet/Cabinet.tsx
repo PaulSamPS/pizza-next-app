@@ -2,11 +2,11 @@ import React from 'react';
 import { Text, Title } from '@components/Typography';
 import { Card, Divider, Icon, Tab } from '@components/Blocks';
 import { ArrowDownSmallIcon } from '@helpers/icons/16';
-import styles from './Cabinet.module.scss';
-import { CabinetOrderCard } from '../CabinetOrderCard/CabinetOrderCard';
 import { useSelector } from 'react-redux';
 import { productState } from '@store/selector';
 import Image from 'next/image';
+import { CabinetOrderCard } from '../CabinetOrderCard/CabinetOrderCard';
+import styles from './Cabinet.module.scss';
 
 const arr = ['История заказов', 'Настройки'];
 const card = [
