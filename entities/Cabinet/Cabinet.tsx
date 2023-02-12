@@ -4,6 +4,9 @@ import { Card, Divider, Icon, Tab } from '@components/Blocks';
 import { ArrowDownSmallIcon } from '@helpers/icons/16';
 import styles from './Cabinet.module.scss';
 import { CabinetOrderCard } from '../CabinetOrderCard/CabinetOrderCard';
+import { useSelector } from 'react-redux';
+import { productState } from '@store/selector';
+import Image from 'next/image';
 
 const arr = ['История заказов', 'Настройки'];
 const card = [
@@ -32,6 +35,7 @@ const card = [
 
 export const Cabinet = () => {
   const [currentValue, setCurrentValue] = React.useState<string>(arr[0]);
+  const { items } = useSelector(productState);
   return (
     <div className={styles.cabinet}>
       <div className={styles.title}>
@@ -65,6 +69,19 @@ export const Cabinet = () => {
           </Text>
         </div>
         <Divider />
+        <div>
+          {items.map((i) => (
+            <div>
+              <Image
+                src={`http://localhost:5000/product/${i.name}/${i.img}`}
+                alt={i.name}
+                width={40}
+                height={40}
+              />
+              <Text level='l3'>{i.name}</Text>
+            </div>
+          ))}
+        </div>
       </Card>
     </div>
   );
