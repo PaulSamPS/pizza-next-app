@@ -36,6 +36,7 @@ const card = [
 export const Cabinet = () => {
   const [currentValue, setCurrentValue] = React.useState<string>(arr[0]);
   const { items } = useSelector(productState);
+  const [visible, setVisible] = React.useState<boolean>(false);
   return (
     <div className={styles.cabinet}>
       <div className={styles.title}>
@@ -58,7 +59,7 @@ export const Cabinet = () => {
               date={c.date}
             />
           ))}
-          <Icon className={styles.icon}>
+          <Icon className={styles.icon} onClick={() => setVisible(!visible)}>
             <ArrowDownSmallIcon />
           </Icon>
         </div>
@@ -68,20 +69,29 @@ export const Cabinet = () => {
             ул. Львовская 48/2, офис 301, 2 этаж, домофон 4801#
           </Text>
         </div>
-        <Divider />
-        <div>
-          {items.map((i) => (
-            <div>
-              <Image
-                src={`http://localhost:5000/product/${i.name}/${i.img}`}
-                alt={i.name}
-                width={40}
-                height={40}
-              />
-              <Text level='l3'>{i.name}</Text>
+        {visible && (
+          <>
+            <Divider />
+            <div className={styles.items}>
+              {items.map((i) => (
+                <div className={styles.item}>
+                  <Image
+                    className={styles.img}
+                    src={`http://localhost:5000/product/${i.name}/${i.img}`}
+                    alt={i.name}
+                    width={40}
+                    height={40}
+                  />
+                  <Text level='l3' className={styles.name}>
+                    {i.name}
+                  </Text>
+                  <div className={styles.count}>1 товар</div>
+                  <Text level='l3'>{i.price}</Text>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </>
+        )}
       </Card>
     </div>
   );

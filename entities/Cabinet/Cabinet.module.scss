@@ -39,5 +39,41 @@
 		.order-info {
 			margin: 16px 0;
 		}
+
+		.items {
+			.item {
+				display: flex;
+				align-items: center;
+				padding: 12px 0;
+
+				.img {
+					grid-area: img;
+					margin-right: 16px;
+				}
+
+				.name {
+					width: 215px;
+					margin-right: 67px;
+				}
+
+				.info {
+					width: 190px;
+					margin-right: 67px;
+				}
+
+				.count {
+					grid-area: count;
+					background-color: var(--light-primary);
+					color: var(--primary);
+					width: 100px;
+					height: 40px;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					border-radius: 6px;
+					margin-right: 67px;
+				}
+			}
+		}
 	}
 }
