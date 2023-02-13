@@ -38,13 +38,31 @@
 
 		.order-info {
 			margin: 16px 0;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			.products-image {
+				position: relative;
+				width: 104px;
+				height: 40px;
+				.image {
+					position: absolute;
+					left: 0;
+					top: 0;
+					border-radius: 50%;
+					border: 1px solid var(--white);
+				}
+			}
 		}
 
 		.items {
 			.item {
 				display: flex;
 				align-items: center;
+				justify-content: space-between;
 				padding: 12px 0;
+				font-family: 'Inter Regular', sans-serif;
 
 				.img {
 					grid-area: img;
@@ -56,7 +74,7 @@
 					margin-right: 67px;
 				}
 
-				.info {
+				.extra {
 					width: 190px;
 					margin-right: 67px;
 				}
@@ -72,6 +90,10 @@
 					justify-content: center;
 					border-radius: 6px;
 					margin-right: 67px;
+				}
+
+				.price {
+					color: var(--primary);
 				}
 			}
 		}

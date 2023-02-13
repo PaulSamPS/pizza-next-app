@@ -68,6 +68,18 @@ export const Cabinet = () => {
           <Text level='l2'>
             ул. Львовская 48/2, офис 301, 2 этаж, домофон 4801#
           </Text>
+          <div className={styles['products-image']}>
+            {items.slice(0, 3).map((i) => (
+              <Image
+                key={i.id}
+                className={styles.image}
+                src={`http://localhost:5000/product/${i.name}/${i.img}`}
+                alt={i.name}
+                width={40}
+                height={40}
+              />
+            ))}
+          </div>
         </div>
         {visible && (
           <>
@@ -82,11 +94,20 @@ export const Cabinet = () => {
                     width={40}
                     height={40}
                   />
-                  <Text level='l3' className={styles.name}>
+                  <Text level='l2' weight='w1' className={styles.name}>
                     {i.name}
                   </Text>
-                  <div className={styles.count}>1 товар</div>
-                  <Text level='l3'>{i.price}</Text>
+                  <Text level='l1' className={styles.extra}>
+                    {i.name}
+                  </Text>
+                  <div className={styles.count}>
+                    <Text level='l2' weight='w1'>
+                      1 товар
+                    </Text>
+                  </div>
+                  <Text level='l2' weight='w1' className={styles.price}>
+                    {`${i.price} ₽`}
+                  </Text>
                 </div>
               ))}
             </div>
