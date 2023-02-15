@@ -1,0 +1,16 @@
+.order-card {
+  color: var(--gray-text);
+
+  .title {
+    margin-bottom: 4px;
+  }
+
+  .info {
+    display: flex;
+    gap: 8px;
+
+    .number {
+      color: var(--black);
+    }
+  }
+}

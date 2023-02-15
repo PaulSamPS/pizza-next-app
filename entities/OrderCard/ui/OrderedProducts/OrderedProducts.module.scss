@@ -1,0 +1,39 @@
+.product {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  font-family: Inter, sans-serif;
+
+  .img {
+    grid-area: img;
+    margin-right: 16px;
+  }
+
+  .name {
+    width: 215px;
+    margin-right: 67px;
+  }
+
+  .extra {
+    width: 190px;
+    margin-right: 67px;
+  }
+
+  .count {
+    grid-area: count;
+    background-color: var(--light-primary);
+    color: var(--primary);
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    margin-right: 67px;
+  }
+
+  .price {
+    color: var(--primary);
+  }
+}
