@@ -26,6 +26,17 @@
 		}
 	}
 
+	.account-tab {
+		display: flex;
+		flex-direction: column;
+		padding: 20px;
+		row-gap: 20px;
+
+		.exit {
+			color: var(--gray-text);
+		}
+	}
+
 	.list {
 		padding: 20px;
 		display: flex;

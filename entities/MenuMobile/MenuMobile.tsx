@@ -28,6 +28,11 @@ const another = [
   'Отследить заказ',
 ];
 
+const accountTab = [
+  { id: 0, value: 'История заказов' },
+  { id: 1, value: 'Настройки' },
+];
+
 export const MenuMobile = ({ isOpened }: MenuMobileProps) => {
   const variants = {
     open: { opacity: 1, x: 0 },
@@ -49,6 +54,17 @@ export const MenuMobile = ({ isOpened }: MenuMobileProps) => {
             }}
           >
             <Login />
+            <Divider />
+            <div className={styles['account-tab']}>
+              {accountTab.map((i) => (
+                <Text key={i.id} level='l3'>
+                  {i.value}
+                </Text>
+              ))}
+              <Text className={styles.exit} level='l3'>
+                Выйти из аккаунта
+              </Text>
+            </div>
             <Auth />
             <Divider />
             <div className={styles.list}>

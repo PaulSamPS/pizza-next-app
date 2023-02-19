@@ -1,10 +1,10 @@
 import React from 'react';
 import { Card, Divider } from '@components/Blocks';
-import styles from './OrderCardMobile.module.scss';
-import { InfoOrder, ProductPreview } from './ui';
 import { Text } from '@components/Typography';
 import { useSelector } from 'react-redux';
 import { productState } from '@store/selector';
+import { InfoOrder, ProductPreview } from './ui';
+import styles from './OrderCardMobile.module.scss';
 
 const order = [
   {
@@ -53,6 +53,10 @@ export const OrderCardMobile = () => {
           <ProductPreview key={i.id} name={i.name} img={i.img} />
         ))}
       </div>
+      <Divider />
+      <Text className={styles.more} level='l2'>
+        Подробнее
+      </Text>
     </Card>
   );
 };

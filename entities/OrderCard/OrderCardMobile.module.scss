@@ -1,37 +1,44 @@
 .card {
-  padding: 16px 20px;
-  margin-top: 24px;
+	padding: 16px 20px;
+	margin-top: 24px;
 
-  .top {
-    margin-bottom: 16px;
-    display: grid;
-    grid-template-columns: 4px repeat(2, auto);
-    grid-template-areas: 'border number sum' 'border status payd' 'border address address';
-    gap: 12px;
+	.top {
+		margin-bottom: 16px;
+		display: grid;
+		grid-template-columns: 4px repeat(2, auto);
+		grid-template-areas: 'border number sum' 'border status payd' 'border address address';
+		gap: 12px;
 
-    .border {
-      height: auto;
-      width: 4px;
-      background-color: var(--red);
-      border-radius: 24px;
-      grid-area: border;
-    }
+		.border {
+			height: auto;
+			width: 4px;
+			background-color: var(--red);
+			border-radius: 24px;
+			grid-area: border;
+		}
 
-    .address {
-      color: var(--gray-text);
-      grid-area: address;
+		.address {
+			color: var(--gray-text);
+			grid-area: address;
 
-      .address-value {
-        margin-top: 4px;
-        color: var(--black);
-      }
-    }
-  }
+			.address-value {
+				margin-top: 4px;
+				color: var(--black);
+			}
+		}
+	}
 
-  .products-preview {
-    position: relative;
-    width: 104px;
-    height: 40px;
-    margin-top: 16px;
-  }
+	.products-preview {
+		position: relative;
+		width: 104px;
+		height: 40px;
+		margin: 12px 0;
+	}
+
+	.more {
+		font-family: 'Inter', sans-serif;
+		color: var(--primary);
+		padding-top: 12px;
+		text-align: center;
+	}
 }
