@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, Card, Badge } from '@components/Blocks';
+import { Button, Card, Badge } from '@shared/ui/Blocks';
 import Image from 'next/image';
-import { Paragraph, Title } from '@components/Typography';
+import { Paragraph, Title } from '@shared/ui/Typography';
 import Link from 'next/link';
 import mobile from './PizzaCardMobile.module.scss';
 import { PizzaCardInterface } from '../interface';

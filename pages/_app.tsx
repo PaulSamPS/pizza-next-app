@@ -1,10 +1,10 @@
 import '../styles/globals.scss';
 import type { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
-import { wrapper } from '@store/store';
+import { wrapper } from '@shared/store/store';
 import React from 'react';
 import { Router } from 'next/router';
-import { Spinner } from '@components/Blocks';
+import { Spinner } from '@shared/ui';
 
 export default function App({ Component, ...rest }: AppProps) {
   const { store, props } = wrapper.useWrappedStore(rest);

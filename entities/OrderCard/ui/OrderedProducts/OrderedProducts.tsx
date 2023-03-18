@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import Image from 'next/image';
-import { Text } from '@components/Typography';
-import { IProductLocal } from '@types';
-import { DeviceContext } from '@context';
+import { IProductLocal } from '@shared/types';
+import { DeviceContext } from '@shared/context';
+import { Text } from '@shared/ui';
 import desktop from './OrderedProducts.module.scss';
 import mobile from './OrderedProductsMobile.module.scss';
 

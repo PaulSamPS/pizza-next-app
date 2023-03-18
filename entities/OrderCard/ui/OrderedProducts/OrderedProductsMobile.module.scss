@@ -1,39 +1,39 @@
 .product {
-  display: grid;
-  grid-template-columns: 40px 1fr auto;
-  grid-template-areas: 'img name .' 'img desc .' 'img count price';
-  padding: 12px 0;
-  column-gap: 12px;
-  row-gap: 8px;
-  align-items: center;
-  font-family: Inter, sans-serif;
+	display: grid;
+	grid-template-columns: 40px 1fr auto;
+	grid-template-areas: 'img name .' 'img desc .' 'img count price';
+	padding: 12px 0;
+	column-gap: 12px;
+	row-gap: 8px;
+	align-items: center;
+	font-family: Inter, sans-serif;
 
-  .img {
-    grid-area: img;
-  }
+	.img {
+		grid-area: img;
+	}
 
-  .name {
-    grid-area: name;
-  }
+	.name {
+		grid-area: name;
+	}
 
-  .extra {
-    grid-area: desc;
-  }
+	.extra {
+		grid-area: desc;
+	}
 
-  .count {
-    grid-area: count;
-    background-color: var(--light-primary);
-    color: var(--primary);
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100px;
-    border-radius: 6px;
-  }
+	.count {
+		grid-area: count;
+		background-color: var(--light-primary);
+		color: var(--primary);
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100px;
+		border-radius: 6px;
+	}
 
-  .price {
-    grid-area: price;
-    color: var(--primary);
-  }
+	.price {
+		grid-area: price;
+		color: var(--primary);
+	}
 }

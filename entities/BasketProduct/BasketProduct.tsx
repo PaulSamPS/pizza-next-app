@@ -1,18 +1,19 @@
 import React from 'react';
 import Image from 'next/image';
-import { Text, Title } from '@components/Typography';
-import { Card, Count } from '@components/Blocks';
 import cx from 'clsx';
 import {
   BasketPizzaType,
   BasketType,
   IPizzaServer,
   IProductServer,
-} from '@types';
-import { useAppDispatch } from '@hooks';
+} from '@shared/types';
+import { useAppDispatch } from '@shared/hooks';
 import axios from 'axios';
-import { setSuccessBasket } from '@store/slices/basket.slice';
-import { priceCartFromSize } from '@helpers/priceCartFromSize';
+import { setSuccessBasket } from '@shared/store/slices/basket.slice';
+import { priceCartFromSize } from '@shared/helpers/priceCartFromSize';
+import { Card } from '@shared/ui/Blocks';
+import { Text, Title } from '@shared/ui/Typography';
+import { Count } from '@features';
 import styles from './BasketProduct.module.scss';
 
 interface BasketProductProps {

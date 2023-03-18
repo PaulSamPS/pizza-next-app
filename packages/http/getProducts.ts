@@ -3,14 +3,14 @@ import {
   IPizzaServer,
   IProductLocal,
   IProductServer,
-} from '@types';
+} from '@shared/types';
 import axios from 'axios';
 import {
   extractPizza,
   extractPizzaArray,
   extractProduct,
   extractProductArray,
-} from '@helpers/extract';
+} from '@shared/helpers/extract';
 
 export const getAllPizzas = async (): Promise<IPizzaLocal[] | null> => {
   try {

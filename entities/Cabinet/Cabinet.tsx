@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { Title } from '@components/Typography';
-import { Tab } from '@components/Blocks';
-import { DeviceContext } from '@context';
+import { DeviceContext } from '@shared/context';
+import { Title } from '@shared/ui/Typography';
+import { Tab } from '@features';
 import styles from './Cabinet.module.scss';
 import { OrderCard } from '../OrderCard';
 

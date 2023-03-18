@@ -1,8 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import { Title, Text } from '@components/Typography';
-import { Card } from '@components/Blocks';
-import { AdditionsType } from '@types';
+import { AdditionsType } from '@shared/types';
+import { Title, Text, Card } from '@shared/ui';
 import styles from './AdditionCardMobile.module.scss';
 
 interface AdditionCardMobileProps extends Omit<AdditionsType, 'id'> {}

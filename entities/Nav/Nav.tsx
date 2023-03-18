@@ -8,10 +8,10 @@ import {
   SaucesIcon,
   SnacksIcon,
   SushiIcon,
-} from '@helpers/icons/category';
-import { DeviceContext } from '@context';
-import { NavDesktop } from './NavDesktop';
-import { NavMobile } from './NavMobile';
+} from '@shared/assets/icons/category';
+import { DeviceContext } from '@shared/context';
+import { NavDesktop } from './desktop';
+import { NavMobile } from './mobile';
 
 const category = [
   {

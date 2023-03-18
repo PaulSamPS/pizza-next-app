@@ -1,6 +1,6 @@
 import React from 'react';
-import { Radio } from '@components/Form';
 import cx from 'clsx';
+import { Radio } from '@shared/ui';
 import styles from './RadioGroup.module.scss';
 
 interface Items {

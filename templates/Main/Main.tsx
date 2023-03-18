@@ -1,33 +1,25 @@
-import React, { useContext } from 'react';
-import { ProductList } from '@entities';
-import { useSelector } from 'react-redux';
-import { DeviceContext } from '@context';
-import { useAppDispatch } from '@hooks';
-import { BasketButtonMobile, Container } from '@components/Blocks';
-import { basketModalState, productState } from '@store/selector';
-import { setBasketModalIsOpened } from '@store/slices/basketModal.slice';
-import { TemplateCartModal } from '../TemplateCartModal/TemplateCartModal';
-import { TemplateProductCustomization } from '../TemplateProductCustomization';
+import React from 'react';
+// import { useAppDispatch } from '@hooks';
+import { Container } from '@shared/ui/Blocks';
+// import { setBasketModalIsOpened } from '@store/slices/basketModal.slice';
+// import { TemplateCartModal } from '../TemplateCartModal/TemplateCartModal';
+// import { ProductCustomization } from '../ProductCustomization';
 
-export const Main = () => {
-  const { pizza, items } = useSelector(productState);
-  const { basketModalIsOpened } = useSelector(basketModalState);
-  const { isDesktop } = useContext(DeviceContext);
-  const dispatch = useAppDispatch();
+export const Main = () =>
+  // const { basketModalIsOpened } = useSelector(basketModalState);
+  // const dispatch = useAppDispatch();
 
-  const handleCloseModalCart = () => {
-    dispatch(setBasketModalIsOpened(false));
-  };
+  // const handleCloseModalCart = () => {
+  //   dispatch(setBasketModalIsOpened(false));
+  // };
 
-  return (
-    <Container>
-      <ProductList pizzas={pizza} product={items} isDesktop={isDesktop} />
-      <TemplateProductCustomization />
-      <TemplateCartModal
-        setModal={handleCloseModalCart}
-        modal={basketModalIsOpened}
-      />
-      {!isDesktop && <BasketButtonMobile />}
-    </Container>
+   (
+     <Container>
+       {/* <ProductCustomization /> */}
+       {/* <TemplateCartModal */}
+       {/*  setModal={handleCloseModalCart} */}
+       {/*  modal={basketModalIsOpened} */}
+       {/* /> */}
+       {/* {!isDesktop && <BasketButtonMobile />} */}
+     </Container>
   );
-};

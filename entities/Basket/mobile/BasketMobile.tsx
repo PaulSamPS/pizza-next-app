@@ -1,21 +1,18 @@
-import React, { useContext } from 'react';
-import { Text, Title } from '@components/Typography';
-import { Button, Divider, Tab } from '@components/Blocks';
-import type { DeliveryFrom } from '@types';
-import { AdditionsList } from '@entities';
-import { useScrollAdditions } from '@hooks';
-import { DeviceContext } from '@context';
+import React from 'react';
+import type { DeliveryFrom } from '@shared/types';
+import { Button, Divider, Title, Text } from '@shared/ui';
+import { AdditionsList, Tab } from '@features';
+import { useSelector } from 'react-redux';
+import { basketState } from '@shared/store/selector';
 import styles from './BasketMobile.module.scss';
 import { AdditionCard } from '../../AdditionCard/AdditionCard';
-import type { BasketProps } from '../basket.interface';
+import type { BasketProps } from '../type/basket.interface';
 import { BasketDelivery } from '../../BasketDelivery';
 import { PersonalData } from '../../PersonalData';
 import { BasketProduct } from '../../BasketProduct';
 
 export const BasketMobile = ({ ...props }: BasketProps) => {
-  const { containerRef, scrollContainerBy, canScrollLeft, canScrollRight } =
-    useScrollAdditions();
-  const { isDesktop } = useContext(DeviceContext);
+  const { basket } = useSelector(basketState);
   const onSubmit = async (formData: DeliveryFrom) => {
     console.log(formData);
   };
@@ -27,7 +24,16 @@ export const BasketMobile = ({ ...props }: BasketProps) => {
     >
       <Title level='3'>Ваш Заказ</Title>
       <div className={styles.order}>
-        <BasketProduct size='small' />
+        {basket?.products.map((p, index) => (
+          // eslint-disable-next-line no-underscore-dangle
+          <BasketProduct
+            key={index}
+            size='medium'
+            item={p}
+            pizza={p.pizza}
+            product={p.product}
+          />
+        ))}
       </div>
       <Text level='l3' weight='w1' className={styles.sum}>
         Итого: 2 379 ₽
@@ -35,14 +41,7 @@ export const BasketMobile = ({ ...props }: BasketProps) => {
       <Divider className={styles.divider} />
       <Title level='3'>Добавить к заказу?</Title>
       <div className={styles.additions}>
-        <AdditionsList
-          canScrollLeft={canScrollLeft}
-          canScrollRight={canScrollRight}
-          scrollContainerBy={scrollContainerBy}
-          containerRef={containerRef}
-          distance={310}
-          isDesktop={isDesktop}
-        >
+        <AdditionsList item={props.additions}>
           {props.additions.map((addition) => (
             <AdditionCard key={addition.id} addition={addition} />
           ))}
@@ -51,14 +50,7 @@ export const BasketMobile = ({ ...props }: BasketProps) => {
       <Divider />
       <Title level='3'>Соусы</Title>
       <div className={styles.sauces}>
-        <AdditionsList
-          canScrollLeft={canScrollLeft}
-          canScrollRight={canScrollRight}
-          scrollContainerBy={scrollContainerBy}
-          containerRef={containerRef}
-          distance={310}
-          isDesktop={isDesktop}
-        >
+        <AdditionsList item={props.sauces}>
           {props.sauces.map((sauce) => (
             <AdditionCard key={sauce.id} addition={sauce} />
           ))}

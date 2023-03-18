@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { Input } from '@components/Form';
-import { DeviceContext } from '@context';
-import type { DeliveryFrom, FormProps } from '@types';
+import { DeviceContext } from '@shared/context';
+import type { DeliveryFrom, FormProps } from '@shared/types';
+import { Input } from '@shared/ui';
 import mobile from './BasketDeliveryMobile.module.scss';
 import desktop from './BasketDeliveryDesktop.module.scss';
-import type { BasketProps } from '../Basket/basket.interface';
+import type { BasketProps } from '../Basket/type/basket.interface';
 
 interface BasketDeliveryProps
   extends Pick<

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { Text } from '@components/Typography';
 import { RadioGroup } from '@entities';
-import { DeviceContext } from '@context';
+import { DeviceContext } from '@shared/context';
+import { Text } from '@shared/ui';
 import desktop from './RadioItems.desktop.module.scss';
 import mobile from './RadioItems.mobile.module.scss';
 import type { RadioItemsProps } from './RadioItems.interface';

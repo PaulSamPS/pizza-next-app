@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { DeviceContext } from '@context';
-import { Input, InputPhone } from '@components/Form';
-import type { DeliveryFrom, FormProps } from '@types';
+import { DeviceContext } from '@shared/context';
+import type { DeliveryFrom, FormProps } from '@shared/types';
 import { Controller } from 'react-hook-form';
+import { Input, InputPhone } from '@shared/ui';
 import desktop from './PersonalDataDesktop.module.scss';
 import mobile from './PersonalDataMobile.module.scss';
 

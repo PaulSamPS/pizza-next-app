@@ -1,6 +1,4 @@
 import React, { useContext } from 'react';
-import { Card } from '@components/Blocks';
-import { Text } from '@components/Typography';
 import {
   ComboIcon,
   DessertsIcon,
@@ -10,10 +8,11 @@ import {
   SaucesIcon,
   SnacksIcon,
   SushiIcon,
-} from '@helpers/icons/category';
-import { DeviceContext } from '@context';
-import { useScrollY } from '@hooks';
+} from '@shared/assets/icons/category';
+import { DeviceContext } from '@shared/context';
+import { useScrollY } from '@shared/hooks';
 import cx from 'clsx';
+import { Text, Card } from '@shared/ui';
 import desktop from './styles/desktop.module.scss';
 import mobile from './styles/mobile.module.scss';
 

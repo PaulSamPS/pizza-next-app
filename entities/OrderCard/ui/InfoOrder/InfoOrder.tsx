@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { Text } from '@components/Typography';
-import { DeviceContext } from '@context';
+import { DeviceContext } from '@shared/context';
+import { Text } from '@shared/ui';
 import desktop from './desktop.module.scss';
 import mobile from './mobile.module.scss';
 

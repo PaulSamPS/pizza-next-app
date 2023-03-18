@@ -1,11 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
-import { Button } from '@components/Blocks';
-import { Text } from '@components/Typography';
-import axios from 'axios';
-import { setSuccessBasket } from '@store/slices/basket.slice';
-import { useAppDispatch } from '@hooks';
-import { PizzaCustomizationTitle } from '../../PizzaCustomization/components';
+import { Text, Button } from '@shared/ui';
+import { useAddToBasket } from '@shared/hooks';
+import { PizzaCustomizationTitle } from '../../../features/PizzaCustomization/components';
 import styles from './ProductCardModalDesktop.module.scss';
 import { ProductCardModalProps } from '../interface';
 
@@ -18,22 +15,7 @@ export const ProductCardModalDesktop = ({
   weight,
   promotion,
 }: ProductCardModalProps) => {
-  const dispatch = useAppDispatch();
-  const addToBasket = async () => {
-    try {
-      const { data: newBasket } = await axios.post(
-        'http://localhost:5000/api/basket/add-product',
-        {
-          productId: id,
-          productPrice: price,
-        },
-        { withCredentials: true }
-      );
-      dispatch(setSuccessBasket(newBasket));
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  const { addItemToBasket } = useAddToBasket();
 
   return (
     <div className={styles.card}>
@@ -53,7 +35,11 @@ export const ProductCardModalDesktop = ({
         <Text level='l2' className={styles.desc}>
           {description}
         </Text>
-        <Button appearance='primary' height={48} onClick={addToBasket}>
+        <Button
+          appearance='primary'
+          height={48}
+          onClick={() => addItemToBasket(id, price)}
+        >
           {`Добавить в корзину за ${price} ₽`}
         </Button>
       </div>

@@ -1,13 +1,12 @@
 import React, { useContext } from 'react';
-import { Text } from '@components/Typography';
 import { RadioGroup } from '@entities';
-import { Input } from '@components/Form';
-import { DeviceContext } from '@context';
+import { DeviceContext } from '@shared/context';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
+import { Input, Text } from '@shared/ui';
+import { DeliveryFrom } from '@shared/types';
 import type { RadioItemsProps } from '../RadioItems/RadioItems.interface';
 import desktop from './RadioItemsWithInput.desktop.module.scss';
 import mobile from './RadioItemsWithInput.mobile.module.scss';
-import type { DeliveryFrom } from '../../../Basket/mobile';
 
 interface RadioItemsWithInputProps extends RadioItemsProps {
   placeholder: string;

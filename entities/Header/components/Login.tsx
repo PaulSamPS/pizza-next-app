@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import { Text } from '@components/Typography';
-import { Icon } from '@components/Blocks';
-import { AccountIcon } from '@helpers/icons/20';
+import { AccountIcon } from '@shared/assets/icons/20';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
-import { userState } from '@store/selector';
-import { DeviceContext } from '@context';
+import { userState } from '@shared/store/selector';
+import { DeviceContext } from '@shared/context';
+import { Icon } from '@shared/ui/Blocks';
+import { Text } from '@shared/ui/Typography';
 import desktop from './styles/LoginDesktop.module.scss';
 import mobile from './styles/LoginMobile.module.scss';
 

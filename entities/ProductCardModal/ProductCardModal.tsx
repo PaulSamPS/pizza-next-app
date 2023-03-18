@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { DeviceContext } from '@context';
+import { DeviceContext } from '@shared/context';
 import { ProductCardModalDesktop } from './desktop';
 import { ProductCardModalMobile } from './mobile';
 import { ProductCardModalProps } from './interface';

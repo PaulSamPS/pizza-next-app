@@ -1,9 +1,9 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import { Divider } from '@components/Blocks';
-import { DeliveryFrom, FormProps } from '@types';
+import { DeliveryFrom, FormProps } from '@shared/types';
+import { Divider } from '@shared/ui';
 import { RadioItems, RadioItemsWithInput } from '../BasketDelivery/components';
-import { BasketProps } from '../Basket/basket.interface';
+import { BasketProps } from '../Basket/type/basket.interface';
 
 interface BasketRadioProps
   extends Pick<

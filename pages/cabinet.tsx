@@ -1,15 +1,15 @@
 import React from 'react';
-import { withLayout, withAuth } from '@hoc';
+import { withLayout, withAuth } from '@shared/hoc';
 import { CabinetTemplate } from '@templates';
 import { GetServerSideProps } from 'next';
-import { wrapper } from '@store/store';
+import { wrapper } from '@shared/store/store';
 import { getSelectorsByUserAgent } from 'react-device-detect';
 import axios from 'axios';
 import { setCookie } from 'cookies-next';
-import { setUser } from '@store/slices/user.slice';
+import { setUser } from '@shared/store/slices/user.slice';
 import jwtDecode from 'jwt-decode';
 import * as getProduct from '@packages/http/getProducts';
-import { setProducts } from '@store/slices/products.slice';
+import { setProducts } from '@shared/store/slices/products.slice';
 
 const Cabinet = () => <CabinetTemplate />;
 

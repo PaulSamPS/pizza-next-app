@@ -1,7 +1,6 @@
 import React from 'react';
-import { Block, Container, Divider } from '@components/Blocks';
-import { Text, Title } from '@components/Typography';
-import { LocationIcon, PhoneIcon } from '@helpers/icons/20';
+import { LocationIcon, PhoneIcon } from '@shared/assets/icons/20';
+import { Block, Container, Divider, Title, Text } from '@shared/ui';
 import { Logo } from '../Header/components';
 import styles from './Footer.module.scss';
 

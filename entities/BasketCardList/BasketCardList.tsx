@@ -1,16 +1,25 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { BasketCard } from '@entities';
-import { productState } from '@store/selector';
+import { basketState } from '@shared/store/selector';
 import styles from './BasketCardList.module.scss';
 
 export const BasketCardList = () => {
-  const { pizza } = useSelector(productState);
+  const { basket } = useSelector(basketState);
   return (
     <div className={styles['basket-card-list']}>
-      {pizza.map((product) => (
-        <BasketCard key={product.id} product={product} />
-      ))}
+      {basket &&
+        basket.products.map((product, index) => (
+          <BasketCard
+            key={index}
+            dough={product.dough}
+            pizza={product.pizza}
+            price={product.price}
+            product={product.product}
+            qty={product.qty}
+            size={product.size}
+          />
+        ))}
     </div>
   );
 };

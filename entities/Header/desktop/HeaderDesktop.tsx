@@ -1,10 +1,10 @@
 import React from 'react';
-import { Block, Container, Divider } from '@components/Blocks';
+import { Block, Container, Divider } from '@shared/ui/Blocks';
 import cx from 'clsx';
-import { Select } from '@components/Form';
-import { LocationIcon } from '@helpers/icons/20';
-import { Text } from '@components/Typography';
-import { Auth } from '@templates';
+import { Select } from '@shared/ui/Form';
+import { LocationIcon } from '@shared/assets/icons/20';
+import { Text } from '@shared/ui/Typography';
+import { Auth } from '@processes/Auth';
 import styles from '../styles/HeaderDesktop.module.scss';
 import { Login } from '../components';
 

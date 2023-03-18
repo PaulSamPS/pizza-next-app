@@ -1,9 +1,9 @@
 import React from 'react';
-import { Block, Container, Divider } from '@components/Blocks';
+import { Block, Container, Divider } from '@shared/ui/Blocks';
 import cx from 'clsx';
-import { Select } from '@components/Form';
-import { LocationIcon } from '@helpers/icons/20';
-import { Text } from '@components/Typography';
+import { Select } from '@shared/ui/Form';
+import { LocationIcon } from '@shared/assets/icons/20';
+import { Text } from '@shared/ui/Typography';
 import styles from '../styles/HeaderMobile.module.scss';
 
 const city = ['Москва', 'Оренбург'];
@@ -27,4 +27,4 @@ export const HeaderMobile = () => (
     </Container>
     <Divider />
   </Block>
-  );
+);

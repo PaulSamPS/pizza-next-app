@@ -1,6 +1,5 @@
 import React from 'react';
-import { Text } from '@components/Typography';
-import { Select } from '@components/Form';
+import { Text, Select } from 'shared/ui';
 import Link from 'next/link';
 import styles from './styles/categoryHeader.module.scss';
 

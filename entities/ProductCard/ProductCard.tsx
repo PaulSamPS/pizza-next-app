@@ -1,46 +1,15 @@
 import React, { useContext } from 'react';
-import { DeviceContext } from '@context';
+import { DeviceContext } from '@shared/context';
 import { ProductCardInterface } from './interface';
 import { ProductCardDesktop } from './desktop';
 import { ProductCardMobile } from './mobile';
 
-export const ProductCard = ({
-  img,
-  badge,
-  type,
-  pathname,
-  price,
-  name,
-  description,
-  inCart,
-}: ProductCardInterface) => {
+export const ProductCard = ({ item }: ProductCardInterface) => {
   const { isDesktop } = useContext(DeviceContext);
 
   if (isDesktop) {
-    return (
-      <ProductCardDesktop
-        badge={badge}
-        name={name}
-        img={img}
-        description={description}
-        type={type}
-        price={price}
-        pathname={pathname}
-        inCart={inCart}
-      />
-    );
+    return <ProductCardDesktop item={item} />;
   }
 
-  return (
-    <ProductCardMobile
-      badge={badge}
-      name={name}
-      img={img}
-      description={description}
-      type={type}
-      price={price}
-      pathname={pathname}
-      inCart={inCart}
-    />
-  );
+  return <ProductCardMobile item={item} />;
 };

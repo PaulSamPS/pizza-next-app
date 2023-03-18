@@ -1,15 +1,15 @@
 import React from 'react';
-import { Text, Title } from '@components/Typography';
-import { Button, Divider, Tab } from '@components/Blocks';
 import { useForm } from 'react-hook-form';
-import type { DeliveryFrom } from '@types';
-import { Input, Textarea } from '@components/Form';
-import { ArrowDownSmallIcon } from '@helpers/icons/16';
+import type { DeliveryFrom } from '@shared/types';
+import { ArrowDownSmallIcon } from '@shared/assets/icons/16';
 import { useSelector } from 'react-redux';
-import { basketState } from '@store/selector';
+import { basketState } from '@shared/store/selector';
+import { Input, Textarea } from '@shared/ui/Form';
+import { Button, Divider, Title, Text } from '@shared/ui';
+import { Tab } from '@features';
 import styles from './BasketDesktop.module.scss';
 import { BasketDelivery } from '../../BasketDelivery';
-import type { BasketProps } from '../basket.interface';
+import type { BasketProps } from '../type/basket.interface';
 import { PersonalData } from '../../PersonalData';
 import { BasketProduct } from '../../BasketProduct';
 import { AdditionsView } from '../../AdditionsView';
@@ -58,11 +58,11 @@ export const BasketDesktop = ({ ...props }: BasketProps) => {
       <Divider className={styles.divider} />
       <Title level='3'>Добавить к заказу?</Title>
       <div className={styles.additions}>
-        <AdditionsView arr={props.additions} distance={310} />
+        <AdditionsView arr={props.additions} />
       </div>
       <Title level='3'>Соусы</Title>
       <div className={styles.sauces}>
-        <AdditionsView arr={props.sauces} distance={310} />
+        <AdditionsView arr={props.sauces} />
       </div>
       <Divider className={styles.divider} />
       <Title level='3'>Личные данные</Title>

@@ -1,11 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
-import { Button, Icon } from '@components/Blocks';
-import { CloseIcon32 } from '@helpers/icons/32';
+import { CloseIcon32 } from '@shared/assets/icons/32';
 import { useRouter } from 'next/router';
-import { Text } from '@components/Typography';
 import axios from 'axios';
-import { PizzaCustomizationTitle } from '../../PizzaCustomization/components';
+import { Button, Icon, Text } from '@shared/ui';
+import { PizzaCustomizationTitle } from '../../../features/PizzaCustomization/components';
 import styles from './ProductCardMobile.module.scss';
 import { ProductCardModalProps } from '../interface';
 

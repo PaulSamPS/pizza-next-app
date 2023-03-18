@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { DeviceContext } from '@context';
+import { DeviceContext } from '@shared/context';
 import { useForm } from 'react-hook-form';
-import { DeliveryFrom } from '@types';
+import { DeliveryFrom } from '@shared/types';
 import { BasketMobile } from './mobile';
 import additional from '../AdditionCard/addition.jpg';
 import { BasketDesktop } from './desktop';

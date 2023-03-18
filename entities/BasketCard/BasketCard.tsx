@@ -1,17 +1,18 @@
 import React from 'react';
 import Image from 'next/image';
-import { Paragraph, Text } from '@components/Typography';
 import {
   BasketPizzaType,
   BasketType,
   IPizzaServer,
   IProductServer,
-} from '@types';
-import { Card, Count } from '@components/Blocks';
+} from '@shared/types';
 import axios from 'axios';
-import { priceCartFromSize } from '@helpers/priceCartFromSize';
-import { setSuccessBasket } from '@store/slices/basket.slice';
-import { useAppDispatch } from '@hooks';
+import { priceCartFromSize } from '@shared/helpers/priceCartFromSize';
+import { setSuccessBasket } from '@shared/store/slices/basket.slice';
+import { useAppDispatch } from '@shared/hooks';
+import { Card } from '@shared/ui/Blocks';
+import { Paragraph, Text } from '@shared/ui/Typography';
+import { Count } from '@features';
 import styles from './BasketCard.module.scss';
 
 interface CartCardModalProps extends Omit<BasketPizzaType, 'pizza'> {

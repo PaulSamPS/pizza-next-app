@@ -1,13 +1,13 @@
 import React from 'react';
-import { withLayout } from '@hoc';
+import { withLayout } from '@shared/hoc';
 import { GetServerSideProps } from 'next';
 import { getSelectorsByUserAgent } from 'react-device-detect';
 import * as getProduct from '@packages/http/getProducts';
-import { wrapper } from '@store/store';
-import { setPizzas, setProducts } from '@store/slices/products.slice';
+import { wrapper } from '@shared/store/store';
+import { setPizzas, setProducts } from '@shared/store/slices/products.slice';
 import axios from 'axios';
 import { setCookie } from 'cookies-next';
-import { setUser } from '@store/slices/user.slice';
+import { setUser } from '@shared/store/slices/user.slice';
 import jwtDecode from 'jwt-decode';
 import { Basket } from '../entities/Basket/Basket';
 

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { DeviceContext } from '@context';
+import { DeviceContext } from '@shared/context';
 import { HeaderMobile } from './mobile';
 import { HeaderDesktop } from './desktop';
 

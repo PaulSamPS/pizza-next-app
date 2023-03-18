@@ -1,26 +1,18 @@
 import React from 'react';
-import { Button, Card, Badge, Count } from '@components/Blocks';
 import Image from 'next/image';
-import { Paragraph, Title } from '@components/Typography';
 import Link from 'next/link';
+import { Button, Card, Badge } from '@shared/ui/Blocks';
+import { Paragraph, Title } from '@shared/ui/Typography';
+import { Count } from '@features';
 import mobile from './ProductCardMobile.module.scss';
 import { ProductCardInterface } from '../interface';
 
-export const ProductCardMobile = ({
-  type,
-  name,
-  img,
-  description,
-  badge,
-  price,
-  pathname,
-  inCart,
-}: ProductCardInterface) => (
+export const ProductCardMobile = ({ item, inCart }: ProductCardInterface) => (
   <Card className={mobile['product-card']}>
-    {badge && <Badge>{badge}</Badge>}
-    <Link href={`/?${type}=${pathname}`}>
+    {item.badge && <Badge>{item.badge}</Badge>}
+    <Link href={`/?${item.type}=${item.pathname}`}>
       <Image
-        src={`http://localhost:5000/product/${name}/${img}`}
+        src={`http://localhost:5000/product/${item.name}/${item.img}`}
         alt='pizza'
         width={128}
         height={128}
@@ -28,15 +20,15 @@ export const ProductCardMobile = ({
     </Link>
     <div className={mobile.info}>
       <Title level='3' weight='w1' className={mobile.name}>
-        {name}
+        {item.name}
       </Title>
-      <Paragraph className={mobile.text}>{description}</Paragraph>
+      <Paragraph className={mobile.text}>{item.description}</Paragraph>
       <div className={mobile.bottom}>
         {inCart ? (
-          <Count count={1} decrease={() => {}} increase={() => {}} />
+          <Count count={1} item={item} />
         ) : (
           <Button appearance='light-primary' height={36}>
-            {type === 'pizza' ? `от ${price} ₽` : `${price} ₽`}
+            {item.type === 'pizza' ? `от ${item.price} ₽` : `${item.price} ₽`}
           </Button>
         )}
       </div>

@@ -1,23 +1,27 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
 import { getSelectorsByUserAgent } from 'react-device-detect';
-import { withLayout } from '@hoc';
-import { Main } from '@templates';
+import { withLayout } from '@shared/hoc';
 import * as getProduct from '@packages/http/getProducts';
 import {
   setPizzaModal,
   setProductModal,
-} from '@store/slices/productModal.slice';
-import { wrapper } from '@store/store';
-import { setPizzas, setProducts } from '@store/slices/products.slice';
+} from '@shared/store/slices/productModal.slice';
+import { wrapper } from '@shared/store/store';
+import { setPizzas, setProducts } from '@shared/store/slices/products.slice';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
-import { setUser } from '@store/slices/user.slice';
+import { setUser } from '@shared/store/slices/user.slice';
 import { setCookie } from 'cookies-next';
+import { Container } from '@shared/ui';
+import { ProductCustomization, ProductList } from '@widgets';
 
-function Home() {
-  return <Main />;
-}
+const Home = () => (
+    <Container>
+      <ProductCustomization />
+      <ProductList />
+    </Container>
+  )
 
 export const getServerSideProps: GetServerSideProps =
   wrapper.getServerSideProps(({ dispatch }) => async ({ req, res, query }) => {

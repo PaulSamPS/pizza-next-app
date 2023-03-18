@@ -1,11 +1,10 @@
 import React from 'react';
-import { Divider } from '@components/Blocks';
-import { LocationIcon, PhoneIcon } from '@helpers/icons/20';
-import { Text } from '@components/Typography';
+import { LocationIcon, PhoneIcon } from '@shared/assets/icons/20';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Auth } from '@templates';
+import { Text, Divider } from '@shared/ui';
+import { Auth } from '@processes/Auth';
 import styles from './MenuMobile.module.scss';
 import { Login } from '../Header/components';
 
@@ -13,7 +12,7 @@ type MenuMobileProps = {
   isOpened: boolean;
 };
 
-const Portal = dynamic(() => import('@components/Blocks/Portal'), {
+const Portal = dynamic(() => import('../../shared/ui/Blocks/Portal'), {
   ssr: false,
 });
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Card, Badge } from '@components/Blocks';
-import { Paragraph, Title } from '@components/Typography';
+import { Button, Card, Badge } from '@shared/ui/Blocks';
+import { Paragraph, Title } from '@shared/ui/Typography';
 import Image from 'next/image';
 import Link from 'next/link';
 import desktop from './PizzaDesktop.module.scss';

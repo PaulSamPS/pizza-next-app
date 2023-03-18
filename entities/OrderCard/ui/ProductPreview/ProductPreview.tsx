@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { IProductLocal } from '@types';
+import { IProductLocal } from '@shared/types';
 import styles from './ProductPreview.module.scss';
 
 interface ProductPreviewProps extends Pick<IProductLocal, 'name' | 'img'> {}

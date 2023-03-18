@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { DeviceContext } from '@context';
-import { AdditionsType } from '@types';
+import { DeviceContext } from '@shared/context';
+import { AdditionsType } from '@shared/types';
 import { AdditionCardDesktop } from './ui/desktop';
 import { AdditionCardMobile } from './ui/mobile';
 

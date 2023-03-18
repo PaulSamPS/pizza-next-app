@@ -1,9 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
-import { Paragraph, Title } from '@components/Typography';
-import { Button, Card } from '@components/Blocks';
 import cx from 'clsx';
-import { AdditionsType } from '@types';
+import { AdditionsType } from '@shared/types';
+import { Paragraph, Title, Button, Card } from '@shared/ui';
 import styles from './AdditionCardDesktop.module.scss';
 
 interface AdditionCardDesktopProps extends Omit<AdditionsType, 'id'> {

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container } from '@components/Blocks';
 import { Cabinet } from '@entities';
+import { Container } from '../../shared/ui/Blocks';
 
 export const CabinetTemplate = () => (
   <Container>

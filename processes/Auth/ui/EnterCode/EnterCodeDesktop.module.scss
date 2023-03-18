@@ -1,0 +1,71 @@
+.enter-code {
+	text-align: center;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	font-family: 'SF Pro Text Regular', sans-serif;
+	position: relative;
+
+	h2 {
+		margin-bottom: 16px;
+		font-family: Inter, sans-serif;
+	}
+
+	.info {
+		margin-bottom: 20px;
+	}
+
+	.error-message {
+		color: var(--red);
+		position: absolute;
+		top: 72px;
+	}
+
+	.error-code {
+		input {
+			border: 1px solid var(--red);
+		}
+	}
+
+	.code {
+		display: flex;
+		justify-content: space-between;
+		width: 240px;
+		margin-bottom: 16px;
+
+		input {
+			width: 48px;
+			height: 48px;
+			text-align: center;
+		}
+	}
+
+	button {
+		height: 48px;
+		font-size: 16px;
+		width: 240px;
+	}
+
+	.resend-code {
+		margin-top: 12px;
+		display: flex;
+		flex-direction: column;
+		row-gap: 12px;
+
+		.timer {
+			color: var(--gray-text);
+			cursor: auto;
+		}
+
+		.text {
+			color: var(--gray-text);
+			transition: color ease 0.2s;
+			cursor: pointer;
+
+			&:hover {
+				color: var(--black);
+			}
+		}
+	}
+}

@@ -1,7 +1,7 @@
-import { BasketType } from '@types';
+import { BasketType } from '@shared/types';
 import axios, { AxiosError, AxiosResponse } from 'axios';
-import { basketReducer } from '@store/slices/basket.slice';
-import { AppDispatch } from '@store/store';
+import { basketReducer } from '@shared/store/slices/basket.slice';
+import { AppDispatch } from '@shared/store/store';
 
 // export const getBasket = async (): Promise<BasketType | null> => {
 //   try {

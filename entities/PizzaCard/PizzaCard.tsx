@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { DeviceContext } from '@context';
+import { DeviceContext } from '@shared/context';
 import { PizzaCardDesktop } from './desktop';
 import { PizzaCardInterface } from './interface';
 import { PizzaCardMobile } from './mobile';
