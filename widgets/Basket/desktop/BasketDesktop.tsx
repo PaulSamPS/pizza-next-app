@@ -6,14 +6,13 @@ import { useSelector } from 'react-redux';
 import { basketState } from '@shared/store/selector';
 import { Input, Textarea } from '@shared/ui/Form';
 import { Button, Divider, Title, Text } from '@shared/ui';
-import { Tab } from '@features';
+import { AdditionsList, Tab } from '@features';
 import styles from './BasketDesktop.module.scss';
-import { BasketDelivery } from '../../BasketDelivery';
+import { BasketDelivery } from '../../../entities/BasketDelivery';
 import type { BasketProps } from '../type/basket.interface';
-import { PersonalData } from '../../PersonalData';
-import { BasketProduct } from '../../BasketProduct';
-import { AdditionsView } from '../../AdditionsView';
-import { BasketRadio } from '../../BasketRadio/BasketRadio';
+import { PersonalData } from '../../../entities/PersonalData';
+import { BasketProduct } from '../../../entities/BasketProduct';
+import { BasketRadio } from '../../../entities/BasketRadio/BasketRadio';
 
 export const BasketDesktop = ({ ...props }: BasketProps) => {
   const { basket } = useSelector(basketState);
@@ -42,7 +41,6 @@ export const BasketDesktop = ({ ...props }: BasketProps) => {
       <Title level='3'>Ваш Заказ</Title>
       <div className={styles.order}>
         {basket?.products.map((p, index) => (
-          // eslint-disable-next-line no-underscore-dangle
           <BasketProduct
             key={index}
             size='medium'
@@ -58,11 +56,11 @@ export const BasketDesktop = ({ ...props }: BasketProps) => {
       <Divider className={styles.divider} />
       <Title level='3'>Добавить к заказу?</Title>
       <div className={styles.additions}>
-        <AdditionsView arr={props.additions} />
+        <AdditionsList item={props.additions} basket distance={310} />
       </div>
       <Title level='3'>Соусы</Title>
       <div className={styles.sauces}>
-        <AdditionsView arr={props.sauces} />
+        <AdditionsList item={props.sauces} basket distance={310} />
       </div>
       <Divider className={styles.divider} />
       <Title level='3'>Личные данные</Title>

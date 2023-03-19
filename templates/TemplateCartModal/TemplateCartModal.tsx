@@ -2,20 +2,21 @@ import React from 'react';
 import { ModalCart } from '@shared/ui/Blocks';
 import { BasketCard } from '@entities';
 import { useSelector } from 'react-redux';
-import { basketState } from '@shared/store/selector';
+import { basketModalState, basketState } from '@shared/store/selector';
+import { useAppDispatch } from '@shared/hooks';
+import { setBasketModalIsOpened } from '@shared/store/slices/basketModal.slice';
 
-type TemplateCartModalProps = {
-  setModal: () => void;
-  modal: boolean;
-};
-
-export const TemplateCartModal = ({
-  setModal,
-  modal,
-}: TemplateCartModalProps) => {
+export const TemplateCartModal = () => {
   const { basket } = useSelector(basketState);
+  const { basketModalIsOpened } = useSelector(basketModalState);
+  const dispatch = useAppDispatch();
+
+  const closeModal = () => {
+    dispatch(setBasketModalIsOpened(false));
+  };
+
   return (
-    <ModalCart modal={modal} setModal={setModal}>
+    <ModalCart modal={basketModalIsOpened} setModal={closeModal}>
       {basket &&
         basket.products.map((p, index) => (
           <BasketCard

@@ -92,7 +92,7 @@ export const PizzaCustomizationDesktop = ({
           <Text level='l2' weight='w1' className={styles.subtitle}>
             Добавьте в пиццу
           </Text>
-          <AdditionsList item={additions} />
+          <AdditionsList item={additions} distance={105} />
           <Bottom
             totalPrice={pizza.price[sizeIndex]}
             buttonWidth={155}

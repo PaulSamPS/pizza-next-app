@@ -9,7 +9,7 @@ import axios from 'axios';
 import { setCookie } from 'cookies-next';
 import { setUser } from '@shared/store/slices/user.slice';
 import jwtDecode from 'jwt-decode';
-import { Basket } from '../entities/Basket/Basket';
+import { Basket } from '@widgets';
 
 const BasketPage = () => <Basket />;
 

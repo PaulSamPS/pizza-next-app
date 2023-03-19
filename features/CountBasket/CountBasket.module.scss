@@ -1,0 +1,14 @@
+.count {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	background-color: var(--light-primary);
+	color: var(--primary);
+	font-size: 16px;
+	width: 92px;
+	align-items: center;
+	border-radius: 6px;
+
+	.value {
+		text-align: center;
+	}
+}

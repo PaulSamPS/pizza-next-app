@@ -15,13 +15,15 @@ import { setUser } from '@shared/store/slices/user.slice';
 import { setCookie } from 'cookies-next';
 import { Container } from '@shared/ui';
 import { ProductCustomization, ProductList } from '@widgets';
+import { TemplateCartModal } from '@templates';
 
 const Home = () => (
-    <Container>
-      <ProductCustomization />
-      <ProductList />
-    </Container>
-  )
+  <Container>
+    <ProductCustomization />
+    <ProductList />
+    <TemplateCartModal />
+  </Container>
+);
 
 export const getServerSideProps: GetServerSideProps =
   wrapper.getServerSideProps(({ dispatch }) => async ({ req, res, query }) => {

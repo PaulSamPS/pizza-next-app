@@ -5,11 +5,10 @@ import { AdditionsList, Tab } from '@features';
 import { useSelector } from 'react-redux';
 import { basketState } from '@shared/store/selector';
 import styles from './BasketMobile.module.scss';
-import { AdditionCard } from '../../AdditionCard/AdditionCard';
 import type { BasketProps } from '../type/basket.interface';
-import { BasketDelivery } from '../../BasketDelivery';
-import { PersonalData } from '../../PersonalData';
-import { BasketProduct } from '../../BasketProduct';
+import { BasketDelivery } from '../../../entities/BasketDelivery';
+import { PersonalData } from '../../../entities/PersonalData';
+import { BasketProduct } from '../../../entities/BasketProduct';
 
 export const BasketMobile = ({ ...props }: BasketProps) => {
   const { basket } = useSelector(basketState);
@@ -41,20 +40,12 @@ export const BasketMobile = ({ ...props }: BasketProps) => {
       <Divider className={styles.divider} />
       <Title level='3'>Добавить к заказу?</Title>
       <div className={styles.additions}>
-        <AdditionsList item={props.additions}>
-          {props.additions.map((addition) => (
-            <AdditionCard key={addition.id} addition={addition} />
-          ))}
-        </AdditionsList>
+        <AdditionsList item={props.additions} distance={310} basket />
       </div>
       <Divider />
       <Title level='3'>Соусы</Title>
       <div className={styles.sauces}>
-        <AdditionsList item={props.sauces}>
-          {props.sauces.map((sauce) => (
-            <AdditionCard key={sauce.id} addition={sauce} />
-          ))}
-        </AdditionsList>
+        <AdditionsList item={props.sauces} distance={310} basket />
       </div>
       <Divider className={styles.divider} />
       <Title level='3'>Личные данные</Title>

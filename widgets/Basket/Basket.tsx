@@ -3,7 +3,7 @@ import { DeviceContext } from '@shared/context';
 import { useForm } from 'react-hook-form';
 import { DeliveryFrom } from '@shared/types';
 import { BasketMobile } from './mobile';
-import additional from '../AdditionCard/addition.jpg';
+import additional from '../../features/AddionList/ui/AdditionCard/addition.jpg';
 import { BasketDesktop } from './desktop';
 
 const additions = [

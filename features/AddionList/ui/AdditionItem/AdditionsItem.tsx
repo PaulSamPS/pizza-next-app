@@ -36,6 +36,8 @@ export const AdditionsItem = ({ item }: AddToPizzaProps) => {
       </Text>
       <Text level='l1' className={styles.price}>
         {item.price}
+        {' '}
+        ₽
       </Text>
     </div>
   );

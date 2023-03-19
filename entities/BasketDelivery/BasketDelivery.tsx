@@ -4,7 +4,7 @@ import type { DeliveryFrom, FormProps } from '@shared/types';
 import { Input } from '@shared/ui';
 import mobile from './BasketDeliveryMobile.module.scss';
 import desktop from './BasketDeliveryDesktop.module.scss';
-import type { BasketProps } from '../Basket/type/basket.interface';
+import type { BasketProps } from '../../widgets/Basket/type/basket.interface';
 
 interface BasketDeliveryProps
   extends Pick<
