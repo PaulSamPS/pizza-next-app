@@ -44,7 +44,7 @@ export const BasketProduct = ({
           pizza={pizza}
           product={product}
           item={item}
-          size='medium'
+          size={item.size}
         />
         <Title level='5' className={styles['total-price']}>
           {`${item.price * item.qty} ₽`}

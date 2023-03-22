@@ -53,7 +53,7 @@ export const ModalCartDesktop = ({
         <div className={styles.items}>{children}</div>
         <div className={styles.bottom}>
           <Divider />
-          <Link href='/pages/basket' onClick={handleCloseBasketModal}>
+          <Link href='/basket' onClick={handleCloseBasketModal}>
             <Bottom
               totalPrice={basket?.totalPrice!}
               className={styles.bot}
