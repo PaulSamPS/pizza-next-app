@@ -15,7 +15,7 @@ import styles from './CountBasket.module.scss';
 
 interface CountBasketProps {
   height?: number;
-  size?: 'small' | 'medium';
+  size: string;
   product: IProductServer;
   pizza: IPizzaServer;
   item: Omit<BasketPizzaType, 'pizza'>;
@@ -25,7 +25,7 @@ interface CountBasketProps {
 export const CountBasket = ({
   product,
   pizza,
-  size = 'small',
+  size,
   count,
   item,
   height = 36,

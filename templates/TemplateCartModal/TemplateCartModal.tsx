@@ -27,6 +27,7 @@ export const TemplateCartModal = () => {
             price={p.price}
             qty={p.qty}
             size={p.size}
+            item={p}
           />
         ))}
     </ModalCart>
