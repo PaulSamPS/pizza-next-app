@@ -2,12 +2,19 @@ import React from 'react';
 import cx from 'clsx';
 import Link from 'next/link';
 import { Block, Button, Container, Divider } from '@shared/ui';
+import { getBasket } from '@packages/http/getBasket';
+import { useAppDispatch } from '@shared/hooks';
 import styles from './NavMobile.module.scss';
 import { Logo } from '../../Header/components';
 import { MenuMobile } from '../../MenuMobile/MenuMobile';
 
 export const NavMobile = () => {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
+  const dispatch = useAppDispatch();
+
+  React.useEffect(() => {
+    dispatch(getBasket());
+  }, []);
 
   return (
     <Block>

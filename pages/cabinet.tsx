@@ -1,6 +1,6 @@
 import React from 'react';
 import { withLayout, withAuth } from '@shared/hoc';
-import { CabinetTemplate } from '@templates';
+import { Cabinet } from '@widgets';
 import { GetServerSideProps } from 'next';
 import { wrapper } from '@shared/store/store';
 import { getSelectorsByUserAgent } from 'react-device-detect';
@@ -11,7 +11,7 @@ import jwtDecode from 'jwt-decode';
 import * as getProduct from '@packages/http/getProducts';
 import { setProducts } from '@shared/store/slices/products.slice';
 
-const Cabinet = () => <CabinetTemplate />;
+const CabinetPage = () => <Cabinet />;
 
 export const getServerSideProps: GetServerSideProps =
   wrapper.getServerSideProps(({ dispatch }) => async ({ req, res }) => {
@@ -49,4 +49,4 @@ export const getServerSideProps: GetServerSideProps =
     };
   });
 
-export default withLayout(withAuth(Cabinet));
+export default withLayout(withAuth(CabinetPage));

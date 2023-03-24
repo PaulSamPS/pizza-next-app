@@ -1,5 +1,5 @@
 import React from 'react';
-import { withLayout } from '@shared/hoc';
+import { withAuth, withLayout } from '@shared/hoc';
 import { GetServerSideProps } from 'next';
 import { getSelectorsByUserAgent } from 'react-device-detect';
 import * as getProduct from '@packages/http/getProducts';
@@ -55,4 +55,4 @@ export const getServerSideProps: GetServerSideProps =
     };
   });
 
-export default withLayout(BasketPage);
+export default withLayout(withAuth(BasketPage));

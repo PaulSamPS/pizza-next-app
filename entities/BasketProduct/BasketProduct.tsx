@@ -8,7 +8,7 @@ import { CountBasket } from '@features';
 import styles from './BasketProduct.module.scss';
 
 interface BasketProductProps {
-  size?: 'small' | 'medium';
+  size: 'small' | 'medium';
   product: IProductServer;
   pizza: IPizzaServer;
   item: Omit<BasketPizzaType, 'pizza'>;

@@ -5,6 +5,8 @@ import { ProductCard } from '@entities';
 import { useSelector } from 'react-redux';
 import { productState } from '@shared/store/selector';
 import { DeviceContext } from '@shared/context';
+import { BasketButtonMobile } from '@shared/ui';
+import { useRouter } from 'next/router';
 import { PizzaCard } from '../../entities/PizzaCard/PizzaCard';
 import desktop from './ProductListDesktop.module.scss';
 import mobile from './ProductListMobille.module.scss';
@@ -12,6 +14,7 @@ import mobile from './ProductListMobille.module.scss';
 export const ProductList = () => {
   const { pizza, items } = useSelector(productState);
   const { isDesktop } = useContext(DeviceContext);
+  const router = useRouter();
   const styles = isDesktop ? desktop : mobile;
 
   return (
@@ -43,6 +46,7 @@ export const ProductList = () => {
           <ProductCard key={drink.id} item={drink} />
         ))}
       </div>
+      {router.pathname === '/' && !isDesktop && <BasketButtonMobile />}
     </div>
   );
 };

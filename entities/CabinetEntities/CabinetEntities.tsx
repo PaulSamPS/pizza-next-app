@@ -7,7 +7,7 @@ import { OrderCard } from '../OrderCard';
 
 const arr = ['История заказов', 'Настройки'];
 
-export const Cabinet = () => {
+export const CabinetEntities = () => {
   const [currentValue, setCurrentValue] = React.useState<string>(arr[0]);
   const { isDesktop } = useContext(DeviceContext);
 

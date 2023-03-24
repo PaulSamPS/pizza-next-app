@@ -15,13 +15,13 @@ import { setUser } from '@shared/store/slices/user.slice';
 import { setCookie } from 'cookies-next';
 import { Container } from '@shared/ui';
 import { ProductCustomization, ProductList } from '@widgets';
-import { TemplateCartModal } from '@templates';
+import { BasketModal } from '@entities';
 
 const Home = () => (
   <Container>
     <ProductCustomization />
     <ProductList />
-    <TemplateCartModal />
+    <BasketModal />
   </Container>
 );
 

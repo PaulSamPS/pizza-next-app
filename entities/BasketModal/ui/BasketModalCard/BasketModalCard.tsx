@@ -4,7 +4,7 @@ import { BasketPizzaType, IPizzaServer, IProductServer } from '@shared/types';
 import { Card } from '@shared/ui/Blocks';
 import { Paragraph, Text } from '@shared/ui/Typography';
 import { CountBasket } from '@features';
-import styles from './BasketCard.module.scss';
+import styles from './BasketModalCard.module.scss';
 
 interface CartCardModalProps extends Omit<BasketPizzaType, 'pizza'> {
   product: IProductServer;
@@ -12,7 +12,7 @@ interface CartCardModalProps extends Omit<BasketPizzaType, 'pizza'> {
   item: Omit<BasketPizzaType, 'pizza'>;
 }
 
-export const BasketCard = ({
+export const BasketModalCard = ({
   product,
   pizza,
   qty,

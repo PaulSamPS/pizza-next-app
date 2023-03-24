@@ -1,9 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import { CloseIcon32 } from '@shared/assets/icons/32';
-import { useRouter } from 'next/router';
-import axios from 'axios';
-import { Button, Icon, Text } from '@shared/ui';
+import { Button, Text } from '@shared/ui';
+import { useAddToBasket } from '@shared/hooks';
 import { PizzaCustomizationTitle } from '../../../features/PizzaCustomization/components';
 import styles from './ProductCardMobile.module.scss';
 import { ProductCardModalProps } from '../interface';
@@ -17,29 +15,10 @@ export const ProductCardModalMobile = ({
   weight,
   promotion,
 }: ProductCardModalProps) => {
-  const router = useRouter();
-
-  const addToBasket = async () => {
-    try {
-      const { data: newBasket } = await axios.post(
-        'http://localhost:5000/api/basket/add-product',
-        {
-          productId: id,
-          productPrice: price,
-        },
-        { withCredentials: true }
-      );
-      console.log(newBasket);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  const { addItemToBasket } = useAddToBasket();
 
   return (
     <div className={styles.card}>
-      <Icon className={styles['close-icon']} onClick={() => router.push('/')}>
-        <CloseIcon32 />
-      </Icon>
       <Image
         src={`http://localhost:5000/product/${name}/${img}`}
         alt='product'
@@ -56,7 +35,11 @@ export const ProductCardModalMobile = ({
         <Text level='l2' className={styles.desc}>
           {description}
         </Text>
-        <Button appearance='primary' height={40} onClick={addToBasket}>
+        <Button
+          appearance='primary'
+          height={40}
+          onClick={() => addItemToBasket(id, price)}
+        >
           {`Добавить в корзину за ${price} ₽`}
         </Button>
       </div>

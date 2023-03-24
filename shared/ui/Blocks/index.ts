@@ -10,7 +10,6 @@ export * from './Icon/Icon';
 export * from './Badge/Badge';
 export * from './ModalOverlay/ModalOverlay';
 export * from './ModalProduct/ModalProduct';
-export * from './ModalCart/ModalCart';
 export * from './ModalAuth/ModalAuth';
 export * from './Bottom/Bottom';
 export * from './BasketButtonMobile/BasketButtonMobile';

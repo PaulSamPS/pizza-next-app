@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { userState } from '@shared/store/selector';
 import { FunctionComponent } from 'react';
 import { IDeviceContext } from '@shared/context';
-import { Container } from '../ui/Blocks';
+import { Container } from '@shared/ui';
 import Error401 from '../../pages/401';
 
 export const withAuth =

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import type { DeliveryFrom } from '@shared/types';
 import { Button, Divider, Title, Text } from '@shared/ui';
 import { AdditionsList, Tab } from '@features';
 import { useSelector } from 'react-redux';
 import { basketState } from '@shared/store/selector';
+import { DeviceContext } from '@shared/context';
 import styles from './BasketMobile.module.scss';
 import type { BasketProps } from '../type/basket.interface';
 import { BasketDelivery } from '../../../entities/BasketDelivery';
@@ -12,6 +13,7 @@ import { BasketProduct } from '../../../entities/BasketProduct';
 
 export const BasketMobile = ({ ...props }: BasketProps) => {
   const { basket } = useSelector(basketState);
+  const { isDesktop } = useContext(DeviceContext);
   const onSubmit = async (formData: DeliveryFrom) => {
     console.log(formData);
   };
@@ -24,10 +26,9 @@ export const BasketMobile = ({ ...props }: BasketProps) => {
       <Title level='3'>Ваш Заказ</Title>
       <div className={styles.order}>
         {basket?.products.map((p, index) => (
-          // eslint-disable-next-line no-underscore-dangle
           <BasketProduct
             key={index}
-            size='medium'
+            size={isDesktop ? 'medium' : 'small'}
             item={p}
             pizza={p.pizza}
             product={p.product}
@@ -35,7 +36,7 @@ export const BasketMobile = ({ ...props }: BasketProps) => {
         ))}
       </div>
       <Text level='l3' weight='w1' className={styles.sum}>
-        Итого: 2 379 ₽
+        {`Итого: ${basket?.totalPrice} ₽`}
       </Text>
       <Divider className={styles.divider} />
       <Title level='3'>Добавить к заказу?</Title>
@@ -70,7 +71,7 @@ export const BasketMobile = ({ ...props }: BasketProps) => {
       />
       <div className={styles.checkout}>
         <Text level='l3' weight='w1' className={styles['checkout-sum']}>
-          Итого: 2 379 ₽
+          {`Итого: ${basket?.totalPrice} ₽`}
         </Text>
         <Button appearance='primary' type='submit' height={48}>
           Оформить заказ
