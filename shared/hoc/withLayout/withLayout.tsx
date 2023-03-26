@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { DeviceContextProvider, IDeviceContext } from '@shared/context';
-import { Layout } from '@shared/ui/Layout';
+import { Layout } from '@shared/hoc/withLayout/ui/Layout';
 
 export const withLayout = <T extends Record<string, unknown> & IDeviceContext>(
   Component: FunctionComponent<T>

@@ -1,21 +1,26 @@
 import React from 'react';
-import { GetServerSideProps } from 'next';
-import { getSelectorsByUserAgent } from 'react-device-detect';
 import { withLayout } from '@shared/hoc';
-import * as getProduct from '@packages/http/getProducts';
+import { Container } from '@shared/ui';
+import { ProductCustomization, ProductList } from '@widgets';
+import { BasketModal } from '@entities';
+import { GetServerSideProps } from 'next';
+import { wrapper } from '@shared/store/store';
+import { getSelectorsByUserAgent } from 'react-device-detect';
+import axios from 'axios';
+import { setCookie } from 'cookies-next';
+import { setUser } from '@shared/store/slices/user.slice';
+import jwtDecode from 'jwt-decode';
+import { setPizzas, setProducts } from '@shared/store/slices/products.slice';
 import {
   setPizzaModal,
   setProductModal,
 } from '@shared/store/slices/productModal.slice';
-import { wrapper } from '@shared/store/store';
-import { setPizzas, setProducts } from '@shared/store/slices/products.slice';
-import axios from 'axios';
-import jwtDecode from 'jwt-decode';
-import { setUser } from '@shared/store/slices/user.slice';
-import { setCookie } from 'cookies-next';
-import { Container } from '@shared/ui';
-import { ProductCustomization, ProductList } from '@widgets';
-import { BasketModal } from '@entities';
+import {
+  getAllPizzas,
+  getOnePizza,
+  getAllProducts,
+  getOneProduct,
+} from '@shared/api';
 
 const Home = () => (
   <Container>
@@ -30,10 +35,10 @@ export const getServerSideProps: GetServerSideProps =
     const queryName = Object.keys(query)[0];
     const userAgent = req.headers['user-agent'];
     const { isDesktop } = getSelectorsByUserAgent(userAgent!);
-    const pizzas = await getProduct.getAllPizzas();
-    const products = await getProduct.getAllProducts();
-    const productModal = await getProduct.getOneProduct(query[`${queryName}`]);
-    const pizzaModal = await getProduct.getOnePizza(query[`${queryName}`]);
+    const pizzas = await getAllPizzas();
+    const products = await getAllProducts();
+    const productModal = await getOneProduct(query[`${queryName}`]);
+    const pizzaModal = await getOnePizza(query[`${queryName}`]);
 
     if (req.cookies.accessToken || req.cookies.refreshToken) {
       await axios

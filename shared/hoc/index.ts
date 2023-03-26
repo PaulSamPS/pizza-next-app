@@ -1,2 +1,2 @@
-export * from './withLayout';
+export * from './withLayout/withLayout';
 export * from './withAuth';

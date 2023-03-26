@@ -1,7 +1,7 @@
 import React from 'react';
 import { DeviceContext } from '@shared/context';
 import { IPizzaLocal } from '@shared/types';
-import { additionAdapter } from '@packages/adapter/additionAdapter';
+import { getPizzaAdditions } from '@shared/api/getPizzaAdditions/getPizzaAdditions';
 import { useRouter } from 'next/router';
 import { PizzaCustomizationDesktop } from './desktop';
 import { PizzaCustomizationMobile } from './mobile';
@@ -24,7 +24,7 @@ export const PizzaCustomization = ({ pizza }: ProductCustomizationProps) => {
   } = useModalPizzaCustomization({
     weight: pizza.weight,
   });
-  const additions = additionAdapter();
+  const additions = getPizzaAdditions();
   const router = useRouter();
 
   if (isDesktop) {

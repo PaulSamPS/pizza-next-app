@@ -1,5 +1,5 @@
 import React from 'react';
-import { Title } from '../../shared/ui/Typography';
+import { Title } from '@shared/ui';
 import { Login } from '../../entities/Header/components';
 import styles from './401.module.scss';
 

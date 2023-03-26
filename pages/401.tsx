@@ -1,7 +1,7 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
 import { getSelectorsByUserAgent } from 'react-device-detect';
-import { Error401Page } from '@templates';
+import { Error401Page } from '@widgets';
 
 const Error401 = () => <Error401Page />;
 

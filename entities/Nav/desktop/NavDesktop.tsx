@@ -6,7 +6,7 @@ import { CartIcon } from '@shared/assets/icons/24';
 import { useAppDispatch, useScrollY } from '@shared/hooks';
 import { useRouter } from 'next/router';
 import { setBasketModalIsOpened } from '@shared/store/slices/basketModal.slice';
-import { getBasket } from '@packages/http/getBasket';
+import { getBasket } from '@shared/api/getBasket/getBasket';
 import { useSelector } from 'react-redux';
 import { basketState } from '@shared/store/selector';
 import { Button, Container, Divider } from '@shared/ui';
@@ -55,9 +55,7 @@ export const NavDesktop = ({ category }: NavDesktopProps) => {
             height={40}
             onClick={handleOpenModalCart}
           >
-            {basket?.totalPrice}
-            {' '}
-            ₽
+            {basket?.totalPrice} ₽
           </Button>
         </div>
       </Container>

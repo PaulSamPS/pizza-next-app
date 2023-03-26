@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'clsx';
 import Link from 'next/link';
 import { Block, Button, Container, Divider } from '@shared/ui';
-import { getBasket } from '@packages/http/getBasket';
+import { getBasket } from '@shared/api/getBasket/getBasket';
 import { useAppDispatch } from '@shared/hooks';
 import styles from './NavMobile.module.scss';
 import { Logo } from '../../Header/components';
