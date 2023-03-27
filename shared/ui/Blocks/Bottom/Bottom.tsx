@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'clsx';
 import { Text, Button } from '@shared/ui';
+import Link from 'next/link';
 import styles from './Bottom.module.scss';
 
 interface BottomProps extends React.AllHTMLAttributes<HTMLDivElement> {
@@ -9,6 +10,8 @@ interface BottomProps extends React.AllHTMLAttributes<HTMLDivElement> {
   buttonHeight?: number;
   buttonWidth?: number;
   handleClick: () => void;
+  disabled: boolean;
+  linkTo: string;
 }
 export const Bottom = ({
   totalPrice,
@@ -17,6 +20,8 @@ export const Bottom = ({
   buttonHeight = 48,
   buttonWidth,
   handleClick,
+  disabled,
+  linkTo,
   className,
 }: BottomProps) => (
   <div className={cx(styles.bottom, className)}>
@@ -31,8 +36,9 @@ export const Bottom = ({
       height={buttonHeight}
       width={buttonWidth}
       onClick={handleClick}
+      disabled={disabled}
     >
-      {children}
+      {disabled ? children : <Link href={linkTo}>{children}</Link>}
     </Button>
   </div>
 );

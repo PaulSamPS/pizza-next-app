@@ -12,7 +12,8 @@ import { CloseButton } from '@features';
 import { useRouter } from 'next/router';
 import { useAppDispatch } from '@shared/hooks';
 import { setBasketModalIsOpened } from '@shared/store/slices/basketModal.slice';
-import styles from './desktop/BasketModalDesktop.module.scss';
+import desktop from './desktop/BasketModalDesktop.module.scss';
+import mobile from './mobile/BasketModalMobile.module.scss';
 import { BasketModalMobile } from './mobile';
 import { BasketModalDesktop } from './desktop';
 import { BasketModalCard } from './ui';
@@ -43,7 +44,7 @@ export const BasketModal = () => {
         setModal={closeModal}
       >
         <motion.div
-          className={styles['modal-cart']}
+          className={desktop['modal-cart']}
           animate={basketModalIsOpened ? 'open' : 'closed'}
           variants={variantsModal}
           initial='closed'
@@ -84,7 +85,7 @@ export const BasketModal = () => {
       setModal={closeModal}
     >
       <motion.div
-        className={styles['modal-cart']}
+        className={mobile['modal-cart']}
         animate={basketModalIsOpened ? 'open' : 'closed'}
         variants={variantsModal}
         initial='closed'

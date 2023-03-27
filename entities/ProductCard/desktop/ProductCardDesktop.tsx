@@ -14,9 +14,16 @@ import { ProductCardInterface } from '../interface';
 export const ProductCardDesktop = ({ item }: ProductCardInterface) => {
   const { addItemToBasket } = useAddToBasket();
   const { basket } = useSelector(basketState);
-  const count: BasketProductType | undefined = basket?.products
-    .filter((f) => f.product)
-    .find((p) => p.product._id.toString() === item.id);
+  const [count, setCount] = React.useState<number>(0);
+
+  React.useEffect(() => {
+    if (basket) {
+      const currentItem: BasketProductType | undefined = basket.products
+        .filter((f) => f.product)
+        .find((p) => p.product._id.toString() === item.id);
+      setCount(currentItem?.qty ? currentItem.qty : 0);
+    }
+  }, [basket]);
 
   return (
     <Card className={desktop['product-card']}>
@@ -36,7 +43,7 @@ export const ProductCardDesktop = ({ item }: ProductCardInterface) => {
         <Paragraph className={desktop.text}>{item.description}</Paragraph>
         <div className={desktop.bottom}>
           {count ? (
-            <Count count={count?.qty} item={item} height={48} />
+            <Count count={count} item={item} height={48} />
           ) : (
             <Button
               appearance='primary'
@@ -48,7 +55,7 @@ export const ProductCardDesktop = ({ item }: ProductCardInterface) => {
             </Button>
           )}
           <Title level='5' className={desktop.price}>
-            {`${item.price} ₽`}
+            {`${count > 0 ? item.price * count : item.price} ₽`}
           </Title>
         </div>
       </div>

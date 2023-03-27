@@ -8,8 +8,8 @@ import axios from 'axios';
 import { setCookie } from 'cookies-next';
 import { setUser } from '@shared/store/slices/user.slice';
 import jwtDecode from 'jwt-decode';
-import * as getProduct from '@packages/http/getProducts';
 import { setProducts } from '@shared/store/slices/products.slice';
+import { getAllProducts } from '@shared/api';
 
 const CabinetPage = () => <Cabinet />;
 
@@ -17,7 +17,7 @@ export const getServerSideProps: GetServerSideProps =
   wrapper.getServerSideProps(({ dispatch }) => async ({ req, res }) => {
     const userAgent = req.headers['user-agent'];
     const { isDesktop } = getSelectorsByUserAgent(userAgent!);
-    const products = await getProduct.getAllProducts();
+    const products = await getAllProducts();
     const cookie = req.cookies.accessToken || req.cookies.refreshToken;
 
     if (cookie) {

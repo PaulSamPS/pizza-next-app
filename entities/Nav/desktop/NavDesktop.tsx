@@ -37,7 +37,7 @@ export const NavDesktop = ({ category }: NavDesktopProps) => {
     if (router.pathname === '/') {
       dispatch(setBasketModalIsOpened(true));
     } else {
-      await router.push('/basket');
+      await router.push('/checkout');
     }
   };
 
@@ -55,7 +55,9 @@ export const NavDesktop = ({ category }: NavDesktopProps) => {
             height={40}
             onClick={handleOpenModalCart}
           >
-            {basket?.totalPrice} ₽
+            {basket ? basket.totalPrice : 0}
+            {' '}
+            ₽
           </Button>
         </div>
       </Container>

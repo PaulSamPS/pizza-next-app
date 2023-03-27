@@ -2,7 +2,6 @@ import React from 'react';
 import { withAuth, withLayout } from '@shared/hoc';
 import { GetServerSideProps } from 'next';
 import { getSelectorsByUserAgent } from 'react-device-detect';
-import * as getProduct from '@packages/http/getProducts';
 import { wrapper } from '@shared/store/store';
 import { setPizzas, setProducts } from '@shared/store/slices/products.slice';
 import axios from 'axios';
@@ -10,15 +9,16 @@ import { setCookie } from 'cookies-next';
 import { setUser } from '@shared/store/slices/user.slice';
 import jwtDecode from 'jwt-decode';
 import { Basket } from '@widgets';
+import { getAllPizzas, getAllProducts } from '@shared/api';
 
-const BasketPage = () => <Basket />;
+const Checkout = () => <Basket />;
 
 export const getServerSideProps: GetServerSideProps =
   wrapper.getServerSideProps(({ dispatch }) => async ({ req, res }) => {
     const userAgent = req.headers['user-agent'];
     const { isDesktop } = getSelectorsByUserAgent(userAgent!);
-    const pizzas = await getProduct.getAllPizzas();
-    const products = await getProduct.getAllProducts();
+    const pizzas = await getAllPizzas();
+    const products = await getAllProducts();
     const cookie = req.cookies.accessToken || req.cookies.refreshToken;
 
     if (cookie) {
@@ -55,4 +55,4 @@ export const getServerSideProps: GetServerSideProps =
     };
   });
 
-export default withLayout(withAuth(BasketPage));
+export default withLayout(withAuth(Checkout));
