@@ -10,8 +10,8 @@ interface BottomProps extends React.AllHTMLAttributes<HTMLDivElement> {
   buttonHeight?: number;
   buttonWidth?: number;
   handleClick: () => void;
-  disabled: boolean;
-  linkTo: string;
+  disabled?: boolean;
+  linkTo?: string;
 }
 export const Bottom = ({
   totalPrice,
@@ -20,8 +20,8 @@ export const Bottom = ({
   buttonHeight = 48,
   buttonWidth,
   handleClick,
-  disabled,
-  linkTo,
+  disabled = false,
+  linkTo = '/',
   className,
 }: BottomProps) => (
   <div className={cx(styles.bottom, className)}>
