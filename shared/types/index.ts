@@ -5,3 +5,4 @@ export * from './user';
 export * from './form.interface';
 export * from './basket';
 export * from './typeGuard';
+export * from './checkoutProduct.interface';

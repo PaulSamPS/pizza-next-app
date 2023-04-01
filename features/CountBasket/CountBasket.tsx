@@ -1,26 +1,9 @@
 import React from 'react';
 import { MinusIcon, PlusIcon } from '@shared/assets/icons/8';
 import { Button } from '@shared/ui';
-import { useAppDispatch } from '@shared/hooks';
-import axios from 'axios';
-import {
-  BasketPizzaType,
-  BasketType,
-  IPizzaServer,
-  IProductServer,
-} from '@shared/types';
-import { setSuccessBasket } from '@shared/store/slices/basket.slice';
-import { priceCartFromSize } from '@shared/helpers';
+import { useQty } from '@shared/hooks/useQty';
 import styles from './CountBasket.module.scss';
-
-interface CountBasketProps {
-  height?: number;
-  size: string;
-  product: IProductServer;
-  pizza: IPizzaServer;
-  item: Omit<BasketPizzaType, 'pizza'>;
-  count: number | undefined;
-}
+import { CountBasketProps } from './type/countBasket.interface';
 
 export const CountBasket = ({
   product,
@@ -30,60 +13,24 @@ export const CountBasket = ({
   item,
   height = 36,
 }: CountBasketProps) => {
-  const dispatch = useAppDispatch();
-
-  const decrease = async () => {
-    try {
-      const newBasket = await axios.post<BasketType>(
-        'http://localhost:5000/api/basket/decrease',
-        {
-          productId: pizza ? pizza._id : product._id,
-          productPrice: pizza
-            ? pizza.price[priceCartFromSize(size)]
-            : product.price,
-          size: item.size,
-          dough: item.dough,
-        },
-        { withCredentials: true }
-      );
-      dispatch(setSuccessBasket(newBasket.data));
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const increase = async () => {
-    try {
-      const newBasket = await axios.post<BasketType>(
-        'http://localhost:5000/api/basket/increase',
-        {
-          productId: pizza ? pizza._id : product._id,
-          productPrice: pizza
-            ? pizza.price[priceCartFromSize(size)]
-            : product.price,
-          size: item.size,
-          dough: item.dough,
-        },
-        { withCredentials: true }
-      );
-      dispatch(setSuccessBasket(newBasket.data));
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  const { increase, decrease } = useQty();
 
   return (
     <div className={styles.count}>
       <Button
         appearance='light-primary'
         height={height}
-        onClick={decrease}
+        onClick={() => decrease({ pizza, product, size, item })}
         disabled={count! <= 1}
       >
         <MinusIcon />
       </Button>
       <div className={styles.value}>{count}</div>
-      <Button appearance='light-primary' height={36} onClick={increase}>
+      <Button
+        appearance='light-primary'
+        height={36}
+        onClick={() => increase({ pizza, product, size, item })}
+      >
         <PlusIcon />
       </Button>
     </div>

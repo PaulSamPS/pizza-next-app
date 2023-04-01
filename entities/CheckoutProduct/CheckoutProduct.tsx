@@ -1,25 +1,19 @@
 import React from 'react';
 import Image from 'next/image';
 import cx from 'clsx';
-import { BasketPizzaType, IPizzaServer, IProductServer } from '@shared/types';
+import type { CheckoutProductProps } from '@shared/types';
 import { Card } from '@shared/ui/Blocks';
 import { Text, Title } from '@shared/ui/Typography';
 import { CountBasket } from '@features';
-import styles from './BasketProduct.module.scss';
+import styles from './CheckoutProduct.module.scss';
 
-interface BasketProductProps {
-  size: 'small' | 'medium';
-  product: IProductServer;
-  pizza: IPizzaServer;
-  item: Omit<BasketPizzaType, 'pizza'>;
-}
-
-export const BasketProduct = ({
+export const CheckoutProduct = ({
   size = 'small',
   product,
   pizza,
   item,
-}: BasketProductProps) => (
+  children,
+}: CheckoutProductProps) => (
   <Card className={cx(styles['basket-product'], size && styles[size])}>
     <Image
       src={`http://localhost:5000/product/${
@@ -39,13 +33,7 @@ export const BasketProduct = ({
         </Text>
       </div>
       <div className={styles.total}>
-        <CountBasket
-          count={item.qty}
-          pizza={pizza}
-          product={product}
-          item={item}
-          size={item.size}
-        />
+        {children}
         <Title level='5' className={styles['total-price']}>
           {`${item.price * item.qty} ₽`}
         </Title>

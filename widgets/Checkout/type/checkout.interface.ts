@@ -1,25 +1,25 @@
 import { StaticImageData } from 'next/image';
 import { DeliveryFrom, FormProps } from '@shared/types';
 
-export type BasketItems = {
+export type CheckoutItems = {
   id: string;
   name: string;
   price: number;
   img: StaticImageData;
 };
 
-export type BasketRadioItems = {
+export type CheckoutRadioItems = {
   id: string;
   value: string;
 };
 
-export interface BasketProps extends FormProps<DeliveryFrom> {
-  additions: BasketItems[];
-  sauces: BasketItems[];
+export interface CheckoutProps extends FormProps<DeliveryFrom> {
+  additions: CheckoutItems[];
+  sauces: CheckoutItems[];
   deliveryMethod: string[];
   valueDeliveryMethod: string;
   setValueDeliveryMethod: (value: string) => void;
-  arrRadioFirst: BasketRadioItems[];
-  arrRadioSecond: BasketRadioItems[];
-  arrRadioThird: BasketRadioItems[];
+  arrRadioFirst: CheckoutRadioItems[];
+  arrRadioSecond: CheckoutRadioItems[];
+  arrRadioThird: CheckoutRadioItems[];
 }

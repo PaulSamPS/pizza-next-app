@@ -7,14 +7,13 @@ import { basketState } from '@shared/store/selector';
 import { Input, Textarea } from '@shared/ui/Form';
 import { Button, Divider, Title, Text } from '@shared/ui';
 import { AdditionsList, Tab } from '@features';
-import styles from './BasketDesktop.module.scss';
-import { BasketDelivery } from '../../../entities/BasketDelivery';
-import type { BasketProps } from '../type/basket.interface';
+import styles from './CheckoutDesktop.module.scss';
+import { Delivery } from '../ui/Delivery';
+import type { CheckoutProps } from '../type';
 import { PersonalData } from '../../../entities/PersonalData';
-import { BasketProduct } from '../../../entities/BasketProduct';
-import { BasketRadio } from '../../../entities/BasketRadio/BasketRadio';
+import { ProductList, CheckoutRadio } from '../ui';
 
-export const BasketDesktop = ({ ...props }: BasketProps) => {
+export const CheckoutDesktop = ({ ...props }: CheckoutProps) => {
   const { basket } = useSelector(basketState);
   const {
     register,
@@ -38,21 +37,10 @@ export const BasketDesktop = ({ ...props }: BasketProps) => {
       onSubmit={handleSubmit(onSubmit)}
       className={styles['basket-desktop']}
     >
-      <Title level='3'>Ваш Заказ</Title>
-      <div className={styles.order}>
-        {basket?.products.map((p, index) => (
-          <BasketProduct
-            key={index}
-            size='medium'
-            item={p}
-            pizza={p.pizza}
-            product={p.product}
-          />
-        ))}
-      </div>
-      <Text level='l3' weight='w1' className={styles.sum}>
-        {`Итого: ${basket?.totalPrice!} ₽`}
-      </Text>
+      <ProductList
+        products={basket?.products!}
+        totalPrice={basket?.totalPrice!}
+      />
       <Divider className={styles.divider} />
       <Title level='3'>Добавить к заказу?</Title>
       <div className={styles.additions}>
@@ -76,7 +64,7 @@ export const BasketDesktop = ({ ...props }: BasketProps) => {
         />
       </div>
       {props.valueDeliveryMethod === 'Доставка' && (
-        <BasketDelivery
+        <Delivery
           register={register}
           control={control}
           errors={errors}
@@ -97,7 +85,7 @@ export const BasketDesktop = ({ ...props }: BasketProps) => {
           text='Ресторан*'
         />
       )}
-      <BasketRadio
+      <CheckoutRadio
         arrRadioFirst={props.arrRadioFirst}
         arrRadioSecond={props.arrRadioSecond}
         arrRadioThird={props.arrRadioThird}

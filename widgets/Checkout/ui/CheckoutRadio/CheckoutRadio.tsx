@@ -2,17 +2,17 @@ import React from 'react';
 import { Controller } from 'react-hook-form';
 import { DeliveryFrom, FormProps } from '@shared/types';
 import { Divider } from '@shared/ui';
-import { RadioItems, RadioItemsWithInput } from '../BasketDelivery/components';
-import { BasketProps } from '../../widgets/Basket/type/basket.interface';
+import { RadioItems, RadioItemsWithInput } from '../Delivery/components';
+import { CheckoutProps } from '../../type/checkout.interface';
 
 interface BasketRadioProps
   extends Pick<
-      BasketProps,
+      CheckoutProps,
       'arrRadioFirst' | 'arrRadioSecond' | 'arrRadioThird'
     >,
     Omit<FormProps<DeliveryFrom>, 'handleSubmit'> {}
 
-export const BasketRadio = ({ ...props }: BasketRadioProps) => (
+export const CheckoutRadio = ({ ...props }: BasketRadioProps) => (
   <>
     <Controller
       control={props.control}

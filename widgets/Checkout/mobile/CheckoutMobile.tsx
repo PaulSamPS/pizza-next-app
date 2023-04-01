@@ -5,13 +5,13 @@ import { AdditionsList, Tab } from '@features';
 import { useSelector } from 'react-redux';
 import { basketState } from '@shared/store/selector';
 import { DeviceContext } from '@shared/context';
-import styles from './BasketMobile.module.scss';
-import type { BasketProps } from '../type/basket.interface';
-import { BasketDelivery } from '../../../entities/BasketDelivery';
+import styles from './CheckoutMobile.module.scss';
+import type { CheckoutProps } from '../type/checkout.interface';
+import { Delivery } from '../ui/Delivery';
 import { PersonalData } from '../../../entities/PersonalData';
-import { BasketProduct } from '../../../entities/BasketProduct';
+import { CheckoutProduct } from '../../../entities/CheckoutProduct';
 
-export const BasketMobile = ({ ...props }: BasketProps) => {
+export const CheckoutMobile = ({ ...props }: CheckoutProps) => {
   const { basket } = useSelector(basketState);
   const { isDesktop } = useContext(DeviceContext);
   const onSubmit = async (formData: DeliveryFrom) => {
@@ -26,7 +26,7 @@ export const BasketMobile = ({ ...props }: BasketProps) => {
       <Title level='3'>Ваш Заказ</Title>
       <div className={styles.order}>
         {basket?.products.map((p, index) => (
-          <BasketProduct
+          <CheckoutProduct
             key={index}
             size={isDesktop ? 'medium' : 'small'}
             item={p}
@@ -61,7 +61,7 @@ export const BasketMobile = ({ ...props }: BasketProps) => {
         currentValue={props.valueDeliveryMethod}
         setValue={props.setValueDeliveryMethod}
       />
-      <BasketDelivery
+      <Delivery
         control={props.control}
         errors={props.errors}
         register={props.register}

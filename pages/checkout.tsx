@@ -8,10 +8,10 @@ import axios from 'axios';
 import { setCookie } from 'cookies-next';
 import { setUser } from '@shared/store/slices/user.slice';
 import jwtDecode from 'jwt-decode';
-import { Basket } from '@widgets';
+import { Checkout } from '@widgets';
 import { getAllPizzas, getAllProducts } from '@shared/api';
 
-const Checkout = () => <Basket />;
+const CheckoutPage = () => <Checkout />;
 
 export const getServerSideProps: GetServerSideProps =
   wrapper.getServerSideProps(({ dispatch }) => async ({ req, res }) => {
@@ -55,4 +55,4 @@ export const getServerSideProps: GetServerSideProps =
     };
   });
 
-export default withLayout(withAuth(Checkout));
+export default withLayout(withAuth(CheckoutPage));

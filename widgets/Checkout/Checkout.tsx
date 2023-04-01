@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 import { DeviceContext } from '@shared/context';
 import { useForm } from 'react-hook-form';
 import { DeliveryFrom } from '@shared/types';
-import { BasketMobile } from './mobile';
+import { CheckoutMobile } from './mobile';
 import additional from '../../features/AddionList/ui/AdditionCard/addition.jpg';
-import { BasketDesktop } from './desktop';
+import { CheckoutDesktop } from './desktop';
 
 const additions = [
   {
@@ -98,7 +98,7 @@ const change = [
 
 const delivery = ['Доставка', 'Самовывоз'];
 
-export const Basket = () => {
+export const Checkout = () => {
   const { isDesktop } = useContext(DeviceContext);
   const [deliveryValue, setDeliveryValue] = React.useState<string>(delivery[0]);
   const {
@@ -117,7 +117,7 @@ export const Basket = () => {
 
   if (isDesktop) {
     return (
-      <BasketDesktop
+      <CheckoutDesktop
         deliveryMethod={delivery}
         valueDeliveryMethod={deliveryValue}
         setValueDeliveryMethod={setDeliveryValue}
@@ -135,7 +135,7 @@ export const Basket = () => {
   }
 
   return (
-    <BasketMobile
+    <CheckoutMobile
       deliveryMethod={delivery}
       valueDeliveryMethod={deliveryValue}
       setValueDeliveryMethod={setDeliveryValue}

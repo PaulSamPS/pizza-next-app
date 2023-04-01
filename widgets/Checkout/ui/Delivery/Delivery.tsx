@@ -2,18 +2,18 @@ import React, { useContext } from 'react';
 import { DeviceContext } from '@shared/context';
 import type { DeliveryFrom, FormProps } from '@shared/types';
 import { Input } from '@shared/ui';
-import mobile from './BasketDeliveryMobile.module.scss';
-import desktop from './BasketDeliveryDesktop.module.scss';
-import type { BasketProps } from '../../widgets/Basket/type/basket.interface';
+import mobile from './DeliveryMobile.module.scss';
+import desktop from './DeliveryDesktop.module.scss';
+import type { CheckoutProps } from '../../type';
 
 interface BasketDeliveryProps
   extends Pick<
-      BasketProps,
+      CheckoutProps,
       'arrRadioFirst' | 'arrRadioSecond' | 'arrRadioThird'
     >,
     Omit<FormProps<DeliveryFrom>, 'handleSubmit'> {}
 
-export const BasketDelivery = ({ ...props }: BasketDeliveryProps) => {
+export const Delivery = ({ ...props }: BasketDeliveryProps) => {
   const { isDesktop } = useContext(DeviceContext);
   const classes = isDesktop ? desktop : mobile;
 
