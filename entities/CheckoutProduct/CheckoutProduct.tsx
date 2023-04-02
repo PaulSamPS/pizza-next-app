@@ -4,7 +4,6 @@ import cx from 'clsx';
 import type { CheckoutProductProps } from '@shared/types';
 import { Card } from '@shared/ui/Blocks';
 import { Text, Title } from '@shared/ui/Typography';
-import { CountBasket } from '@features';
 import styles from './CheckoutProduct.module.scss';
 
 export const CheckoutProduct = ({
