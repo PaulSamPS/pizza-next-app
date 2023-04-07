@@ -1,22 +1,27 @@
 .wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: calc(100% - 114px);
+	min-height: 380px;
+	padding: 20px 0;
 
-  .order-success {
-    margin-top: 182px;
-    width: 380px;
-    text-align: center;
-    font-family: 'SF Pro Text Regular', sans-serif;
-    color: var(--black);
+	.order-success {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		width: 380px;
+		font-family: 'SF Pro Text Regular', sans-serif;
+		color: var(--black);
 
-    img {
-      margin-bottom: 48px;
-    }
+		img {
+			margin-bottom: 48px;
+		}
 
-    h3 {
-      margin-bottom: 16px;
-      font-family: "Inter Regular", sans-serif;
-    }
-  }
+		h3 {
+			margin-bottom: 16px;
+			font-family: 'Inter Regular', sans-serif;
+		}
+	}
 }
