@@ -29,7 +29,7 @@ export const BasketModal = () => {
     dispatch(setBasketModalIsOpened(false));
   };
 
-  const linkTo = user.phone ? '/basket' : `${router.pathname}?auth=login`;
+  const linkTo = user.phone ? '/checkout' : `${router.pathname}?auth=login`;
 
   const variantsModal = {
     open: { opacity: 1, x: 0 },

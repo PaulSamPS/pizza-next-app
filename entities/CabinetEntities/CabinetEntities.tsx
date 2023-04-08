@@ -4,6 +4,7 @@ import { Title } from '@shared/ui/Typography';
 import { Tab } from '@features';
 import styles from './Cabinet.module.scss';
 import { OrderCard } from '../OrderCard';
+import { Account } from '../Account/Account';
 
 const arr = ['История заказов', 'Настройки'];
 
@@ -15,7 +16,11 @@ export const CabinetEntities = () => {
     return (
       <div className={styles.cabinet}>
         <div className={styles.title}>
-          <Title level='1'>Мой аккаунт</Title>
+          <Title level='1'>
+            {currentValue === 'История заказов'
+              ? 'История заказов'
+              : 'Мой аккаунт'}
+          </Title>
           <Tab
             className={styles.tab}
             arr={arr}
@@ -23,7 +28,7 @@ export const CabinetEntities = () => {
             setValue={setCurrentValue}
           />
         </div>
-        <OrderCard />
+        {currentValue === 'История заказов' ? <OrderCard /> : <Account />}
       </div>
     );
   }
