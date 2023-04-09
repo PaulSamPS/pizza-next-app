@@ -1,0 +1,14 @@
+.edit-info {
+
+
+  .inputs {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+
+    input {
+      width: 246px;
+    }
+  }
+}

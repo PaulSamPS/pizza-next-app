@@ -1,58 +1,10 @@
 .user-info {
   padding: 24px 32px;
   margin-top: 24px;
-  font-family: "Inter Regular", sans-serif;
+  font-family: 'Inter Regular', sans-serif;
 
   h3 {
     font-size: 24px;
     color: var(--black);
-  }
-
-  .top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .edit {
-      display: flex;
-      align-items: center;
-      color: var(--gray-text);
-      font-family: 'SF Pro Text Regular', sans-serif;
-      cursor: pointer;
-
-      svg {
-        margin-right: 12px;
-        color: var(--gray-text);
-      }
-
-      &:hover {
-        color: var(--primary);
-
-        svg {
-          color: var(--primary);
-        }
-      }
-    }
-  }
-
-  .personal-data {
-    display: flex;
-    column-gap: 32px;
-
-    .item {
-      display: flex;
-      flex-direction: column;
-      row-gap: 4px;
-      margin-top: 16px;
-
-      .label {
-        color: var(--gray-text);
-      }
-
-      .value {
-        font-family: 'SF Pro Text Regular', sans-serif;
-        color: var(--black);
-      }
-    }
   }
 }

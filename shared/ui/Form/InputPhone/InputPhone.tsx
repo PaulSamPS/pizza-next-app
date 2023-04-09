@@ -8,11 +8,17 @@ type InputPhoneProps = {
   value: string;
   setValues: (value: ChangeEvent<HTMLInputElement>) => void;
   name: string;
+  placeholder?: string;
 };
 
 export const InputPhone = forwardRef(
   (
-    { value, setValues, name }: InputPhoneProps,
+    {
+      value,
+      setValues,
+      name,
+      placeholder = '+7 (123) 456-78-90',
+    }: InputPhoneProps,
     ref: LegacyRef<NumberFormat<unknown>> | undefined
   ) => {
     const { isDesktop } = useContext(DeviceContext);
@@ -26,7 +32,7 @@ export const InputPhone = forwardRef(
           name='phone'
           format='+7 (###) ###-##-##'
           mask='_'
-          placeholder='+7 (123) 456-78-90'
+          placeholder={placeholder}
           value={value}
           autoComplete='off'
           onChange={setValues}
