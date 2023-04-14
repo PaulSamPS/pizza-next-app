@@ -8,3 +8,4 @@ export * from './Nav';
 export * from './CabinetEntities/CabinetEntities';
 export * from './BasketModal';
 export * from './CheckoutProduct';
+export * from './PizzaCard/PizzaCard';

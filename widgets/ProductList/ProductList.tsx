@@ -9,9 +9,10 @@ import { BasketButtonMobile } from '@shared/ui';
 import { useRouter } from 'next/router';
 import { useAppDispatch } from '@shared/hooks';
 import { setBasketModalIsOpened } from '@shared/store/slices/basketModal.slice';
-import { PizzaCard } from '../../entities/PizzaCard/PizzaCard';
+import { useScrollToBlock } from '@shared/hooks/useScrollToBlock';
 import desktop from './ProductListDesktop.module.scss';
 import mobile from './ProductListMobille.module.scss';
+import { Pizza } from './ui';
 
 export const ProductList = () => {
   const { pizza, items } = useSelector(productState);
@@ -20,6 +21,7 @@ export const ProductList = () => {
   const router = useRouter();
   const styles = isDesktop ? desktop : mobile;
   const dispatch = useAppDispatch();
+  const { pizzaRef, drinkRef } = useScrollToBlock();
 
   const handleOpenModalBasket = () => {
     dispatch(setBasketModalIsOpened(true));
@@ -27,21 +29,7 @@ export const ProductList = () => {
 
   return (
     <div className={styles['product-list']}>
-      <Title level='3'>Пицца</Title>
-      <div className={styles.items}>
-        {pizza.map((p) => (
-          <PizzaCard
-            key={p.id}
-            badge={p.badge}
-            name={p.name}
-            img={p.img.regular}
-            description={p.description}
-            type={p.type}
-            pathname={p.pathname}
-            price={p.price[0]}
-          />
-        ))}
-      </div>
+      <Pizza pizza={pizza} ref={pizzaRef} />
       <Title level='3'>Закуски</Title>
       <div className={styles.items}>
         {filterByType.snack(items).map((snack) => (
@@ -49,7 +37,7 @@ export const ProductList = () => {
         ))}
       </div>
       <Title level='3'>Напитки</Title>
-      <div className={styles.items}>
+      <div className={styles.items} ref={drinkRef}>
         {filterByType.drink(items).map((drink) => (
           <ProductCard key={drink.id} item={drink} />
         ))}
