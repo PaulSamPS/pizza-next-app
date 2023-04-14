@@ -21,7 +21,7 @@ export const ProductList = () => {
   const router = useRouter();
   const styles = isDesktop ? desktop : mobile;
   const dispatch = useAppDispatch();
-  const { pizzaRef, drinkRef } = useScrollToBlock();
+  const { pizzaRef, drinkRef, snackRef } = useScrollToBlock();
 
   const handleOpenModalBasket = () => {
     dispatch(setBasketModalIsOpened(true));
@@ -31,7 +31,7 @@ export const ProductList = () => {
     <div className={styles['product-list']}>
       <Pizza pizza={pizza} ref={pizzaRef} />
       <Title level='3'>Закуски</Title>
-      <div className={styles.items}>
+      <div className={styles.items} ref={snackRef}>
         {filterByType.snack(items).map((snack) => (
           <ProductCard key={snack.id} item={snack} />
         ))}

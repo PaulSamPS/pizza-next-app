@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import { productState } from '@shared/store/selector';
 import { Text } from '@shared/ui/Typography';
 import { Card, Divider, Icon } from '@shared/ui/Blocks';
+import cx from 'clsx';
+import { AnimatePresence, motion } from 'framer-motion';
 import styles from './OrderCardDesktop.module.scss';
 import { InfoOrder, OrderedProducts, ProductPreview } from '../ui';
 
@@ -35,6 +37,11 @@ export const OrderCardDesktop = () => {
   const { items } = useSelector(productState);
   const [visible, setVisible] = React.useState<boolean>(false);
 
+  const variants = {
+    open: { height: 'auto', opacity: '1' },
+    closed: { height: 0, opacity: 0 },
+  };
+
   return (
     <Card className={styles.card}>
       <div className={styles.top}>
@@ -42,7 +49,10 @@ export const OrderCardDesktop = () => {
         {order.map((c) => (
           <InfoOrder key={c.id} title={c.title} value={c.value} date={c.date} />
         ))}
-        <Icon className={styles.icon} onClick={() => setVisible(!visible)}>
+        <Icon
+          className={cx(styles.icon, visible && styles['icon-transform'])}
+          onClick={() => setVisible(!visible)}
+        >
           <ArrowDownSmallIcon />
         </Icon>
       </div>
@@ -57,19 +67,31 @@ export const OrderCardDesktop = () => {
           ))}
         </div>
       </div>
-      {visible && (
-        <>
-          <Divider />
-          {items.map((i) => (
-            <OrderedProducts
-              key={i.id}
-              img={i.img}
-              name={i.name}
-              price={i.price}
-            />
-          ))}
-        </>
-      )}
+      <AnimatePresence>
+        {visible && (
+          <motion.div
+            animate={visible ? 'open' : 'closed'}
+            variants={variants}
+            initial='closed'
+            exit='closed'
+            transition={{
+              damping: 20,
+              type: 'spring',
+              stiffness: 250,
+            }}
+          >
+            <Divider />
+            {items.map((i) => (
+              <OrderedProducts
+                key={i.id}
+                img={i.img}
+                name={i.name}
+                price={i.price}
+              />
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Card>
   );
 };

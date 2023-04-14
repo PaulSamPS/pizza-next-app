@@ -19,6 +19,16 @@
 		.icon {
 			color: var(--primary);
 			cursor: pointer;
+
+			svg {
+				transition: all ease-out .2s;
+			}
+		}
+
+		.icon-transform {
+			svg {
+				transform: rotate(180deg);
+			}
 		}
 	}
 

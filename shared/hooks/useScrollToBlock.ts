@@ -6,11 +6,13 @@ import { navState } from '@shared/store/selector';
 type RefsExport = {
   pizzaRef: React.MutableRefObject<HTMLDivElement | null>;
   drinkRef: React.MutableRefObject<HTMLDivElement | null>;
+  snackRef: React.MutableRefObject<HTMLDivElement | null>;
 };
 
 export const useScrollToBlock = (): RefsExport => {
   const pizzaRef = React.useRef<HTMLDivElement | null>(null);
   const drinkRef = React.useRef<HTMLDivElement | null>(null);
+  const snackRef = React.useRef<HTMLDivElement | null>(null);
   const { name } = useSelector(navState);
 
   // eslint-disable-next-line default-case
@@ -21,9 +23,17 @@ export const useScrollToBlock = (): RefsExport => {
         scrollTo(pizzaRef);
       }
       break;
-    case 'Напитки': {
-      scrollTo(drinkRef);
-    }
+    case 'Напитки':
+      {
+        scrollTo(drinkRef);
+      }
+      break;
+    case 'Закуски':
+      // eslint-disable-next-line no-lone-blocks
+      {
+        scrollTo(snackRef);
+      }
+      break;
   }
-  return { pizzaRef, drinkRef };
+  return { pizzaRef, drinkRef, snackRef };
 };

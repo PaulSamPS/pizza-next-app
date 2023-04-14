@@ -55,7 +55,7 @@ export const ProductCardDesktop = ({ item }: ProductCardInterface) => {
             </Button>
           )}
           <Title level='5' className={desktop.price}>
-            {`${count > 0 ? item.price * count : item.price} ₽`}
+            {`${item.price} ₽`}
           </Title>
         </div>
       </div>
