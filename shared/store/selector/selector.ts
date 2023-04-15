@@ -6,3 +6,4 @@ export const basketModalState = (state: AppState) => state.basketModal;
 export const userState = (state: AppState) => state.user;
 export const basketState = (state: AppState) => state.basket;
 export const navState = (state: AppState) => state.nav;
+export const ordersState = (state: AppState) => state.orders;

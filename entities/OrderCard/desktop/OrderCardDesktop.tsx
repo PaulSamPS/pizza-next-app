@@ -1,11 +1,13 @@
 import React from 'react';
 import { ArrowDownSmallIcon } from '@shared/assets/icons/16';
 import { useSelector } from 'react-redux';
-import { productState } from '@shared/store/selector';
+import { ordersState, productState, userState } from '@shared/store/selector';
 import { Text } from '@shared/ui/Typography';
 import { Card, Divider, Icon } from '@shared/ui/Blocks';
 import cx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useAppDispatch } from '@shared/hooks';
+import { getOrders } from '@shared/api';
 import styles from './OrderCardDesktop.module.scss';
 import { InfoOrder, OrderedProducts, ProductPreview } from '../ui';
 
@@ -36,6 +38,14 @@ const order = [
 export const OrderCardDesktop = () => {
   const { items } = useSelector(productState);
   const [visible, setVisible] = React.useState<boolean>(false);
+  const { orders } = useSelector(ordersState);
+  const { user } = useSelector(userState);
+  const dispatch = useAppDispatch();
+  console.log(orders, 'orders');
+
+  React.useEffect(() => {
+    dispatch(getOrders(user.id));
+  }, []);
 
   const variants = {
     open: { height: 'auto', opacity: '1' },
