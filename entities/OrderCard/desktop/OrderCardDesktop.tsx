@@ -1,51 +1,22 @@
 import React from 'react';
 import { ArrowDownSmallIcon } from '@shared/assets/icons/16';
 import { useSelector } from 'react-redux';
-import { ordersState, productState, userState } from '@shared/store/selector';
+import { productState } from '@shared/store/selector';
 import { Text } from '@shared/ui/Typography';
 import { Card, Divider, Icon } from '@shared/ui/Blocks';
 import cx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useAppDispatch } from '@shared/hooks';
-import { getOrders } from '@shared/api';
+import { OrdersInterface } from '@shared/types';
 import styles from './OrderCardDesktop.module.scss';
 import { InfoOrder, OrderedProducts, ProductPreview } from '../ui';
 
-const order = [
-  {
-    id: 0,
-    title: 'Заказ',
-    value: '№130312',
-    date: '22.01.2023',
-  },
-  {
-    id: 1,
-    title: 'Сумма',
-    value: '399 ₽',
-  },
-  {
-    id: 2,
-    title: 'Статус',
-    value: 'Обрабатывается',
-  },
-  {
-    id: 3,
-    title: 'Оплачено',
-    value: 'Картой',
-  },
-];
+interface OrderCardDesktopProps {
+  order: OrdersInterface;
+}
 
-export const OrderCardDesktop = () => {
+export const OrderCardDesktop = ({ order }: OrderCardDesktopProps) => {
   const { items } = useSelector(productState);
   const [visible, setVisible] = React.useState<boolean>(false);
-  const { orders } = useSelector(ordersState);
-  const { user } = useSelector(userState);
-  const dispatch = useAppDispatch();
-  console.log(orders, 'orders');
-
-  React.useEffect(() => {
-    dispatch(getOrders(user.id));
-  }, []);
 
   const variants = {
     open: { height: 'auto', opacity: '1' },
@@ -56,9 +27,13 @@ export const OrderCardDesktop = () => {
     <Card className={styles.card}>
       <div className={styles.top}>
         <div className={styles.border} />
-        {order.map((c) => (
-          <InfoOrder key={c.id} title={c.title} value={c.value} date={c.date} />
-        ))}
+        <InfoOrder
+          date={order.date}
+          orderNumber={order.orderNumber}
+          paymentMethod={order.info.payment}
+          status={order.status}
+          sum={order.totalPrice}
+        />
         <Icon
           className={cx(styles.icon, visible && styles['icon-transform'])}
           onClick={() => setVisible(!visible)}
@@ -68,9 +43,12 @@ export const OrderCardDesktop = () => {
       </div>
       <Divider />
       <div className={styles.info}>
-        <Text level='l2'>
-          ул. Львовская 48/2, офис 301, 2 этаж, домофон 4801#
-        </Text>
+        {order.info.street && (
+          <Text level='l2'>
+            ул.
+            {order.info.street}
+          </Text>
+        )}
         <div className={styles['products-preview']}>
           {items.slice(0, 3).map((i) => (
             <ProductPreview key={i.id} name={i.name} img={i.img} />

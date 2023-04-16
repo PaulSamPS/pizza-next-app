@@ -22,16 +22,15 @@ interface OrderBasket {
   status: string;
   orderNumber: string;
   totalPrice: number;
+  date: Date;
 }
 
 export interface OrdersUser {
   orders: OrderBasket[];
-  date: Date | null;
 }
 
 const initialState: OrdersUser = {
   orders: [],
-  date: null,
 };
 export const orderReducer = createSlice({
   name: 'basket',
@@ -39,7 +38,6 @@ export const orderReducer = createSlice({
   reducers: {
     setSuccessOrders(state, action: PayloadAction<OrdersUser>) {
       state.orders = action.payload.orders;
-      state.date = action.payload.date;
     },
   },
 });
