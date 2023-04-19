@@ -27,9 +27,13 @@ export const basketReducer = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    setClearBasket(state) {
+      state.isLoading = false;
+      state.basket = null;
+    },
   },
 });
 
-export const { setSuccessBasket } = basketReducer.actions;
+export const { setSuccessBasket, setClearBasket } = basketReducer.actions;
 
 export default basketReducer.reducer;

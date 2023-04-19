@@ -31,7 +31,9 @@ export const InfoOrder = ({
         </Text>
         <div className={classes.info}>
           <Text level='l2' className={classes.number}>
-            № {orderNumber}
+            №
+            {' '}
+            {orderNumber}
           </Text>
           <Text level='l2' className={classes.date}>
             {moment(date).format('DD MM YYYY')}
@@ -44,7 +46,9 @@ export const InfoOrder = ({
         </Text>
         <div className={classes.info}>
           <Text level='l2' className={classes.number}>
-            {sum} ₽
+            {sum}
+            {' '}
+            ₽
           </Text>
         </div>
       </div>

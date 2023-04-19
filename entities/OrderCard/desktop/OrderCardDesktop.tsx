@@ -17,6 +17,7 @@ interface OrderCardDesktopProps {
 export const OrderCardDesktop = ({ order }: OrderCardDesktopProps) => {
   const { items } = useSelector(productState);
   const [visible, setVisible] = React.useState<boolean>(false);
+  console.log(order.products?.map((i) => i));
 
   const variants = {
     open: { height: 'auto', opacity: '1' },
@@ -50,9 +51,10 @@ export const OrderCardDesktop = ({ order }: OrderCardDesktopProps) => {
           </Text>
         )}
         <div className={styles['products-preview']}>
-          {items.slice(0, 3).map((i) => (
-            <ProductPreview key={i.id} name={i.name} img={i.img} />
-          ))}
+          {order.products &&
+            order.products.map((i) => (
+              <ProductPreview key={i} name={i.name} img={i.img} />
+            ))}
         </div>
       </div>
       <AnimatePresence>
