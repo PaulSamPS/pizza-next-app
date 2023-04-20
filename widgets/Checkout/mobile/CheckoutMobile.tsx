@@ -1,19 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import type { DeliveryFrom } from '@shared/types';
-import { Button, Divider, Title, Text } from '@shared/ui';
+import { Button, Divider, Title, Text, Spinner } from '@shared/ui';
 import { AdditionsList, Tab } from '@features';
-import { useSelector } from 'react-redux';
-import { basketState } from '@shared/store/selector';
-import { DeviceContext } from '@shared/context';
 import styles from './CheckoutMobile.module.scss';
-import type { CheckoutProps } from '../type/checkout.interface';
+import type { CheckoutProps } from '../type';
 import { Delivery } from '../ui/Delivery';
 import { PersonalData } from '../../../entities/PersonalData';
-import { CheckoutProduct } from '../../../entities/CheckoutProduct';
+import { ProductList } from '../ui';
 
 export const CheckoutMobile = ({ ...props }: CheckoutProps) => {
-  const { basket } = useSelector(basketState);
-  const { isDesktop } = useContext(DeviceContext);
   const onSubmit = async (formData: DeliveryFrom) => {
     console.log(formData);
   };
@@ -23,22 +18,11 @@ export const CheckoutMobile = ({ ...props }: CheckoutProps) => {
       onSubmit={props.handleSubmit(onSubmit)}
       className={styles['basket-mobile']}
     >
-      <Title level='3'>Ваш Заказ</Title>
-      <div className={styles.order}>
-        {basket?.products.map((p, index) => (
-          <CheckoutProduct
-            key={index}
-            size={isDesktop ? 'medium' : 'small'}
-            item={p}
-            pizza={p.pizza}
-            product={p.product}
-          />
-        ))}
-      </div>
-      <Text level='l3' weight='w1' className={styles.sum}>
-        {`Итого: ${basket?.totalPrice} ₽`}
-      </Text>
-      <Divider className={styles.divider} />
+      {props.products ? (
+        <ProductList products={props.products} totalPrice={props.totalPrice} />
+      ) : (
+        <Spinner position='relative' bg='transparent' color='var(--black)' />
+      )}
       <Title level='3'>Добавить к заказу?</Title>
       <div className={styles.additions}>
         <AdditionsList item={props.additions} distance={310} basket />
@@ -71,7 +55,7 @@ export const CheckoutMobile = ({ ...props }: CheckoutProps) => {
       />
       <div className={styles.checkout}>
         <Text level='l3' weight='w1' className={styles['checkout-sum']}>
-          {`Итого: ${basket?.totalPrice} ₽`}
+          {`Итого: ${props.totalPrice} ₽`}
         </Text>
         <Button appearance='primary' type='submit' height={48}>
           Оформить заказ

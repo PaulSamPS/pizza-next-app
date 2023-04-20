@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { BasketType } from '@shared/types';
+import { HYDRATE } from 'next-redux-wrapper';
 
 interface IReduxBasket {
-  basket: BasketType | null;
+  basket: BasketType;
   isLoading: boolean;
   error: string;
 }
@@ -10,7 +11,7 @@ interface IReduxBasket {
 const initialState: IReduxBasket = {
   isLoading: false,
   error: '',
-  basket: null,
+  basket: {} as BasketType,
 };
 export const basketReducer = createSlice({
   name: 'basket',
@@ -29,7 +30,12 @@ export const basketReducer = createSlice({
     },
     setClearBasket(state) {
       state.isLoading = false;
-      state.basket = null;
+      state.basket = {} as BasketType;
+    },
+  },
+  extraReducers: {
+    [HYDRATE]: (state, action) => {
+      state.basket = action.payload.basket.basket;
     },
   },
 });

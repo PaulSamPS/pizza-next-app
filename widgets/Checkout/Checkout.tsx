@@ -2,6 +2,10 @@ import React, { useContext } from 'react';
 import { DeviceContext } from '@shared/context';
 import { useForm } from 'react-hook-form';
 import { DeliveryFrom } from '@shared/types';
+import { useAppDispatch } from '@shared/hooks';
+import { getBasket } from '@shared/api';
+import { useSelector } from 'react-redux';
+import { basketState } from '@shared/store/selector';
 import { CheckoutMobile } from './mobile';
 import additional from '../../features/AddionList/ui/AdditionCard/addition.jpg';
 import { CheckoutDesktop } from './desktop';
@@ -101,6 +105,8 @@ const delivery = ['Доставка', 'Самовывоз'];
 export const Checkout = () => {
   const { isDesktop } = useContext(DeviceContext);
   const [deliveryValue, setDeliveryValue] = React.useState<string>(delivery[0]);
+  const { basket } = useSelector(basketState);
+  const dispatch = useAppDispatch();
   const {
     register,
     handleSubmit,
@@ -114,6 +120,10 @@ export const Checkout = () => {
       change: change[0].value,
     },
   });
+
+  React.useEffect(() => {
+    dispatch(getBasket());
+  }, []);
 
   if (isDesktop) {
     return (
@@ -130,6 +140,9 @@ export const Checkout = () => {
         errors={errors}
         handleSubmit={handleSubmit}
         register={register}
+        products={basket.products}
+        totalPrice={basket.totalPrice}
+        totalCount={basket.totalCount}
       />
     );
   }
@@ -148,6 +161,9 @@ export const Checkout = () => {
       errors={errors}
       handleSubmit={handleSubmit}
       register={register}
+      products={basket.products}
+      totalPrice={basket.totalPrice}
+      totalCount={basket.totalCount}
     />
   );
 };

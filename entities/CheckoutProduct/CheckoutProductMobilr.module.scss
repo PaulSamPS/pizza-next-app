@@ -1,0 +1,29 @@
+.basket-product {
+  display: grid;
+  align-items: center;
+  font-family: 'Inter Regular', sans-serif;
+
+  .info {
+    display: flex;
+    margin-left: 16px;
+
+    .description {
+      .name {
+        margin-bottom: 8px;
+      }
+    }
+
+    .total {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 200px;
+
+      .total-price {
+        font-size: 20px;
+        line-height: 28px;
+        color: var(--primary);
+      }
+    }
+  }
+}

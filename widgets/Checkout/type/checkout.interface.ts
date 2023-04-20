@@ -1,5 +1,5 @@
 import { StaticImageData } from 'next/image';
-import { DeliveryFrom, FormProps } from '@shared/types';
+import { BasketType, DeliveryFrom, FormProps } from '@shared/types';
 
 export type CheckoutItems = {
   id: string;
@@ -13,7 +13,9 @@ export type CheckoutRadioItems = {
   value: string;
 };
 
-export interface CheckoutProps extends FormProps<DeliveryFrom> {
+export interface CheckoutProps
+  extends FormProps<DeliveryFrom>,
+    Omit<BasketType, '_id'> {
   additions: CheckoutItems[];
   sauces: CheckoutItems[];
   deliveryMethod: string[];
