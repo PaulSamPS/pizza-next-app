@@ -17,7 +17,7 @@ export const ProductCardDesktop = ({ item }: ProductCardInterface) => {
   const [count, setCount] = React.useState<number>(0);
 
   React.useEffect(() => {
-    if (basket) {
+    if (basket.products) {
       const currentItem: BasketProductType | undefined = basket.products
         .filter((f) => f.product)
         .find((p) => p.product._id.toString() === item.id);

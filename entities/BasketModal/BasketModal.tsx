@@ -12,6 +12,7 @@ import { CloseButton } from '@features';
 import { useRouter } from 'next/router';
 import { useAppDispatch } from '@shared/hooks';
 import { setBasketModalIsOpened } from '@shared/store/slices/basketModal.slice';
+import { getBasket } from '@shared/api';
 import desktop from './desktop/BasketModalDesktop.module.scss';
 import mobile from './mobile/BasketModalMobile.module.scss';
 import { BasketModalMobile } from './mobile';
@@ -28,6 +29,12 @@ export const BasketModal = () => {
   const closeModal = () => {
     dispatch(setBasketModalIsOpened(false));
   };
+
+  console.log(basket);
+
+  React.useEffect(() => {
+    dispatch(getBasket());
+  }, []);
 
   const linkTo = user.phone ? '/checkout' : `${router.pathname}?auth=login`;
 
@@ -59,7 +66,7 @@ export const BasketModal = () => {
             basket={basket}
             linkTo={linkTo}
           >
-            {basket &&
+            {basket.products &&
               basket.products.map((p, index) => (
                 <BasketModalCard
                   key={index}

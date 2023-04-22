@@ -1,17 +1,17 @@
 .order {
-  margin: 20px 0;
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
+	display: flex;
+	flex-direction: column;
+	margin: 20px 0;
+	row-gap: 20px;
 }
 
 .sum {
-  color: var(--primary);
-  font-size: 18px;
-  text-align: center;
-  padding-bottom: 20px;
+	padding-bottom: 20px;
+	color: var(--primary);
+	font-size: 18px;
+	text-align: center;
 }
 
 .divider {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 }
