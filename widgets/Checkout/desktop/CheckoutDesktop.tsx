@@ -1,5 +1,4 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
 import type { DeliveryFrom } from '@shared/types';
 import { ArrowDownSmallIcon } from '@shared/assets/icons/16';
 import { useSelector } from 'react-redux';
@@ -8,6 +7,9 @@ import { Input, Textarea } from '@shared/ui/Form';
 import { Button, Divider, Title, Text, Spinner } from '@shared/ui';
 import { AdditionsList, Tab } from '@features';
 import axios from 'axios';
+import { useAppDispatch } from '@shared/hooks';
+import { setClearBasket } from '@shared/store/slices/basket.slice';
+import { useRouter } from 'next/router';
 import styles from './CheckoutDesktop.module.scss';
 import { Delivery } from '../ui/Delivery';
 import type { CheckoutProps } from '../type';
@@ -16,32 +18,31 @@ import { ProductList, CheckoutRadio } from '../ui';
 
 export const CheckoutDesktop = ({ ...props }: CheckoutProps) => {
   const { user } = useSelector(userState);
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm<DeliveryFrom>({
-    mode: 'onChange',
-    defaultValues: {
-      howSoon: props.arrRadioFirst[0].value,
-      payment: props.arrRadioSecond[0].value,
-      change: props.arrRadioThird[0].value,
-    },
-  });
-
+  const dispatch = useAppDispatch();
+  const router = useRouter();
   const onSubmit = async (formData: DeliveryFrom) => {
-    await axios.post('http://localhost:5000/api/order', {
-      userId: user.id,
-      products: props.products.map((i) => i),
-      totalPrice: props.totalPrice,
-      info: formData,
-    });
+    await axios
+      .post('http://localhost:5000/api/order', {
+        userId: user.id,
+        products: props.products.map((i) => i),
+        totalPrice: props.totalPrice,
+        info: formData,
+      })
+      .then(async () => {
+        await router.push('/success');
+        await axios
+          .get('http://localhost:5000/api/basket/clear', {
+            withCredentials: true,
+          })
+          .then(() => {
+            dispatch(setClearBasket());
+          });
+      });
   };
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={props.handleSubmit(onSubmit)}
       className={styles['basket-desktop']}
     >
       {props.products ? (
@@ -59,7 +60,11 @@ export const CheckoutDesktop = ({ ...props }: CheckoutProps) => {
       </div>
       <Divider className={styles.divider} />
       <Title level='3'>Личные данные</Title>
-      <PersonalData register={register} errors={errors} control={control} />
+      <PersonalData
+        register={props.register}
+        errors={props.errors}
+        control={props.control}
+      />
       <Divider />
       <div className={styles.top}>
         <Title level='3'>Доставка</Title>
@@ -72,21 +77,18 @@ export const CheckoutDesktop = ({ ...props }: CheckoutProps) => {
       </div>
       {props.valueDeliveryMethod === 'Доставка' && (
         <Delivery
-          register={register}
-          control={control}
-          errors={errors}
-          arrRadioFirst={props.arrRadioFirst}
-          arrRadioSecond={props.arrRadioSecond}
-          arrRadioThird={props.arrRadioThird}
+          register={props.register}
+          control={props.control}
+          errors={props.errors}
         />
       )}
       {props.valueDeliveryMethod === 'Самовывоз' && (
         <Input
-          {...register('resto', {
+          {...props.register('resto', {
             required: { value: true, message: 'Выберите ресторан' },
           })}
           id='resto'
-          error={errors.resto}
+          error={props.errors.resto}
           after={<ArrowDownSmallIcon />}
           placeholder='Выберите ресторан'
           text='Ресторан*'

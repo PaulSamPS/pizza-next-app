@@ -3,7 +3,7 @@ import { Controller } from 'react-hook-form';
 import { DeliveryFrom, FormProps } from '@shared/types';
 import { Divider } from '@shared/ui';
 import { RadioItems, RadioItemsWithInput } from '../Delivery/components';
-import { CheckoutProps } from '../../type/checkout.interface';
+import { CheckoutProps } from '../../type';
 
 interface BasketRadioProps
   extends Pick<

@@ -40,7 +40,7 @@ export const CabinetEntities = () => {
           />
         </div>
         {currentValue === 'История заказов' ? (
-          orders.map((o) => <OrderCard order={o} />)
+          orders.map((order) => <OrderCard order={order} />)
         ) : (
           <Account />
         )}

@@ -1,5 +1,7 @@
 import { StaticImageData } from 'next/image';
 import { BasketType, DeliveryFrom, FormProps } from '@shared/types';
+import { SubmitErrorHandler, SubmitHandler } from 'react-hook-form';
+import React from 'react';
 
 export type CheckoutItems = {
   id: string;
@@ -24,4 +26,8 @@ export interface CheckoutProps
   arrRadioFirst: CheckoutRadioItems[];
   arrRadioSecond: CheckoutRadioItems[];
   arrRadioThird: CheckoutRadioItems[];
+  handleSubmit: (
+    onValid: SubmitHandler<DeliveryFrom>,
+    onInvalid?: SubmitErrorHandler<DeliveryFrom>
+  ) => (e?: React.BaseSyntheticEvent) => Promise<void>;
 }

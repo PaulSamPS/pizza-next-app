@@ -1,23 +1,19 @@
 import React from 'react';
 import { ArrowDownSmallIcon } from '@shared/assets/icons/16';
-import { useSelector } from 'react-redux';
-import { productState } from '@shared/store/selector';
 import { Text } from '@shared/ui/Typography';
 import { Card, Divider, Icon } from '@shared/ui/Blocks';
 import cx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
-import { OrdersInterface } from '@shared/types';
+import { OrderBasket } from '@shared/types';
 import styles from './OrderCardDesktop.module.scss';
 import { InfoOrder, OrderedProducts, ProductPreview } from '../ui';
 
 interface OrderCardDesktopProps {
-  order: OrdersInterface;
+  order: OrderBasket;
 }
 
 export const OrderCardDesktop = ({ order }: OrderCardDesktopProps) => {
-  const { items } = useSelector(productState);
   const [visible, setVisible] = React.useState<boolean>(false);
-  console.log(order.products?.map((i) => i));
 
   const variants = {
     open: { height: 'auto', opacity: '1' },
@@ -52,9 +48,15 @@ export const OrderCardDesktop = ({ order }: OrderCardDesktopProps) => {
         )}
         <div className={styles['products-preview']}>
           {order.products &&
-            order.products.map((i) => (
-              <ProductPreview key={i} name={i.name} img={i.img} />
-            ))}
+            order.products
+              .slice(0, 3)
+              .map((i) => (
+                <ProductPreview
+                  key={i._id}
+                  name={i.pizza ? i.pizza.name : i.product.name}
+                  img={i.pizza ? i.pizza.img.regular : i.product.img}
+                />
+              ))}
         </div>
       </div>
       <AnimatePresence>
@@ -71,14 +73,32 @@ export const OrderCardDesktop = ({ order }: OrderCardDesktopProps) => {
             }}
           >
             <Divider />
-            {items.map((i) => (
-              <OrderedProducts
-                key={i.id}
-                img={i.img}
-                name={i.name}
-                price={i.price}
-              />
-            ))}
+            {order.products
+              .filter((f) => f.pizza)
+              .map((i) => (
+                <OrderedProducts
+                  key={i._id}
+                  img={
+                    i.dough === 'Традиционное'
+                      ? i.pizza.img.regular
+                      : i.pizza.img.slim
+                  }
+                  name={i.pizza.name}
+                  price={i.price}
+                  count={i.qty}
+                />
+              ))}
+            {order.products
+              .filter((f) => f.product)
+              .map((i) => (
+                <OrderedProducts
+                  key={i._id}
+                  img={i.product.img}
+                  name={i.product.name}
+                  price={i.price}
+                  count={i.qty}
+                />
+              ))}
           </motion.div>
         )}
       </AnimatePresence>

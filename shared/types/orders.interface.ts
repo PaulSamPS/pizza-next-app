@@ -1,4 +1,4 @@
-import { BasketType } from '@shared/types/basket';
+import { BasketPizzaType, BasketProductType } from '@shared/types/basket';
 
 interface OrderInfo {
   howSoon: string;
@@ -15,11 +15,15 @@ interface OrderInfo {
   intercom: string;
 }
 
-export interface OrdersInterface {
-  products: BasketType[] | null;
+export interface OrderBasket {
+  products: [BasketProductType & BasketPizzaType];
   info: OrderInfo;
   status: string;
   orderNumber: string;
   totalPrice: number;
   date: Date;
+}
+
+export interface OrdersUser {
+  orders: OrderBasket[];
 }

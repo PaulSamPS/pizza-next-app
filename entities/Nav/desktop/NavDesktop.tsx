@@ -55,7 +55,7 @@ export const NavDesktop = ({ category }: NavDesktopProps) => {
             height={40}
             onClick={handleOpenModalCart}
           >
-            {basket ? basket.totalPrice : 0}
+            {basket.totalPrice ? basket.totalPrice : 0}
             {' '}
             ₽
           </Button>

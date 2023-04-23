@@ -4,14 +4,9 @@ import type { DeliveryFrom, FormProps } from '@shared/types';
 import { Input } from '@shared/ui';
 import mobile from './DeliveryMobile.module.scss';
 import desktop from './DeliveryDesktop.module.scss';
-import type { CheckoutProps } from '../../type';
 
 interface BasketDeliveryProps
-  extends Pick<
-      CheckoutProps,
-      'arrRadioFirst' | 'arrRadioSecond' | 'arrRadioThird'
-    >,
-    Omit<FormProps<DeliveryFrom>, 'handleSubmit'> {}
+  extends Omit<FormProps<DeliveryFrom>, 'handleSubmit'> {}
 
 export const Delivery = ({ ...props }: BasketDeliveryProps) => {
   const { isDesktop } = useContext(DeviceContext);

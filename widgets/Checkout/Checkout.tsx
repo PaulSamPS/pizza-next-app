@@ -6,6 +6,8 @@ import { useAppDispatch } from '@shared/hooks';
 import { getBasket } from '@shared/api';
 import { useSelector } from 'react-redux';
 import { basketState } from '@shared/store/selector';
+import { Container, Title } from '@shared/ui';
+import { useRouter } from 'next/router';
 import { CheckoutMobile } from './mobile';
 import additional from '../../features/AddionList/ui/AdditionCard/addition.jpg';
 import { CheckoutDesktop } from './desktop';
@@ -78,26 +80,26 @@ const sauces = [
 
 const howSoon = [
   {
-    id: '1',
+    id: '0',
     value: 'Как можно скорее',
   },
-  { id: '2', value: 'По времени' },
+  { id: '1', value: 'По времени' },
 ];
 
 const payment = [
   {
-    id: '3',
+    id: '0',
     value: 'Наличными',
   },
-  { id: '4', value: 'Картой' },
+  { id: '1', value: 'Картой' },
 ];
 
 const change = [
   {
-    id: '3',
+    id: '0',
     value: 'Без сдачи',
   },
-  { id: '4', value: 'Сдача с' },
+  { id: '1', value: 'Сдача с' },
 ];
 
 const delivery = ['Доставка', 'Самовывоз'];
@@ -105,7 +107,9 @@ const delivery = ['Доставка', 'Самовывоз'];
 export const Checkout = () => {
   const { isDesktop } = useContext(DeviceContext);
   const [deliveryValue, setDeliveryValue] = React.useState<string>(delivery[0]);
+  const [basketEmpty, setBasketEmpty] = React.useState<boolean>(false);
   const { basket } = useSelector(basketState);
+  const { pathname } = useRouter();
   const dispatch = useAppDispatch();
   const {
     register,
@@ -122,28 +126,41 @@ export const Checkout = () => {
   });
 
   React.useEffect(() => {
-    dispatch(getBasket());
-  }, []);
+    dispatch(getBasket()).then(() => {
+      if (basket.totalCount <= 0) {
+        setBasketEmpty(true);
+      }
+    });
+  }, [pathname]);
 
   if (isDesktop) {
     return (
-      <CheckoutDesktop
-        deliveryMethod={delivery}
-        valueDeliveryMethod={deliveryValue}
-        setValueDeliveryMethod={setDeliveryValue}
-        sauces={sauces}
-        additions={additions}
-        arrRadioFirst={howSoon}
-        arrRadioSecond={payment}
-        arrRadioThird={change}
-        control={control}
-        errors={errors}
-        handleSubmit={handleSubmit}
-        register={register}
-        products={basket.products}
-        totalPrice={basket.totalPrice}
-        totalCount={basket.totalCount}
-      />
+      // eslint-disable-next-line react/jsx-no-useless-fragment
+      <>
+        {basketEmpty ? (
+          <Container>
+            <Title level='3'>Корзина пуста</Title>
+          </Container>
+        ) : (
+          <CheckoutDesktop
+            deliveryMethod={delivery}
+            valueDeliveryMethod={deliveryValue}
+            setValueDeliveryMethod={setDeliveryValue}
+            sauces={sauces}
+            additions={additions}
+            arrRadioFirst={howSoon}
+            arrRadioSecond={payment}
+            arrRadioThird={change}
+            control={control}
+            errors={errors}
+            handleSubmit={handleSubmit}
+            register={register}
+            products={basket.products}
+            totalPrice={basket.totalPrice}
+            totalCount={basket.totalCount}
+          />
+        )}
+      </>
     );
   }
 

@@ -5,7 +5,7 @@ type RadioItemsArray = {
 
 export type RadioItemsProps = {
   items: RadioItemsArray[];
-  onChange: (value: string) => void;
+  onChange: (e: string) => void;
   value: string;
   title: string;
   id: string;

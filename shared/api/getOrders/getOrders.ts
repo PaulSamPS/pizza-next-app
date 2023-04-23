@@ -1,6 +1,7 @@
 import { AppDispatch } from '@shared/store/store';
-import { orderReducer, OrdersUser } from '@shared/store/slices/order.slice';
+import { orderReducer } from '@shared/store/slices/order.slice';
 import axios, { AxiosError, AxiosResponse } from 'axios';
+import { OrdersUser } from '@shared/types';
 
 export const getOrders = (userId: string) => async (dispatch: AppDispatch) => {
   await axios
