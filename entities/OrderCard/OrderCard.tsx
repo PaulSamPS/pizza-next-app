@@ -14,5 +14,5 @@ export const OrderCard = ({ order }: OrderCardProps) => {
     return <OrderCardDesktop order={order} />;
   }
 
-  return <OrderCardMobile />;
+  return <OrderCardMobile order={order} />;
 };

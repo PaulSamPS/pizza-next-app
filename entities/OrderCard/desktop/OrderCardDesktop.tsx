@@ -4,15 +4,11 @@ import { Text } from '@shared/ui/Typography';
 import { Card, Divider, Icon } from '@shared/ui/Blocks';
 import cx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
-import { OrderBasket } from '@shared/types';
 import styles from './OrderCardDesktop.module.scss';
 import { InfoOrder, OrderedProducts, ProductPreview } from '../ui';
+import { OrderCardProps } from '../type';
 
-interface OrderCardDesktopProps {
-  order: OrderBasket;
-}
-
-export const OrderCardDesktop = ({ order }: OrderCardDesktopProps) => {
+export const OrderCardDesktop = ({ order }: OrderCardProps) => {
   const [visible, setVisible] = React.useState<boolean>(false);
 
   const variants = {

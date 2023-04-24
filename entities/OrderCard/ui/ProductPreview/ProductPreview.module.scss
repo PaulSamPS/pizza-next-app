@@ -6,12 +6,36 @@
 	border: 1px solid var(--white);
 	background-color: var(--white);
 
-	&:first-child {
+	&:nth-child(3) {
 		left: 0;
 		top: 0;
 	}
 
-	&:last-child {
+	&:nth-child(1) {
+		left: 60px;
+		top: 0;
+	}
+}
+
+.desktop {
+	&:nth-child(3) {
+		left: 0;
+		top: 0;
+	}
+
+	&:nth-child(1) {
+		left: 60px;
+		top: 0;
+	}
+}
+
+.mobile {
+	&:nth-child(1) {
+		left: 0;
+		top: 0;
+	}
+
+	&:nth-child(3) {
 		left: 60px;
 		top: 0;
 	}
