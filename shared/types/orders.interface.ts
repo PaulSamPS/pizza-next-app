@@ -22,8 +22,13 @@ export interface OrderBasket {
   orderNumber: string;
   totalPrice: number;
   date: Date;
+  _id: string;
 }
 
 export interface OrdersUser {
   orders: OrderBasket[];
+}
+
+export interface OneOrder {
+  order: OrderBasket;
 }

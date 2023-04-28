@@ -1,6 +1,7 @@
 import React from 'react';
-import { Card, Divider } from '@shared/ui/Blocks';
+import { Button, Card, Divider } from '@shared/ui/Blocks';
 import { Text } from '@shared/ui/Typography';
+import Link from 'next/link';
 import { InfoOrder, ProductPreview } from '../ui';
 import styles from './OrderCardMobile.module.scss';
 import { OrderCardProps } from '../type';
@@ -41,5 +42,11 @@ export const OrderCardMobile = ({ order }: OrderCardProps) => (
             />
           ))}
     </div>
+    <Divider />
+    <Link href={`/order/history/${order._id}`}>
+      <Button className={styles.more} appearance='transparent'>
+        Подробнее
+      </Button>
+    </Link>
   </Card>
 );

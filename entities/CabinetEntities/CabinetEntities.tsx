@@ -50,8 +50,8 @@ export const CabinetEntities = () => {
 
   return (
     <>
-      {orders.map((o) => (
-        <OrderCard order={o} />
+      {orders.map((order, index) => (
+        <OrderCard key={index} order={order} />
       ))}
     </>
   );
