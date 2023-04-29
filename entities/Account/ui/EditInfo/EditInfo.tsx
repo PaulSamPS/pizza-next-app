@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Input, InputPhone, Title } from '@shared/ui';
 import { useSelector } from 'react-redux';
 import { userState } from '@shared/store/selector';
-import styles from './EditInfo.module.scss';
+import { DeviceContext } from '@shared/context';
+import desktop from './EditInfoDesktop.module.scss';
+import mobile from './EditInfoMobile.module.scss';
 
 interface EditInfoProps {
   edit: (click: boolean) => void;
@@ -11,12 +13,19 @@ interface EditInfoProps {
 export const EditInfo = ({ edit }: EditInfoProps) => {
   const [value, setValue] = React.useState<string>('');
   const { user } = useSelector(userState);
+  const { isDesktop } = useContext(DeviceContext);
+
+  const classes = isDesktop ? desktop : mobile;
 
   return (
-    <div className={styles['edit-info']}>
+    <div className={classes['edit-info']}>
       <Title level='3'>Изменение личных данных</Title>
-      <div className={styles.inputs}>
-        <Input id='user-name' text='Имя*' placeholder='Введите имя' />
+      <div className={classes.inputs}>
+        <Input
+          id='user-name'
+          text='Имя*'
+          placeholder={user.name ? user.name : 'Введите имя'}
+        />
         <InputPhone
           value={value}
           setValues={(e) => setValue(e.target.value)}

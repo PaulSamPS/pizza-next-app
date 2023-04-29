@@ -3,6 +3,10 @@
 	align-items: center;
 	justify-content: space-between;
 
+	h3 {
+		font-size: 18px!important;
+	}
+
 	.edit {
 		display: flex;
 		align-items: center;
@@ -27,7 +31,7 @@
 
 .personal-data {
 	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
 	column-gap: 32px;
 
 	.item {

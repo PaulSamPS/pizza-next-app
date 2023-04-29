@@ -56,9 +56,11 @@ export const MenuMobile = ({ isOpened }: MenuMobileProps) => {
             <Divider />
             <div className={styles['account-tab']}>
               {accountTab.map((i) => (
-                <Text key={i.id} level='l3'>
-                  {i.value}
-                </Text>
+                <Link href={i.value === 'Настройки' ? '/settings' : '/cabinet'}>
+                  <Text key={i.id} level='l3'>
+                    {i.value}
+                  </Text>
+                </Link>
               ))}
               <Text className={styles.exit} level='l3'>
                 Выйти из аккаунта

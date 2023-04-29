@@ -2,15 +2,40 @@ import React from 'react';
 import type { DeliveryFrom } from '@shared/types';
 import { Button, Divider, Title, Text, Spinner } from '@shared/ui';
 import { AdditionsList, Tab } from '@features';
-import styles from './CheckoutMobile.module.scss';
-import type { CheckoutProps } from '../type';
-import { Delivery } from '../ui/Delivery';
-import { PersonalData } from '../../../entities/PersonalData';
+import { useSelector } from 'react-redux';
+import { userState } from '@shared/store/selector';
+import { useAppDispatch } from '@shared/hooks';
+import { useRouter } from 'next/router';
+import axios from 'axios';
+import { setClearBasket } from '@shared/store/slices/basket.slice';
 import { ProductList } from '../ui';
+import { PersonalData } from '../../../entities/PersonalData';
+import { Delivery } from '../ui/Delivery';
+import type { CheckoutProps } from '../type';
+import styles from './CheckoutMobile.module.scss';
 
 export const CheckoutMobile = ({ ...props }: CheckoutProps) => {
+  const { user } = useSelector(userState);
+  const dispatch = useAppDispatch();
+  const router = useRouter();
   const onSubmit = async (formData: DeliveryFrom) => {
-    console.log(formData);
+    await axios
+      .post('http://localhost:5000/api/order', {
+        userId: user.id,
+        products: props.products.map((i) => i),
+        totalPrice: props.totalPrice,
+        info: formData,
+      })
+      .then(async () => {
+        await router.push('/success');
+        await axios
+          .get('http://localhost:5000/api/basket/clear', {
+            withCredentials: true,
+          })
+          .then(() => {
+            dispatch(setClearBasket());
+          });
+      });
   };
 
   return (
@@ -46,12 +71,9 @@ export const CheckoutMobile = ({ ...props }: CheckoutProps) => {
         setValue={props.setValueDeliveryMethod}
       />
       <Delivery
+        register={props.register}
         control={props.control}
         errors={props.errors}
-        register={props.register}
-        arrRadioFirst={props.arrRadioFirst}
-        arrRadioSecond={props.arrRadioSecond}
-        arrRadioThird={props.arrRadioThird}
       />
       <div className={styles.checkout}>
         <Text level='l3' weight='w1' className={styles['checkout-sum']}>

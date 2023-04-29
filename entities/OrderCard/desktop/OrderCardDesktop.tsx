@@ -4,9 +4,10 @@ import { Text } from '@shared/ui/Typography';
 import { Card, Divider, Icon } from '@shared/ui/Blocks';
 import cx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
-import styles from './OrderCardDesktop.module.scss';
-import { InfoOrder, OrderedProducts, ProductPreview } from '../ui';
+import { RepeatOrder } from '@features';
 import { OrderCardProps } from '../type';
+import { InfoOrder, OrderedProducts, ProductPreview } from '../ui';
+import styles from './OrderCardDesktop.module.scss';
 
 export const OrderCardDesktop = ({ order }: OrderCardProps) => {
   const [visible, setVisible] = React.useState<boolean>(false);
@@ -95,6 +96,8 @@ export const OrderCardDesktop = ({ order }: OrderCardProps) => {
                   count={i.qty}
                 />
               ))}
+            <Divider />
+            <RepeatOrder currentOrderId={order._id} />
           </motion.div>
         )}
       </AnimatePresence>

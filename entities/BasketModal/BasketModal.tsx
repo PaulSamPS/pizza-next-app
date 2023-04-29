@@ -30,8 +30,6 @@ export const BasketModal = () => {
     dispatch(setBasketModalIsOpened(false));
   };
 
-  console.log(basket);
-
   React.useEffect(() => {
     dispatch(getBasket());
   }, []);
@@ -107,7 +105,7 @@ export const BasketModal = () => {
           basket={basket}
           linkTo={linkTo}
         >
-          {basket &&
+          {basket.products &&
             basket.products.map((p, index) => (
               <BasketModalCard
                 key={index}

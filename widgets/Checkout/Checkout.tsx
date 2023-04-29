@@ -165,22 +165,31 @@ export const Checkout = () => {
   }
 
   return (
-    <CheckoutMobile
-      deliveryMethod={delivery}
-      valueDeliveryMethod={deliveryValue}
-      setValueDeliveryMethod={setDeliveryValue}
-      sauces={sauces}
-      additions={additions}
-      arrRadioFirst={howSoon}
-      arrRadioSecond={payment}
-      arrRadioThird={change}
-      control={control}
-      errors={errors}
-      handleSubmit={handleSubmit}
-      register={register}
-      products={basket.products}
-      totalPrice={basket.totalPrice}
-      totalCount={basket.totalCount}
-    />
+      // eslint-disable-next-line react/jsx-no-useless-fragment
+    <>
+      {basketEmpty ? (
+        <Container>
+          <Title level='3'>Корзина пуста</Title>
+        </Container>
+      ) : (
+        <CheckoutMobile
+          deliveryMethod={delivery}
+          valueDeliveryMethod={deliveryValue}
+          setValueDeliveryMethod={setDeliveryValue}
+          sauces={sauces}
+          additions={additions}
+          arrRadioFirst={howSoon}
+          arrRadioSecond={payment}
+          arrRadioThird={change}
+          control={control}
+          errors={errors}
+          handleSubmit={handleSubmit}
+          register={register}
+          products={basket.products}
+          totalPrice={basket.totalPrice}
+          totalCount={basket.totalCount}
+        />
+      )}
+    </>
   );
 };

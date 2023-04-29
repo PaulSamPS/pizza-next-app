@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Footer, Header, Nav } from '@entities';
+import { BasketModal, Footer, Header, Nav } from '@entities';
 import { DeviceContext } from '@shared/context';
 import styles from './Layout.module.scss';
 
@@ -16,6 +16,7 @@ export const Layout = ({ children }: LayoutProps) => {
         <Header />
         <Nav />
         {children}
+        <BasketModal />
       </div>
       {isDesktop && (
         <div className={styles.footer}>
