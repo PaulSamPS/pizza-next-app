@@ -1,53 +1,53 @@
 .order-card {
-  margin-top: 12px;
-  padding: 12px;
-  display: grid;
-  grid-template-columns: 84px 1fr auto;
-  grid-template-areas: 'img info .';
-  column-gap: 12px;
-  row-gap: 8px;
-  align-items: center;
-  font-family: Inter, sans-serif;
+	margin-top: 12px;
+	padding: 12px;
+	display: grid;
+	grid-template-columns: 84px 1fr auto;
+	grid-template-areas: 'img info .';
+	column-gap: 12px;
+	row-gap: 8px;
+	align-items: center;
+	font-family: Inter, sans-serif;
 
-  .img {
-    grid-area: img;
-  }
+	.img {
+		grid-area: img;
+	}
 
-  .info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
+	.info {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 100%;
 
-    .name {
-      grid-area: name;
-    }
+		.name {
+			grid-area: name;
+		}
 
-    .extra {
-      grid-area: desc;
-    }
+		.extra {
+			grid-area: desc;
+		}
 
-    .bot {
-     display: flex;
-      justify-content: space-between;
-      align-items: center;
+		.bot {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
 
-      .count {
-        grid-area: count;
-        background-color: var(--light-primary);
-        color: var(--primary);
-        height: 32px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100px;
-        border-radius: 6px;
-      }
+			.count {
+				grid-area: count;
+				background-color: var(--light-primary);
+				color: var(--primary);
+				height: 32px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 100px;
+				border-radius: 6px;
+			}
 
-      .price {
-        grid-area: price;
-        color: var(--primary);
-      }
-    }
-  }
+			.price {
+				grid-area: price;
+				color: var(--primary);
+			}
+		}
+	}
 }

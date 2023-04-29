@@ -51,7 +51,7 @@ export const CabinetEntities = () => {
   return (
     <>
       {orders.map((order, index) => (
-        <OrderCard key={index} order={order} />
+        <OrderCard key={index} order={order} buttonText='Подробнее' />
       ))}
     </>
   );

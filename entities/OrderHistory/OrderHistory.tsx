@@ -58,9 +58,11 @@ export const OrderHistory = () => {
                 <Text level='l1' className={styles.extra}>
                   {p.dough
                     ? `${p.dough} , ${p.size} см`
-                    : `${p.product.weight} ${
-                        p.product.type !== 'drink' ? 'гр' : 'мл'
-                      }`}
+                    : `${
+                        p.product.type === 'drink'
+                          ? p.product.description
+                          : p.product.weight
+                      } ${p.product.type !== 'drink' ? 'гр' : ''}`}
                 </Text>
                 <div className={styles.bot}>
                   <div className={styles.count}>
