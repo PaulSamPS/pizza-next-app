@@ -8,7 +8,6 @@ import user from './slices/user.slice';
 import basket from './slices/basket.slice';
 import nav from './slices/nav.slice';
 import orders from './slices/order.slice';
-import oneOrder from './slices/oneOrder.slice';
 
 export function makeStore() {
   return configureStore({
@@ -20,7 +19,6 @@ export function makeStore() {
       basket,
       nav,
       orders,
-      oneOrder,
     },
   });
 }

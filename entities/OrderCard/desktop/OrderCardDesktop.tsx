@@ -97,7 +97,7 @@ export const OrderCardDesktop = ({ order }: OrderCardProps) => {
                 />
               ))}
             <Divider />
-            <RepeatOrder currentOrderId={order._id} />
+            <RepeatOrder products={order.products} ttp={order.totalPrice} />
           </motion.div>
         )}
       </AnimatePresence>

@@ -1,11 +1,11 @@
 .pizza {
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 20px;
 
-  .items {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(352px, 1fr));
-    gap: 20px;
-  }
+	.items {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(352px, 1fr));
+		gap: 20px;
+	}
 }

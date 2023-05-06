@@ -53,7 +53,7 @@ export const OrderCardMobile = ({ order, buttonText }: OrderCardProps) => (
         </Button>
       </Link>
     ) : (
-      <RepeatOrder />
+      <RepeatOrder products={order.products} ttp={order.totalPrice} />
     )}
   </Card>
 );
