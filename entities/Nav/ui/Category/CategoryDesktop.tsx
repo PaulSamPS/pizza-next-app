@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Select } from 'shared/ui';
+import { Text, Select } from '@shared/ui';
 import { useAppDispatch } from '@shared/hooks';
 import { setNavName } from '@shared/store/slices/nav.slice';
 import { useRouter } from 'next/router';
@@ -23,7 +23,7 @@ type CategoryHeaderProps = {
   category: Category[];
 };
 
-export const CategoryHeader = ({ category }: CategoryHeaderProps) => {
+export const CategoryDesktop = ({ category }: CategoryHeaderProps) => {
   const dispatch = useAppDispatch();
   const router = useRouter();
 

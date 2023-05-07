@@ -63,5 +63,5 @@ export const Nav = () => {
     return <NavDesktop category={category} />;
   }
 
-  return <NavMobile />;
+  return <NavMobile category={category} />;
 };

@@ -16,6 +16,6 @@ export const BasketButtonMobile = ({
     <Icon>
       <CartIcon />
     </Icon>
-    <div className={styles.count}>{count}</div>
+    <div className={styles.count}>{count || 0}</div>
   </Button>
 );

@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { LocationIcon, PhoneIcon } from '@shared/assets/icons/20';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Text, Divider } from '@shared/ui';
 import { Auth } from '@processes/Auth';
+import { useScrollY } from '@shared/hooks';
 import styles from './MenuMobile.module.scss';
 import { Login } from '../Header/components';
 
@@ -33,10 +34,31 @@ const accountTab = [
 ];
 
 export const MenuMobile = ({ isOpened }: MenuMobileProps) => {
+  const scrollY = useScrollY();
+  const [currentScrollY, setCurrentScrollY] = useState<number>(0);
+
   const variants = {
     open: { opacity: 1, x: 0 },
     closed: { opacity: 0, x: '-50%' },
   };
+
+  console.log(scrollY);
+
+  React.useEffect(() => {
+    if (isOpened) {
+      document.body.style.position = 'fixed';
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.top = `-${scrollY}px`;
+      setCurrentScrollY(scrollY);
+    } else {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      window.scrollTo(0, currentScrollY);
+    }
+  }, [isOpened]);
 
   return (
     <Portal>
@@ -44,6 +66,7 @@ export const MenuMobile = ({ isOpened }: MenuMobileProps) => {
         {isOpened && (
           <motion.div
             className={styles.menu}
+            style={{ top: currentScrollY >= 38 ? '65px' : '104px' }}
             animate={isOpened ? 'open' : 'closed'}
             variants={variants}
             initial='closed'

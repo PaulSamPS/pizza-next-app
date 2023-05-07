@@ -19,7 +19,7 @@ export const BasketModalMobile = ({
     <div className={styles.bottom}>
       <Divider />
       <Bottom
-        totalPrice={basket ? basket.totalPrice : 0}
+        totalPrice={basket?.totalPrice ? basket.totalPrice : 0}
         className={styles.bot}
         handleClick={closeModal}
         linkTo={linkTo}

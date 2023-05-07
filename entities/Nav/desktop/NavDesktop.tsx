@@ -1,7 +1,6 @@
 import React from 'react';
 import cx from 'clsx';
 import Link from 'next/link';
-import { CategoryHeader } from '@entities';
 import { CartIcon } from '@shared/assets/icons/24';
 import { useAppDispatch, useScrollY } from '@shared/hooks';
 import { useRouter } from 'next/router';
@@ -12,6 +11,7 @@ import { basketState } from '@shared/store/selector';
 import { Button, Container, Divider } from '@shared/ui';
 import styles from './NavDesktop.module.scss';
 import { Logo } from '../../Header/components';
+import { CategoryDesktop } from '../ui';
 
 type INav = {
   id: number;
@@ -48,16 +48,14 @@ export const NavDesktop = ({ category }: NavDesktopProps) => {
           <Link href='/'>
             <Logo />
           </Link>
-          <CategoryHeader category={category} />
+          <CategoryDesktop category={category} />
           <Button
             appearance='primary'
             before={<CartIcon />}
             height={40}
             onClick={handleOpenModalCart}
           >
-            {basket.totalPrice ? basket.totalPrice : 0}
-            {' '}
-            ₽
+            {basket.totalPrice ? basket.totalPrice : 0} ₽
           </Button>
         </div>
       </Container>

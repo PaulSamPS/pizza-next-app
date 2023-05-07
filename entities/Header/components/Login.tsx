@@ -15,7 +15,8 @@ export const Login = () => {
   const { user } = useSelector(userState);
   const { isDesktop } = useContext(DeviceContext);
 
-  const linkTo = user.phone ? '/cabinet' : `${router.pathname}?auth=login`;
+  const linkDevice = isDesktop ? '/cabinet' : '';
+  const linkTo = user.phone ? linkDevice : `${router.pathname}?auth=login`;
 
   const classes = isDesktop ? desktop : mobile;
 

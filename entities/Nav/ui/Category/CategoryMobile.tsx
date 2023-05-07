@@ -1,67 +1,38 @@
 import React, { useContext } from 'react';
-import {
-  ComboIcon,
-  DessertsIcon,
-  DrinksIcon,
-  PizzaIcon,
-  PromotionsIcon,
-  SaucesIcon,
-  SnacksIcon,
-  SushiIcon,
-} from '@shared/assets/icons/category';
 import { DeviceContext } from '@shared/context';
-import { useScrollY } from '@shared/hooks';
+import { useAppDispatch, useScrollY } from '@shared/hooks';
 import cx from 'clsx';
 import { Text, Card } from '@shared/ui';
+import { useRouter } from 'next/router';
+import { setNavName } from '@shared/store/slices/nav.slice';
 import desktop from './styles/desktop.module.scss';
 import mobile from './styles/mobile.module.scss';
 
-const category = [
-  {
-    id: 0,
-    name: 'Акции',
-    icon: <PromotionsIcon />,
-  },
-  {
-    id: 1,
-    name: 'Пицца',
-    icon: <PizzaIcon />,
-  },
-  {
-    id: 2,
-    name: 'Суши',
-    icon: <SushiIcon />,
-  },
-  {
-    id: 3,
-    name: 'Напитки',
-    icon: <DrinksIcon />,
-  },
-  {
-    id: 4,
-    name: 'Закуски',
-    icon: <SnacksIcon />,
-  },
-  {
-    id: 5,
-    name: 'Комбо',
-    icon: <ComboIcon />,
-  },
-  {
-    id: 6,
-    name: 'Десерты',
-    icon: <DessertsIcon />,
-  },
-  {
-    id: 7,
-    name: 'Соусы',
-    icon: <SaucesIcon />,
-  },
-];
+type ICategory = {
+  id: number;
+  name: string;
+  icon: React.ReactNode;
+};
 
-export const Category = () => {
+type CategoryProps = {
+  category: ICategory[];
+};
+
+export const CategoryMobile = ({ category }: CategoryProps) => {
   const { isDesktop } = useContext(DeviceContext);
   const scrollY = useScrollY();
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+
+  const scrollToCategory = (name: string) => {
+    if (router.pathname !== '/') {
+      router.replace('/').then(() => {
+        dispatch(setNavName(name));
+      });
+    } else {
+      dispatch(setNavName(name));
+    }
+  };
 
   return (
     <nav
@@ -77,6 +48,7 @@ export const Category = () => {
           key={c.id}
           tabIndex={0}
           className={isDesktop ? desktop.card : mobile.card}
+          onClick={() => scrollToCategory(c.name)}
         >
           {c.icon}
           <Text level='l1' className={mobile.name}>
